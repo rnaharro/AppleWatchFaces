@@ -26,39 +26,40 @@ class WatchSettingsTableViewController: UITableViewController {
     //current selected group
     var currentGroupIndex = 0
     
-    //header text,
-    let sectionsData = [
+    //this defines the order and information in the settings table,
+    // NOTE: overriden based on Default options in setSectionDataForOptions() based on complexity level
+    var sectionsData = [
         [
-            ["title":"Title",                       "rowHeight":"66.0", "cellID":"titleSettingsTableViewCellID"],
-            ["title":"Color Theme",                 "rowHeight":"130.0", "cellID":"colorThemeSettingsTableViewCellID"],
-            ["title":"Items Theme",                 "rowHeight":"130.0","cellID":"decoratorThemeSettingsTableViewCellID"]
+            ["title":"Title",                       "category":"normal",      "rowHeight":"66.0", "cellID":"titleSettingsTableViewCellID"],
+            ["title":"Color Theme",                 "category":"normal",      "rowHeight":"130.0", "cellID":"colorThemeSettingsTableViewCellID"],
+            ["title":"Items Theme",                 "category":"normal",      "rowHeight":"130.0","cellID":"decoratorThemeSettingsTableViewCellID"]
         ],
         [
-            ["title":"Face Background Type",        "rowHeight":"100.0","cellID":"faceBackgroundTypeTableViewCell"],
-            ["title":"Face Background Color",       "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
-            ["title":"Main Background Color",       "rowHeight":"100.0","cellID":"mainBackgroundColorsTableViewCell"]
+            ["title":"Face Background Type",        "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundTypeTableViewCell"],
+            ["title":"Face Background Color",       "category":"normal",      "rowHeight":"100.0","cellID":"faceBackgroundColorsTableViewCell"],
+            ["title":"Main Background Color",       "category":"normal",      "rowHeight":"100.0","cellID":"mainBackgroundColorsTableViewCell"]
         ],
         [
-            ["title":"Hand Display",                "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
+            ["title":"Hand Display",                "category":"advanced",    "rowHeight":"66.0","cellID":"handsOptionsSettingsTableViewCellID"],
             
-            ["title":"Second Hand",                 "rowHeight":"100.0","cellID":"secondHandSettingsTableViewCell"],
-            ["title":"Second Hand Animation",       "rowHeight":"130.0","cellID":"secondhandAnimationSettingsTableViewCellID"],
-            ["title":"Second Hand Color",           "rowHeight":"100.0","cellID":"secondHandColorsTableViewCell"],
+            ["title":"Second Hand",                 "category":"normal",      "rowHeight":"100.0","cellID":"secondHandSettingsTableViewCell"],
+            ["title":"Second Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"secondhandAnimationSettingsTableViewCellID"],
+            ["title":"Second Hand Color",           "category":"normal",      "rowHeight":"100.0","cellID":"secondHandColorsTableViewCell"],
             
-            ["title":"Minute Hand",                 "rowHeight":"100.0","cellID":"minuteHandSettingsTableViewCell"],
-            ["title":"Minute Hand Animation",       "rowHeight":"130.0","cellID":"minutehandAnimationSettingsTableViewCellID"],
-            ["title":"Minute Hand Color",           "rowHeight":"100.0","cellID":"minuteHandColorTableViewCell"],
+            ["title":"Minute Hand",                 "category":"normal",      "rowHeight":"100.0","cellID":"minuteHandSettingsTableViewCell"],
+            ["title":"Minute Hand Animation",       "category":"advanced",    "rowHeight":"130.0","cellID":"minutehandAnimationSettingsTableViewCellID"],
+            ["title":"Minute Hand Color",           "category":"normal",      "rowHeight":"100.0","cellID":"minuteHandColorTableViewCell"],
             
-            ["title":"Hour Hand",                   "rowHeight":"100.0","cellID":"hourHandSettingsTableViewCell"],
-            ["title":"Hour Hand Color",             "rowHeight":"100.0","cellID":"hourHandColorTableViewCell"],
-            ["title":"Hand Outline Color",          "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"]
+            ["title":"Hour Hand",                   "category":"normal",      "rowHeight":"100.0","cellID":"hourHandSettingsTableViewCell"],
+            ["title":"Hour Hand Color",             "category":"normal",      "rowHeight":"100.0","cellID":"hourHandColorTableViewCell"],
+            ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"]
         ],
         [
-            ["title":"Indicator Shape",             "rowHeight":"130.0","cellID":"ringShapeSettingsTableViewCellID"],
-            ["title":"Indicator Parts",             "rowHeight":"66.0","cellID":"ringEditorTableViewCellID"],
-            ["title":"Indicators Main Color",       "rowHeight":"100.0","cellID":"ringMainColorsTableViewCell"],
-            ["title":"Indicators Secondary Color",  "rowHeight":"100.0","cellID":"ringSecondaryColorsTableViewCell"],
-            ["title":"Indicators Highlight Color",  "rowHeight":"100.0","cellID":"ringThirdColorsTableViewCell"]
+            ["title":"Indicator Shape",             "category":"path-render", "rowHeight":"130.0","cellID":"ringShapeSettingsTableViewCellID"],
+            ["title":"Indicator Parts",             "category":"advanced",    "rowHeight":"66.0","cellID":"ringEditorTableViewCellID"],
+            ["title":"Indicators Main Color",       "category":"normal",      "rowHeight":"100.0","cellID":"ringMainColorsTableViewCell"],
+            ["title":"Indicators Secondary Color",  "category":"normal",      "rowHeight":"100.0","cellID":"ringSecondaryColorsTableViewCell"],
+            ["title":"Indicators Highlight Color",  "category":"normal",      "rowHeight":"100.0","cellID":"ringThirdColorsTableViewCell"]
             
         ]
     ]
@@ -132,6 +133,29 @@ class WatchSettingsTableViewController: UITableViewController {
             default: settingText = ""
         }
         return settingText
+    }
+    
+    func setSectionDataForOptions() {
+        let options = Defaults.getOptions()
+        
+        func removeSectionItemsForCategory (category: String) {
+            for (sectionIndex, section) in sectionsData.enumerated() {
+                for (itemIndex,item) in section.enumerated().reversed() { //reverse so it pops from the ends
+                    if (item["category"] == category) {
+                        sectionsData[sectionIndex].remove(at: itemIndex)
+                    }
+                }
+            }
+        }
+        
+        if options.showAdvancedOptionsKey == nil || options.showAdvancedOptionsKey == false {
+            // remove non-advanced items
+            removeSectionItemsForCategory(category: "advanced")
+        }
+        if options.advancedOptionPathRenderingKey == nil || options.advancedOptionPathRenderingKey == false {
+            // remove path rendering options
+            removeSectionItemsForCategory(category: "path-render")
+        }
     }
     
     func reloadAfterGroupChange() {
@@ -245,6 +269,9 @@ class WatchSettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //remove data for table cells due to options
+        setSectionDataForOptions()
         
         tableView.register(UINib(nibName: "SettingsTableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "SettingsTableHeaderViewID")
         
