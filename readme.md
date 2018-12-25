@@ -45,7 +45,7 @@ Maybe, I've seen some open source battery / date ones. Those would be the simple
 
 8. **Are all the designs round  ?**
 
-The current code renders the items by rotating spriteKit nodes which puts everything nicely in a circle. I have an upcoming [issue for non-circular path support](https://github.com/orff/AppleWatchFaces/issues/6) which should get more "traditional" apple watch rounded rectangles and also support any arbitrary path like a star, oval, or spiral. Hopefully it would eventually play nice with SVG file support as well.
+In [PR 11](https://github.com/orff/AppleWatchFaces/pull/11) support for rounded rectangle designs was added. It it not a perfect solution for watch designs:  While it does postiion the items along a rounded rectangle path, it evenly distributes them which does not perfectly line up with the watch hands.  Also box / square shapes look weird just rotated to face the center vs. a "true" watch design which would mask the edges.  
 
 9. **What about digital clocks  ?**
 
