@@ -169,6 +169,12 @@ class InterfaceController: KKInterfaceController, WCSessionDelegate, WKCrownDele
         super.willActivate()
         
         skInterface.isPaused = false
+        
+        // force watch to correct time without any animation
+        //  https://github.com/orff/AppleWatchFaces/issues/12
+        if let skWatchScene = self.skInterface.scene as? SKWatchScene {
+            skWatchScene.forceToTime()
+        }
     }
     
     override func didDeactivate() {

@@ -63,6 +63,16 @@ class WatchPreviewViewController: UIViewController {
         }
     }
     
+    @objc func applicationDidBecomeActive(notification: NSNotification) {
+        // Application is back in the foreground
+        
+        // force watch to correct time without any animation after resuming
+        //  https://github.com/orff/AppleWatchFaces/issues/12
+        if let watchScene = skView.scene as? SKWatchScene {
+            watchScene.forceToTime()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -95,6 +105,8 @@ class WatchPreviewViewController: UIViewController {
         //debug options
         skView.showsFPS = false
         skView.showsNodeCount = false
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
 }

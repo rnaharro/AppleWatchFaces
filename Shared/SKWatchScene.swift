@@ -32,6 +32,12 @@ class SKWatchScene: SKScene {
         self.addChild(newWatchFaceNode)
     }
     
+    func forceToTime() {
+        if let oldNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+            oldNode.setToTime( force: true )
+        }
+    }
+    
     func stopTimeForScreenShot() {
         shouldKeepTime = false
         if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
