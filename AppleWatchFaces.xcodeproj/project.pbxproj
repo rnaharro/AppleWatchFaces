@@ -112,6 +112,7 @@
 		318A929221D35E2B0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 318A929121D35E2A0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg */; };
 		318A929421D3B0F30060D89B /* brushedsteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 318A929321D3B0F30060D89B /* brushedsteel.jpg */; };
 		318A929521D3B0F30060D89B /* brushedsteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 318A929321D3B0F30060D89B /* brushedsteel.jpg */; };
+		318A92AB21D3C2840060D89B /* Decorators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318A92A921D3C2840060D89B /* Decorators.storyboard */; };
 		319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095F921CC898100F71BC6 /* BezierPath+Length.swift */; };
 		319095FC21CC898200F71BC6 /* PathElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095FA21CC898100F71BC6 /* PathElement.swift */; };
 		31A5F7EF21966CED000F1677 /* MathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5F7EE21966CED000F1677 /* MathFunctions.swift */; };
@@ -386,6 +387,7 @@
 		318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIGITAL-7-MONO.TTF"; sourceTree = "<group>"; };
 		318A929121D35E2A0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg"; sourceTree = "<group>"; };
 		318A929321D3B0F30060D89B /* brushedsteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brushedsteel.jpg; sourceTree = "<group>"; };
+		318A92AA21D3C2840060D89B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Decorators.storyboard; sourceTree = "<group>"; };
 		319095F921CC898100F71BC6 /* BezierPath+Length.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Length.swift"; sourceTree = "<group>"; };
 		319095FA21CC898100F71BC6 /* PathElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathElement.swift; sourceTree = "<group>"; };
 		319B470A21C705FB00451E9E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 		318808CF217815E600585AB1 /* AppleWatchFaces */ = {
 			isa = PBXGroup;
 			children = (
+				318A92A921D3C2840060D89B /* Decorators.storyboard */,
 				318808D0217815E600585AB1 /* AppDelegate.swift */,
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
@@ -948,6 +951,7 @@
 				3153880E21CB462D00A972BC /* secondhandAnimation-smooth.jpg in Resources */,
 				310BA21A21B0F90D00A146B7 /* decoratorTheme-outsidehours.jpg in Resources */,
 				31F4F1B6219899420050177A /* SettingsTableHeaderView.xib in Resources */,
+				318A92AB21D3C2840060D89B /* Decorators.storyboard in Resources */,
 				310BA21421B0F90D00A146B7 /* decoratorTheme-hightechfancy.jpg in Resources */,
 				31C05DF821A73D3A0021AEAB /* BE439252-6A95-4D3D-8D21-C9BBB5B806CD.jpg in Resources */,
 				31C05E0E21A73D3A0021AEAB /* E6F3C2AC-38DD-4825-9D4B-6E203AD3A097.jpg in Resources */,
@@ -1237,6 +1241,14 @@
 				318808E72178166A00585AB1 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		318A92A921D3C2840060D89B /* Decorators.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				318A92AA21D3C2840060D89B /* Base */,
+			);
+			name = Decorators.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
