@@ -25,8 +25,6 @@
 		310BA1C621AF736400A146B7 /* TitleSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */; };
 		310BA1C821AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */; };
 		310BA1CA21AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */; };
-		310BA1CC21AFBDE300A146B7 /* wrist.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 310BA1CB21AFBDE300A146B7 /* wrist.jpg */; };
-		310BA1CD21AFBDE300A146B7 /* wrist.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 310BA1CB21AFBDE300A146B7 /* wrist.jpg */; };
 		310BA1D121B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1CF21B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift */; };
 		310BA1D221B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BA1D021B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift */; };
 		310BA1E921B0EA6D00A146B7 /* colorTheme-firewatch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 310BA1D321B0EA6A00A146B7 /* colorTheme-firewatch.jpg */; };
@@ -111,6 +109,9 @@
 		318A928D21D05F660060D89B /* SettingsOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */; };
 		318A928F21D34C6D0060D89B /* DIGITAL-7-MONO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */; };
 		318A929021D34C6D0060D89B /* DIGITAL-7-MONO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */; };
+		318A929221D35E2B0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 318A929121D35E2A0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg */; };
+		318A929421D3B0F30060D89B /* brushedsteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 318A929321D3B0F30060D89B /* brushedsteel.jpg */; };
+		318A929521D3B0F30060D89B /* brushedsteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 318A929321D3B0F30060D89B /* brushedsteel.jpg */; };
 		319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095F921CC898100F71BC6 /* BezierPath+Length.swift */; };
 		319095FC21CC898200F71BC6 /* PathElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095FA21CC898100F71BC6 /* PathElement.swift */; };
 		31A5F7EF21966CED000F1677 /* MathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5F7EE21966CED000F1677 /* MathFunctions.swift */; };
@@ -212,10 +213,8 @@
 		31F4F1B82198ACB50050177A /* AppUISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F1B72198ACB50050177A /* AppUISettings.swift */; };
 		31F4F1BE219A5C310050177A /* brass.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1BD219A5C310050177A /* brass.jpg */; };
 		31F4F1C0219A5C3D0050177A /* copper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1BF219A5C3D0050177A /* copper.jpg */; };
-		31F4F1C2219A5C600050177A /* kork.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C1219A5C600050177A /* kork.jpg */; };
 		31F4F1C4219A5C840050177A /* light-wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C3219A5C830050177A /* light-wood.jpg */; };
 		31F4F1C6219A5CA60050177A /* wallpaper70s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C5219A5CA50050177A /* wallpaper70s.jpg */; };
-		31F4F1C8219A5CBD0050177A /* wallpaperFlower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C7219A5CBD0050177A /* wallpaperFlower.jpg */; };
 		31F4F1CD219A5F1C0050177A /* watchGears.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1CB219A5F1B0050177A /* watchGears.jpg */; };
 		31F4F1CE219A5F1C0050177A /* vinylAlbum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1CC219A5F1C0050177A /* vinylAlbum.jpg */; };
 		31F4F1CF219A60230050177A /* AppUISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F1B72198ACB50050177A /* AppUISettings.swift */; };
@@ -223,10 +222,8 @@
 		31F4F1D1219A6B030050177A /* watchGears.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1CB219A5F1B0050177A /* watchGears.jpg */; };
 		31F4F1D2219A6B030050177A /* brass.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1BD219A5C310050177A /* brass.jpg */; };
 		31F4F1D3219A6B030050177A /* copper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1BF219A5C3D0050177A /* copper.jpg */; };
-		31F4F1D4219A6B030050177A /* kork.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C1219A5C600050177A /* kork.jpg */; };
 		31F4F1D5219A6B030050177A /* light-wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C3219A5C830050177A /* light-wood.jpg */; };
 		31F4F1D6219A6B030050177A /* wallpaper70s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C5219A5CA50050177A /* wallpaper70s.jpg */; };
-		31F4F1D7219A6B030050177A /* wallpaperFlower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F4F1C7219A5CBD0050177A /* wallpaperFlower.jpg */; };
 		31F4F1D9219D08890050177A /* FaceChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F4F1D8219D08890050177A /* FaceChooserViewController.swift */; };
 		31F4F1DA219D12DF0050177A /* UserClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010921960409009BCE3C /* UserClockSetting.swift */; };
 		31F56F9D21857A2000455FC6 /* SecondHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F56F9C21857A2000455FC6 /* SecondHandNode.swift */; };
@@ -301,7 +298,6 @@
 		310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingCollectionViewCell.swift; sourceTree = "<group>"; };
-		310BA1CB21AFBDE300A146B7 /* wrist.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wrist.jpg; sourceTree = "<group>"; };
 		310BA1CF21B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorThemeSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		310BA1D021B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorThemeSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		310BA1D321B0EA6A00A146B7 /* colorTheme-firewatch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "colorTheme-firewatch.jpg"; sourceTree = "<group>"; };
@@ -388,6 +384,8 @@
 		318A928A21D059120060D89B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsViewController.swift; sourceTree = "<group>"; };
 		318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIGITAL-7-MONO.TTF"; sourceTree = "<group>"; };
+		318A929121D35E2A0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg"; sourceTree = "<group>"; };
+		318A929321D3B0F30060D89B /* brushedsteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brushedsteel.jpg; sourceTree = "<group>"; };
 		319095F921CC898100F71BC6 /* BezierPath+Length.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Length.swift"; sourceTree = "<group>"; };
 		319095FA21CC898100F71BC6 /* PathElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathElement.swift; sourceTree = "<group>"; };
 		319B470A21C705FB00451E9E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -466,10 +464,8 @@
 		31F4F1B72198ACB50050177A /* AppUISettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUISettings.swift; sourceTree = "<group>"; };
 		31F4F1BD219A5C310050177A /* brass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brass.jpg; sourceTree = "<group>"; };
 		31F4F1BF219A5C3D0050177A /* copper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = copper.jpg; sourceTree = "<group>"; };
-		31F4F1C1219A5C600050177A /* kork.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kork.jpg; sourceTree = "<group>"; };
 		31F4F1C3219A5C830050177A /* light-wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "light-wood.jpg"; sourceTree = "<group>"; };
 		31F4F1C5219A5CA50050177A /* wallpaper70s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaper70s.jpg; sourceTree = "<group>"; };
-		31F4F1C7219A5CBD0050177A /* wallpaperFlower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaperFlower.jpg; sourceTree = "<group>"; };
 		31F4F1CB219A5F1B0050177A /* watchGears.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watchGears.jpg; sourceTree = "<group>"; };
 		31F4F1CC219A5F1C0050177A /* vinylAlbum.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vinylAlbum.jpg; sourceTree = "<group>"; };
 		31F4F1D8219D08890050177A /* FaceChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceChooserViewController.swift; sourceTree = "<group>"; };
@@ -663,6 +659,7 @@
 		31C05DA621A734120021AEAB /* defaultThumbnails */ = {
 			isa = PBXGroup;
 			children = (
+				318A929121D35E2A0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg */,
 				3153880921CB462C00A972BC /* secondhandAnimation-oscillate.jpg */,
 				3153880A21CB462C00A972BC /* secondhandAnimation-smooth.jpg */,
 				3153880C21CB462C00A972BC /* secondhandAnimation-step.jpg */,
@@ -795,15 +792,13 @@
 		31F4F1B9219A57CA0050177A /* Materials */ = {
 			isa = PBXGroup;
 			children = (
-				310BA1CB21AFBDE300A146B7 /* wrist.jpg */,
+				318A929321D3B0F30060D89B /* brushedsteel.jpg */,
 				31F4F1CC219A5F1C0050177A /* vinylAlbum.jpg */,
 				31F4F1CB219A5F1B0050177A /* watchGears.jpg */,
 				31F4F1BD219A5C310050177A /* brass.jpg */,
 				31F4F1BF219A5C3D0050177A /* copper.jpg */,
-				31F4F1C1219A5C600050177A /* kork.jpg */,
 				31F4F1C3219A5C830050177A /* light-wood.jpg */,
 				31F4F1C5219A5CA50050177A /* wallpaper70s.jpg */,
-				31F4F1C7219A5CBD0050177A /* wallpaperFlower.jpg */,
 			);
 			path = Materials;
 			sourceTree = "<group>";
@@ -968,9 +963,9 @@
 				31C05E0921A73D3A0021AEAB /* 2ACC867D-83A8-4C10-B023-8F97E0AD2A3C.jpg in Resources */,
 				31C05E0121A73D3A0021AEAB /* 4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80.jpg in Resources */,
 				31C05DFA21A73D3A0021AEAB /* 57BB1BBE-24EE-4EC6-AB79-3B48C4437229.jpg in Resources */,
+				318A929221D35E2B0060D89B /* 08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg in Resources */,
 				310BA1F021B0EA6D00A146B7 /* colorTheme-custardpie.jpg in Resources */,
 				31C05DFE21A73D3A0021AEAB /* B02AC8D0-0557-4A7D-868B-2993EC142D5C.jpg in Resources */,
-				31F4F1C8219A5CBD0050177A /* wallpaperFlower.jpg in Resources */,
 				31A5F7FE21968223000F1677 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
 				31F56FA62185817E00455FC6 /* SKWatchScene.sks in Resources */,
 				3153880F21CB462D00A972BC /* secondhandAnimation-stepOver.jpg in Resources */,
@@ -993,7 +988,6 @@
 				310BA21F21B0F90D00A146B7 /* decoratorTheme-planejain.jpg in Resources */,
 				310BA1F821B0EA6D00A146B7 /* colorTheme-neongreen.jpg in Resources */,
 				310BA1F921B0EA6E00A146B7 /* colorTheme-cobaltwood.jpg in Resources */,
-				31F4F1C2219A5C600050177A /* kork.jpg in Resources */,
 				318808D8217815E700585AB1 /* Assets.xcassets in Resources */,
 				31C05E1221A73D3A0021AEAB /* FFD5E9F5-5144-4E77-89B0-2FC073E11F1C.jpg in Resources */,
 				31C05DFD21A73D3A0021AEAB /* 89DE21B8-DC67-4272-879A-ABA27FB7EAF1.jpg in Resources */,
@@ -1001,8 +995,8 @@
 				310BA21721B0F90D00A146B7 /* decoratorTheme-hightech.jpg in Resources */,
 				310D4A5521BE130100082A62 /* ED7929C5-3717-4DF9-A99E-2119BF36FA0C.jpg in Resources */,
 				310BA1EC21B0EA6D00A146B7 /* colorTheme-80sneon.jpg in Resources */,
+				318A929421D3B0F30060D89B /* brushedsteel.jpg in Resources */,
 				310BA1F621B0EA6D00A146B7 /* colorTheme-metallica.jpg in Resources */,
-				310BA1CC21AFBDE300A146B7 /* wrist.jpg in Resources */,
 				31F4F1CD219A5F1C0050177A /* watchGears.jpg in Resources */,
 				310BA21121B0F90D00A146B7 /* decoratorTheme-oldtimes2.jpg in Resources */,
 				3153880D21CB462D00A972BC /* secondhandAnimation-oscillate.jpg in Resources */,
@@ -1060,13 +1054,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A5F80D21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
-				310BA1CD21AFBDE300A146B7 /* wrist.jpg in Resources */,
 				31A5F80321968223000F1677 /* RATIONALINT.TTF in Resources */,
-				31F4F1D7219A6B030050177A /* wallpaperFlower.jpg in Resources */,
 				31F4F1D0219A6B030050177A /* vinylAlbum.jpg in Resources */,
 				31F4F1D5219A6B030050177A /* light-wood.jpg in Resources */,
 				31F4F1D2219A6B030050177A /* brass.jpg in Resources */,
-				31F4F1D4219A6B030050177A /* kork.jpg in Resources */,
 				31EF99A621A21A2200BB54E7 /* Themes.json in Resources */,
 				318809102178172600585AB1 /* faceBackground.png in Resources */,
 				31F4F1D1219A6B030050177A /* watchGears.jpg in Resources */,
@@ -1074,6 +1065,7 @@
 				318809002178166B00585AB1 /* Assets.xcassets in Resources */,
 				31A5F80921968223000F1677 /* DINPRO-LIGHT.TTF in Resources */,
 				31EF99A521A21A1300BB54E7 /* Settings.json in Resources */,
+				318A929521D3B0F30060D89B /* brushedsteel.jpg in Resources */,
 				31F4F1D3219A6B030050177A /* copper.jpg in Resources */,
 				318808F82178166B00585AB1 /* SKWatchScene.sks in Resources */,
 				31A5F7FF21968223000F1677 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
