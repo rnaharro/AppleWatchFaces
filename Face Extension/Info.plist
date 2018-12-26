@@ -32,6 +32,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>DIGITAL-7-MONO.TTF</string>
 		<string>IRONLOUNGE.TTF</string>
 		<string>ULTRACONDENSEDSARIF.TTF</string>
 		<string>RATIONALINT.TTF</string>

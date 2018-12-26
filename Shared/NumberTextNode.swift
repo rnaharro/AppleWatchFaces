@@ -23,7 +23,8 @@ enum NumberTextTypes: String {
     NumberTextTypeDINPro,
     NumberTextTypeUltraCondensedSerif,
     NumberTextTypeTypeWriter,
-    NumberTextTypeIronLounge
+    NumberTextTypeIronLounge,
+    NumberTextTypeDigitalMono
     
     static let randomizableValues = [NumberTextTypeModernInteger,
         NumberTextTypeBlackRose,
@@ -36,7 +37,8 @@ enum NumberTextTypes: String {
         NumberTextTypeNumeralTrajan,
         NumberTextTypeDINPro,
         NumberTextTypeTypeWriter,
-        NumberTextTypeIronLounge
+        NumberTextTypeIronLounge,
+        NumberTextTypeDigitalMono
         ]
     static let userSelectableValues = [NumberTextTypeModernInteger,
         NumberTextTypeBlackRose,
@@ -50,7 +52,8 @@ enum NumberTextTypes: String {
         NumberTextTypeDINPro,
         NumberTextTypeUltraCondensedSerif,
         NumberTextTypeTypeWriter,
-        NumberTextTypeIronLounge]
+        NumberTextTypeIronLounge,
+        NumberTextTypeDigitalMono]
     
     static func random() -> NumberTextTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -95,6 +98,8 @@ class NumberTextNode: SKNode {
         
         if (nodeType == NumberTextTypes.NumberTextTypeTypeWriter) { typeDescription = "Automania" }
         if (nodeType == NumberTextTypes.NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
+        if (nodeType == NumberTextTypes.NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
+        
         
         return typeDescription
     }
@@ -116,6 +121,8 @@ class NumberTextNode: SKNode {
         
         if (textType == .NumberTextTypeTypeWriter) { fontName = "AmericanTypewriter" }
         if (textType == .NumberTextTypeIronLounge) { fontName = "IronLounge2" }
+        
+        if (textType == .NumberTextTypeDigitalMono) { fontName = "Digital-7Mono" }
         
         //AppleSDGothicNeo-SemiBold     // best VERY CLEAN
         //KohinoorTelugu-Medium         // basic but not bad
