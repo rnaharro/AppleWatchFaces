@@ -384,6 +384,60 @@
             "faceBackgroundType" : "FaceBackgroundTypeFilled"
         },
         {
+            "title" : "CRT",
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "clockFaceMaterialName" : "#000000FF",
+            "faceBackgroundType" : "FaceBackgroundTypeNone",
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#38ff38ff",
+                "shouldShowRomanNumeralText" : false,
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringMaterials" : [
+                    "#38ff38ff",
+                    "#e2e2e2ff",
+                    "#000000ff"
+                ],
+                "hourHandMaterialName" : "#00ad00ff",
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
+                "secondHandType" : "SecondHandTypeSphere",
+                "minuteHandMaterialName" : "#00ad00ff",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringSettings" : [
+                    {
+                        "ringPatternTotal" : "12",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textType" : "NumberTextTypeHelvica",
+                        "ringType" : "RingTypeSpacer",
+                        "ringWidth" : "0.13188404",
+                        "indicatorSize" : "0.15",
+                        "textSize" : "0.2",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringPatternTotal" : "4",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textType" : "NumberTextTypeDigitalMono",
+                        "ringType" : "RingTypeTextNode",
+                        "ringWidth" : "0.075",
+                        "indicatorSize" : "0.15",
+                        "textSize" : "1.04",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    }
+                ],
+                "hourHandType" : "HourHandTypeSwiss",
+                "shouldShowHandOutlines" : true,
+                "handOutlineMaterialName" : "#38ff38ff"
+            },
+            "uniqueID" : "08F9E48F-55D8-4566-BF96-1C87273F13E7"
+        },
+        {
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
             "clockCasingMaterialName" : "#9DE0AD",
             "uniqueID" : "4ADDB454-4DA8-42ED-90FC-B1BDD7E2A926",
