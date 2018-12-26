@@ -18,9 +18,9 @@ enum RingTypes: String {
 
 //different types of shapes rings can render in
 enum RingRenderShapes: String {
-    case RingRenderShapeCircle, RingRenderShapeRoundedRect
+    case RingRenderShapeCircle, RingRenderShapeOval, RingRenderShapeRoundedRect
     
-    static let userSelectableValues = [RingRenderShapeCircle, RingRenderShapeRoundedRect]
+    static let userSelectableValues = [RingRenderShapeCircle, RingRenderShapeOval, RingRenderShapeRoundedRect]
 }
 
 class ClockRingSetting: NSObject {
@@ -102,6 +102,7 @@ class ClockRingSetting: NSObject {
         var typeDescription = ""
         
         if (nodeType == RingRenderShapes.RingRenderShapeCircle)  { typeDescription = "Circle" }
+        if (nodeType == RingRenderShapes.RingRenderShapeOval)  { typeDescription = "Oval" }
         if (nodeType == RingRenderShapes.RingRenderShapeRoundedRect)  { typeDescription = "Rectangle" }
         
         return typeDescription

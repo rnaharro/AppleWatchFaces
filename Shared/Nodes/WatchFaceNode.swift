@@ -97,10 +97,33 @@ class WatchFaceNode: SKShapeNode {
             ringShapePath.apply(CGAffineTransform.init(scaleX: 1, y: -1.275)) //flip and stretch
         }
 
+        if clockFaceSettings.ringRenderShape == .RingRenderShapeOval {
+            ringShapePath.addArc(withCenter: CGPoint.zero, radius: totalWidth/2, startAngle: CGFloat(Double.pi/2), endAngle: -CGFloat(Double.pi*2)+CGFloat(Double.pi/2), clockwise: false) //reversed, but works
+            ringShapePath.apply(CGAffineTransform.init(scaleX: 1.0, y: 1.27))  //scale/stratch
+        }
+        
         if clockFaceSettings.ringRenderShape == .RingRenderShapeCircle {
             ringShapePath.addArc(withCenter: CGPoint.zero, radius: totalWidth/2, startAngle: CGFloat(Double.pi/2), endAngle: -CGFloat(Double.pi*2)+CGFloat(Double.pi/2), clockwise: false) //reversed, but works
-            ringShapePath.close()
         }
+        
+        // STAR ?
+        /*
+        ringShapePath.move(to: CGPoint(x: 144, y: 17.72))
+        ringShapePath.addLine(to: CGPoint(x: 191.52, y: 87.06))
+        ringShapePath.addLine(to: CGPoint(x: 272.15, y: 110.83))
+        ringShapePath.addLine(to: CGPoint(x: 220.89, y: 177.45))
+        ringShapePath.addLine(to: CGPoint(x: 223.2, y: 261.48))
+        ringShapePath.addLine(to: CGPoint(x: 144, y: 233.32))
+        ringShapePath.addLine(to: CGPoint(x: 64.8, y: 261.48))
+        ringShapePath.addLine(to: CGPoint(x: 67.11, y: 177.45))
+        ringShapePath.addLine(to: CGPoint(x: 15.85, y: 110.83))
+        ringShapePath.addLine(to: CGPoint(x: 96.48, y: 87.06))
+        ringShapePath.addLine(to: CGPoint(x: 144, y: 17.72))
+        
+        ringShapePath.apply(CGAffineTransform.init(rotationAngle: CGFloat.pi)) //rot
+        ringShapePath.apply(CGAffineTransform.init(scaleX: -0.9, y: 0.9))  //scale/stratch
+        ringShapePath.apply(CGAffineTransform.init(translationX: -130.0, y: 130.0)) //repos
+        */
     
         var currentDistance = Float(1.0)
         //loop through ring settings and render rings from outside to inside
