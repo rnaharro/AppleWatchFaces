@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310044C621D3C5DF0019794A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310044C421D3C5DF0019794A /* Settings.storyboard */; };
 		31061F302192657200EF511B /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31061F2F2192657200EF511B /* Colors.plist */; };
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
@@ -88,7 +89,7 @@
 		3153881021CB462D00A972BC /* secondhandAnimation-step.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3153880C21CB462C00A972BC /* secondhandAnimation-step.jpg */; };
 		318808D1217815E600585AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D0217815E600585AB1 /* AppDelegate.swift */; };
 		318808D3217815E600585AB1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808D2217815E600585AB1 /* SettingsViewController.swift */; };
-		318808D6217815E600585AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808D4217815E600585AB1 /* Main.storyboard */; };
+		318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808D4217815E600585AB1 /* FaceChooser.storyboard */; };
 		318808D8217815E700585AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318808D7217815E700585AB1 /* Assets.xcassets */; };
 		318808DB217815E700585AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808D9217815E700585AB1 /* LaunchScreen.storyboard */; };
 		318808E82178166A00585AB1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318808E62178166A00585AB1 /* Interface.storyboard */; };
@@ -282,6 +283,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		31061F2F2192657200EF511B /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorRingsSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -362,7 +364,7 @@
 		318808CD217815E600585AB1 /* AppleWatchFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleWatchFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318808D0217815E600585AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		318808D2217815E600585AB1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		318808D5217815E600585AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		318808D5217815E600585AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FaceChooser.storyboard; sourceTree = "<group>"; };
 		318808D7217815E700585AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		318808DA217815E700585AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		318808DC217815E700585AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -568,7 +570,6 @@
 		318808CF217815E600585AB1 /* AppleWatchFaces */ = {
 			isa = PBXGroup;
 			children = (
-				318A92A921D3C2840060D89B /* Decorators.storyboard */,
 				318808D0217815E600585AB1 /* AppDelegate.swift */,
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
@@ -577,9 +578,11 @@
 				31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */,
 				31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */,
 				31EF9991219E602D00BB54E7 /* SettingsView */,
-				318808D4217815E600585AB1 /* Main.storyboard */,
-				318808D7217815E700585AB1 /* Assets.xcassets */,
+				318808D4217815E600585AB1 /* FaceChooser.storyboard */,
+				310044C421D3C5DF0019794A /* Settings.storyboard */,
+				318A92A921D3C2840060D89B /* Decorators.storyboard */,
 				318808D9217815E700585AB1 /* LaunchScreen.storyboard */,
+				318808D7217815E700585AB1 /* Assets.xcassets */,
 				31061F2F2192657200EF511B /* Colors.plist */,
 				318808DC217815E700585AB1 /* Info.plist */,
 				3107B5D421B40681005BD26D /* DecoratorView */,
@@ -1027,7 +1030,8 @@
 				3153881021CB462D00A972BC /* secondhandAnimation-step.jpg in Resources */,
 				31C05E1021A73D3A0021AEAB /* E080FBDB-BBA4-4A5E-B3DC-19018FFFB565.jpg in Resources */,
 				310BA1ED21B0EA6D00A146B7 /* colorTheme-bloodandtears.jpg in Resources */,
-				318808D6217815E600585AB1 /* Main.storyboard in Resources */,
+				318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */,
+				310044C621D3C5DF0019794A /* Settings.storyboard in Resources */,
 				310BA1F721B0EA6D00A146B7 /* colorTheme-lightcoffee.jpg in Resources */,
 				31A5F80821968223000F1677 /* DINPRO-LIGHT.TTF in Resources */,
 				310BA20021B0EC3F00A146B7 /* colorTheme-fleshtones.jpg in Resources */,
@@ -1219,12 +1223,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		318808D4217815E600585AB1 /* Main.storyboard */ = {
+		310044C421D3C5DF0019794A /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				310044C521D3C5DF0019794A /* Base */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		318808D4217815E600585AB1 /* FaceChooser.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				318808D5217815E600585AB1 /* Base */,
 			);
-			name = Main.storyboard;
+			name = FaceChooser.storyboard;
 			sourceTree = "<group>";
 		};
 		318808D9217815E700585AB1 /* LaunchScreen.storyboard */ = {
