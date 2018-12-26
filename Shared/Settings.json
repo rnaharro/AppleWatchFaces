@@ -1,56 +1,58 @@
 {
     "clockSettings" : [
         {
+            "clockFaceMaterialName" : "#002613ff",
+            "title" : "Green Machine",
             "faceBackgroundType" : "FaceBackgroundTypeDiagonalSplit",
             "clockCasingMaterialName" : "#003300ff",
-            "uniqueID" : "E6F3C2AC-38DD-4825-9D4B-6E203AD3A097",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeRounded",
-                "secondHandType" : "SecondHandTypeRail",
-                "hourHandMaterialName" : "#00ad00ff",
-                "secondHandMaterialName" : "#00ff00ff",
                 "minuteHandMovement" : "MinuteHandMovementSmooth",
-                "secondHandMovement" : "SecondHandMovementStepOver",
+                "secondHandType" : "SecondHandTypeRail",
                 "minuteHandMaterialName" : "#00ad00ff",
-                "handOutlineMaterialName" : "#ffffffff",
+                "hourHandType" : "HourHandTypeRounded",
+                "secondHandMaterialName" : "#00ff00ff",
                 "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#00ad00ff",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "ringSettings" : [
+                    {
+                        "indicatorType" : "FaceIndicatorTypeSphere",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.21",
+                        "textSize" : "0.05",
+                        "indicatorSize" : "0.09",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.2",
+                        "textSize" : "0.51",
+                        "indicatorSize" : "0.33",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeDINPro"
+                    }
+                ],
                 "ringMaterials" : [
                     "#00ad00ff",
                     "",
                     ""
                 ],
-                "ringSettings" : [
-                    {
-                        "indicatorType" : "FaceIndicatorTypeSphere",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.05",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.09",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.21"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.325",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.2"
-                    }
-                ],
-                "hourHandType" : "HourHandTypeRounded"
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeRounded",
+                "handOutlineMaterialName" : "#ffffffff"
             },
-            "title" : "Green Machine",
-            "clockFaceMaterialName" : "#002613ff"
+            "uniqueID" : "E6F3C2AC-38DD-4825-9D4B-6E203AD3A097"
         },
         {
             "faceBackgroundType" : "FaceBackgroundTypeFilled",
@@ -205,31 +207,23 @@
             "clockCasingMaterialName" : "#000000ff"
         },
         {
-            "clockCasingMaterialName" : "#000000ff",
+            "clockFaceMaterialName" : "#334050",
             "title" : "Alien Ware",
+            "faceBackgroundType" : "FaceBackgroundTypeNone",
+            "clockCasingMaterialName" : "#000000ff",
             "clockFaceSettings" : {
-                "minuteHandMaterialName" : "#C7F464",
-                "secondHandType" : "SecondHandTypeRail",
-                "handOutlineMaterialName" : "#ffffffff",
-                "shouldShowRomanNumeralText" : true,
-                "ringMaterials" : [
-                    "#FF6B6B",
-                    "#d1ffa3ff",
-                    ""
-                ],
-                "secondHandMaterialName" : "#b6ff6dff",
                 "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "secondHandType" : "SecondHandTypeRail",
+                "minuteHandMaterialName" : "#C7F464",
+                "hourHandType" : "HourHandTypeBoxy",
+                "secondHandMaterialName" : "#b6ff6dff",
+                "shouldShowRomanNumeralText" : true,
                 "hourHandMaterialName" : "#C7F464",
-                "minuteHandType" : "MinuteHandTypeBoxy",
+                "secondHandMovement" : "SecondHandMovementOscillate",
+                "ringRenderShape" : "RingRenderShapeCircle",
                 "ringSettings" : [
                     {
-                        "ringType" : "RingTypeShapeNode",
-                        "textSize" : "0.27",
-                        "indicatorSize" : "0.1521739",
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringPatternTotal" : "60",
                         "ringPattern" : [
                             0,
                             1,
@@ -237,82 +231,91 @@
                             1,
                             1
                         ],
-                        "ringWidth" : "0.0"
+                        "ringWidth" : "0.0",
+                        "textSize" : "0.27",
+                        "indicatorSize" : "0.1521739",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
-                        "ringType" : "RingTypeShapeNode",
+                        "indicatorType" : "FaceIndicatorTypeMediumBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.19",
                         "textSize" : "0.2",
                         "indicatorSize" : "0.17",
-                        "indicatorType" : "FaceIndicatorTypeMediumBox",
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textType" : "NumberTextTypeHelvica",
                         "ringPatternTotal" : "12",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringWidth" : "0.19"
-                    },
-                    {
-                        "ringType" : "RingTypeSpacer",
-                        "textSize" : "0.2",
-                        "indicatorSize" : "0.15",
-                        "indicatorType" : "FaceIndicatorTypeBox",
                         "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringPatternTotal" : "60",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringWidth" : "0.02028981"
-                    },
-                    {
-                        "ringType" : "RingTypeTextRotatingNode",
-                        "textSize" : "0.25",
-                        "indicatorSize" : "0.18",
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textType" : "NumberTextTypeIronLounge",
-                        "ringPatternTotal" : "12",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringWidth" : "0.16"
-                    },
-                    {
-                        "ringType" : "RingTypeSpacer",
-                        "textSize" : "0.2",
-                        "indicatorSize" : "0.15",
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringPatternTotal" : "60",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringWidth" : "0.075"
-                    },
-                    {
                         "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.02028981",
                         "textSize" : "0.2",
-                        "indicatorSize" : "0.23188403",
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.16",
+                        "textSize" : "0.28",
+                        "indicatorSize" : "0.18",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "textType" : "NumberTextTypeIronLounge"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.075",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
                         "indicatorType" : "FaceIndicatorTypeTube",
-                        "ringMaterialDesiredThemeColorIndex" : 1,
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringPatternTotal" : "6",
                         "ringPattern" : [
                             1,
                             0
                         ],
-                        "ringWidth" : "0.075"
+                        "ringWidth" : "0.075",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.23188403",
+                        "ringPatternTotal" : "6",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
                     }
                 ],
-                "hourHandType" : "HourHandTypeBoxy",
+                "ringMaterials" : [
+                    "#FF6B6B",
+                    "#d1ffa3ff",
+                    ""
+                ],
                 "shouldShowHandOutlines" : false,
-                "secondHandMovement" : "SecondHandMovementOscillate"
+                "minuteHandType" : "MinuteHandTypeBoxy",
+                "handOutlineMaterialName" : "#ffffffff"
             },
-            "uniqueID" : "57BB1BBE-24EE-4EC6-AB79-3B48C4437229",
-            "clockFaceMaterialName" : "#334050",
-            "faceBackgroundType" : "FaceBackgroundTypeNone"
+            "uniqueID" : "57BB1BBE-24EE-4EC6-AB79-3B48C4437229"
         },
         {
             "clockCasingMaterialName" : "#FF0000FF",
@@ -497,118 +500,120 @@
             "clockFaceMaterialName" : "#E5FCC2"
         },
         {
+            "clockFaceMaterialName" : "#545454ff",
+            "title" : "spectacle",
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
             "clockCasingMaterialName" : "#008ed6ff",
-            "uniqueID" : "E0C4FB02-A162-4559-85E6-0F43C7537B4F",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSwiss",
-                "secondHandType" : "SecondHandTypeRail",
-                "hourHandMaterialName" : "#ff7f00ff",
-                "secondHandMaterialName" : "#FFD700FF",
                 "minuteHandMovement" : "MinuteHandMovementStep",
-                "secondHandMovement" : "SecondHandMovementStepOver",
+                "secondHandType" : "SecondHandTypeRail",
                 "minuteHandMaterialName" : "#ff7f00ff",
-                "handOutlineMaterialName" : "#ffffffff",
+                "hourHandType" : "HourHandTypeSwiss",
+                "secondHandMaterialName" : "#FFD700FF",
                 "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#ff7f00ff",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "ringSettings" : [
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.1",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.2",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            0,
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        "ringWidth" : "0.0",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.16",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeFatBox",
+                        "ringPattern" : [
+                            1,
+                            0,
+                            0
+                        ],
+                        "ringWidth" : "0.1",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.2",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            0,
+                            1,
+                            1
+                        ],
+                        "ringWidth" : "0.075",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.46",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.16",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeUltraCondensedSerif"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1,
+                            0,
+                            0
+                        ],
+                        "ringWidth" : "0.23",
+                        "textSize" : "0.76",
+                        "indicatorSize" : "0.33",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeKingThings"
+                    }
+                ],
                 "ringMaterials" : [
                     "#c6c6c6ff",
                     "#ffffffff",
                     "#ffaa56ff"
                 ],
-                "ringSettings" : [
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.1"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            0,
-                            1,
-                            1,
-                            1,
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.16",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.0"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeFatBox",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            1,
-                            0,
-                            0
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.1"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            0,
-                            1,
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 1,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.46",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.075"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeUltraCondensedSerif",
-                        "ringWidth" : "0.16"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
-                        "ringPattern" : [
-                            1,
-                            0,
-                            0
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 2,
-                        "textSize" : "0.5",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeKingThings",
-                        "ringWidth" : "0.23"
-                    }
-                ],
-                "hourHandType" : "HourHandTypeSwiss"
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "handOutlineMaterialName" : "#ffffffff"
             },
-            "title" : "spectacle",
-            "clockFaceMaterialName" : "#545454ff"
+            "uniqueID" : "E0C4FB02-A162-4559-85E6-0F43C7537B4F"
         },
         {
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
@@ -868,97 +873,79 @@
             "clockFaceMaterialName" : "#ffffffff"
         },
         {
+            "clockFaceMaterialName" : "#1c1c1cff",
+            "title" : "Highlighter",
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
             "clockCasingMaterialName" : "#1c1c1cff",
-            "uniqueID" : "5DF6C26D-764F-4F9E-841D-78EE0BB82F64",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSquaredHole",
-                "secondHandType" : "SecondHandTypeSquaredHole",
-                "hourHandMaterialName" : "#ffffffff",
-                "secondHandMaterialName" : "#ffff00ff",
                 "minuteHandMovement" : "MinuteHandMovementSmooth",
-                "secondHandMovement" : "SecondHandMovementStep",
+                "secondHandType" : "SecondHandTypeSquaredHole",
                 "minuteHandMaterialName" : "#ffffffff",
-                "handOutlineMaterialName" : "#000000ff",
+                "hourHandType" : "HourHandTypeSquaredHole",
+                "secondHandMaterialName" : "#ffff00ff",
                 "shouldShowRomanNumeralText" : false,
-                "ringMaterials" : [
-                    "#ffff00ff",
-                    "#e2e2e2ff",
-                    "#ffffffff"
-                ],
+                "hourHandMaterialName" : "#ffffffff",
+                "secondHandMovement" : "SecondHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeCircle",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.12608695",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.25",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.09"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.075"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
                         "ringPattern" : [
                             0,
                             1,
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 1,
-                        "textSize" : "0.5",
-                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.0",
+                        "textSize" : "0.62",
                         "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeModernInteger",
-                        "ringWidth" : "0.0"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeModernInteger"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
                         "ringPattern" : [
                             1,
                             0,
                             0
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.5",
-                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.2",
+                        "textSize" : "0.76",
                         "indicatorSize" : "0.06",
-                        "textType" : "NumberTextTypeModernInteger",
-                        "ringWidth" : "0.2"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeModernInteger"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeSphere",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.06",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.28",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.06"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeFatBox",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             0,
                             1,
@@ -966,31 +953,38 @@
                             1,
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringWidth" : "0.0",
                         "textSize" : "0.27",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.07",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.0"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeFatBox",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringWidth" : "0.09",
                         "textSize" : "0.17",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.19",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.09"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
                     }
                 ],
-                "hourHandType" : "HourHandTypeSquaredHole"
+                "ringMaterials" : [
+                    "#ffff00ff",
+                    "#e2e2e2ff",
+                    "#ffffffff"
+                ],
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeSquaredHole",
+                "handOutlineMaterialName" : "#000000ff"
             },
-            "title" : "Highlighter",
-            "clockFaceMaterialName" : "#1c1c1cff"
+            "uniqueID" : "5DF6C26D-764F-4F9E-841D-78EE0BB82F64"
         },
         {
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
@@ -1486,98 +1480,92 @@
             "clockFaceMaterialName" : "#ffeaadff"
         },
         {
-            "title" : "Blue Bell",
             "clockFaceMaterialName" : "#FFFFFFFF",
+            "title" : "Blue Bell",
             "faceBackgroundType" : "FaceBackgroundTypeDiagonalSplit",
             "clockCasingMaterialName" : "#00a9ffff",
-            "uniqueID" : "8C3B5FB8-2B41-4A60-95AE-B9DF6ACC1AF8",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSwiss",
-                "secondHandType" : "SecondHandTypeBlocky",
-                "hourHandMaterialName" : "#000000FF",
-                "secondHandMaterialName" : "#FF0000FF",
                 "minuteHandMovement" : "MinuteHandMovementStep",
-                "secondHandMovement" : "SecondHandMovementOscillate",
+                "secondHandType" : "SecondHandTypeBlocky",
                 "minuteHandMaterialName" : "#000000FF",
-                "handOutlineMaterialName" : "#ffffffff",
-                "shouldShowHandOutlines": true,
+                "hourHandType" : "HourHandTypeSwiss",
+                "secondHandMaterialName" : "#FF0000FF",
                 "shouldShowRomanNumeralText" : false,
-                "ringMaterials" : [
-                    "#000000FF",
-                    "",
-                    ""
-                ],
+                "hourHandMaterialName" : "#000000FF",
+                "secondHandMovement" : "SecondHandMovementOscillate",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeFatBox",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.13",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.11",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.13"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeMediumBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             0
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.14637677",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.22"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
                         "ringPattern" : [
                             1,
                             0,
                             0
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.44",
-                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.33",
+                        "textSize" : "0.89",
                         "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeGermanica",
-                        "ringWidth" : "0.33"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeDigitalMono"
                     }
                 ],
-                "hourHandType" : "HourHandTypeSwiss"
-            }
-            
-        },
-        {
-            "faceBackgroundType" : "FaceBackgroundTypeDiagonalSplit",
-            "clockCasingMaterialName" : "#fff5d8ff",
-            "uniqueID" : "BE8F5A1E-17EC-4626-9CFC-78BC3ED21D8A",
-            "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSwiss",
-                "secondHandType" : "SecondHandTypeRail",
-                "hourHandMaterialName" : "#000000FF",
-                "secondHandMaterialName" : "#FF0000FF",
-                "minuteHandMovement" : "MinuteHandMovementSmooth",
-                "secondHandMovement" : "SecondHandMovementStepOver",
-                "minuteHandMaterialName" : "#000000FF",
-                "handOutlineMaterialName" : "#ffffffff",
-                "shouldShowHandOutlines": false,
-                "shouldShowRomanNumeralText" : false,
                 "ringMaterials" : [
                     "#000000FF",
                     "",
                     ""
                 ],
+                "shouldShowHandOutlines" : true,
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "handOutlineMaterialName" : "#ffffffff"
+            },
+            "uniqueID" : "8C3B5FB8-2B41-4A60-95AE-B9DF6ACC1AF8"
+        },
+        {
+            "clockFaceMaterialName" : "#FFFFFFFF",
+            "title" : "'70s Ball Desk Clock",
+            "faceBackgroundType" : "FaceBackgroundTypeDiagonalSplit",
+            "clockCasingMaterialName" : "#fff5d8ff",
+            "clockFaceSettings" : {
+                "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "secondHandType" : "SecondHandTypeRail",
+                "minuteHandMaterialName" : "#000000FF",
+                "hourHandType" : "HourHandTypeSwiss",
+                "secondHandMaterialName" : "#FF0000FF",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#000000FF",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringRenderShape" : "RingRenderShapeCircle",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             0,
                             1,
@@ -1585,176 +1573,189 @@
                             1,
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.0",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.11",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.0"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeMediumBox",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.24",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.24"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.28",
+                        "ringWidth" : "0.04637677",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.15",
                         "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.18",
+                        "textSize" : "0.64",
                         "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeRothernburgDecorative",
-                        "ringWidth" : "0.18"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeRothernburgDecorative"
                     }
                 ],
-                "hourHandType" : "HourHandTypeSwiss"
-            },
-            "title" : "'70s Ball Desk Clock",
-            "clockFaceMaterialName" : "#FFFFFFFF"
-        },
-        {
-            "faceBackgroundType" : "FaceBackgroundTypeCircle",
-            "clockCasingMaterialName" : "#A7DBD8",
-            "uniqueID" : "2ACC867D-83A8-4C10-B023-8F97E0AD2A3C",
-            "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSquaredHole",
-                "secondHandType" : "SecondHandTypeSquaredHole",
-                "hourHandMaterialName" : "#F38630",
-                "secondHandMaterialName" : "#FA6900",
-                "minuteHandMovement" : "MinuteHandMovementSmooth",
-                "secondHandMovement" : "SecondHandMovementSmooth",
-                "minuteHandMaterialName" : "#F38630",
-                "handOutlineMaterialName" : "#ffffffff",
-                "shouldShowRomanNumeralText" : false,
                 "ringMaterials" : [
-                    "#F38630",
-                    "#d10000ff",
+                    "#000000FF",
+                    "",
                     ""
                 ],
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "handOutlineMaterialName" : "#ffffffff"
+            },
+            "uniqueID" : "BE8F5A1E-17EC-4626-9CFC-78BC3ED21D8A"
+        },
+        {
+            "clockFaceMaterialName" : "#1c1c1cff",
+            "title" : "Boxy Retro",
+            "faceBackgroundType" : "FaceBackgroundTypeVerticalSplit",
+            "clockCasingMaterialName" : "#000000ff",
+            "clockFaceSettings" : {
+                "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "secondHandType" : "SecondHandTypeSquaredHole",
+                "minuteHandMaterialName" : "#91ffecff",
+                "hourHandType" : "HourHandTypeSquaredHole",
+                "secondHandMaterialName" : "#00d8b4ff",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#91ffecff",
+                "secondHandMovement" : "SecondHandMovementSmooth",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.0",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.02"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            0,
-                            1,
-                            1,
-                            1,
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.27",
                         "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.07",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.0"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeTube",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            1
-                        ],
                         "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.17",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.19",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.09"
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeSphere",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
+                        "ringWidth" : "0.0",
+                        "textSize" : "0.27",
+                        "indicatorSize" : "0.052173913",
+                        "ringPatternTotal" : "24",
                         "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeTube",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.09",
+                        "textSize" : "0.17",
+                        "indicatorSize" : "0.4710145",
                         "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeSphere",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.257971",
+                        "textSize" : "0.2",
                         "indicatorSize" : "0.24",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.14"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 1,
-                        "textSize" : "0.25",
-                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.2",
+                        "textSize" : "0.69",
                         "indicatorSize" : "0.06",
-                        "textType" : "NumberTextTypeTypeWriter",
-                        "ringWidth" : "0.2"
+                        "ringPatternTotal" : "4",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeDINPro"
                     }
                 ],
-                "hourHandType" : "HourHandTypeSquaredHole"
+                "ringMaterials" : [
+                    "#00d8b4ff",
+                    "#91ffecff",
+                    "#6dffb6ff"
+                ],
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeSquaredHole",
+                "handOutlineMaterialName" : "#ffffffff"
             },
-            "title" : "Boxy Retro",
-            "clockFaceMaterialName" : "#E0E4CC"
+            "uniqueID" : "2ACC867D-83A8-4C10-B023-8F97E0AD2A3C"
         },
         {
+            "clockFaceMaterialName" : "#FFFFFFFF",
+            "title" : "Grandfather",
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
             "clockCasingMaterialName" : "#1c1c1cff",
-            "uniqueID" : "F691C760-BA7D-4F16-8CA6-495F3DD734A5",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeRoman",
-                "secondHandType" : "SecondHandTypeRoman",
-                "hourHandMaterialName" : "#000000FF",
-                "secondHandMaterialName" : "#000000FF",
                 "minuteHandMovement" : "MinuteHandMovementStep",
-                "secondHandMovement" : "SecondHandMovementStepOver",
+                "secondHandType" : "SecondHandTypeRoman",
                 "minuteHandMaterialName" : "#000000FF",
-                "handOutlineMaterialName" : "#ffffffff",
+                "hourHandType" : "HourHandTypeRoman",
+                "secondHandMaterialName" : "#000000FF",
                 "shouldShowRomanNumeralText" : true,
-                "ringMaterials" : [
-                    "#000000FF",
-                    "",
-                    ""
-                ],
+                "hourHandMaterialName" : "#000000FF",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringRenderShape" : "RingRenderShapeCircle",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.034782607",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.1"
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             0,
                             1,
@@ -1762,44 +1763,64 @@
                             1,
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.0",
                         "textSize" : "0.27",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.0"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeMediumBox",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.18",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.18"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.15",
+                        "ringWidth" : "0.075",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.15",
                         "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.2",
+                        "textSize" : "0.53",
                         "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeUltraCondensedSerif",
-                        "ringWidth" : "0.2"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeUltraCondensedSerif"
                     }
                 ],
-                "hourHandType" : "HourHandTypeRoman"
+                "ringMaterials" : [
+                    "#000000FF",
+                    "",
+                    ""
+                ],
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeRoman",
+                "handOutlineMaterialName" : "#ffffffff"
             },
-            "title" : "Roman Numerals Test Clock",
-            "clockFaceMaterialName" : "#FFFFFFFF"
+            "uniqueID" : "F691C760-BA7D-4F16-8CA6-495F3DD734A5"
         },
         {
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
@@ -1975,126 +1996,120 @@
             "clockFaceMaterialName" : "#FFFFFFFF"
         },
         {
-            "title" : "Orange Loft",
             "clockFaceMaterialName" : "#a82a00ff",
+            "title" : "Orange Loft",
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
             "clockCasingMaterialName" : "#000000ff",
-            "uniqueID" : "A838242D-062F-45C6-B638-9CD0278B6560",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeBoxy",
-                "secondHandType" : "SecondHandNodeTypeNone",
-                "hourHandMaterialName" : "#ffffffff",
-                "secondHandMaterialName" : "#ffffffff",
                 "minuteHandMovement" : "MinuteHandMovementSmooth",
-                "secondHandMovement" : "SecondHandMovementStepOver",
+                "secondHandType" : "SecondHandNodeTypeNone",
                 "minuteHandMaterialName" : "#ffffffff",
-                "handOutlineMaterialName" : "#000000ff",
-                "shouldShowHandOutlines" : true,
+                "hourHandType" : "HourHandTypeBoxy",
+                "secondHandMaterialName" : "#ffffffff",
                 "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#ffffffff",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "ringSettings" : [
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.05507242",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.2",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            0,
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        "ringWidth" : "0.0",
+                        "textSize" : "0.27",
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeMediumBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.2",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.17",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.19",
+                        "textSize" : "0.47",
+                        "indicatorSize" : "0.33",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "textType" : "NumberTextTypeModernInteger"
+                    }
+                ],
                 "ringMaterials" : [
                     "#ffffffff",
                     "#d8fff8ff",
                     ""
                 ],
-                "ringSettings" : [
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.13"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            0,
-                            1,
-                            1,
-                            1,
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.27",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.0"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeMediumBox",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.17",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.2"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextRotatingNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 1,
-                        "textSize" : "0.23",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeModernInteger",
-                        "ringWidth" : "0.19"
-                    }
-                ],
-                "hourHandType" : "HourHandTypeBoxy"
-            }
-            
+                "shouldShowHandOutlines" : true,
+                "minuteHandType" : "MinuteHandTypeBoxy",
+                "handOutlineMaterialName" : "#000000ff"
+            },
+            "uniqueID" : "A838242D-062F-45C6-B638-9CD0278B6560"
         },
         {
+            "clockFaceMaterialName" : "light-wood.jpg",
+            "title" : "woody",
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
             "clockCasingMaterialName" : "#383838ff",
-            "uniqueID" : "4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSwiss",
-                "secondHandType" : "SecondHandTypePointy",
-                "hourHandMaterialName" : "#333333FF",
-                "secondHandMaterialName" : "#A00000FF",
                 "minuteHandMovement" : "MinuteHandMovementStep",
-                "secondHandMovement" : "SecondHandMovementStepOver",
+                "secondHandType" : "SecondHandTypePointy",
                 "minuteHandMaterialName" : "#333333FF",
-                "handOutlineMaterialName" : "#ffffffff",
-                "shouldShowHandOutlines" : false,
+                "hourHandType" : "HourHandTypeSwiss",
+                "secondHandMaterialName" : "#A00000FF",
                 "shouldShowRomanNumeralText" : false,
-                "ringMaterials" : [
-                    "#000000FF",
-                    "",
-                    ""
-                ],
+                "hourHandMaterialName" : "#333333FF",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringRenderShape" : "RingRenderShapeCircle",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.08985503",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.13"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeSphere",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             0,
                             1,
@@ -2102,173 +2117,109 @@
                             1,
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.0",
                         "textSize" : "0.27",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.0"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeSphere",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.21",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.5",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.21"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextRotatingNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.23",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeGermanica",
-                        "ringWidth" : "0.19"
-                    }
-                ],
-                "hourHandType" : "HourHandTypeSwiss"
-            },
-            "title" : "woody",
-            "clockFaceMaterialName" : "light-wood.jpg"
-        },
-        {
-            "faceBackgroundType" : "FaceBackgroundTypeCircle",
-            "clockCasingMaterialName" : "#1c1c1cff",
-            "uniqueID" : "B02AC8D0-0557-4A7D-868B-2993EC142D5C",
-            "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSphere",
-                "secondHandType" : "SecondHandTypeSphere",
-                "hourHandMaterialName" : "#007c3eff",
-                "secondHandMaterialName" : "#A00000FF",
-                "minuteHandMovement" : "MinuteHandMovementSmooth",
-                "secondHandMovement" : "SecondHandMovementSmooth",
-                "minuteHandMaterialName" : "#0044ccff",
-                "handOutlineMaterialName" : "#ffffffff",
-                "shouldShowRomanNumeralText" : false,
-                "ringMaterials" : [
-                    "#d10000ff",
-                    "#568effff",
-                    "#00a854ff"
-                ],
-                "ringSettings" : [
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.075",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.1"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextRotatingNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.05",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.19"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeMediumBox",
-                        "ringType" : "RingTypeTextRotatingNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 1,
-                        "textSize" : "0.05",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.17",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.19"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 2,
-                        "textSize" : "0.09",
-                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.19",
+                        "textSize" : "0.61",
                         "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.19"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "textType" : "NumberTextTypeGermanica"
                     }
                 ],
-                "hourHandType" : "HourHandTypeSphere"
+                "ringMaterials" : [
+                    "#000000FF",
+                    "",
+                    ""
+                ],
+                "shouldShowHandOutlines" : true,
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "handOutlineMaterialName" : "#ffffffff"
             },
-            "title" : "Solar System",
-            "clockFaceMaterialName" : "#000000ff"
+            "uniqueID" : "4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80"
         },
         {
+            "clockFaceMaterialName" : "#e2e2e2ff",
+            "title" : "Light X2",
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
             "clockCasingMaterialName" : "#d8e5ffff",
-            "uniqueID" : "412B2934-EF9F-4357-9292-98E8086E1826",
             "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeBoxy",
-                "secondHandType" : "SecondHandTypeBlocky",
-                "hourHandMaterialName" : "#000000FF",
-                "secondHandMaterialName" : "#ff8056ff",
                 "minuteHandMovement" : "MinuteHandMovementSmooth",
-                "secondHandMovement" : "SecondHandMovementStepOver",
+                "secondHandType" : "SecondHandTypeBlocky",
                 "minuteHandMaterialName" : "#000000FF",
-                "handOutlineMaterialName" : "#ffffffff",
+                "hourHandType" : "HourHandTypeBoxy",
+                "secondHandMaterialName" : "#ff8056ff",
                 "shouldShowRomanNumeralText" : false,
-                "shouldShowHandOutlines": true,
-                "ringMaterials" : [
-                    "#000000FF",
-                    "",
-                    ""
-                ],
+                "hourHandMaterialName" : "#000000FF",
+                "secondHandMovement" : "SecondHandMovementStepOver",
+                "ringRenderShape" : "RingRenderShapeCircle",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.04347826",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.075"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeTube",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.01",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.26",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextRotatingNode",
                         "ringPattern" : [
                             0,
                             1,
@@ -2276,120 +2227,122 @@
                             1,
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.075",
                         "textSize" : "0.14",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeUltraCondensedSerif",
-                        "ringWidth" : "0.075"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
+                        "ringPatternTotal" : "60",
                         "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeGermanica",
-                        "ringWidth" : "0.17"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
                         "ringType" : "RingTypeTextRotatingNode",
+                        "textType" : "NumberTextTypeUltraCondensedSerif"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.35",
-                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.17",
+                        "textSize" : "0.2",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeUltraCondensedSerif",
-                        "ringWidth" : "0.18"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeGermanica"
+                    },
+                    {
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.18",
+                        "textSize" : "0.62",
+                        "indicatorSize" : "0.2",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "textType" : "NumberTextTypeDigitalMono"
                     }
                 ],
-                "hourHandType" : "HourHandTypeBoxy"
-            },
-            "title" : "Light X2",
-            "clockFaceMaterialName" : "#e2e2e2ff"
-        },
-        {
-            "faceBackgroundType" : "FaceBackgroundTypeCircle",
-            "clockCasingMaterialName" : "#1c1c1cff",
-            "uniqueID" : "E080FBDB-BBA4-4A5E-B3DC-19018FFFB565",
-            "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeSwiss",
-                "secondHandType" : "SecondHandTypeRail",
-                "hourHandMaterialName" : "#333333FF",
-                "secondHandMaterialName" : "#A00000FF",
-                "minuteHandMovement" : "MinuteHandMovementStep",
-                "secondHandMovement" : "SecondHandMovementStep",
-                "minuteHandMaterialName" : "#333333FF",
-                "handOutlineMaterialName" : "#ffffffff",
-                "shouldShowRomanNumeralText" : false,
                 "ringMaterials" : [
                     "#000000FF",
                     "",
-                    ""
+                    "#707070ff"
                 ],
+                "shouldShowHandOutlines" : true,
+                "minuteHandType" : "MinuteHandTypeBoxy",
+                "handOutlineMaterialName" : "#ffffffff"
+            },
+            "uniqueID" : "412B2934-EF9F-4357-9292-98E8086E1826"
+        },
+        {
+            "clockFaceMaterialName" : "vinylAlbum.jpg",
+            "title" : "Round and Round",
+            "faceBackgroundType" : "FaceBackgroundTypeNone",
+            "clockCasingMaterialName" : "brass.jpg",
+            "clockFaceSettings" : {
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "secondHandType" : "SecondHandTypeRail",
+                "minuteHandMaterialName" : "#333333FF",
+                "hourHandType" : "HourHandTypeSwiss",
+                "secondHandMaterialName" : "#A00000FF",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#333333FF",
+                "secondHandMovement" : "SecondHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
                 "ringSettings" : [
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.17",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.17"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeMediumBox",
-                        "ringType" : "RingTypeTextRotatingNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.27",
-                        "ringPatternTotal" : "12",
+                        "ringWidth" : "0.17",
+                        "textSize" : "0.85",
                         "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.17"
+                        "ringPatternTotal" : "4",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeTextNode",
+                        "textType" : "NumberTextTypeCorneriaScript"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.15362316",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.03"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeSpacer",
+                        "textType" : "NumberTextTypeDINPro"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeSphere",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.0",
                         "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
                         "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.0"
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeHelvica"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeTube",
-                        "ringType" : "RingTypeShapeNode",
                         "ringPattern" : [
                             0,
                             1,
@@ -2397,18 +2350,25 @@
                             1,
                             1
                         ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.03",
                         "textSize" : "0.35",
-                        "ringPatternTotal" : "60",
                         "indicatorSize" : "0.05",
-                        "textType" : "NumberTextTypeRothernburgDecorative",
-                        "ringWidth" : "0.03"
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringType" : "RingTypeShapeNode",
+                        "textType" : "NumberTextTypeRothernburgDecorative"
                     }
                 ],
-                "hourHandType" : "HourHandTypeSwiss"
+                "ringMaterials" : [
+                    "#000000FF",
+                    "#333333FF",
+                    ""
+                ],
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "handOutlineMaterialName" : "#ffffffff"
             },
-            "title" : "Round and Round",
-            "clockFaceMaterialName" : "#c6c6c6ff"
+            "uniqueID" : "E080FBDB-BBA4-4A5E-B3DC-19018FFFB565"
         },
         {
             "faceBackgroundType" : "FaceBackgroundTypeCircle",
@@ -2543,166 +2503,6 @@
             },
             "title" : "Simple Things",
             "clockFaceMaterialName" : "#FFFFFFFF"
-        },
-        {
-            "faceBackgroundType" : "FaceBackgroundTypeCircle",
-            "clockCasingMaterialName" : "#a00000ff",
-            "uniqueID" : "89DE21B8-DC67-4272-879A-ABA27FB7EAF1",
-            "clockFaceSettings" : {
-                "minuteHandType" : "MinuteHandTypeBoxy",
-                "secondHandType" : "SecondHandTypeRail",
-                "hourHandMaterialName" : "#FFFFFFFF",
-                "secondHandMaterialName" : "#FF0000FF",
-                "minuteHandMovement" : "MinuteHandMovementStep",
-                "secondHandMovement" : "SecondHandMovementOscillate",
-                "minuteHandMaterialName" : "#FFFFFFFF",
-                "handOutlineMaterialName" : "#000000ff",
-                "shouldShowRomanNumeralText" : false,
-                "ringMaterials" : [
-                    "#FFFFFFFF",
-                    "",
-                    ""
-                ],
-                "ringSettings" : [
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.09"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.02"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.06"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeTube",
-                        "ringType" : "RingTypeTextRotatingNode",
-                        "ringPattern" : [
-                            0,
-                            1,
-                            1,
-                            1,
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.07",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.19",
-                        "textType" : "NumberTextTypeGermanica",
-                        "ringWidth" : "0.0"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeFatBox",
-                        "ringType" : "RingTypeShapeNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.18",
-                        "textType" : "NumberTextTypeHelvica",
-                        "ringWidth" : "0.06"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.02"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.1"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeTextRotatingNode",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.19",
-                        "ringPatternTotal" : "12",
-                        "indicatorSize" : "0.33",
-                        "textType" : "NumberTextTypeGermanica",
-                        "ringWidth" : "0.08"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeSpacer",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.02"
-                    }
-                ],
-                "hourHandType" : "HourHandTypeBoxy"
-            },
-            "title" : "The Gambler",
-            "clockFaceMaterialName" : "#000000FF"
         }
     ]
 }

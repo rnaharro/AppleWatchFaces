@@ -141,7 +141,7 @@ class UserClockSetting: NSObject {
                 let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: JSONSerialization.WritingOptions.prettyPrinted )
                 // here "jsonData" is the dictionary encoded in JSON data
                 let theJSONText = NSString(data: jsonData, encoding: String.Encoding.ascii.rawValue)
-                //debugPrint("JSON string = \(theJSONText!)")
+                print("JSON string = \(theJSONText!)")
                     
                 //save to a file
                 let path = self.ArchiveURL.path
@@ -152,15 +152,15 @@ class UserClockSetting: NSObject {
                     try theJSONText!.write(toFile: path, atomically: false, encoding: String.Encoding.utf8.rawValue)
                 }
                 catch let error as NSError {
-                    print("save write file error: ", error.localizedDescription)
+                    debugPrint("save write file error: ", error.localizedDescription)
                 }
 
                 
             } catch let error as NSError {
-                print("save JSON serialization error: ", error.localizedDescription)
+                debugPrint("save JSON serialization error: ", error.localizedDescription)
             }
         } else {
-            print("ERROR: settings cant be coverted to JSON")
+            debugPrint("ERROR: settings cant be coverted to JSON")
         }
         
     }
