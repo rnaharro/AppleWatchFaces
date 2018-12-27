@@ -41,16 +41,7 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "settingsColorCell", for: indexPath) as! ColorSettingCollectionViewCell
-        
-        //special hack for camera
-        if (indexPath.row == colorList.count) {
-            if let cameraImage = sizedCameraImage {
-                cell.circleView.backgroundColor = SKColor.init(patternImage: cameraImage)
-            }
-            
-            return cell
-        }
-        
+                
         if AppUISettings.materialIsColor(materialName: colorList[indexPath.row] ) {
             cell.circleView.backgroundColor = SKColor.init(hexString: colorList[indexPath.row] )
         } else {

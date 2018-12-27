@@ -748,6 +748,7 @@
 		31EF9991219E602D00BB54E7 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */,
 				318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */,
 				318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */,
 				3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */,
@@ -759,7 +760,6 @@
 				31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */,
 				31BC68E921931F1400DD8CD6 /* ColorSettingsTableViewCell.swift */,
 				31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */,
-				31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */,
 				31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */,
 				31B5E8E3218CEF9000DE6429 /* MinuteHandSettingsTableViewCell.swift */,
 				31BC68EB2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift */,

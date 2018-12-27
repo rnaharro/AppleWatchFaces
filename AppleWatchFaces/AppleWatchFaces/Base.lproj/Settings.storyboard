@@ -482,7 +482,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ys4-a3-4S6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="100" y="0.0" width="275" height="100"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="sqU-91-tvb">
                                                 <size key="itemSize" width="33" height="33"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -515,9 +515,18 @@
                                                 <outlet property="delegate" destination="0u0-0a-aMy" id="YlY-uF-kH9"/>
                                             </connections>
                                         </collectionView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tno-tu-N0Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="cameraIcon"/>
+                                            <connections>
+                                                <action selector="callCameraChooser" destination="0u0-0a-aMy" eventType="touchUpInside" id="tMA-1q-zOq"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Ys4-a3-4S6" firstAttribute="leading" secondItem="aqJ-lb-pZm" secondAttribute="leading" id="S0U-CS-YAs"/>
+                                        <constraint firstItem="Ys4-a3-4S6" firstAttribute="leading" secondItem="aqJ-lb-pZm" secondAttribute="leading" constant="100" id="S0U-CS-YAs"/>
                                         <constraint firstAttribute="trailing" secondItem="Ys4-a3-4S6" secondAttribute="trailing" id="Xli-6c-rAR"/>
                                         <constraint firstAttribute="bottom" secondItem="Ys4-a3-4S6" secondAttribute="bottom" id="afY-b2-ndZ"/>
                                         <constraint firstItem="Ys4-a3-4S6" firstAttribute="top" secondItem="aqJ-lb-pZm" secondAttribute="top" id="nno-3N-aGV"/>
@@ -1373,4 +1382,7 @@
             <point key="canvasLocation" x="1524" y="871.21439280359823"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cameraIcon" width="533" height="533"/>
+    </resources>
 </document>
