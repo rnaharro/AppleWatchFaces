@@ -55,7 +55,7 @@ class MinuteHandAnimationSettingsTableViewCell: WatchSettingsSelectableTableView
         if minuteHandMovement == .MinuteHandMovementStep {
             cell.thumbnail.image = UIImage.init(named: "secondhandAnimation-step.jpg")
         }
-        
+        cell.thumbnail.layer.cornerRadius = AppUISettings.cornerRadiusForSettingsThumbs
         
         return cell
     }

@@ -63,7 +63,7 @@ class SecondHandAnimationSettingsTableViewCell: WatchSettingsSelectableTableView
         if secondHandMovement == .SecondHandMovementStepOver {
             cell.thumbnail.image = UIImage.init(named: "secondhandAnimation-stepOver.jpg")
         }
-        
+        cell.thumbnail.layer.cornerRadius = AppUISettings.cornerRadiusForSettingsThumbs
         return cell
     }
 }
