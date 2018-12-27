@@ -24,6 +24,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     var timer = Timer()
     
     static let settingsChangedNotificationName = Notification.Name("settingsChanged")
+    static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
     
     func showError( errorMessage: String) {
         DispatchQueue.main.async {
@@ -117,9 +118,25 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         }
     }
     
-    @objc func onNotification(notification:Notification)
-    {
+    @objc func onNotificationForSettingsChanged(notification:Notification) {
         redrawPreviewClock()
+    }
+    
+    @objc func onNotificationForGetCameraImage(notification:Notification) {
+            CameraHandler.shared.showActionSheet(vc: self)
+            CameraHandler.shared.imagePickedBlock = { (image) in
+                /* get your image here */
+                let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 512, height: 512))
+                // save it to the docs folder with name of the face
+                let fileName = SettingsViewController.currentClockSetting.uniqueID + "-customBackground.jpg"
+                _ = resizedImage.save(imageName: fileName)
+                SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
+                debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
+                
+                NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
+                NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
+                                                userInfo:["settingType":"clockFaceMaterialName"])
+            }
     }
     
     func redrawPreviewClock() {
@@ -342,7 +359,8 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         
         self.errorMessageLabel.alpha = 0.0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: SettingsViewController.settingsChangedNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSettingsChanged(notification:)), name: SettingsViewController.settingsChangedNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGetCameraImage(notification:)), name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil)
     }
     
 }

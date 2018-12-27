@@ -12,6 +12,7 @@ import SpriteKit
 class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     public var colorList : [String] = []
+    var sizedCameraImage : UIImage?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,6 +42,15 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "settingsColorCell", for: indexPath) as! ColorSettingCollectionViewCell
         
+        //special hack for camera
+        if (indexPath.row == colorList.count) {
+            if let cameraImage = sizedCameraImage {
+                cell.circleView.backgroundColor = SKColor.init(patternImage: cameraImage)
+            }
+            
+            return cell
+        }
+        
         if AppUISettings.materialIsColor(materialName: colorList[indexPath.row] ) {
             cell.circleView.backgroundColor = SKColor.init(hexString: colorList[indexPath.row] )
         } else {
@@ -69,6 +79,10 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        if let cameraImage = UIImage.init(named: "cameraIcon") {
+            sizedCameraImage = AppUISettings.imageWithImage(image: cameraImage, scaledToSize: CGSize.init(width: 27, height: 27))
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

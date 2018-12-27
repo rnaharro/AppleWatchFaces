@@ -16,6 +16,12 @@ extension SKShapeNode {
             if let image = UIImage.init(named: material) {
                 self.fillTexture = SKTexture.init(image: image)
                 self.fillColor = SKColor.white
+            } else {
+                // try for docs loading
+                if let image = UIImage.getImageFor(imageName: material)  {
+                    self.fillTexture = SKTexture.init(image: image)
+                    self.fillColor = SKColor.white
+                }
             }
         }
     }

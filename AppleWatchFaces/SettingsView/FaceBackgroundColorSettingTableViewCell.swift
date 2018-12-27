@@ -13,7 +13,9 @@ class FaceBackgroundColorSettingTableViewCell: ColorSettingsTableViewCell {
     
     @IBOutlet var faceBackgroundColorSelectionCollectionView: UICollectionView!
     
-    //var selectedCellIndex:Int?
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return colorList.count+1
+    }
     
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
@@ -29,7 +31,17 @@ class FaceBackgroundColorSettingTableViewCell: ColorSettingsTableViewCell {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let newColor = colorList[indexPath.row]
+        
+        var newColor = ""
+        
+        //special hack for camera
+        if (indexPath.row == colorList.count) {
+            NotificationCenter.default.post(name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil, userInfo:nil)
+            return //exit now in case user cancels camera selection ( and wants to keep old setting 
+        } else {
+             newColor = colorList[indexPath.row]
+        }
+        
         debugPrint("selected cell faceBackgroundColor: " + newColor)
         
         //update the value

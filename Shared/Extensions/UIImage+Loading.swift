@@ -10,6 +10,12 @@ import UIKit
 
 extension UIImage {
     
+    #if os(watchOS)
+    static let screenScale:CGFloat = 2.0
+    #else
+    static let screenScale:CGFloat = UIScreen.main.scale
+    #endif
+    
     static func getImagePath( imageName: String ) -> String {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
@@ -35,8 +41,11 @@ extension UIImage {
         // check if the image is stored already
         if fileManager.fileExists(atPath: getImageURL(imageName: imageName).path ) {
             //debugPrint("UIIMAGE.load!")
+            
+            
+            
             if let imageData: Data = try? Data(contentsOf: getImageURL(imageName: imageName) ),
-                let image: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale) {
+                let image: UIImage = UIImage(data: imageData, scale: screenScale) {
                 return image
             } else {
                 return nil
