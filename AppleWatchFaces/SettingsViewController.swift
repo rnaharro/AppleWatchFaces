@@ -42,14 +42,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     func showMessage( message: String) {
         DispatchQueue.main.async {
-//            //if its still active, merge messages
-//            if self.errorMessageLabel.text != ""  {
-//                self.errorMessageLabel.text = self.errorMessageLabel.text ?? "" + "\n" + message
-//                debugPrint("merged!" + self.errorMessageLabel.text!)
-//            } else {
-//                self.errorMessageLabel.text = message
-//            }
-            
             self.errorMessageLabel.textColor = UIColor.lightGray
             self.errorMessageLabel.text = message
             self.errorMessageLabel.alpha = 1.0
@@ -57,7 +49,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
             UIView.animate(withDuration: 1.0, delay: 3.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
                 self.errorMessageLabel.alpha = 0.0
             }) { (completed) in
-                //self.errorMessageLabel.text = ""
+                //
             }
         }
     }
