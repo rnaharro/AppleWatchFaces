@@ -79,19 +79,21 @@
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="dRF-vU-4ui">
                                             <rect key="frame" x="15" y="40" width="345" height="31"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="vud-3W-iZH"/>
+                                            </constraints>
                                             <connections>
                                                 <action selector="sliderValueDidChangeWithSender:" destination="yxo-ub-EIA" eventType="valueChanged" id="C0B-Ev-Wdj"/>
                                             </connections>
                                         </slider>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="dRF-vU-4ui" firstAttribute="leading" secondItem="1ky-DF-bhh" secondAttribute="leadingMargin" constant="1" id="86B-1c-tTL"/>
                                         <constraint firstItem="4OS-Yp-XUS" firstAttribute="trailing" secondItem="1ky-DF-bhh" secondAttribute="trailingMargin" id="Cyf-FI-wXp"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="dRF-vU-4ui" secondAttribute="bottom" constant="-1" id="SWb-uY-kaA"/>
+                                        <constraint firstItem="dRF-vU-4ui" firstAttribute="leading" secondItem="1ky-DF-bhh" secondAttribute="leading" constant="17" id="Qei-Yc-vKE"/>
+                                        <constraint firstAttribute="bottom" secondItem="dRF-vU-4ui" secondAttribute="bottom" constant="9.5" id="WG5-Vf-DZf"/>
                                         <constraint firstItem="4OS-Yp-XUS" firstAttribute="top" secondItem="1ky-DF-bhh" secondAttribute="topMargin" id="aGF-7x-D7h"/>
-                                        <constraint firstItem="dRF-vU-4ui" firstAttribute="centerX" secondItem="4OS-Yp-XUS" secondAttribute="centerX" id="e7H-VW-Ts7"/>
-                                        <constraint firstItem="dRF-vU-4ui" firstAttribute="top" secondItem="4OS-Yp-XUS" secondAttribute="bottom" constant="8" symbolic="YES" id="iGc-FH-Xki"/>
                                         <constraint firstItem="4OS-Yp-XUS" firstAttribute="leading" secondItem="1ky-DF-bhh" secondAttribute="leadingMargin" id="pZd-ex-joE"/>
+                                        <constraint firstAttribute="trailing" secondItem="dRF-vU-4ui" secondAttribute="trailing" constant="17" id="sZB-lF-Med"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,9 +110,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Part" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVh-yC-v8O">
-                                            <rect key="frame" x="16" y="11" width="271" height="21"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="AYh-jN-XOp"/>
+                                                <constraint firstAttribute="height" constant="21" id="Dvu-cC-u4m"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,7 +121,7 @@
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IO4-Vm-jxL">
                                             <rect key="frame" x="16" y="113" width="343" height="29"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="28" id="4vC-E9-t6t"/>
+                                                <constraint firstAttribute="height" constant="28" id="WHd-qr-Qnc"/>
                                             </constraints>
                                             <segments>
                                                 <segment title="Main"/>
@@ -132,10 +134,9 @@
                                             </connections>
                                         </segmentedControl>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ip1-6n-RIX">
-                                            <rect key="frame" x="17" y="79" width="340" height="28"/>
+                                            <rect key="frame" x="16" y="79" width="343" height="28"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="9Hd-Mm-Jff"/>
-                                                <constraint firstAttribute="height" constant="27" id="glO-MC-yM4"/>
+                                                <constraint firstAttribute="height" constant="27" id="CKh-uz-dJW"/>
                                             </constraints>
                                             <segments>
                                                 <segment title="60"/>
@@ -150,19 +151,20 @@
                                             </connections>
                                         </segmentedControl>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uFe-b5-94k">
-                                            <rect key="frame" x="15" y="41" width="345" height="31"/>
+                                            <rect key="frame" x="14" y="41" width="347" height="31"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="ZuK-M4-b2P"/>
+                                                <constraint firstAttribute="height" constant="30" id="Td4-3g-0b3"/>
                                             </constraints>
                                             <connections>
                                                 <action selector="sliderValueDidChangeWithSender:" destination="P1M-Tj-lbH" eventType="valueChanged" id="wyo-FK-bvE"/>
                                             </connections>
                                         </slider>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Do-DO-gD3">
-                                            <rect key="frame" x="295" y="6" width="62" height="31"/>
+                                            <rect key="frame" x="328" y="6.5" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="62" id="JaF-ko-OAh"/>
+                                                <constraint firstAttribute="height" constant="30" id="GCa-Fn-d97"/>
+                                                <constraint firstAttribute="width" constant="30" id="gtY-6V-aBg"/>
                                             </constraints>
                                             <state key="normal" title="edit">
                                                 <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -173,23 +175,20 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="uFe-b5-94k" secondAttribute="trailing" constant="1" id="4EX-tn-hYQ"/>
-                                        <constraint firstItem="IO4-Vm-jxL" firstAttribute="top" secondItem="ip1-6n-RIX" secondAttribute="bottom" constant="7" id="6jj-12-k0a"/>
-                                        <constraint firstItem="ip1-6n-RIX" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" constant="1" id="9s6-0U-GmH"/>
-                                        <constraint firstItem="7Do-DO-gD3" firstAttribute="leading" secondItem="YVh-yC-v8O" secondAttribute="trailing" constant="8" symbolic="YES" id="AHb-go-ejl"/>
-                                        <constraint firstItem="7Do-DO-gD3" firstAttribute="centerY" secondItem="YVh-yC-v8O" secondAttribute="centerY" id="AJV-Up-84S"/>
-                                        <constraint firstItem="ip1-6n-RIX" firstAttribute="trailing" secondItem="oKr-Ta-DNs" secondAttribute="trailingMargin" constant="-2" id="Ijb-Gi-Ebj"/>
-                                        <constraint firstItem="YVh-yC-v8O" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" id="Km1-5F-rIg"/>
-                                        <constraint firstItem="uFe-b5-94k" firstAttribute="top" secondItem="7Do-DO-gD3" secondAttribute="bottom" constant="4" id="LZ6-2y-cED"/>
-                                        <constraint firstItem="IO4-Vm-jxL" firstAttribute="trailing" secondItem="oKr-Ta-DNs" secondAttribute="trailingMargin" id="PPg-Rz-4az"/>
-                                        <constraint firstItem="7Do-DO-gD3" firstAttribute="trailing" secondItem="ip1-6n-RIX" secondAttribute="trailing" id="S3l-RB-Oy1"/>
-                                        <constraint firstItem="uFe-b5-94k" firstAttribute="bottom" secondItem="oKr-Ta-DNs" secondAttribute="bottomMargin" constant="-79" id="V2t-ub-yQZ"/>
-                                        <constraint firstItem="IO4-Vm-jxL" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" id="XQt-rr-0zy"/>
-                                        <constraint firstItem="ip1-6n-RIX" firstAttribute="top" secondItem="uFe-b5-94k" secondAttribute="bottom" constant="8" id="YeS-It-TQ5"/>
-                                        <constraint firstItem="YVh-yC-v8O" firstAttribute="top" secondItem="oKr-Ta-DNs" secondAttribute="topMargin" id="kLv-li-fav"/>
-                                        <constraint firstItem="IO4-Vm-jxL" firstAttribute="bottom" secondItem="oKr-Ta-DNs" secondAttribute="bottomMargin" constant="-8" id="rYM-LC-h1v"/>
-                                        <constraint firstItem="7Do-DO-gD3" firstAttribute="top" secondItem="oKr-Ta-DNs" secondAttribute="topMargin" constant="-5" id="tfP-Lz-0aQ"/>
-                                        <constraint firstItem="uFe-b5-94k" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" constant="1" id="yyu-AB-az3"/>
+                                        <constraint firstItem="IO4-Vm-jxL" firstAttribute="top" secondItem="ip1-6n-RIX" secondAttribute="bottom" constant="7" id="0Rb-PM-NV7"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="IO4-Vm-jxL" secondAttribute="bottom" constant="8" id="7fl-Zw-z34"/>
+                                        <constraint firstItem="7Do-DO-gD3" firstAttribute="top" secondItem="oKr-Ta-DNs" secondAttribute="top" constant="6.5" id="BLW-X6-6fU"/>
+                                        <constraint firstItem="YVh-yC-v8O" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" id="Bv5-ll-vd1"/>
+                                        <constraint firstItem="uFe-b5-94k" firstAttribute="top" secondItem="7Do-DO-gD3" secondAttribute="bottom" constant="4.5" id="EOc-uu-tMf"/>
+                                        <constraint firstItem="ip1-6n-RIX" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" id="GeH-Km-BW5"/>
+                                        <constraint firstItem="IO4-Vm-jxL" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" id="PSg-Bj-C1g"/>
+                                        <constraint firstItem="YVh-yC-v8O" firstAttribute="top" secondItem="oKr-Ta-DNs" secondAttribute="topMargin" id="Tsd-iu-WVj"/>
+                                        <constraint firstAttribute="trailing" secondItem="7Do-DO-gD3" secondAttribute="trailing" constant="17" id="e4J-qf-kqQ"/>
+                                        <constraint firstItem="uFe-b5-94k" firstAttribute="trailing" secondItem="oKr-Ta-DNs" secondAttribute="trailingMargin" id="fOz-w5-D6X"/>
+                                        <constraint firstItem="uFe-b5-94k" firstAttribute="leading" secondItem="oKr-Ta-DNs" secondAttribute="leadingMargin" id="gIf-F7-dhI"/>
+                                        <constraint firstItem="YVh-yC-v8O" firstAttribute="trailing" secondItem="oKr-Ta-DNs" secondAttribute="trailingMargin" id="lrX-5f-EQ4"/>
+                                        <constraint firstItem="IO4-Vm-jxL" firstAttribute="trailing" secondItem="oKr-Ta-DNs" secondAttribute="trailingMargin" id="oes-2K-gMG"/>
+                                        <constraint firstItem="ip1-6n-RIX" firstAttribute="trailing" secondItem="oKr-Ta-DNs" secondAttribute="trailingMargin" id="wMY-BN-q4t"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -224,9 +223,10 @@
                                             </connections>
                                         </slider>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkn-jg-aqy">
-                                            <rect key="frame" x="290" y="6" width="68" height="30"/>
+                                            <rect key="frame" x="328" y="6" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="68" id="iTo-Z4-XR7"/>
+                                                <constraint firstAttribute="height" constant="30" id="epd-hF-33I"/>
+                                                <constraint firstAttribute="width" constant="30" id="zRj-ic-2HN"/>
                                             </constraints>
                                             <state key="normal" title="edit">
                                                 <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -278,9 +278,8 @@
                                             </connections>
                                         </segmentedControl>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOm-aX-Xl9">
-                                            <rect key="frame" x="19" y="78" width="181" height="21"/>
+                                            <rect key="frame" x="19" y="78" width="272" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="181" id="44h-sf-Jg3"/>
                                                 <constraint firstAttribute="height" constant="21" id="i89-oi-YJt"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -294,6 +293,7 @@
                                         <constraint firstItem="Vae-3k-fht" firstAttribute="bottom" secondItem="hyQ-8d-bYQ" secondAttribute="bottomMargin" constant="-119" id="Bwm-7r-uTu"/>
                                         <constraint firstItem="EGV-ry-QPN" firstAttribute="top" secondItem="YOm-aX-Xl9" secondAttribute="bottom" constant="13" id="Dya-xu-bP3"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Vae-3k-fht" secondAttribute="trailing" constant="2" id="E0D-Ui-5um"/>
+                                        <constraint firstAttribute="trailing" secondItem="zkn-jg-aqy" secondAttribute="trailing" constant="17" id="Ie7-Pl-4hN"/>
                                         <constraint firstItem="svQ-24-k0q" firstAttribute="leading" secondItem="mmo-hp-qPd" secondAttribute="leading" constant="-3" id="Pyn-ih-o4R"/>
                                         <constraint firstItem="EGV-ry-QPN" firstAttribute="top" secondItem="Vae-3k-fht" secondAttribute="bottom" constant="47" id="ReP-eO-nf3"/>
                                         <constraint firstItem="mmo-hp-qPd" firstAttribute="trailing" secondItem="hyQ-8d-bYQ" secondAttribute="trailingMargin" constant="3" id="T6t-UB-9cp"/>
@@ -304,14 +304,13 @@
                                         <constraint firstItem="Vae-3k-fht" firstAttribute="leading" secondItem="hyQ-8d-bYQ" secondAttribute="leadingMargin" id="azf-WA-AkU"/>
                                         <constraint firstItem="svQ-24-k0q" firstAttribute="top" secondItem="hyQ-8d-bYQ" secondAttribute="topMargin" id="c0e-ra-pKg"/>
                                         <constraint firstItem="EGV-ry-QPN" firstAttribute="top" secondItem="SMC-Dj-gCZ" secondAttribute="bottom" constant="8" id="cUM-92-s8X"/>
-                                        <constraint firstItem="zkn-jg-aqy" firstAttribute="trailing" secondItem="Vae-3k-fht" secondAttribute="trailing" constant="1" id="ffk-zJ-ced"/>
                                         <constraint firstItem="mmo-hp-qPd" firstAttribute="leading" secondItem="hyQ-8d-bYQ" secondAttribute="leadingMargin" constant="3" id="hlj-va-ZZY"/>
-                                        <constraint firstItem="YOm-aX-Xl9" firstAttribute="leading" secondItem="hyQ-8d-bYQ" secondAttribute="leadingMargin" constant="3" id="mFQ-cj-39U"/>
+                                        <constraint firstItem="YOm-aX-Xl9" firstAttribute="leading" secondItem="hyQ-8d-bYQ" secondAttribute="leadingMargin" constant="3" id="krY-hJ-78g"/>
+                                        <constraint firstItem="SMC-Dj-gCZ" firstAttribute="leading" secondItem="YOm-aX-Xl9" secondAttribute="trailing" constant="17" id="l1M-7j-cR9"/>
                                         <constraint firstItem="EGV-ry-QPN" firstAttribute="leading" secondItem="hyQ-8d-bYQ" secondAttribute="leadingMargin" constant="3" id="nVz-77-oLP"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="EGV-ry-QPN" secondAttribute="trailing" id="pWy-8O-1L1"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="svQ-24-k0q" secondAttribute="trailing" constant="77" id="tcn-5K-Z5k"/>
-                                        <constraint firstItem="zkn-jg-aqy" firstAttribute="top" secondItem="hyQ-8d-bYQ" secondAttribute="top" constant="6" id="xfc-Yi-eLg"/>
-                                        <constraint firstItem="zkn-jg-aqy" firstAttribute="top" secondItem="svQ-24-k0q" secondAttribute="bottom" constant="-26" id="yo7-2U-K1f"/>
+                                        <constraint firstItem="zkn-jg-aqy" firstAttribute="top" secondItem="hyQ-8d-bYQ" secondAttribute="top" constant="6" id="x16-70-73V"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
