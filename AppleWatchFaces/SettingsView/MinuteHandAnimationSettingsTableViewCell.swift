@@ -25,6 +25,8 @@ class MinuteHandAnimationSettingsTableViewCell: WatchSettingsSelectableTableView
                 
                 //scroll and set native selection
                 minuteHandAnimationCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                minuteHandAnimationCollectionView.deselectAll(animated: false)
             }
         }
     }

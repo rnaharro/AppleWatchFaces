@@ -26,6 +26,8 @@ class FaceShapeSettingSettingsTableViewCell: WatchSettingsSelectableTableViewCel
 
                 //scroll and set native selection
                 faceShapeSettingCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                faceShapeSettingCollectionView.deselectAll(animated: false)
             }
         }
     }

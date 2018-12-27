@@ -24,6 +24,8 @@ class MinuteHandColorSettingsTableViewCell: ColorSettingsTableViewCell {
                 
                 //scroll and set native selection
                 minuteHandColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                minuteHandColorSelectionCollectionView.deselectAll(animated: false)
             }
         }
     }

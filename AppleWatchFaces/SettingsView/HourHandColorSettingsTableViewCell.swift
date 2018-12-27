@@ -25,6 +25,8 @@ class HourHandColorSettingsTableViewCell: ColorSettingsTableViewCell {
                 
                 //scroll and set native selection
                 hourHandColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                hourHandColorSelectionCollectionView.deselectAll(animated: false)
             }
         }
     }

@@ -25,6 +25,8 @@ class IndicatorsMainColorSettingsTableViewCell: ColorSettingsTableViewCell {
                 
                 //scroll and set native selection
                 indicatorsMainColorSettingsTableViewCell.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                indicatorsMainColorSettingsTableViewCell.deselectAll(animated: false)
             }
         }
     }

@@ -25,6 +25,8 @@ class SecondHandColorSettingsTableViewCell: ColorSettingsTableViewCell {
             
                 //scroll and set native selection
                 secondHandColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                secondHandColorSelectionCollectionView.deselectAll(animated: false)
             }
         }
     }

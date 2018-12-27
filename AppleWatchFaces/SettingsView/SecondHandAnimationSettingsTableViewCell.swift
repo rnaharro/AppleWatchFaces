@@ -26,6 +26,8 @@ class SecondHandAnimationSettingsTableViewCell: WatchSettingsSelectableTableView
                 
                 //scroll and set native selection
                 secondHandAnimationCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                secondHandAnimationCollectionView.deselectAll(animated: false)
             }
         }
     }

@@ -81,6 +81,7 @@
 		314A011121963537009BCE3C /* WatchFaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010F21962FF4009BCE3C /* WatchFaceNode.swift */; };
 		314AFC1021D51A7000C1208E /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC0F21D51A7000C1208E /* CameraHandler.swift */; };
 		314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
+		314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */; };
 		3153880321CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880121CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift */; };
 		3153880421CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */; };
 		3153880721CB395300A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */; };
@@ -356,6 +357,7 @@
 		314A010C219605AA009BCE3C /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
 		314A010F21962FF4009BCE3C /* WatchFaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchFaceNode.swift; sourceTree = "<group>"; };
 		314AFC0F21D51A7000C1208E /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
+		314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Selection.swift"; sourceTree = "<group>"; };
 		3153880121CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -827,6 +829,7 @@
 				310D4A5821C0AA9000082A62 /* Collection+Safe.swift */,
 				318A928A21D059120060D89B /* UserDefaults.swift */,
 				314AFC0F21D51A7000C1208E /* CameraHandler.swift */,
+				314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */,
 				31EF999B21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift in Sources */,
 				3107B5D821B47437005BD26D /* DecotatorShapeTableViewCell.swift in Sources */,
+				314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */,
 				314A011021962FF4009BCE3C /* WatchFaceNode.swift in Sources */,
 				31EF999621A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
 				31EF99A221A205F200BB54E7 /* FaceChooserTableViewCell.swift in Sources */,

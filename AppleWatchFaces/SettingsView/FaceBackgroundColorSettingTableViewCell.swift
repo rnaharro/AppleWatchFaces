@@ -27,6 +27,8 @@ class FaceBackgroundColorSettingTableViewCell: ColorSettingsTableViewCell {
 
             //scroll and set native selection
             faceBackgroundColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+        } else {
+            faceBackgroundColorSelectionCollectionView.deselectAll(animated: false)
         }
     }
     

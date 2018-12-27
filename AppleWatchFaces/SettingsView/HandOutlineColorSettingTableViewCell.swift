@@ -23,6 +23,8 @@ class HandOutlineColorSettingTableViewCell: ColorSettingsTableViewCell {
                 
                 //scroll and set native selection
                 handOutlineSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                handOutlineSelectionCollectionView.deselectAll(animated: false)
             }
         }
     }

@@ -12,7 +12,7 @@ import SpriteKit
 
 class IndicatorsThirdColorSettingsTableViewCell: ColorSettingsTableViewCell {
     
-    @IBOutlet var indicatorsThirdColorSettingsTableViewCell: UICollectionView!
+    @IBOutlet var indicatorsThirdColorSettingsUICollectionView: UICollectionView!
     
     // called after a new setting should be selected ( IE a new design is loaded )
     override func chooseSetting( animated: Bool ) {
@@ -24,7 +24,9 @@ class IndicatorsThirdColorSettingsTableViewCell: ColorSettingsTableViewCell {
                 let indexPath = IndexPath.init(row: materialColorIndex, section: 0)
                 
                 //scroll and set native selection
-                indicatorsThirdColorSettingsTableViewCell.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+                indicatorsThirdColorSettingsUICollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+            } else {
+                indicatorsThirdColorSettingsUICollectionView.deselectAll(animated: false)
             }
         }
     }

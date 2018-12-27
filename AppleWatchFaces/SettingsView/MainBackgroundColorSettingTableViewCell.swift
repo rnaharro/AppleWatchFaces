@@ -26,6 +26,8 @@ class MainBackgroundColorSettingTableViewCell: ColorSettingsTableViewCell {
             
             //scroll and set native selection
             mainBackgroundColorSelectionCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.right)
+        } else {
+            mainBackgroundColorSelectionCollectionView.deselectAll(animated: false)
         }
     }
     
