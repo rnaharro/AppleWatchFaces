@@ -8,6 +8,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="OdM-WP-iE9">
+            <objects>
+                <controller id="uc3-Yd-10C">
+                    <items>
+                        <label alignment="left" text="Loading Image ..." numberOfLines="2" id="fAp-rT-9yg"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-99" y="558"/>
+        </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>

@@ -60,27 +60,60 @@ class InterfaceController: DigitalTimeHidingHackInterfaceController, WCSessionDe
     
     //sending the whole settings file
     func session(_ session: WCSession, didReceive file: WCSessionFile) {
+        
+        guard let metatdata = file.metadata else  { return } //ignore files sent without metadata
+        guard let type = metatdata["type"] as? String else { return } //ignore files sent without metadata["type"]:String
+        
         // Create a FileManager instance
         let fileManager = FileManager.default
+    
+        //handle meterial image sync
+        if type == "clockFaceMaterialImage" || type == "clockFaceMaterialSync" {
+            guard let filename = metatdata["filename"] as? String else { return }
+            do {
+                try fileManager.removeItem(at: UIImage.getImageURL(imageName: filename))
+                print("Existing file deleted.")
+            } catch {
+                print("Failed to delete existing file:\n\((error as NSError).description)")
+            }
+            do {
+                let imageData = try Data(contentsOf: file.fileURL)
+                if let newImage = UIImage.init(data: imageData) {
+                    _ = newImage.save(imageName: filename)
+                }
+            } catch let error as NSError {
+                print("Cant copy fle -- Something went wrong: \(error)")
+            }
+            
+            //only needed for one off test load, not sync
+            if type == "clockFaceMaterialImage" {
+                //reload existing watch face
+                redrawCurrent()
+            }
+        }
         
-        do {
-            try fileManager.removeItem(at: UserClockSetting.ArchiveURL)
-            print("Existing file deleted.")
-        } catch {
-            print("Failed to delete existing file:\n\((error as NSError).description)")
+        //handle json settings
+        if type == "settingsFile" {
+            do {
+                try fileManager.removeItem(at: UserClockSetting.ArchiveURL)
+                print("Existing file deleted.")
+            } catch {
+                print("Failed to delete existing file:\n\((error as NSError).description)")
+            }
+            do {
+                try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
+            }
+            catch let error as NSError {
+                print("Ooops! Something went wrong: \(error)")
+            }
+            
+            //reload userClockSettings
+            UserClockSetting.loadFromFile()
+            currentClockIndex = 0
+            currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
+            redrawCurrent()
         }
-        do {
-            try fileManager.copyItem(at: file.fileURL, to: UserClockSetting.ArchiveURL)
-        }
-        catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
-        }
-        
-        //reload userClockSettings
-        UserClockSetting.loadFromFile()
-        currentClockIndex = 0
-        currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex]
-        redrawCurrent()
+
     }
     
     //got one new setting
@@ -125,6 +158,9 @@ class InterfaceController: DigitalTimeHidingHackInterfaceController, WCSessionDe
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        //create folders to store data later
+        AppUISettings.createFolders()
         
         //capture crpwn events
         crownSequencer.delegate = self

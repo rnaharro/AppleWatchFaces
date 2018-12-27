@@ -42,14 +42,22 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     func showMessage( message: String) {
         DispatchQueue.main.async {
+//            //if its still active, merge messages
+//            if self.errorMessageLabel.text != ""  {
+//                self.errorMessageLabel.text = self.errorMessageLabel.text ?? "" + "\n" + message
+//                debugPrint("merged!" + self.errorMessageLabel.text!)
+//            } else {
+//                self.errorMessageLabel.text = message
+//            }
+            
             self.errorMessageLabel.textColor = UIColor.lightGray
             self.errorMessageLabel.text = message
-            
             self.errorMessageLabel.alpha = 1.0
+        
             UIView.animate(withDuration: 1.0, delay: 3.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
                 self.errorMessageLabel.alpha = 0.0
             }) { (completed) in
-                //
+                //self.errorMessageLabel.text = ""
             }
         }
     }
@@ -113,6 +121,16 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
                 self.showError(errorMessage: error.localizedDescription)
             })
             
+            //send background image
+            let filename = SettingsViewController.currentClockSetting.clockFaceMaterialName
+            let imageURL = UIImage.getImageURL(imageName: filename)
+            let fileManager = FileManager.default
+            // check if the image is stored already
+            if fileManager.fileExists(atPath: imageURL.path) {
+                self.showMessage( message: "Sending background image.")
+                validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
+            }
+            
         } else {
             self.showError(errorMessage: "No valid watch session")
         }
@@ -126,9 +144,10 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
             CameraHandler.shared.showActionSheet(vc: self)
             CameraHandler.shared.imagePickedBlock = { (image) in
                 /* get your image here */
-                let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 512, height: 512))
+                let optimumSize = 390 / 1.5 //watchOS
+                let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: optimumSize, height: optimumSize))
                 // save it to the docs folder with name of the face
-                let fileName = SettingsViewController.currentClockSetting.uniqueID + "-customBackground.jpg"
+                let fileName = SettingsViewController.currentClockSetting.uniqueID + "-customBackground"
                 _ = resizedImage.save(imageName: fileName)
                 SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
                 debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
