@@ -10,7 +10,7 @@ import WatchKit
 import WatchConnectivity
 import Foundation
 
-class InterfaceController: KKInterfaceController, WCSessionDelegate, WKCrownDelegate {
+class InterfaceController: DigitalTimeHidingHackInterfaceController, WCSessionDelegate, WKCrownDelegate {
     
     @IBOutlet var skInterface: WKInterfaceSKScene!
     

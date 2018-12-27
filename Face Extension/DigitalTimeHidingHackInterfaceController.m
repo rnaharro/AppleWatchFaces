@@ -1,4 +1,4 @@
-#import "KKInterfaceController.h"
+#import "DigitalTimeHidingHackInterfaceController.h"
 
 @import ObjectiveC.runtime;
 
@@ -13,7 +13,7 @@
 -(id)layer;
 @end
 
-@implementation KKInterfaceController
+@implementation DigitalTimeHidingHackInterfaceController
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
