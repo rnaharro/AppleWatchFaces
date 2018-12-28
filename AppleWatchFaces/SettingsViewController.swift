@@ -139,7 +139,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
                 let optimumSize = 390 / 1.5 //watchOS
                 let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: optimumSize, height: optimumSize))
                 // save it to the docs folder with name of the face
-                let fileName = SettingsViewController.currentClockSetting.uniqueID + "-customBackground"
+                let fileName = SettingsViewController.currentClockSetting.uniqueID + AppUISettings.backgroundFileName
                 _ = resizedImage.save(imageName: fileName)
                 SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
                 debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)

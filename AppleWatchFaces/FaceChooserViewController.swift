@@ -16,7 +16,10 @@ enum FaceListReloadType: String {
 class FaceChooserViewController: UIViewController, WCSessionDelegate {
     
     var session: WCSession?
+    @IBOutlet var sendToWatchButton: UIButton!
     @IBOutlet var errorMessageLabel: UILabel!
+    @IBOutlet var filetransferProgress: UIProgressView!
+    var totalTransfers:Int = 0
     var faceChooserTableViewController:FaceChooserTableViewController?
     var faceListReloadType : FaceListReloadType = .none
     
@@ -33,7 +36,78 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         } else {
             self.showError(errorMessage: "No valid watch session")
         }
+        
+        sendAllBackgroundImages()
     }
+    
+    func sendAllBackgroundImages() {
+        guard let validSession = session else { return }
+        
+        var imagesArray:[String] = []
+        for clockSetting in UserClockSetting.sharedClockSettings {
+            let backgroundImage = clockSetting.clockFaceMaterialName
+            guard backgroundImage.count >= AppUISettings.backgroundFileName.count else { continue }
+            let lastPart = backgroundImage.suffix(AppUISettings.backgroundFileName.count)
+            if lastPart == AppUISettings.backgroundFileName {
+                imagesArray.append(backgroundImage)
+            }
+        }
+        
+        if imagesArray.count>0 {
+            //show message to user
+            self.showMessage(message: "Sending background images ...")
+            //loop through all sending them
+            let fileManager = FileManager.default
+            for filename in imagesArray {
+                let backgroundImageURL = UIImage.getImageURL(imageName: filename)
+                if fileManager.fileExists(atPath: backgroundImageURL.path) {
+                    validSession.transferFile(backgroundImageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
+                } else {
+                    self.showError(errorMessage: "No changes to send")
+                }
+            }
+            //show progress bar
+            totalTransfers = validSession.outstandingFileTransfers.count
+            filetransferProgress.isHidden = false
+            showfileTransferProgress()
+        }
+    }
+    
+    func showfileTransferProgress() {
+        guard let validSession = session, totalTransfers>0 else {
+            filetransferProgress.isHidden = true
+            sendToWatchButton.isEnabled = true
+            self.showError(errorMessage: "Lost watch session.")
+            return
+        }
+        
+        let transfers = validSession.outstandingFileTransfers
+        
+        //exit if we have them all
+        guard transfers.count>0 else {
+            filetransferProgress.isHidden = true
+            sendToWatchButton.isEnabled = true
+            self.showMessage(message: "Background images sent.")
+            return
+        }
+        
+        sendToWatchButton.isEnabled = false
+        
+        //TODO: eventually get fancy with file sizes / transfer progress??
+        let progress = Float(Float(transfers.count) / Float(totalTransfers))
+        filetransferProgress.progress = progress
+        debugPrint("items queued, outstanding: " + validSession.outstandingFileTransfers.count.description + " progress: " + progress.description)
+        
+        //otherwise call showProgress
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+            self.showfileTransferProgress()
+        })
+    }
+    
+
+    
+    // array of outstanding transfers
+    //validSession.outstandingFileTransfers
     
     @IBAction func resetAllSettingAction(sender: UIButton) {
         UserClockSetting.resetToDefaults()
@@ -119,6 +193,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filetransferProgress.isHidden = true
         
         UserClockSetting.loadFromFile()
     }

@@ -82,6 +82,12 @@
                                     <action selector="sendAllSettingsActionWithSender:" destination="jKv-ap-UqF" eventType="touchUpInside" id="RgR-My-gti"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wSK-gw-Ds2">
+                                <rect key="frame" x="16" y="458" width="343" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="axG-Xl-CRF"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -95,8 +101,11 @@
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="WQr-wG-VwM" secondAttribute="trailing" constant="16" id="RW2-7E-3jY"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" id="SC3-12-9tL"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="SFP-PZ-A7W" secondAttribute="trailing" constant="16" id="Vcp-5K-esj"/>
+                            <constraint firstItem="wSK-gw-Ds2" firstAttribute="trailing" secondItem="0eE-eN-zvf" secondAttribute="trailingMargin" id="WK6-8f-v9C"/>
+                            <constraint firstItem="wSK-gw-Ds2" firstAttribute="leading" secondItem="0eE-eN-zvf" secondAttribute="leadingMargin" id="deu-9u-VNZ"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="top" secondItem="vUG-c0-AEw" secondAttribute="top" id="fUy-1K-HjO"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="pmc-ba-uhr" secondAttribute="trailing" constant="16" id="gOa-uK-akG"/>
+                            <constraint firstItem="wSK-gw-Ds2" firstAttribute="top" secondItem="SFP-PZ-A7W" secondAttribute="bottom" constant="8" id="rsT-RH-coC"/>
                             <constraint firstItem="kRL-ux-THg" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="vqz-kC-4xT"/>
                             <constraint firstItem="SFP-PZ-A7W" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="x2o-zf-CJz"/>
                             <constraint firstItem="SFP-PZ-A7W" firstAttribute="top" secondItem="kRL-ux-THg" secondAttribute="bottom" constant="13" id="z7U-zq-6b2"/>
@@ -120,6 +129,8 @@
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="errorMessageLabel" destination="pmc-ba-uhr" id="vKC-GB-9v8"/>
+                        <outlet property="filetransferProgress" destination="wSK-gw-Ds2" id="GlN-iu-BXQ"/>
+                        <outlet property="sendToWatchButton" destination="SFP-PZ-A7W" id="wLh-QB-q7P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFC-fX-PEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -409,6 +420,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bWw-bL-6IE"/>
+        <segue reference="k1T-5T-jKT"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -68,9 +68,9 @@ class AppUISettings: NSObject {
     static let ringSettigsSliderSpacerMin:Float = 0
     static let ringSettigsSliderSpacerMax:Float = 1.5
     
-    
     //some other DRY settings
     static let thumbnailFolder = "thumbs"
+    static let backgroundFileName = "-customBackground"
     
     static func deleteAllFolders() {
         let filemgr = FileManager.default
