@@ -1506,19 +1506,6 @@
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.02"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
                         "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
@@ -1568,19 +1555,6 @@
                         "indicatorSize" : "0.15",
                         "textType" : "NumberTextTypeDINPro",
                         "ringWidth" : "0.1"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.15",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.02"
                     }
                 ],
                 "hourHandType" : "HourHandTypeRounded"
@@ -2156,19 +2130,6 @@
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
                         "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
@@ -2179,19 +2140,6 @@
                         "indicatorSize" : "0.2",
                         "textType" : "NumberTextTypeDINPro",
                         "ringWidth" : "0.03"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
@@ -2218,19 +2166,6 @@
                         "indicatorSize" : "0.26",
                         "textType" : "NumberTextTypeUltraCondensedSerif",
                         "ringWidth" : "0.1"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
@@ -2274,19 +2209,6 @@
                         "indicatorSize" : "0.07",
                         "textType" : "NumberTextTypeDINPro",
                         "ringWidth" : "0.02"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
                     }
                 ],
                 "hourHandType" : "HourHandTypeRoman"
@@ -2704,19 +2626,6 @@
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
                         "ringType" : "RingTypeSpacer",
                         "ringPattern" : [
                             1
@@ -2757,19 +2666,6 @@
                         "indicatorSize" : "0.08",
                         "textType" : "NumberTextTypeDINPro",
                         "ringWidth" : "0.02"
-                    },
-                    {
-                        "indicatorType" : "FaceIndicatorTypeBox",
-                        "ringType" : "RingTypeCircle",
-                        "ringPattern" : [
-                            1
-                        ],
-                        "ringMaterialDesiredThemeColorIndex" : 0,
-                        "textSize" : "0.2",
-                        "ringPatternTotal" : "60",
-                        "indicatorSize" : "0.2",
-                        "textType" : "NumberTextTypeDINPro",
-                        "ringWidth" : "0.01"
                     },
                     {
                         "indicatorType" : "FaceIndicatorTypeBox",

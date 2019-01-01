@@ -11,9 +11,9 @@ import SpriteKit
 
 //different types of things that can be assigned to a ring on the clock face
 enum RingTypes: String {
-    case RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeCircle, RingTypeSpacer
+    case RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeSpacer
     
-    static let userSelectableValues = [RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeCircle, RingTypeSpacer]
+    static let userSelectableValues = [RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeSpacer]
 }
 
 //different types of shapes rings can render in
@@ -72,9 +72,8 @@ class ClockRingSetting: NSObject {
         var typeDescription = ""
         
         if (nodeType == RingTypes.RingTypeShapeNode)  { typeDescription = "Shape" }
-        if (nodeType == RingTypes.RingTypeTextNode)  { typeDescription = "Number Text" }
-        if (nodeType == RingTypes.RingTypeTextRotatingNode)  { typeDescription = "Number Text" }
-        if (nodeType == RingTypes.RingTypeCircle )  { typeDescription = "Circle Shape" }
+        if (nodeType == RingTypes.RingTypeTextNode)  { typeDescription = "Text" }
+        if (nodeType == RingTypes.RingTypeTextRotatingNode)  { typeDescription = "Rotating Text" }
         if (nodeType == RingTypes.RingTypeSpacer )  { typeDescription = "Empty Space" }
         
         return typeDescription
