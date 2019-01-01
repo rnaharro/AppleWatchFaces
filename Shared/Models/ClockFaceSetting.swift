@@ -14,6 +14,8 @@ import SpriteKit
 class ClockFaceSetting: NSObject {
     
     func applyDecoratorTheme( _ theme: ClockDecoratorTheme) {
+        self.ringRenderShape = theme.ringRenderShape
+        
         //set the theme title in case we want to display it in the form
         self.hourHandType = theme.hourHandType
         self.minuteHandType = theme.minuteHandType
@@ -26,7 +28,7 @@ class ClockFaceSetting: NSObject {
         self.ringSettings = theme.ringSettings
     }
     
-    //NOTE: ANY CHANGES HERE PROBABLY NEED TO BE MADE IN DECORATOR THEMES
+    //NOTE: ANY CHANGES HERE MIGHT NEED TO BE MADE IN DECORATOR THEMES
     
     var minuteHandMaterialName: String
     var secondHandMaterialName: String

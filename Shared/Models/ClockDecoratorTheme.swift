@@ -16,6 +16,7 @@ class ClockDecoratorTheme: NSObject {
     var title:String
     
     var faceBackgroundType:FaceBackgroundTypes
+    var ringRenderShape:RingRenderShapes
     
     // types
     var hourHandType:HourHandTypes
@@ -36,6 +37,13 @@ class ClockDecoratorTheme: NSObject {
         self.title = jsonObj["title"].stringValue
         
         self.faceBackgroundType = FaceBackgroundTypes(rawValue: jsonObj["faceBackgroundType"].stringValue)!
+        
+        if (jsonObj["ringRenderShape"] != JSON.null) {
+            self.ringRenderShape = RingRenderShapes(rawValue: jsonObj["ringRenderShape"].stringValue)!
+        } else {
+            self.ringRenderShape = .RingRenderShapeCircle
+        }
+        
         self.hourHandType = HourHandTypes(rawValue: jsonObj["hourHandType"].stringValue)!
         self.minuteHandType = MinuteHandTypes(rawValue: jsonObj["minuteHandType"].stringValue)!
         self.secondHandType = SecondHandTypes(rawValue: jsonObj["secondHandType"].stringValue)!
