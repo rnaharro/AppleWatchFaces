@@ -24,6 +24,7 @@ class ClockFaceSetting: NSObject {
         self.minuteHandMovement = theme.minuteHandMovement
         self.secondHandMovement = theme.secondHandMovement
         self.shouldShowRomanNumeralText = theme.shouldShowRomanNumeralText
+        self.shouldShowHandOutlines = theme.shouldShowHandOutlines
         
         self.ringSettings = theme.ringSettings
     }

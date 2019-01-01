@@ -22,6 +22,9 @@ class ClockDecoratorTheme: NSObject {
     var hourHandType:HourHandTypes
     var minuteHandType:MinuteHandTypes
     var secondHandType:SecondHandTypes
+    var shouldShowHandOutlines: Bool
+    
+    //
     
     //options
     var minuteHandMovement:MinuteHandMovements
@@ -52,6 +55,12 @@ class ClockDecoratorTheme: NSObject {
         self.minuteHandType = MinuteHandTypes(rawValue: jsonObj["minuteHandType"].stringValue)!
         self.secondHandType = SecondHandTypes(rawValue: jsonObj["secondHandType"].stringValue)!
         
+        if (jsonObj["shouldShowHandOutlines"] != JSON.null) {
+            self.shouldShowHandOutlines = jsonObj[ "shouldShowHandOutlines" ].boolValue
+        } else {
+            self.shouldShowHandOutlines = false
+        }
+        
         if (jsonObj["minuteHandMovement"] != JSON.null) {
             self.minuteHandMovement = MinuteHandMovements(rawValue: jsonObj["minuteHandMovement"].stringValue)!
         } else {
@@ -59,6 +68,7 @@ class ClockDecoratorTheme: NSObject {
         }
         self.secondHandMovement = SecondHandMovements(rawValue: jsonObj["secondHandMovement"].stringValue)!
         self.shouldShowRomanNumeralText = jsonObj[ "shouldShowRomanNumeralText" ].boolValue
+        
         
         // parse the ringSettings
         self.ringSettings = [ClockRingSetting]()
