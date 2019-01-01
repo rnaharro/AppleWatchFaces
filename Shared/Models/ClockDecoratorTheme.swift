@@ -36,7 +36,11 @@ class ClockDecoratorTheme: NSObject {
     init(jsonObj: JSON ) {
         self.title = jsonObj["title"].stringValue
         
-        self.faceBackgroundType = FaceBackgroundTypes(rawValue: jsonObj["faceBackgroundType"].stringValue)!
+        if (jsonObj["faceBackgroundType"] != JSON.null) {
+            self.faceBackgroundType = FaceBackgroundTypes(rawValue: jsonObj["faceBackgroundType"].stringValue)!
+        } else {
+            self.faceBackgroundType = .FaceBackgroundTypeFilled
+        }
         
         if (jsonObj["ringRenderShape"] != JSON.null) {
             self.ringRenderShape = RingRenderShapes(rawValue: jsonObj["ringRenderShape"].stringValue)!
