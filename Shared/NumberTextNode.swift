@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import SceneKit
+import Foundation
 
 enum NumberTextTypes: String {
     case NumberTextTypeModernInteger,
@@ -154,15 +155,31 @@ class NumberTextNode: SKNode {
         }
         
         let hourText = SKLabelNode.init(text: hourString)
+        hourText.horizontalAlignmentMode = .center
+        hourText.verticalAlignmentMode = .center
         
         let fontName = fontNameForNumberTextType(numberTextType)
+        
+        //normal version
+        
         hourText.fontName = fontName
         hourText.fontSize = CGFloat( Float(textSize) / textScale )
         hourText.fontColor = fillColor
         hourText.color = fillColor
         
-        hourText.horizontalAlignmentMode = .center
-        hourText.verticalAlignmentMode = .center
+        //attributed version
+        
+//        let strokeWidth = -1 * textSize
+//        debugPrint("strokeW: " + strokeWidth.description)
+//
+//        let attributes: [NSAttributedString.Key : Any] = [
+//            .strokeWidth: round(strokeWidth),
+//            .strokeColor: SKColor.white,
+//            .foregroundColor: fillColor,
+//            .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+//            ]
+//        hourText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
+//
 
         self.addChild(hourText)
     }
