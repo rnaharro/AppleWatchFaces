@@ -199,13 +199,23 @@ class WatchFaceNode: SKShapeNode {
                     numberToRender = numberToRender * ( 12 / patternTotal )
                 }
                 
+                //optional stroke color
+                var strokeColor:SKColor? = nil
+                if (ringSettings.shouldShowTextOutline) {
+                    let strokeMaterial = clockFaceSettings.ringMaterials[ringSettings.textOutlineDesiredThemeColorIndex]
+                    strokeColor = SKColor.init(hexString: strokeMaterial)
+                }
+                
                 outerRingNode  = NumberTextNode.init(
                     numberTextType: ringSettings.textType,
                     textSize: ringSettings.textSize,
                     currentNum: numberToRender,
                     totalNum: patternTotal,
                     shouldDisplayRomanNumerals: clockFaceSettings.shouldShowRomanNumeralText,
-                    pivotMode: 0, fillColor: SKColor.init(hexString: material))
+                    pivotMode: 0,
+                    fillColor: SKColor.init(hexString: material),
+                    strokeColor: strokeColor
+                )
                 
                 ringNode.name = "textRingNode"
                 

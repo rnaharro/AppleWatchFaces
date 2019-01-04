@@ -139,7 +139,9 @@ class ClockRingSetting: NSObject {
     var indicatorSize: Float
     
     var textType: NumberTextTypes
-    var textSize : Float
+    var textSize: Float
+    var shouldShowTextOutline: Bool
+    var textOutlineDesiredThemeColorIndex: Int = 0
     
     //MARK: init
     
@@ -154,7 +156,9 @@ class ClockRingSetting: NSObject {
         indicatorSize: Float,
         
         textType: NumberTextTypes,
-        textSize: Float
+        textSize: Float,
+        shouldShowTextOutline: Bool,
+        textOutlineDesiredThemeColorIndex: Int
         )
     {
         self.ringType = ringType
@@ -169,6 +173,8 @@ class ClockRingSetting: NSObject {
         
         self.textType = textType
         self.textSize = textSize
+        self.shouldShowTextOutline = shouldShowTextOutline
+        self.textOutlineDesiredThemeColorIndex = textOutlineDesiredThemeColorIndex
         
         super.init()
     }
@@ -186,7 +192,10 @@ class ClockRingSetting: NSObject {
             indicatorSize: 0.15,
             
             textType:  NumberTextTypes.NumberTextTypeHelvica,
-            textSize: 0.2)
+            textSize: 0.2,
+            shouldShowTextOutline: false,
+            textOutlineDesiredThemeColorIndex: 0
+            )
     }
     
     //MARK: serialization
@@ -196,10 +205,12 @@ class ClockRingSetting: NSObject {
         
         //print("minuteTextType", jsonObj["minuteTextType"].stringValue)
         
-        var ringMaterialDesiredThemeColorIndex = 0
-        //if jsonObj[ "ringMaterialDesiredThemeColorIndex" ] {
-            ringMaterialDesiredThemeColorIndex = jsonObj[ "ringMaterialDesiredThemeColorIndex" ].intValue
-        //}
+        let ringMaterialDesiredThemeColorIndex = jsonObj[ "ringMaterialDesiredThemeColorIndex" ].intValue
+
+        var textOutlineDesiredThemeColorIndex = 0
+        if (jsonObj["textOutlineDesiredThemeColorIndex"] != JSON.null) {
+            textOutlineDesiredThemeColorIndex = jsonObj[ "textOutlineDesiredThemeColorIndex" ].intValue
+        }
         
         self.init(
             ringType: RingTypes(rawValue: jsonObj["ringType"].stringValue)!,
@@ -214,7 +225,9 @@ class ClockRingSetting: NSObject {
             indicatorSize : Float( jsonObj[ "indicatorSize" ].floatValue ),
             
             textType: NumberTextTypes(rawValue: jsonObj["textType"].stringValue)!,
-            textSize: Float( jsonObj[ "textSize" ].floatValue )
+            textSize: Float( jsonObj[ "textSize" ].floatValue ),
+            shouldShowTextOutline: jsonObj[ "shouldShowTextOutline" ].boolValue,
+            textOutlineDesiredThemeColorIndex: textOutlineDesiredThemeColorIndex
         )
     }
     
@@ -234,6 +247,9 @@ class ClockRingSetting: NSObject {
         
         serializedDict[ "textType" ] = self.textType.rawValue as AnyObject
         serializedDict[ "textSize" ] = self.textSize.description as AnyObject
+        
+        serializedDict[ "shouldShowTextOutline" ] = NSNumber.init(value: self.shouldShowTextOutline as Bool)
+        serializedDict[ "textOutlineDesiredThemeColorIndex" ] = self.textOutlineDesiredThemeColorIndex.description as AnyObject
         
         return serializedDict as NSDictionary
     }

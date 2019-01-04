@@ -137,7 +137,7 @@ class NumberTextNode: SKNode {
     }
     
     //used when generating node for clock faces ( the numbers )
-    init(numberTextType: NumberTextTypes, textSize: Float, currentNum: Int, totalNum: Int, shouldDisplayRomanNumerals: Bool, pivotMode: Int, fillColor: SKColor) {
+    init(numberTextType: NumberTextTypes, textSize: Float, currentNum: Int, totalNum: Int, shouldDisplayRomanNumerals: Bool, pivotMode: Int, fillColor: SKColor, strokeColor: SKColor? ) {
         
         super.init()
 
@@ -160,26 +160,26 @@ class NumberTextNode: SKNode {
         
         let fontName = fontNameForNumberTextType(numberTextType)
         
-        //normal version
-        
-        hourText.fontName = fontName
-        hourText.fontSize = CGFloat( Float(textSize) / textScale )
-        hourText.fontColor = fillColor
-        hourText.color = fillColor
-        
         //attributed version
+        let strokeWidth = -2 * textSize
+        debugPrint("strokeW: " + strokeWidth.description)
+
+        var attributes: [NSAttributedString.Key : Any] = [
+                .foregroundColor: fillColor,
+                .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+            ]
+        if strokeColor != nil {
+            attributes[.strokeWidth] = round(strokeWidth)
+            attributes[.strokeColor] = strokeColor
+        }
+        hourText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
         
-//        let strokeWidth = -1 * textSize
-//        debugPrint("strokeW: " + strokeWidth.description)
+//        //normal version
 //
-//        let attributes: [NSAttributedString.Key : Any] = [
-//            .strokeWidth: round(strokeWidth),
-//            .strokeColor: SKColor.white,
-//            .foregroundColor: fillColor,
-//            .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
-//            ]
-//        hourText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
-//
+//        hourText.fontName = fontName
+//        hourText.fontSize = CGFloat( Float(textSize) / textScale )
+//        hourText.fontColor = fillColor
+//        hourText.color = fillColor
 
         self.addChild(hourText)
     }
