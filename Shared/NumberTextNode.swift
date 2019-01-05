@@ -162,7 +162,7 @@ class NumberTextNode: SKNode {
         
         //attributed version
         let strokeWidth = -2 * textSize
-        debugPrint("strokeW: " + strokeWidth.description)
+        //debugPrint("strokeW: " + strokeWidth.description)
 
         var attributes: [NSAttributedString.Key : Any] = [
                 .foregroundColor: fillColor,
