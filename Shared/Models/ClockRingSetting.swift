@@ -1,6 +1,6 @@
 //
 //  ClockRingSetting.swift
-//  SwissClock
+//  AppleWatchFaces
 //
 //  Created by Mike Hill on 3/10/16.
 //  Copyright © 2016 Mike Hill. All rights reserved.

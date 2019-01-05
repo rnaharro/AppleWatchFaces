@@ -1,6 +1,6 @@
 //
 //  MinuteHandNode.swift
-//  SwissClock
+//  AppleWatchFaces
 //
 //  Created by Mike Hill on 11/11/15.
 //  Copyright © 2015 Mike Hill. All rights reserved.

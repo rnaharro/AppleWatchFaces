@@ -1,6 +1,6 @@
 //
 //  ClockDecoratorTheme.swift
-//  SwissClock
+//  AppleWatchFaces
 //
 //  Created by Mike Hill on 11/12/15.
 //  Copyright © 2015 Mike Hill. All rights reserved.

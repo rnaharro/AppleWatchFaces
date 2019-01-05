@@ -1,6 +1,6 @@
 //
 //  StringExtension.swift
-//  SwissClock
+//  AppleWatchFaces
 //
 //  Created by Michael Hill on 12/18/16.
 //  Copyright © 2016 Mike Hill. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  UserClockSetting.swift
-//  SwissClock
+//  AppleWatchFaces
 //
 //  Created by Michael Hill on 12/29/15.
 //  Copyright © 2015 Mike Hill. All rights reserved.
