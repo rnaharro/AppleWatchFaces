@@ -210,6 +210,12 @@
 		31D8632121DDB712005BCB6F /* decoratorTheme-oldtimes2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31D8630821DDB712005BCB6F /* decoratorTheme-oldtimes2.jpg */; };
 		31D8632221DDB712005BCB6F /* decoratorTheme-steampunk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31D8630921DDB712005BCB6F /* decoratorTheme-steampunk.jpg */; };
 		31D8632321DDC0C8005BCB6F /* NumberTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D0218BD63E00DE6429 /* NumberTextNode.swift */; };
+		31D8632621E15CEB005BCB6F /* secondHand-fancyRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8632521E15CEB005BCB6F /* secondHand-fancyRed.png */; };
+		31D8632721E15DEC005BCB6F /* secondHand-fancyRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8632521E15CEB005BCB6F /* secondHand-fancyRed.png */; };
+		31D8633321E165FA005BCB6F /* minuteHand-fancyWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8633021E165FA005BCB6F /* minuteHand-fancyWhite.png */; };
+		31D8633421E165FA005BCB6F /* minuteHand-fancyWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8633021E165FA005BCB6F /* minuteHand-fancyWhite.png */; };
+		31D8633521E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8633221E165FA005BCB6F /* hourHand-fancyWhite.png */; };
+		31D8633621E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8633221E165FA005BCB6F /* hourHand-fancyWhite.png */; };
 		31E5BC4B21A39DAF00C1B35E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		31E5BC4C21A39DAF00C1B35E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
@@ -481,6 +487,9 @@
 		31D8630721DDB712005BCB6F /* decoratorTheme-bigandbold.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "decoratorTheme-bigandbold.jpg"; sourceTree = "<group>"; };
 		31D8630821DDB712005BCB6F /* decoratorTheme-oldtimes2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "decoratorTheme-oldtimes2.jpg"; sourceTree = "<group>"; };
 		31D8630921DDB712005BCB6F /* decoratorTheme-steampunk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "decoratorTheme-steampunk.jpg"; sourceTree = "<group>"; };
+		31D8632521E15CEB005BCB6F /* secondHand-fancyRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondHand-fancyRed.png"; sourceTree = "<group>"; };
+		31D8633021E165FA005BCB6F /* minuteHand-fancyWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minuteHand-fancyWhite.png"; sourceTree = "<group>"; };
+		31D8633221E165FA005BCB6F /* hourHand-fancyWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hourHand-fancyWhite.png"; sourceTree = "<group>"; };
 		31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Loading.swift"; sourceTree = "<group>"; };
 		31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBackgroundNode.swift; sourceTree = "<group>"; };
@@ -656,6 +665,9 @@
 		31A5F7EA2196692B000F1677 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				31D8633121E165FA005BCB6F /* hourHands */,
+				31D8632F21E165FA005BCB6F /* minuteHands */,
+				31D8632421E15CB0005BCB6F /* secondHands */,
 				31C05DA621A734120021AEAB /* defaultThumbnails */,
 				31F4F1B9219A57CA0050177A /* Materials */,
 				31A5F7F12196820D000F1677 /* Fonts */,
@@ -778,6 +790,30 @@
 				310BA1DD21B0EA6B00A146B7 /* colorTheme-yellowglow.jpg */,
 			);
 			path = defaultThumbnails;
+			sourceTree = "<group>";
+		};
+		31D8632421E15CB0005BCB6F /* secondHands */ = {
+			isa = PBXGroup;
+			children = (
+				31D8632521E15CEB005BCB6F /* secondHand-fancyRed.png */,
+			);
+			path = secondHands;
+			sourceTree = "<group>";
+		};
+		31D8632F21E165FA005BCB6F /* minuteHands */ = {
+			isa = PBXGroup;
+			children = (
+				31D8633021E165FA005BCB6F /* minuteHand-fancyWhite.png */,
+			);
+			path = minuteHands;
+			sourceTree = "<group>";
+		};
+		31D8633121E165FA005BCB6F /* hourHands */ = {
+			isa = PBXGroup;
+			children = (
+				31D8633221E165FA005BCB6F /* hourHand-fancyWhite.png */,
+			);
+			path = hourHands;
 			sourceTree = "<group>";
 		};
 		31EF9991219E602D00BB54E7 /* SettingsView */ = {
@@ -992,6 +1028,7 @@
 				31061F302192657200EF511B /* Colors.plist in Resources */,
 				31D8631E21DDB712005BCB6F /* decoratorTheme-retrodiner.jpg in Resources */,
 				3153880E21CB462D00A972BC /* secondhandAnimation-smooth.jpg in Resources */,
+				31D8633521E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */,
 				314AFC3221D5FC3A00C1208E /* 7D4137F8-47B6-4314-AC26-56B5411E86FC.jpg in Resources */,
 				314AFC3F21D5FC3A00C1208E /* A838242D-062F-45C6-B638-9CD0278B6560.jpg in Resources */,
 				31D8631721DDB712005BCB6F /* decoratorTheme-allnumbers.jpg in Resources */,
@@ -1042,6 +1079,7 @@
 				31F4F1CD219A5F1C0050177A /* watchGears.jpg in Resources */,
 				3153880D21CB462D00A972BC /* secondhandAnimation-oscillate.jpg in Resources */,
 				314AFC2E21D5FC3A00C1208E /* 2ACC867D-83A8-4C10-B023-8F97E0AD2A3C.jpg in Resources */,
+				31D8632621E15CEB005BCB6F /* secondHand-fancyRed.png in Resources */,
 				31A5F80A21968223000F1677 /* IRONLOUNGE.TTF in Resources */,
 				31D8631021DDB712005BCB6F /* decoratorTheme-fancysquare.jpg in Resources */,
 				314AFC4021D5FC3A00C1208E /* 7A470717-7375-46BA-9C45-FAA721BA432E.jpg in Resources */,
@@ -1060,6 +1098,7 @@
 				314AFC3721D5FC3A00C1208E /* 376BB937-10F8-4449-9CD5-D370D2AB648E.jpg in Resources */,
 				31F4F1C6219A5CA60050177A /* wallpaper70s.jpg in Resources */,
 				31A5F80421968223000F1677 /* GERMANICA.TTF in Resources */,
+				31D8633321E165FA005BCB6F /* minuteHand-fancyWhite.png in Resources */,
 				31A5F80C21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
 				31F4F1C4219A5C840050177A /* light-wood.jpg in Resources */,
 				314AFC3E21D5FC3A00C1208E /* 4ADDB454-4DA8-42ED-90FC-B1BDD7E2A926.jpg in Resources */,
@@ -1114,13 +1153,16 @@
 				31A5F80D21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
 				31A5F80321968223000F1677 /* RATIONALINT.TTF in Resources */,
 				31F4F1D0219A6B030050177A /* vinylAlbum.jpg in Resources */,
+				31D8633421E165FA005BCB6F /* minuteHand-fancyWhite.png in Resources */,
 				31F4F1D5219A6B030050177A /* light-wood.jpg in Resources */,
 				31F4F1D2219A6B030050177A /* brass.jpg in Resources */,
 				31EF99A621A21A2200BB54E7 /* Themes.json in Resources */,
 				318809102178172600585AB1 /* faceBackground.png in Resources */,
 				31F4F1D1219A6B030050177A /* watchGears.jpg in Resources */,
 				31A5F80F21968223000F1677 /* CONERIASCRIPT.TTF in Resources */,
+				31D8633621E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */,
 				318809002178166B00585AB1 /* Assets.xcassets in Resources */,
+				31D8632721E15DEC005BCB6F /* secondHand-fancyRed.png in Resources */,
 				31A5F80921968223000F1677 /* DINPRO-LIGHT.TTF in Resources */,
 				31EF99A521A21A1300BB54E7 /* Settings.json in Resources */,
 				318A929521D3B0F30060D89B /* brushedsteel.jpg in Resources */,

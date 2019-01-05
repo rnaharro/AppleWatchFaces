@@ -11,10 +11,10 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandNodeTypeNone
+    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandNodeTypeNone
     
-    static let randomizableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandNodeTypeNone]
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandNodeTypeNone]
+    static let randomizableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandNodeTypeNone]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandNodeTypeNone]
     
     static func random() -> SecondHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -47,6 +47,9 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == SecondHandTypes.SecondHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
         if (nodeType == SecondHandTypes.SecondHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
         if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
+        
+        // IMAGE BASED EXAMPLES
+        if (nodeType == SecondHandTypes.SecondHandTypeFancyRed)  { typeDescription = "Image: Fancy Red" }
         
         return typeDescription
     }
@@ -114,6 +117,19 @@ class SecondHandNode: SKSpriteNode {
         
         if (secondHandType == SecondHandTypes.SecondHandNodeTypeNone) {
             // do nothing ? need to erase ?
+        }
+        
+        if (secondHandType == SecondHandTypes.SecondHandTypeFancyRed) {
+            let im = UIImage.init(named: "secondHand-fancyRed.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                textureNode.setScale(0.75)
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                self.addChild(textureNode)
+            }
+            
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeSphere) {

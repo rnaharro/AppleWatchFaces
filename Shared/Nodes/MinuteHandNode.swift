@@ -11,10 +11,10 @@ import UIKit
 import SpriteKit
 
 enum MinuteHandTypes: String {
-    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere
+    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeNone]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -46,6 +46,9 @@ class MinuteHandNode: SKSpriteNode {
         if (nodeType == MinuteHandTypes.MinuteHandTypeBoxy)  { typeDescription = "Boxy" }
         if (nodeType == MinuteHandTypes.MinuteHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
         if (nodeType == MinuteHandTypes.MinuteHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
+        
+        //image based example
+        if (nodeType == MinuteHandTypes.MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
         
         return typeDescription
     }
@@ -89,6 +92,22 @@ class MinuteHandNode: SKSpriteNode {
     
         super.init(texture: nil, color: SKColor.white, size: CGSize())
         self.name = "minuteHand"
+        
+        if (minuteHandType == MinuteHandTypes.MinuteHandTypeImageFancyWhite) {
+            let im = UIImage.init(named: "minuteHand-fancyWhite.png")
+            if let textureImage = im {
+                let texture = SKTexture.init(image: textureImage)
+                let textureNode = SKSpriteNode.init(texture: texture)
+                
+                //this one is generated too big, scale it down
+                textureNode.setScale(0.165)
+                //position it to center in for rotation with time
+                textureNode.position = CGPoint.init(x: 0, y: 42.0)
+                textureNode.color = SKColor.init(hexString: material)
+                textureNode.colorBlendFactor = 1.0
+                self.addChild(textureNode)
+            }
+        }
         
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeSphere) {
             
