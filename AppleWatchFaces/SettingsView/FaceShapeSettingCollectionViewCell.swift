@@ -20,9 +20,11 @@ class FaceShapeSettingCollectionViewCell: UICollectionViewCell {
                 title.textColor = UIColor.init(hexString: AppUISettings.settingHighlightColor)
                 thumbnail.layer.borderWidth = AppUISettings.settingLineWidthBeforeScale
                 thumbnail.layer.borderColor = UIColor.init(hexString: AppUISettings.settingHighlightColor ).cgColor
+                thumbnail.layer.cornerRadius = 14.0
             } else {
                 title.textColor = UIColor.init(hexString: "#FFFFFFFF")
                 thumbnail.layer.borderWidth = 0.0
+                thumbnail.layer.cornerRadius = 14.0
             }
             
         }

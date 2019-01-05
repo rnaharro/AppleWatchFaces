@@ -53,18 +53,21 @@ class FaceShapeSettingSettingsTableViewCell: WatchSettingsSelectableTableViewCel
         let shape = RingRenderShapes.userSelectableValues[indexPath.row]
         cell.title.text = ClockRingSetting.descriptionForRingRenderShapes(shape)
         
-//        if secondHandMovement == .SecondHandMovementSmooth {
-//            cell.thumbnail.image = UIImage.init(named: "secondhandAnimation-smooth.jpg")
-//        }
-//        if secondHandMovement == .SecondHandMovementStep {
-//            cell.thumbnail.image = UIImage.init(named: "secondhandAnimation-step.jpg")
-//        }
-//        if secondHandMovement == .SecondHandMovementOscillate {
-//            cell.thumbnail.image = UIImage.init(named: "secondhandAnimation-oscillate.jpg")
-//        }
-//        if secondHandMovement == .SecondHandMovementStepOver {
-//            cell.thumbnail.image = UIImage.init(named: "secondhandAnimation-stepOver.jpg")
-//        }
+        //design path in layer
+        let shapeLayer = CAShapeLayer()
+        let path = WatchFaceNode.getShapePath( ringRenderShape: shape )
+    
+        path.apply(CGAffineTransform.init(scaleX: 0.35, y: 0.35))  //scale/stratch
+        path.apply(CGAffineTransform.init(translationX: 50.0, y: 58.0)) //repos
+        
+        let fillColor = SKColor.init(hexString: "#ddddddff")
+        
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = SKColor.white.cgColor
+        shapeLayer.fillColor = fillColor.cgColor
+        shapeLayer.lineWidth = 2.0
+        
+        cell.layer.addSublayer(shapeLayer)
         
         return cell
     }
