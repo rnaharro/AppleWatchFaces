@@ -392,6 +392,7 @@
 		314AFC4A21D5FC4400C1208E /* ED7929C5-3717-4DF9-A99E-2119BF36FA0C.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ED7929C5-3717-4DF9-A99E-2119BF36FA0C.jpg"; sourceTree = "<group>"; };
 		314AFC4B21D5FC4500C1208E /* E6F3C2AC-38DD-4825-9D4B-6E203AD3A097.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "E6F3C2AC-38DD-4825-9D4B-6E203AD3A097.jpg"; sourceTree = "<group>"; };
 		314AFC5421D5FCFA00C1208E /* D1896EB5-1C6E-47D6-8629-2881C0770D58.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "D1896EB5-1C6E-47D6-8629-2881C0770D58.jpg"; sourceTree = "<group>"; };
+		315361F221E62854003E1BFC /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		3153880121CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondHandAnimationSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteHandAnimationSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -430,7 +431,6 @@
 		318A92AA21D3C2840060D89B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Decorators.storyboard; sourceTree = "<group>"; };
 		319095F921CC898100F71BC6 /* BezierPath+Length.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Length.swift"; sourceTree = "<group>"; };
 		319095FA21CC898100F71BC6 /* PathElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathElement.swift; sourceTree = "<group>"; };
-		319B470A21C705FB00451E9E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		319B470B21C705FB00451E9E /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		31A5F7EE21966CED000F1677 /* MathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathFunctions.swift; sourceTree = "<group>"; };
 		31A5F7F221968221000F1677 /* BLACKROSE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLACKROSE.TTF; sourceTree = "<group>"; };
@@ -590,7 +590,7 @@
 		318808C4217815E600585AB1 = {
 			isa = PBXGroup;
 			children = (
-				319B470A21C705FB00451E9E /* README.md */,
+				315361F221E62854003E1BFC /* readme.md */,
 				319B470B21C705FB00451E9E /* TODO.md */,
 				3123628B217AAAF000E78EFC /* Shared */,
 				318808CF217815E600585AB1 /* AppleWatchFaces */,
