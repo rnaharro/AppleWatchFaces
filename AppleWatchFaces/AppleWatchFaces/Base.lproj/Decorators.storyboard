@@ -102,8 +102,50 @@
                                     <outlet property="valueSlider" destination="dRF-vU-4ui" id="6o7-re-scx"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="decoratorEditorDigitalTimeID" rowHeight="80" id="HLc-rN-E4q" customClass="DecoratorDigitalTimeTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="108" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HLc-rN-E4q" id="yd9-YM-Igo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Part" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc4-WY-1ps">
+                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="BRj-GC-BXm"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ody-Zm-1eV">
+                                            <rect key="frame" x="15" y="40" width="345" height="31"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="S31-F3-aom"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="sliderValueDidChangeWithSender:" destination="HLc-rN-E4q" eventType="valueChanged" id="zd3-Zr-tqb"/>
+                                            </connections>
+                                        </slider>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pc4-WY-1ps" firstAttribute="trailing" secondItem="yd9-YM-Igo" secondAttribute="trailingMargin" id="0WS-RK-VS2"/>
+                                        <constraint firstItem="pc4-WY-1ps" firstAttribute="top" secondItem="yd9-YM-Igo" secondAttribute="topMargin" id="GrE-XN-ju0"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ody-Zm-1eV" secondAttribute="bottom" constant="9.5" id="Inj-9k-dkb"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ody-Zm-1eV" secondAttribute="trailing" constant="17" id="Lbx-eP-Qag"/>
+                                        <constraint firstItem="Ody-Zm-1eV" firstAttribute="leading" secondItem="yd9-YM-Igo" secondAttribute="leading" constant="17" id="qeB-gk-o7K"/>
+                                        <constraint firstItem="pc4-WY-1ps" firstAttribute="leading" secondItem="yd9-YM-Igo" secondAttribute="leadingMargin" id="yPQ-ou-9V6"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="titleLabel" destination="pc4-WY-1ps" id="mBZ-gh-kEy"/>
+                                    <outlet property="valueSlider" destination="Ody-Zm-1eV" id="AxI-s2-8nl"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="decoratorEditorShapeID" rowHeight="160" id="P1M-Tj-lbH" customClass="DecoratorShapeTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="108" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="188" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P1M-Tj-lbH" id="oKr-Ta-DNs">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
@@ -200,7 +242,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="decoratorEditorTextID" rowHeight="270" id="H70-Tl-87l" customClass="DecoratorTextTableViewCell" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="268" width="375" height="270"/>
+                                <rect key="frame" x="0.0" y="348" width="375" height="270"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H70-Tl-87l" id="hyQ-8d-bYQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="269.5"/>

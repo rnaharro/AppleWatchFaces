@@ -11,9 +11,9 @@ import SpriteKit
 
 //different types of things that can be assigned to a ring on the clock face
 enum RingTypes: String {
-    case RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeSpacer
+    case RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeDigitalTime, RingTypeSpacer
     
-    static let userSelectableValues = [RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeSpacer]
+    static let userSelectableValues = [RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeDigitalTime, RingTypeSpacer]
 }
 
 //different types of shapes rings can render in
@@ -74,6 +74,8 @@ class ClockRingSetting: NSObject {
         if (nodeType == RingTypes.RingTypeShapeNode)  { typeDescription = "Shape" }
         if (nodeType == RingTypes.RingTypeTextNode)  { typeDescription = "Text" }
         if (nodeType == RingTypes.RingTypeTextRotatingNode)  { typeDescription = "Rotating Text" }
+        if (nodeType == RingTypes.RingTypeDigitalTime)  { typeDescription = "Digital Time" }
+        
         if (nodeType == RingTypes.RingTypeSpacer )  { typeDescription = "Empty Space" }
         
         return typeDescription
@@ -196,6 +198,24 @@ class ClockRingSetting: NSObject {
             shouldShowTextOutline: false,
             textOutlineDesiredThemeColorIndex: 0
             )
+    }
+    
+    static func defaultsDigitalTime() -> ClockRingSetting {
+        return ClockRingSetting.init(
+            ringType: RingTypes.RingTypeShapeNode,
+            ringMaterialDesiredThemeColorIndex: 0,
+            ringWidth: 0,
+            ringPattern: [],
+            ringPatternTotal: 0,
+            
+            indicatorType: FaceIndicatorTypes.FaceIndicatorTypeNone,
+            indicatorSize: 0.15,
+            
+            textType:  NumberTextTypes.NumberTextTypeHelvica,
+            textSize: 0.2,
+            shouldShowTextOutline: false,
+            textOutlineDesiredThemeColorIndex: 0
+        )
     }
     
     //MARK: serialization

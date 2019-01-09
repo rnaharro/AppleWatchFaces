@@ -127,8 +127,13 @@ class DecoratorPreviewController: UIViewController {
     }
     
     func addNewItem( ringType: RingTypes) {
+        var newItem = ClockRingSetting.defaults()
         
-        let newItem = ClockRingSetting.defaults()
+        //TODO: eventually have better defaults for other types
+        if ringType == .RingTypeDigitalTime {
+            newItem = ClockRingSetting.defaultsDigitalTime()
+        }
+        
         newItem.ringType = ringType
         SettingsViewController.currentClockSetting.clockFaceSettings!.ringSettings.append(newItem)
         redraw(clockSetting: SettingsViewController.currentClockSetting)

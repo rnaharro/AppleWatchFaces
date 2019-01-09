@@ -216,6 +216,7 @@
 		31D8633421E165FA005BCB6F /* minuteHand-fancyWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8633021E165FA005BCB6F /* minuteHand-fancyWhite.png */; };
 		31D8633521E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8633221E165FA005BCB6F /* hourHand-fancyWhite.png */; };
 		31D8633621E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 31D8633221E165FA005BCB6F /* hourHand-fancyWhite.png */; };
+		31D8633821E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */; };
 		31E5BC4B21A39DAF00C1B35E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		31E5BC4C21A39DAF00C1B35E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */; };
@@ -490,6 +491,7 @@
 		31D8632521E15CEB005BCB6F /* secondHand-fancyRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondHand-fancyRed.png"; sourceTree = "<group>"; };
 		31D8633021E165FA005BCB6F /* minuteHand-fancyWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minuteHand-fancyWhite.png"; sourceTree = "<group>"; };
 		31D8633221E165FA005BCB6F /* hourHand-fancyWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hourHand-fancyWhite.png"; sourceTree = "<group>"; };
+		31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorDigitalTimeTableViewCell.swift; sourceTree = "<group>"; };
 		31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		31E5BC4D21A3A0F700C1B35E /* UIImage+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Loading.swift"; sourceTree = "<group>"; };
 		31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBackgroundNode.swift; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 		3107B5D421B40681005BD26D /* DecoratorView */ = {
 			isa = PBXGroup;
 			children = (
+				31D8633721E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift */,
 				3107B5D221B40480005BD26D /* DecoratorPreviewController.swift */,
 				3107B5D021B4023B005BD26D /* DecoratorsTableViewController.swift */,
 				3107B5D921B47634005BD26D /* DecoratorTableViewCell.swift */,
@@ -1239,6 +1242,7 @@
 				3153880321CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift in Sources */,
 				3109D1DD21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift in Sources */,
 				3107B5D121B4023B005BD26D /* DecoratorsTableViewController.swift in Sources */,
+				31D8633821E590AE005BCB6F /* DecoratorDigitalTimeTableViewCell.swift in Sources */,
 				318A928921CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift in Sources */,
 				312D4C08218BCDDB008504D2 /* HourHandNode.swift in Sources */,
 				310D4A5921C0AA9000082A62 /* Collection+Safe.swift in Sources */,
