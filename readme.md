@@ -25,29 +25,33 @@
 
   Follow the installation instructions below to compile from the source and you can *side load* this application onto your phone and watch.
 
-4. **How can I create my own watch hands / background shapes?**
+4. **How can I create my own watch hands?**
 
-  Currently the watch hands are using UIKit paths, but the plan is to switch these out for loaded SVG files in a folder and load them up when the app starts. This should better allow for designers and non-developers to easily add shapes into the project. 
+  Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black wil not tint at all.  Colors in between will blend. 
+  
+5. **Can I use my own background images?**
 
-5. **How can I add my own images for use as a background in the watch faces ?**
+  Yes, tap on the camera icon in the background color picker to pull an image off the phone's camera or gallery.
+
+6. **How can I add my own images for use as a background in the watch faces ?**
 
     1. Crop the image to a square at approximately 512x512 pixels ( 72 ppi )
     2. Drop it into the **/Shared/Resources/Materials** folder
     3. Add it into the /AppleWatchFaces/Colors.plist file
     
-6. **Which versions of apple watches does this work with ?**
+9. **Which versions of apple watches does this work with ?**
 
 Any watchOS that can run spriteKit should be fine.
 
-7. **Are you planning to do complications ?**
+8. **Are you planning to do complications ?**
 
 Maybe, I've seen some open source battery / date ones. Those would be the simplest to implement. Positioning out of the way of the other things might be one initial problem to solve.
 
-8. **Are all the designs round  ?**
+9. **Are all the designs round  ?**
 
 In [PR 11](https://github.com/orff/AppleWatchFaces/pull/11) support for rounded rectangle designs was added. It it not a perfect solution for watch designs:  While it does postiion the items along a rounded rectangle path, it evenly distributes them which does not perfectly line up with the watch hands.  Also box / square shapes look weird just rotated to face the center vs. a "true" watch design which would mask the edges.  
 
-9. **What about digital clocks  ?**
+10. **What about digital clocks  ?**
 
 I haven't thought much about the interface or settings for a digital clock that would make it interesting other than font, position, or flipping animation. A flip clock or nixie tube watch face might be pretty interesting to look at.  Feel free to create an issue or wiki with your ideas.
 
