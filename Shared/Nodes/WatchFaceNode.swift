@@ -139,6 +139,21 @@ class WatchFaceNode: SKShapeNode {
         //just exit for spacer
         if (ringType == RingTypes.RingTypeSpacer) { return }
         
+        //draw any special items
+        if (ringType == RingTypes.RingTypeDigitalTime) {
+            //draw it
+            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: .NumberTextTypeDigitalMono, textSize: 0.35, horizontalPosition: .Right, verticalPosition: .Top, fillColor: SKColor.black, strokeColor: nil)
+            
+            digitalTimeNode.zPosition = 1
+            digitalTimeNode.position = CGPoint.init(x: 60, y: 120)
+            
+            ringNode.addChild(digitalTimeNode)
+            
+            return
+        }
+        
+        //draw items that loop
+        
         // exit if pattern array is empty
         if (patternArray.count == 0) { return }
         
