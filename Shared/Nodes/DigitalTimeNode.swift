@@ -11,18 +11,6 @@ import SpriteKit
 import SceneKit
 import Foundation
 
-enum DigitalTimeVerticalPositionTypes: String {
-    case Top,
-    Centered,
-    Bottom
-}
-
-enum DigitalTimeHorizontalPositionTypes: String {
-    case Left,
-    Centered,
-    Right
-}
-
 class DigitalTimeNode: SKNode {
     
     var secondHandTimer = Timer()
@@ -58,8 +46,7 @@ class DigitalTimeNode: SKNode {
     }
     
     //used when generating node for digital time ( a mini digital clock )
-    init(digitalTimeTextType: NumberTextTypes, textSize: Float, horizontalPosition: DigitalTimeHorizontalPositionTypes, verticalPosition: DigitalTimeVerticalPositionTypes,
-         fillColor: SKColor, strokeColor: SKColor? ) {
+    init(digitalTimeTextType: NumberTextTypes, textSize: Float, fillColor: SKColor, strokeColor: SKColor? ) {
         
         super.init()
 
@@ -91,6 +78,8 @@ class DigitalTimeNode: SKNode {
         timeText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
 
         self.addChild(timeText)
+        
+        setToTime()
         
         let duration = 0.1
         self.secondHandTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(DigitalTimeNode.secondHandMovementCheck), userInfo: nil, repeats: true)

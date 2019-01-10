@@ -136,16 +136,42 @@ class WatchFaceNode: SKShapeNode {
         ringNode.name = "ringNode"
         clockFaceNode.addChild(ringNode)
         
+        //optional stroke color
+        var strokeColor:SKColor? = nil
+        if (ringSettings.shouldShowTextOutline) {
+            let strokeMaterial = clockFaceSettings.ringMaterials[ringSettings.textOutlineDesiredThemeColorIndex]
+            strokeColor = SKColor.init(hexString: strokeMaterial)
+        }
+        
         //just exit for spacer
         if (ringType == RingTypes.RingTypeSpacer) { return }
         
         //draw any special items
         if (ringType == RingTypes.RingTypeDigitalTime) {
             //draw it
-            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: .NumberTextTypeDigitalMono, textSize: 0.35, horizontalPosition: .Right, verticalPosition: .Top, fillColor: SKColor.black, strokeColor: nil)
+            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, textSize: ringSettings.textSize, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
             
             digitalTimeNode.zPosition = 1
-            digitalTimeNode.position = CGPoint.init(x: 60, y: 120)
+            
+            var xPos:CGFloat = 0
+            var yPos:CGFloat = 0
+            let xDist = 60 * CGFloat(currentDistance)
+            let yDist = 120 * CGFloat(currentDistance)
+            
+            if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
+                xPos = -xDist
+            }
+            if (ringSettings.ringStaticItemHorizontalPosition == .Right) {
+                xPos = xDist
+            }
+            if (ringSettings.ringStaticItemVerticalPosition == .Top) {
+                yPos = yDist
+            }
+            if (ringSettings.ringStaticItemVerticalPosition == .Bottom) {
+                yPos = -yDist
+            }
+            //horizontalPosition: .Right, verticalPosition: .Top
+            digitalTimeNode.position = CGPoint.init(x: xPos, y: yPos)
             
             ringNode.addChild(digitalTimeNode)
             
@@ -186,13 +212,6 @@ class WatchFaceNode: SKShapeNode {
                 //force small totals to show as 12s
                 if patternTotal < 12 {
                     numberToRender = numberToRender * ( 12 / patternTotal )
-                }
-                
-                //optional stroke color
-                var strokeColor:SKColor? = nil
-                if (ringSettings.shouldShowTextOutline) {
-                    let strokeMaterial = clockFaceSettings.ringMaterials[ringSettings.textOutlineDesiredThemeColorIndex]
-                    strokeColor = SKColor.init(hexString: strokeMaterial)
                 }
                 
                 outerRingNode  = NumberTextNode.init(

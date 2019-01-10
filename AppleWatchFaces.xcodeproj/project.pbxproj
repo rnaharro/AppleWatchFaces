@@ -618,17 +618,17 @@
 				31EF99A021A2046100BB54E7 /* ChooserView */,
 				318A928C21D05F660060D89B /* SettingsOptionsViewController.swift */,
 				318808D2217815E600585AB1 /* SettingsViewController.swift */,
+				31EF9991219E602D00BB54E7 /* SettingsView */,
 				31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */,
 				31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */,
-				31EF9991219E602D00BB54E7 /* SettingsView */,
-				318808D4217815E600585AB1 /* FaceChooser.storyboard */,
+				3107B5D421B40681005BD26D /* DecoratorView */,
 				310044C421D3C5DF0019794A /* Settings.storyboard */,
+				318808D4217815E600585AB1 /* FaceChooser.storyboard */,
 				318A92A921D3C2840060D89B /* Decorators.storyboard */,
 				318808D9217815E700585AB1 /* LaunchScreen.storyboard */,
 				318808D7217815E700585AB1 /* Assets.xcassets */,
 				31061F2F2192657200EF511B /* Colors.plist */,
 				318808DC217815E700585AB1 /* Info.plist */,
-				3107B5D421B40681005BD26D /* DecoratorView */,
 			);
 			path = AppleWatchFaces;
 			sourceTree = "<group>";

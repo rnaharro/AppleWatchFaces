@@ -74,7 +74,7 @@ class DecoratorsTableViewController: UITableViewController {
                 }
                 
                 if (ringSetting.ringType == .RingTypeDigitalTime) {
-                    return 80.0
+                    return 225.0
                 }
                 
                 if (ringSetting.ringType == .RingTypeSpacer) {
