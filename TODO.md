@@ -1,6 +1,10 @@
 ## TO DO:
-- decide on a licence for github before making public
-- create screencast / gif showing the ring indicators
+
+- digital time
+    - dont animate time in ring editor, just show HH:MM:SS placeholder
+    - get font chooser working
+    - get outlines working
+
 - ring cells less / more with edit mode on by default
 
 - get ring settings / editor working

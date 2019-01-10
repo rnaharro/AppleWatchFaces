@@ -105,6 +105,24 @@ class DecoratorPreviewController: UIViewController {
             
         }
         
+        if let settingType = notification.userInfo?["settingType"] as? String, settingType == "textType", let decoratorDigitalTimeTableViewCell = notification.userInfo?["decoratorDigitalTimeTableViewCell"] as? DecoratorDigitalTimeTableViewCell  {
+            
+            let optionMenu = UIAlertController(title: nil, message: "Choose Font For Time", preferredStyle: .actionSheet)
+            optionMenu.view.tintColor = UIColor.black
+            
+            for textType in NumberTextTypes.userSelectableValues {
+                let newAction = UIAlertAction(title: NumberTextNode.descriptionForType(textType), style: .default, handler: { action in
+                    decoratorDigitalTimeTableViewCell.fontChosen(textType: textType)
+                } )
+                optionMenu.addAction(newAction)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            optionMenu.addAction(cancelAction)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        
         if let settingType = notification.userInfo?["settingType"] as? String, settingType == "textType", let decoratorTextTableViewCell = notification.userInfo?["decoratorTextTableViewCell"] as? DecoratorTextTableViewCell  {
             
                 let optionMenu = UIAlertController(title: nil, message: "Choose Font", preferredStyle: .actionSheet)

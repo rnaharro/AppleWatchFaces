@@ -27,6 +27,13 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         self.valueSlider.isHidden = false
     }
     
+    @IBAction func editType(sender: UIButton ) {
+        self.selectThisCell()
+        
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsEditDetailNotificationName, object: nil,
+                                        userInfo:["settingType":"textType", "decoratorDigitalTimeTableViewCell":self ])
+    }
+    
     @IBAction func horizontalPositionSegmentDidChange(sender: UISegmentedControl ) {
         self.selectThisCell()
         
@@ -107,10 +114,25 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         
     }
     
+    func fontChosen( textType: NumberTextTypes ) {
+        //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
+        
+        let clockRingSetting = myClockRingSetting()
+        clockRingSetting.textType = textType
+        self.titleLabel.text = titleText( clockRingSetting: clockRingSetting )
+        
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":"textType" ])
+    }
+    
+    func titleText( clockRingSetting: ClockRingSetting ) -> String {
+        return ClockRingSetting.descriptionForRingType(clockRingSetting.ringType) + " : " + NumberTextNode.descriptionForType(clockRingSetting.textType)
+    }
+    
     override func setupUIForClockRingSetting( clockRingSetting: ClockRingSetting ) {
         super.setupUIForClockRingSetting(clockRingSetting: clockRingSetting)
     
-        self.titleLabel.text = ClockRingSetting.descriptionForRingType(clockRingSetting.ringType)
+        self.titleLabel.text = titleText(clockRingSetting: clockRingSetting)
         
         valueSlider.minimumValue = AppUISettings.ringSettigsSliderTextMin
         valueSlider.maximumValue = AppUISettings.ringSettigsSliderTextMax
