@@ -24,8 +24,7 @@ enum DigitalTimeFormats: String {
         MMDD,
         DDMM,
         HHMM,
-        HHMMSS,
-        None
+        HHMMSS
     ]
 }
 

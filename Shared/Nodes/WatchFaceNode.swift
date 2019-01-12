@@ -149,7 +149,7 @@ class WatchFaceNode: SKShapeNode {
         //draw any special items
         if (ringType == RingTypes.RingTypeDigitalTime) {
             //draw it
-            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: .DD, textSize: ringSettings.textSize,
+            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: ringSettings.ringStaticTimeFormat, textSize: ringSettings.textSize,
                     horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
             
             digitalTimeNode.zPosition = 1

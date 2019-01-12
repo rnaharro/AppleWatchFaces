@@ -16,6 +16,7 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
     
     @IBOutlet var horizontalPositionSegment: UISegmentedControl!
     @IBOutlet var verticalPositionSegment: UISegmentedControl!
+    @IBOutlet var timeFormatSegment: UISegmentedControl!
     
     @IBOutlet var materialSegment: UISegmentedControl!
     
@@ -82,6 +83,16 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         clockRingSetting.ringMaterialDesiredThemeColorIndex = sender.selectedSegmentIndex
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":"ringMaterialDesiredThemeColorIndex" ])
+    }
+    
+    @IBAction func formatSegmentDidChange(sender: UISegmentedControl ) {
+        self.selectThisCell()
+        
+        //debugPrint("segment value:" + String( sender.selectedSegmentIndex ) )
+        let clockRingSetting = myClockRingSetting()
+        clockRingSetting.ringStaticTimeFormat = DigitalTimeFormats.userSelectableValues[sender.selectedSegmentIndex]
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":"ringStaticTimeFormat" ])
     }
     
     @IBAction func widthSliderValueDidChange(sender: UISlider ) {
@@ -163,8 +174,14 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         case .None:
             verticalPositionSegment.isEnabled = true //TODO: not sure what to put here
         }
-            
         
+        timeFormatSegment.removeAllSegments()
+        for (index, item) in DigitalTimeFormats.userSelectableValues.enumerated() {
+            timeFormatSegment.insertSegment(withTitle: item.rawValue, at: index, animated: false)
+        }
+        if let indexFound = DigitalTimeFormats.userSelectableValues.firstIndex(of: clockRingSetting.ringStaticTimeFormat) {
+            timeFormatSegment.selectedSegmentIndex = indexFound
+        }
         
     }
     
