@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		310044C621D3C5DF0019794A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310044C421D3C5DF0019794A /* Settings.storyboard */; };
+		3100DC9921EA98F3007423A5 /* dark-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9821EA98F3007423A5 /* dark-shadow.png */; };
+		3100DC9A21EA98F3007423A5 /* dark-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9821EA98F3007423A5 /* dark-shadow.png */; };
 		31061F302192657200EF511B /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31061F2F2192657200EF511B /* Colors.plist */; };
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
@@ -307,6 +309,7 @@
 
 /* Begin PBXFileReference section */
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		3100DC9821EA98F3007423A5 /* dark-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-shadow.png"; sourceTree = "<group>"; };
 		31061F2F2192657200EF511B /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorRingsSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -672,6 +675,7 @@
 		31A5F7EA2196692B000F1677 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3100DC9821EA98F3007423A5 /* dark-shadow.png */,
 				31D8633121E165FA005BCB6F /* hourHands */,
 				31D8632F21E165FA005BCB6F /* minuteHands */,
 				31D8632421E15CB0005BCB6F /* secondHands */,
@@ -1095,6 +1099,7 @@
 				31D8631F21DDB712005BCB6F /* decoratorTheme-hightech.jpg in Resources */,
 				31D8631221DDB712005BCB6F /* decoratorTheme-lessplanejain.jpg in Resources */,
 				310BA1FD21B0EA6E00A146B7 /* colorTheme-terra.jpg in Resources */,
+				3100DC9921EA98F3007423A5 /* dark-shadow.png in Resources */,
 				31D8630D21DDB712005BCB6F /* decoratorTheme-romannumerals.jpg in Resources */,
 				31D8630A21DDB712005BCB6F /* decoratorTheme-technical.jpg in Resources */,
 				314AFC4C21D5FC4500C1208E /* E62DEE90-240F-45F5-98CB-FB3E1C69331E.jpg in Resources */,
@@ -1169,6 +1174,7 @@
 				31A5F80F21968223000F1677 /* CONERIASCRIPT.TTF in Resources */,
 				31D8633621E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */,
 				318809002178166B00585AB1 /* Assets.xcassets in Resources */,
+				3100DC9A21EA98F3007423A5 /* dark-shadow.png in Resources */,
 				31D8632721E15DEC005BCB6F /* secondHand-fancyRed.png in Resources */,
 				31A5F80921968223000F1677 /* DINPRO-LIGHT.TTF in Resources */,
 				31EF99A521A21A1300BB54E7 /* Settings.json in Resources */,

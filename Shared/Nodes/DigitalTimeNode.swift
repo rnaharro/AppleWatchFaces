@@ -80,7 +80,7 @@ class DigitalTimeNode: SKNode {
         case .HHMMSS:
             timeString = hourString + ":" + minString + ":" + secString
         default:
-            timeString = ""
+            timeString = " " //empty can cause crash on calcuating size  (calculateAccumulatedFrame)
         }
         
         updateTime(timeString: timeString)
@@ -126,10 +126,59 @@ class DigitalTimeNode: SKNode {
             attributes[.strokeColor] = strokeColor
         }
         timeText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
-
         self.addChild(timeText)
-        
         setToTime()
+        
+        //get boudary for adding frames
+        let labelRect = timeText.calculateAccumulatedFrame()
+        
+//        //add in debug node to see boundary
+//        //debugPrint("timeFrame: "+labelRect.debugDescription)
+//        let debugNode = SKShapeNode.init(rect: labelRect)
+//        debugNode.lineWidth = 2.0
+//        debugNode.strokeColor = SKColor.yellow
+//        self.addChild(debugNode)
+
+        
+        let shadowNode = SKNode.init()
+        shadowNode.name = "shadowNode"
+        
+        let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
+        let shadowHeight:CGFloat = labelRect.height/3
+        
+        let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
+        let shadowTexture = SKTexture.init(imageNamed: "dark-shadow.png")
+        
+        let topShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
+        topShadowNode.position = CGPoint.init(x: 0, y: expandedRect.height/2 - shadowHeight/2)
+        shadowNode.addChild(topShadowNode)
+        
+        let bottonShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
+        bottonShadowNode.position = CGPoint.init(x: 0, y: -expandedRect.height/2 + shadowHeight/2)
+        bottonShadowNode.zRotation = CGFloat.pi
+        shadowNode.addChild(bottonShadowNode)
+
+        let leftShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.height, height: shadowHeight))
+        leftShadowNode.position = CGPoint.init(x: -expandedRect.width/2 + shadowHeight/2, y: 0)
+        leftShadowNode.zRotation = CGFloat.pi/2
+        shadowNode.addChild(leftShadowNode)
+        
+        let rightShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.height, height: shadowHeight))
+        rightShadowNode.position = CGPoint.init(x: expandedRect.width/2 - shadowHeight/2, y: 0)
+        rightShadowNode.zRotation = -CGFloat.pi/2
+        shadowNode.addChild(rightShadowNode)
+        
+        //reverse center for text rendering
+        switch horizontalPosition {
+        case .Left:
+            shadowNode.position = CGPoint.init(x: labelRect.width/2, y: 0)
+        case .Right:
+            shadowNode.position = CGPoint.init(x: -labelRect.width/2, y: 0)
+        default:
+            shadowNode.position = CGPoint.init(x: 0, y: 0)
+        }
+        
+        timeText.addChild(shadowNode)
         
         let duration = 0.1
         self.secondHandTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(DigitalTimeNode.secondHandMovementCheck), userInfo: nil, repeats: true)
