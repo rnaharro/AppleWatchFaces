@@ -65,6 +65,9 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
         
         // Cast NSArray to string array.
         colorList = colorNSArray as! [String]
+        
+        //add in the materials
+        colorList.insert(contentsOf: AppUISettings.materialFiles, at: 0)
     }
     
     override func awakeFromNib() {

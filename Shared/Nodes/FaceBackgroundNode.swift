@@ -69,6 +69,23 @@ class FaceBackgroundNode: SKSpriteNode {
         let xBounds = 312 / 2.85
         let yBounds = 390 / 2.85
         
+        func filledShapeNode() -> SKShapeNode {
+            let w = CGFloat( CGFloat(3.12) / 1.425 )
+            let h = CGFloat( CGFloat(3.9)  / 1.425 )
+            let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
+            return shape
+        }
+        
+        if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
+            let shape = filledShapeNode()
+            self.addChild(shape)
+        }
+        
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit) {
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: xBounds, y: yBounds))
@@ -93,11 +110,22 @@ class FaceBackgroundNode: SKSpriteNode {
             bezierPath.close()
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
             
-            self.addChild(shape)
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                //has image, mask into shape!
+                shape.fillColor = SKColor.white
+                
+                let cropNode = SKCropNode()
+                let filledNode = filledShapeNode()
+                cropNode.addChild(filledNode)
+                cropNode.maskNode = shape
+                self.addChild(cropNode)
+            }
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalSplit) {
@@ -109,33 +137,46 @@ class FaceBackgroundNode: SKSpriteNode {
             bezierPath.close()
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
             
-            self.addChild(shape)
-        }
+            if AppUISettings.materialIsColor(materialName: material) {
+                shape.fillColor = SKColor.init(hexString: material)
+                shape.strokeColor = strokeColor
+                shape.lineWidth = lineWidth
+                self.addChild(shape)
+            } else {
+                //has image, mask into shape!
+                shape.fillColor = SKColor.white
+                
+                let cropNode = SKCropNode()
+                let filledNode = filledShapeNode()
+                cropNode.addChild(filledNode)
+                cropNode.maskNode = shape
+                self.addChild(cropNode)
+            }
         
-        if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
-            let w = CGFloat( CGFloat(3.12) / 1.425 )
-            let h = CGFloat( CGFloat(3.9)  / 1.425 )
-            let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-            
-            shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
-            self.addChild(shape)
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeCircle) {
-            let r = CGFloat(1.04)
-            let shape = SKShapeNode.init(circleOfRadius: r * sizeMultiplier)
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
             
-            self.addChild(shape)
+            let r = CGFloat(1.1)
+            let circleNode = SKShapeNode.init(circleOfRadius: r * sizeMultiplier)
+            
+            if AppUISettings.materialIsColor(materialName: material) {
+                //draw it as a shape, no background!
+                circleNode.fillColor = SKColor.init(hexString: material)
+                circleNode.strokeColor = strokeColor
+                circleNode.lineWidth = lineWidth
+                self.addChild(circleNode)
+            } else {
+                //has image, mask into shape!
+                let cropNode = SKCropNode()
+                let filledNode = filledShapeNode()
+                cropNode.addChild(filledNode)
+                circleNode.fillColor = SKColor.white
+                cropNode.maskNode = circleNode
+                self.addChild(cropNode)
+            }
+            
         }
         
         

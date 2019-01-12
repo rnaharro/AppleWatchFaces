@@ -2,8 +2,11 @@
 
 - digital time
     - dont animate time in ring editor, just show HH:MM:SS placeholder
-    - get font chooser working
+    - set timer refresh based on format so its not refreshing every second
     - get outlines working
+    - drop / inner shadows: so it will work with any color / texture
+        https://developer.apple.com/documentation/spritekit/skeffectnode
+        https://stackoverflow.com/questions/10383755/iphone-ios-how-to-create-graphics-effects-like-drop-shadow-etc-what-effects-ar
 
 - ring cells less / more with edit mode on by default
 
