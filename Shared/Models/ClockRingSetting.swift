@@ -154,6 +154,7 @@ class ClockRingSetting: NSObject {
     
     var ringStaticItemHorizontalPosition: RingHorizontalPositionTypes
     var ringStaticItemVerticalPosition: RingVerticalPositionTypes
+    var ringStaticTimeFormat: DigitalTimeFormats
     
     var indicatorType: FaceIndicatorTypes
     var indicatorSize: Float
@@ -174,6 +175,7 @@ class ClockRingSetting: NSObject {
         
         ringStaticItemHorizontalPosition: RingHorizontalPositionTypes,
         ringStaticItemVerticalPosition: RingVerticalPositionTypes,
+        ringStaticTimeFormat: DigitalTimeFormats,
         
         indicatorType: FaceIndicatorTypes,
         indicatorSize: Float,
@@ -182,6 +184,7 @@ class ClockRingSetting: NSObject {
         textSize: Float,
         shouldShowTextOutline: Bool,
         textOutlineDesiredThemeColorIndex: Int
+        
         )
     {
         self.ringType = ringType
@@ -193,6 +196,7 @@ class ClockRingSetting: NSObject {
         
         self.ringStaticItemHorizontalPosition = ringStaticItemHorizontalPosition
         self.ringStaticItemVerticalPosition = ringStaticItemVerticalPosition
+        self.ringStaticTimeFormat = ringStaticTimeFormat
         
         self.indicatorType = indicatorType
         self.indicatorSize = indicatorSize
@@ -216,6 +220,7 @@ class ClockRingSetting: NSObject {
             
             ringStaticItemHorizontalPosition: .None,
             ringStaticItemVerticalPosition: .None,
+            ringStaticTimeFormat: .None,
             
             indicatorType: FaceIndicatorTypes.FaceIndicatorTypeBox,
             indicatorSize: 0.15,
@@ -237,6 +242,7 @@ class ClockRingSetting: NSObject {
             
             ringStaticItemHorizontalPosition: .Right,
             ringStaticItemVerticalPosition: .Top,
+            ringStaticTimeFormat: .HHMM,
             
             indicatorType: FaceIndicatorTypes.FaceIndicatorTypeNone,
             indicatorSize: 0.15,
@@ -267,6 +273,10 @@ class ClockRingSetting: NSObject {
         if (jsonObj["ringStaticItemVerticalPosition"] != JSON.null) {
             ringStaticItemVerticalPosition = RingVerticalPositionTypes(rawValue: jsonObj["ringStaticItemVerticalPosition"].stringValue)!
         }
+        var ringStaticTimeFormat:DigitalTimeFormats = .None
+        if (jsonObj["ringStaticTimeFormat"] != JSON.null) {
+            ringStaticTimeFormat = DigitalTimeFormats(rawValue: jsonObj["ringStaticTimeFormat"].stringValue)!
+        }
         
         self.init(
             ringType: RingTypes(rawValue: jsonObj["ringType"].stringValue)!,
@@ -278,6 +288,7 @@ class ClockRingSetting: NSObject {
             ringPatternTotal: Int( jsonObj[ "ringPatternTotal" ].intValue ),
             ringStaticItemHorizontalPosition: ringStaticItemHorizontalPosition,
             ringStaticItemVerticalPosition: ringStaticItemVerticalPosition,
+            ringStaticTimeFormat: ringStaticTimeFormat,
             
             indicatorType: FaceIndicatorTypes(rawValue: jsonObj["indicatorType"].stringValue)!,
             indicatorSize : Float( jsonObj[ "indicatorSize" ].floatValue ),
@@ -301,6 +312,7 @@ class ClockRingSetting: NSObject {
         serializedDict[ "ringPatternTotal" ] = self.ringPatternTotal.description as AnyObject
         serializedDict[ "ringStaticItemHorizontalPosition" ] = self.ringStaticItemHorizontalPosition.rawValue as AnyObject
         serializedDict[ "ringStaticItemVerticalPosition" ] = self.ringStaticItemVerticalPosition.rawValue as AnyObject
+        serializedDict[ "ringStaticTimeFormat" ] = self.ringStaticTimeFormat.rawValue as AnyObject
         
         serializedDict[ "indicatorType" ] = self.indicatorType.rawValue as AnyObject
         serializedDict[ "indicatorSize" ] = self.indicatorSize.description as AnyObject

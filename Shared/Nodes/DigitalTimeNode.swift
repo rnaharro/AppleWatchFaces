@@ -11,18 +11,31 @@ import SpriteKit
 import SceneKit
 import Foundation
 
+enum DigitalTimeFormats: String {
+    case HHMMSS,
+    HHMM,
+    DDMM,
+    MMDD,
+    DD,
+    None
+    
+    static let userSelectableValues = [
+        DD,
+        MMDD,
+        DDMM,
+        HHMM,
+        HHMMSS,
+        None
+    ]
+}
+
 class DigitalTimeNode: SKNode {
     
     var secondHandTimer = Timer()
     var currentSecond : Int = -1
+    var timeFormat: DigitalTimeFormats = .DD
     
-    func updateTime( sec: CGFloat, min: CGFloat, hour: CGFloat ) {
-        
-        let hourString = String(format: "%02d", Int(hour))
-        let minString = String(format: "%02d", Int(min))
-        let secString = String(format: "%02d", Int(sec))
-        
-        let timeString = hourString + ":" + minString + ":" + secString
+    func updateTime( timeString: String ) {
         
         if let timeText = self.childNode(withName: "timeTextNode") as? SKLabelNode {
             //let mutableAttributedString = NSMutableAttributedString(string: timeString, attributes: myAttributes)
@@ -37,28 +50,66 @@ class DigitalTimeNode: SKNode {
         // Called before each frame is rendered
         let date = Date()
         let calendar = Calendar.current
+//        let formatter = DateFormatter()
+//        let monthComponents = formatter.shortMonthSymbols
+        
+        //let month = CGFloat(calendar.component(.month, from: date))
+        let day = CGFloat(calendar.component(.day, from: date))
         
         let hour = CGFloat(calendar.component(.hour, from: date))
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
         
-        updateTime(sec: seconds, min: minutes, hour: hour)
+        let monthString = calendar.shortMonthSymbols[calendar.component(.month, from: date)]
+        //let monthNumString = String(format: "%02d", Int(month))
+        let dayString = String(format: "%02d", Int(day))
+        
+        let hourString = String(format: "%02d", Int(hour))
+        let minString = String(format: "%02d", Int(minutes))
+        let secString = String(format: "%02d", Int(seconds))
+        
+        var timeString = ""
+        switch timeFormat {
+        case .DD:
+            timeString = dayString
+        case .DDMM:
+            timeString = dayString + " " + monthString
+        case .MMDD:
+            timeString = monthString + " " + dayString
+        case .HHMM:
+            timeString = hourString + ":" + minString
+        case .HHMMSS:
+            timeString = hourString + ":" + minString + ":" + secString
+        default:
+            timeString = ""
+        }
+        
+        updateTime(timeString: timeString)
     }
     
     //used when generating node for digital time ( a mini digital clock )
-    init(digitalTimeTextType: NumberTextTypes, textSize: Float, fillColor: SKColor, strokeColor: SKColor? ) {
-        
+    init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, horizontalPosition: RingHorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor? ) {
+    
         super.init()
 
         self.name = "digitalTimeNode"
+        self.timeFormat = timeFormat
         
         //TODO this should dependant on overall scale setting?
         let textScale = Float(0.0175)
-        let hourString = "00:00:00"
+        let hourString = DigitalTimeNode.descriptionForTimeFormats(timeFormat)
         
         let timeText = SKLabelNode.init(text: hourString)
         timeText.name = "timeTextNode"
-        timeText.horizontalAlignmentMode = .center
+        
+        switch horizontalPosition {
+        case .Left:
+            timeText.horizontalAlignmentMode = .left
+        case .Right:
+            timeText.horizontalAlignmentMode = .right
+        default:
+            timeText.horizontalAlignmentMode = .center
+        }
         timeText.verticalAlignmentMode = .center
         
         let fontName = NumberTextNode.fontNameForNumberTextType(digitalTimeTextType)
@@ -100,6 +151,50 @@ class DigitalTimeNode: SKNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    static func descriptionForTimeFormats(_ format: DigitalTimeFormats) -> String {
+        var description = ""
+        
+        switch format {
+        case .DD:
+            description = "DD"
+        case .DDMM:
+            description = "DD&MO"
+        case .MMDD:
+            description = "MO&DD"
+        case .HHMM:
+            description = "HH:MM"
+        default:
+            description = "None"
+        }
+        
+//        if (format == DigitalTimeFormats.DD)  { description = "Day" }
+//        if (format == DigitalTimeFormats.DDMM)  { description = "Day & Month" }
+//        if (format == DigitalTimeFormats.MMDD)  { description = "Month & Day" }
+//        if (format == DigitalTimeFormats.HHMM)  { description = "Hour:Minute" }
+//        if (format == DigitalTimeFormats.HHMMSS)  { description = "Hour:Minute:Second" }
+//        if (format == DigitalTimeFormats.None)  { description = "None" }
+        
+        return description
+    }
+    
+    static func timeFormatsDescriptions() -> [String] {
+        var typeDescriptionsArray = [String]()
+        for nodeType in DigitalTimeFormats.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForTimeFormats(nodeType))
+        }
+        
+        return typeDescriptionsArray
+    }
+    
+    static func timeFormatsKeys() -> [String] {
+        var typeKeysArray = [String]()
+        for nodeType in DigitalTimeFormats.userSelectableValues {
+            typeKeysArray.append(nodeType.rawValue)
+        }
+        
+        return typeKeysArray
     }
 
 }

@@ -149,14 +149,15 @@ class WatchFaceNode: SKShapeNode {
         //draw any special items
         if (ringType == RingTypes.RingTypeDigitalTime) {
             //draw it
-            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, textSize: ringSettings.textSize, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
+            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: .DD, textSize: ringSettings.textSize,
+                    horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
             
             digitalTimeNode.zPosition = 1
             
             var xPos:CGFloat = 0
             var yPos:CGFloat = 0
-            let xDist = 60 * CGFloat(currentDistance)
-            let yDist = 120 * CGFloat(currentDistance)
+            let xDist = 105 * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 15)
+            let yDist = 130 * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 10)
             
             if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
                 xPos = -xDist
