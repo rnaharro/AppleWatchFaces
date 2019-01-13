@@ -28,6 +28,26 @@ enum DigitalTimeFormats: String {
     ]
 }
 
+enum DigitalTimeEffects: String {
+    case  innerShadow,
+    darkInnerShadow,
+    dropShadow,
+    frame,
+    darkFrame,
+    roundedFrame,
+    None
+    
+    static let userSelectableValues = [
+        innerShadow,
+        darkInnerShadow,
+        dropShadow,
+        frame,
+        darkFrame,
+        roundedFrame,
+        None
+    ]
+}
+
 class DigitalTimeNode: SKNode {
     
     var secondHandTimer = Timer()
@@ -42,6 +62,13 @@ class DigitalTimeNode: SKNode {
             mutableAttributedText.mutableString.setString(timeString)
             
             timeText.attributedText = mutableAttributedText
+        }
+        if let timeTextShadow = self.childNode(withName: "textShadow") as? SKLabelNode {
+            //let mutableAttributedString = NSMutableAttributedString(string: timeString, attributes: myAttributes)
+            let mutableAttributedText = timeTextShadow.attributedText!.mutableCopy() as! NSMutableAttributedString
+            mutableAttributedText.mutableString.setString(timeString)
+            
+            timeTextShadow.attributedText = mutableAttributedText
         }
     }
     
@@ -87,7 +114,7 @@ class DigitalTimeNode: SKNode {
     }
     
     //used when generating node for digital time ( a mini digital clock )
-    init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, horizontalPosition: RingHorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor? ) {
+    init(digitalTimeTextType: NumberTextTypes, timeFormat: DigitalTimeFormats, textSize: Float, effect: DigitalTimeEffects, horizontalPosition: RingHorizontalPositionTypes, fillColor: SKColor, strokeColor: SKColor? ) {
     
         super.init()
 
@@ -127,7 +154,6 @@ class DigitalTimeNode: SKNode {
         }
         timeText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
         self.addChild(timeText)
-        setToTime()
         
         //get boudary for adding frames
         let labelRect = timeText.calculateAccumulatedFrame()
@@ -139,46 +165,67 @@ class DigitalTimeNode: SKNode {
 //        debugNode.strokeColor = SKColor.yellow
 //        self.addChild(debugNode)
 
-        
-        let shadowNode = SKNode.init()
-        shadowNode.name = "shadowNode"
-        
-        let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
-        let shadowHeight:CGFloat = labelRect.height/3
-        
-        let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
-        let shadowTexture = SKTexture.init(imageNamed: "dark-shadow.png")
-        
-        let topShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
-        topShadowNode.position = CGPoint.init(x: 0, y: expandedRect.height/2 - shadowHeight/2)
-        shadowNode.addChild(topShadowNode)
-        
-        let bottonShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
-        bottonShadowNode.position = CGPoint.init(x: 0, y: -expandedRect.height/2 + shadowHeight/2)
-        bottonShadowNode.zRotation = CGFloat.pi
-        shadowNode.addChild(bottonShadowNode)
-
-        let leftShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.height, height: shadowHeight))
-        leftShadowNode.position = CGPoint.init(x: -expandedRect.width/2 + shadowHeight/2, y: 0)
-        leftShadowNode.zRotation = CGFloat.pi/2
-        shadowNode.addChild(leftShadowNode)
-        
-        let rightShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.height, height: shadowHeight))
-        rightShadowNode.position = CGPoint.init(x: expandedRect.width/2 - shadowHeight/2, y: 0)
-        rightShadowNode.zRotation = -CGFloat.pi/2
-        shadowNode.addChild(rightShadowNode)
-        
-        //reverse center for text rendering
-        switch horizontalPosition {
-        case .Left:
-            shadowNode.position = CGPoint.init(x: labelRect.width/2, y: 0)
-        case .Right:
-            shadowNode.position = CGPoint.init(x: -labelRect.width/2, y: 0)
-        default:
-            shadowNode.position = CGPoint.init(x: 0, y: 0)
+        if (effect == .dropShadow) {
+            let shadowNode = timeText.copy() as! SKLabelNode
+            shadowNode.name = "textShadow"
+            let shadowColor = SKColor.black
+            var attributes: [NSAttributedString.Key : Any] = [
+                .foregroundColor: shadowColor,
+                .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+            ]
+            if strokeColor != nil {
+                attributes[.strokeWidth] = round(strokeWidth)
+                attributes[.strokeColor] = strokeColor
+            }
+            shadowNode.attributedText = NSAttributedString(string: hourString, attributes: attributes)
+            shadowNode.zPosition = -0.5
+            shadowNode.position = CGPoint.init(x: timeText.position.x+2, y: timeText.position.y-2)
+            self.addChild(shadowNode)
         }
         
-        timeText.addChild(shadowNode)
+        if (effect == .innerShadow) {
+            let shadowNode = SKNode.init()
+            shadowNode.name = "shadowNode"
+            
+            let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
+            let shadowHeight:CGFloat = labelRect.height/3
+            
+            let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
+            let shadowTexture = SKTexture.init(imageNamed: "dark-shadow.png")
+            
+            let topShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
+            topShadowNode.position = CGPoint.init(x: 0, y: expandedRect.height/2 - shadowHeight/2)
+            shadowNode.addChild(topShadowNode)
+            
+            let bottonShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
+            bottonShadowNode.position = CGPoint.init(x: 0, y: -expandedRect.height/2 + shadowHeight/2)
+            bottonShadowNode.zRotation = CGFloat.pi
+            shadowNode.addChild(bottonShadowNode)
+
+            let leftShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.height, height: shadowHeight))
+            leftShadowNode.position = CGPoint.init(x: -expandedRect.width/2 + shadowHeight/2, y: 0)
+            leftShadowNode.zRotation = CGFloat.pi/2
+            shadowNode.addChild(leftShadowNode)
+            
+            let rightShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.height, height: shadowHeight))
+            rightShadowNode.position = CGPoint.init(x: expandedRect.width/2 - shadowHeight/2, y: 0)
+            rightShadowNode.zRotation = -CGFloat.pi/2
+            shadowNode.addChild(rightShadowNode)
+            
+            //reverse center for text rendering
+            switch horizontalPosition {
+            case .Left:
+                shadowNode.position = CGPoint.init(x: labelRect.width/2, y: 0)
+            case .Right:
+                shadowNode.position = CGPoint.init(x: -labelRect.width/2, y: 0)
+            default:
+                shadowNode.position = CGPoint.init(x: 0, y: 0)
+            }
+            
+            timeText.addChild(shadowNode)
+        }
+        
+        setToTime() //update to latest time to start
         
         let duration = 0.1
         self.secondHandTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(DigitalTimeNode.secondHandMovementCheck), userInfo: nil, repeats: true)
@@ -216,14 +263,7 @@ class DigitalTimeNode: SKNode {
         default:
             description = "None"
         }
-        
-//        if (format == DigitalTimeFormats.DD)  { description = "Day" }
-//        if (format == DigitalTimeFormats.DDMM)  { description = "Day & Month" }
-//        if (format == DigitalTimeFormats.MMDD)  { description = "Month & Day" }
-//        if (format == DigitalTimeFormats.HHMM)  { description = "Hour:Minute" }
-//        if (format == DigitalTimeFormats.HHMMSS)  { description = "Hour:Minute:Second" }
-//        if (format == DigitalTimeFormats.None)  { description = "None" }
-        
+    
         return description
     }
     
@@ -243,6 +283,38 @@ class DigitalTimeNode: SKNode {
         }
         
         return typeKeysArray
+    }
+    
+    static func descriptionForTimeEffects(_ format: DigitalTimeEffects) -> String {
+        var description = ""
+        
+        switch format {
+        case .darkFrame:
+            description = "Dark Frame"
+        case .darkInnerShadow:
+            description = "Dark Inner Shadow"
+        case .dropShadow:
+            description = "Drop Shadow"
+        case .frame:
+            description = "Frame"
+        case .roundedFrame:
+            description = "Rounded Frame"
+        case .innerShadow:
+            description = "Inner Shadow"
+        default:
+            description = "None"
+        }
+        
+        return description
+    }
+    
+    static func timeEffectsDescriptions() -> [String] {
+        var typeDescriptionsArray = [String]()
+        for nodeType in DigitalTimeFormats.userSelectableValues {
+            typeDescriptionsArray.append(descriptionForTimeFormats(nodeType))
+        }
+        
+        return typeDescriptionsArray
     }
 
 }

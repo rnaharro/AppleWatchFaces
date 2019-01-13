@@ -160,7 +160,7 @@ class WatchFaceNode: SKShapeNode {
         if (ringType == RingTypes.RingTypeDigitalTime) {
             //draw it
             let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: ringSettings.ringStaticTimeFormat, textSize: ringSettings.textSize,
-                    horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
+                                                       effect: ringSettings.ringStaticEffects, horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
             
             digitalTimeNode.zPosition = CGFloat(PartsZPositions.complications.rawValue)
             
