@@ -49,9 +49,6 @@ enum DigitalTimeEffects: String {
 }
 
 class DigitalTimeNode: SKNode {
-    
-    var secondHandTimer = Timer()
-    var currentSecond : Int = -1
     var timeFormat: DigitalTimeFormats = .DD
     
     func updateTime( timeString: String ) {
@@ -73,6 +70,10 @@ class DigitalTimeNode: SKNode {
     }
     
     func setToTime() {
+        setToTime(force: false)
+    }
+    
+    func setToTime(force: Bool) {
         // Called before each frame is rendered
         let date = Date()
         let calendar = Calendar.current
@@ -85,6 +86,11 @@ class DigitalTimeNode: SKNode {
         let hour = CGFloat(calendar.component(.hour, from: date))
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
+        
+        //EXIT EARLY DEPENDING ON TYPE -- only move forward (do the update ) once per minute
+        if (timeFormat != .HHMMSS && seconds != 0 && force == false) {
+            return
+        }
         
         let monthString = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1]
         //let monthNumString = String(format: "%02d", Int(month))
@@ -253,23 +259,16 @@ class DigitalTimeNode: SKNode {
             timeText.addChild(shadowNode)
         }
         
-        setToTime() //update to latest time to start
-        
-        let duration = 0.1
-        self.secondHandTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(DigitalTimeNode.secondHandMovementCheck), userInfo: nil, repeats: true)
+        setToTime(force: true) //update to latest time to start
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: SKWatchScene.timeChangedSecondNotificationName, object: nil)
     }
     
-    @objc func secondHandMovementCheck() {
-        let date = Date()
-        let calendar = Calendar.current
-        
-        let seconds = Int(calendar.component(.second, from: date))
-        
-        if (self.currentSecond != seconds) {
-            setToTime()
-            self.currentSecond = seconds
-        }
-        
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func onNotificationForSecondsChanged(notification:Notification) {
+        setToTime()
     }
     
     required init?(coder aDecoder: NSCoder) {

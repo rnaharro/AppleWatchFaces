@@ -15,6 +15,9 @@ class SKWatchScene: SKScene {
     var currentSecond : Int = -1
     var secondHandTimer = Timer()
     
+    static let timeChangedSecondNotificationName = Notification.Name("timeChangedSecond")
+    static let timeChangedMinuteNotificationName = Notification.Name("timeChangedMinute")
+    
     func redraw(clockSetting: ClockSetting) {
         
         let newWatchFaceNode = WatchFaceNode.init(clockSetting: clockSetting, size: self.size )
@@ -87,6 +90,11 @@ class SKWatchScene: SKScene {
         
         if (self.currentSecond != seconds) {
             secondHandMovementAction()
+            
+            NotificationCenter.default.post(name: SKWatchScene.timeChangedSecondNotificationName, object: nil, userInfo:nil)
+            if (seconds == 0) {
+                NotificationCenter.default.post(name: SKWatchScene.timeChangedMinuteNotificationName, object: nil, userInfo:nil)
+            }
             self.currentSecond = seconds
         }
         
