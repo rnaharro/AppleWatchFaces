@@ -17,6 +17,7 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
     @IBOutlet var horizontalPositionSegment: UISegmentedControl!
     @IBOutlet var verticalPositionSegment: UISegmentedControl!
     @IBOutlet var timeFormatSegment: UISegmentedControl!
+    @IBOutlet var timeEffectSegment: UISegmentedControl!
     
     @IBOutlet var materialSegment: UISegmentedControl!
     
@@ -53,6 +54,18 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         }
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":"ringStaticItemHorizontalPosition" ])
+    }
+    
+    @IBAction func timeEffectSegmentDidChange(sender: UISegmentedControl ) {
+        self.selectThisCell()
+        
+        //debugPrint("segment value:" + String( sender.selectedSegmentIndex ) )
+        let clockRingSetting = myClockRingSetting()
+        
+        clockRingSetting.ringStaticEffects = DigitalTimeEffects.userSelectableValues[sender.selectedSegmentIndex]
+    
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":"ringStaticEffects" ])
     }
     
     @IBAction func verticalPositionSegmentDidChange(sender: UISegmentedControl ) {
@@ -173,6 +186,14 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
             verticalPositionSegment.selectedSegmentIndex = 2
         case .None:
             verticalPositionSegment.isEnabled = true //TODO: not sure what to put here
+        }
+        
+        timeEffectSegment.removeAllSegments()
+        for (index, item) in DigitalTimeEffects.userSelectableValues.enumerated() {
+            timeEffectSegment.insertSegment(withTitle: item.rawValue, at: index, animated: false)
+        }
+        if let indexFound = DigitalTimeEffects.userSelectableValues.firstIndex(of: clockRingSetting.ringStaticEffects) {
+            timeEffectSegment.selectedSegmentIndex = indexFound
         }
         
         timeFormatSegment.removeAllSegments()

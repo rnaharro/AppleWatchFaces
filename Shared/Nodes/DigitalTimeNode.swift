@@ -86,7 +86,7 @@ class DigitalTimeNode: SKNode {
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
         
-        let monthString = calendar.shortMonthSymbols[calendar.component(.month, from: date)]
+        let monthString = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1]
         //let monthNumString = String(format: "%02d", Int(month))
         let dayString = String(format: "%02d", Int(day))
         
@@ -157,14 +157,36 @@ class DigitalTimeNode: SKNode {
         
         //get boudary for adding frames
         let labelRect = timeText.calculateAccumulatedFrame()
-        
-//        //add in debug node to see boundary
-//        //debugPrint("timeFrame: "+labelRect.debugDescription)
-//        let debugNode = SKShapeNode.init(rect: labelRect)
-//        debugNode.lineWidth = 2.0
-//        debugNode.strokeColor = SKColor.yellow
-//        self.addChild(debugNode)
+        //re-use "dark color" for backgrounds
+        let darkColor = SKColor.black.withAlphaComponent(0.4)
+        //re-use an expanded frame
+        let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
+        let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
 
+        if (effect == .frame || effect == .darkFrame) {
+            let frameNode = SKShapeNode.init(rect: expandedRect)
+            frameNode.lineWidth = 2.0
+            frameNode.strokeColor = fillColor
+            
+            if (effect == .darkFrame) {
+                frameNode.fillColor = darkColor
+            }
+            
+            self.addChild(frameNode)
+        }
+        
+        if (effect == .roundedFrame) {
+            let frameNode = SKShapeNode.init(rect: expandedRect, cornerRadius: labelRect.height/3)
+            frameNode.lineWidth = 2.0
+            frameNode.strokeColor = fillColor
+            
+            if (effect == .darkFrame) {
+                frameNode.fillColor = darkColor
+            }
+            
+            self.addChild(frameNode)
+        }
+        
         if (effect == .dropShadow) {
             let shadowNode = timeText.copy() as! SKLabelNode
             shadowNode.name = "textShadow"
@@ -183,14 +205,12 @@ class DigitalTimeNode: SKNode {
             self.addChild(shadowNode)
         }
         
-        if (effect == .innerShadow) {
+        if (effect == .innerShadow || effect == .darkInnerShadow) {
             let shadowNode = SKNode.init()
             shadowNode.name = "shadowNode"
             
-            let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
             let shadowHeight:CGFloat = labelRect.height/3
             
-            let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
             let shadowTexture = SKTexture.init(imageNamed: "dark-shadow.png")
             
             let topShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
@@ -220,6 +240,14 @@ class DigitalTimeNode: SKNode {
                 shadowNode.position = CGPoint.init(x: -labelRect.width/2, y: 0)
             default:
                 shadowNode.position = CGPoint.init(x: 0, y: 0)
+            }
+            
+            if (effect == .darkInnerShadow) {
+                let frameNode = SKShapeNode.init(rect: expandedRect)
+                frameNode.fillColor = darkColor
+                frameNode.lineWidth = 0.0
+                
+                self.addChild(frameNode)
             }
             
             timeText.addChild(shadowNode)

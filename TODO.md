@@ -2,7 +2,7 @@
 
 - digital time
     - dont animate time in ring editor, just show HH:MM:SS placeholder
-    - set timer refresh based on format so its not refreshing every second
+    - set timer refresh based on format so its not refreshing every second: send out secondChange and minChanged notifications from main scene to save on battery
     - get outlines working
     - drop / inner shadows: so it will work with any color / texture
         https://developer.apple.com/documentation/spritekit/skeffectnode
@@ -14,7 +14,6 @@
 - scroll to new item ( esp. important for long list )
 - UX for patterns ?
 
-- allow editing of hand movments ( need thumbnails ? )
 - undo / redo in editor ( save prev state each time )
 
 - crash when sending to watch 5 times -- https://stackoverflow.com/questions/52860566/error-when-running-xcode-simulator-framework-cuithemestore-no-theme-regist
@@ -35,7 +34,6 @@
 - skin-see thru / tattoo watch
 - show name of current face on watch when first starting ( then fade it out )
 - better highlighting of the parts ( zoomed in outline )
-- tinting colors for textures?
 
 ## COMPLETED
 - switch to sending JSONData for watch comms
@@ -84,4 +82,6 @@
 - fix default the indicators to work better for watch
 - ring editor: select cell when editing any of the items
 - ring editor: show selected cell in preview ( just bloom effect current item )
+- allow editing of hand movments ( need thumbnails ? )
+- tinting colors for textures?
 
