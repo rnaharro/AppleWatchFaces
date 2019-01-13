@@ -161,6 +161,9 @@ class DigitalTimeNode: SKNode {
         timeText.attributedText = NSAttributedString(string: hourString, attributes: attributes)
         self.addChild(timeText)
         
+        //needs to always come BEFORE calculateAccumulatedFrame since it will adjust the width
+        setToTime(force: true) //update to latest time to start
+        
         //get boudary for adding frames
         let labelRect = timeText.calculateAccumulatedFrame()
         //re-use "dark color" for backgrounds
@@ -259,7 +262,6 @@ class DigitalTimeNode: SKNode {
             timeText.addChild(shadowNode)
         }
         
-        setToTime(force: true) //update to latest time to start
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: SKWatchScene.timeChangedSecondNotificationName, object: nil)
     }
     
