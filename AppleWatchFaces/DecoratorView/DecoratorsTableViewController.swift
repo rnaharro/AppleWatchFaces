@@ -73,9 +73,14 @@ class DecoratorsTableViewController: UITableViewController {
                     return 160.0
                 }
                 
+                if (ringSetting.ringType == .RingTypeDigitalTime) {
+                    return 300.0
+                }
+                
                 if (ringSetting.ringType == .RingTypeSpacer) {
                     return 80.0
                 }
+                
             }
         }
         return 100.0
@@ -97,6 +102,10 @@ class DecoratorsTableViewController: UITableViewController {
             
             if (ringSetting.ringType == .RingTypeTextNode || ringSetting.ringType == .RingTypeTextRotatingNode) {
                 cell = tableView.dequeueReusableCell(withIdentifier: "decoratorEditorTextID", for: indexPath) as! DecoratorTextTableViewCell
+            }
+            
+            if (ringSetting.ringType == .RingTypeDigitalTime) {
+                cell = tableView.dequeueReusableCell(withIdentifier: "decoratorEditorDigitalTimeID", for: indexPath) as! DecoratorDigitalTimeTableViewCell
             }
             
             cell.setupUIForClockRingSetting(clockRingSetting: ringSetting)

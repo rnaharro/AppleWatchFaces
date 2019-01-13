@@ -1,13 +1,14 @@
 ## TO DO:
-- decide on a licence for github before making public
-- create screencast / gif showing the ring indicators
+
+- digital time
+    - dont animate time in ring editor, just show HH:MM:SS placeholder
+
 - ring cells less / more with edit mode on by default
 
 - get ring settings / editor working
 - scroll to new item ( esp. important for long list )
 - UX for patterns ?
 
-- allow editing of hand movments ( need thumbnails ? )
 - undo / redo in editor ( save prev state each time )
 
 - crash when sending to watch 5 times -- https://stackoverflow.com/questions/52860566/error-when-running-xcode-simulator-framework-cuithemestore-no-theme-regist
@@ -28,7 +29,6 @@
 - skin-see thru / tattoo watch
 - show name of current face on watch when first starting ( then fade it out )
 - better highlighting of the parts ( zoomed in outline )
-- tinting colors for textures?
 
 ## COMPLETED
 - switch to sending JSONData for watch comms
@@ -77,4 +77,8 @@
 - fix default the indicators to work better for watch
 - ring editor: select cell when editing any of the items
 - ring editor: show selected cell in preview ( just bloom effect current item )
+- allow editing of hand movments ( need thumbnails ? )
+- tinting colors for textures?
+- digital time
+- dont animate time in ring editor, just show HH:MM:SS placeholder
 

@@ -14,6 +14,15 @@ class WatchFaceNode: SKShapeNode {
     var secondHandMovement: SecondHandMovements = .SecondHandMovementStep
     var minuteHandMovement: MinuteHandMovements = .MinuteHandMovementStep
     
+    enum PartsZPositions: Int {
+        case background = 0,
+        backgroundShape,
+        complications,
+        hourHand,
+        minuteHand,
+        secondHand
+    }
+    
     init(clockSetting: ClockSetting, size: CGSize) {
         super.init()
         
@@ -24,6 +33,7 @@ class WatchFaceNode: SKShapeNode {
 
         let renderShadows = true
         let shadowMaterial = "#111111AA"
+        let shadowChildZposition:CGFloat = -0.5
         var shadowColor = SKColor.init(hexString: shadowMaterial)
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
@@ -35,20 +45,20 @@ class WatchFaceNode: SKShapeNode {
         
         let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: clockSetting.clockCasingMaterialName)
         backgroundNode.name = "background"
-        backgroundNode.zPosition = 0
+        backgroundNode.zPosition = CGFloat(PartsZPositions.background.rawValue)
         
         self.addChild(backgroundNode)
         
         let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: clockSetting.clockFaceMaterialName)
         backgroundShapeNode.name = "backgroundShape"
-        backgroundShapeNode.zPosition = 1
+        backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
         
         self.addChild(backgroundShapeNode)
         
         let secondHandFillColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
         let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandFillColor, lineWidth: 1.0)
         secHandNode.name = "secondHand"
-        secHandNode.zPosition = 4
+        secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
         
         self.addChild(secHandNode)
         
@@ -56,7 +66,7 @@ class WatchFaceNode: SKShapeNode {
             let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
             secHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             secHandShadowNode.name = "secondHandShadow"
-            secHandShadowNode.zPosition = -0.5
+            secHandShadowNode.zPosition = shadowChildZposition
             secHandNode.addChild(secHandShadowNode)
         }
         
@@ -66,7 +76,7 @@ class WatchFaceNode: SKShapeNode {
         }
         let minHandNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: clockFaceSettings.minuteHandMaterialName, strokeColor: minuteHandStrokeColor, lineWidth: 1.0)
         minHandNode.name = "minuteHand"
-        minHandNode.zPosition = 3
+        minHandNode.zPosition = CGFloat(PartsZPositions.minuteHand.rawValue)
         
         self.addChild(minHandNode)
         
@@ -74,7 +84,7 @@ class WatchFaceNode: SKShapeNode {
             let minHandShadowNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
             minHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             minHandShadowNode.name = "minuteHandShadow"
-            minHandShadowNode.zPosition = -0.5
+            minHandShadowNode.zPosition = shadowChildZposition
             minHandNode.addChild(minHandShadowNode)
         }
         
@@ -85,7 +95,7 @@ class WatchFaceNode: SKShapeNode {
     
         let hourHandNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: clockFaceSettings.hourHandMaterialName, strokeColor: hourHandStrokeColor, lineWidth: 1.0)
         hourHandNode.name = "hourHand"
-        hourHandNode.zPosition = 2
+        hourHandNode.zPosition = CGFloat(PartsZPositions.hourHand.rawValue)
         
         self.addChild(hourHandNode)
         
@@ -93,7 +103,7 @@ class WatchFaceNode: SKShapeNode {
             let hourHandShadowNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
             hourHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             hourHandShadowNode.name = "hourHandShadow"
-            hourHandShadowNode.zPosition = -0.5
+            hourHandShadowNode.zPosition = shadowChildZposition
             hourHandNode.addChild(hourHandShadowNode)
         }
         
@@ -136,8 +146,50 @@ class WatchFaceNode: SKShapeNode {
         ringNode.name = "ringNode"
         clockFaceNode.addChild(ringNode)
         
+        //optional stroke color
+        var strokeColor:SKColor? = nil
+        if (ringSettings.shouldShowTextOutline) {
+            let strokeMaterial = clockFaceSettings.ringMaterials[ringSettings.textOutlineDesiredThemeColorIndex]
+            strokeColor = SKColor.init(hexString: strokeMaterial)
+        }
+        
         //just exit for spacer
         if (ringType == RingTypes.RingTypeSpacer) { return }
+        
+        //draw any special items
+        if (ringType == RingTypes.RingTypeDigitalTime) {
+            //draw it
+            let digitalTimeNode = DigitalTimeNode.init(digitalTimeTextType: ringSettings.textType, timeFormat: ringSettings.ringStaticTimeFormat, textSize: ringSettings.textSize,
+                                                       effect: ringSettings.ringStaticEffects, horizontalPosition: ringSettings.ringStaticItemHorizontalPosition, fillColor: SKColor.init(hexString: material), strokeColor: strokeColor)
+            
+            digitalTimeNode.zPosition = CGFloat(PartsZPositions.complications.rawValue)
+            
+            var xPos:CGFloat = 0
+            var yPos:CGFloat = 0
+            let xDist = 105 * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 15)
+            let yDist = 130 * CGFloat(currentDistance) - CGFloat(ringSettings.textSize * 10)
+            
+            if (ringSettings.ringStaticItemHorizontalPosition == .Left) {
+                xPos = -xDist
+            }
+            if (ringSettings.ringStaticItemHorizontalPosition == .Right) {
+                xPos = xDist
+            }
+            if (ringSettings.ringStaticItemVerticalPosition == .Top) {
+                yPos = yDist
+            }
+            if (ringSettings.ringStaticItemVerticalPosition == .Bottom) {
+                yPos = -yDist
+            }
+            //horizontalPosition: .Right, verticalPosition: .Top
+            digitalTimeNode.position = CGPoint.init(x: xPos, y: yPos)
+            
+            ringNode.addChild(digitalTimeNode)
+            
+            return
+        }
+        
+        //draw items that loop
         
         // exit if pattern array is empty
         if (patternArray.count == 0) { return }
@@ -171,13 +223,6 @@ class WatchFaceNode: SKShapeNode {
                 //force small totals to show as 12s
                 if patternTotal < 12 {
                     numberToRender = numberToRender * ( 12 / patternTotal )
-                }
-                
-                //optional stroke color
-                var strokeColor:SKColor? = nil
-                if (ringSettings.shouldShowTextOutline) {
-                    let strokeMaterial = clockFaceSettings.ringMaterials[ringSettings.textOutlineDesiredThemeColorIndex]
-                    strokeColor = SKColor.init(hexString: strokeMaterial)
                 }
                 
                 outerRingNode  = NumberTextNode.init(

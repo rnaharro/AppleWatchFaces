@@ -12,7 +12,6 @@ import UIKit
 
 class CameraHandler: NSObject{
     static let shared = CameraHandler()
-    
     fileprivate var currentVC: UIViewController!
     
     //MARK: Internal Properties
@@ -35,7 +34,6 @@ class CameraHandler: NSObject{
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let myPickerController = UIImagePickerController()
-            myPickerController.allowsEditing = true
             myPickerController.delegate = self;
             myPickerController.sourceType = .photoLibrary
             currentVC.present(myPickerController, animated: true, completion: nil)
@@ -69,11 +67,15 @@ extension CameraHandler: UIImagePickerControllerDelegate, UINavigationController
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //originals from gallery
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.imagePickedBlock?(image)
+        }
+        //edited from camera
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.imagePickedBlock?(image)
-        }else{
-            print("Something went wrong")
         }
+        
         currentVC.dismiss(animated: true, completion: nil)
     }
     

@@ -25,7 +25,8 @@ enum NumberTextTypes: String {
     NumberTextTypeUltraCondensedSerif,
     NumberTextTypeTypeWriter,
     NumberTextTypeIronLounge,
-    NumberTextTypeDigitalMono
+    NumberTextTypeDigitalMono,
+    NumberTextTypeNixie
     
     static let randomizableValues = [NumberTextTypeModernInteger,
         NumberTextTypeBlackRose,
@@ -42,6 +43,9 @@ enum NumberTextTypes: String {
         NumberTextTypeDigitalMono
         ]
     static let userSelectableValues = [NumberTextTypeModernInteger,
+        NumberTextTypeNixie,
+        NumberTextTypeDINPro,
+        NumberTextTypeDigitalMono,
         NumberTextTypeBlackRose,
         NumberTextTypeCorneriaScript,
         NumberTextTypeGermanica,
@@ -50,11 +54,9 @@ enum NumberTextTypes: String {
         NumberTextTypeHelvica,
         NumberTextTypeHelvicaNeueBold,
         NumberTextTypeNumeralTrajan,
-        NumberTextTypeDINPro,
         NumberTextTypeUltraCondensedSerif,
         NumberTextTypeTypeWriter,
-        NumberTextTypeIronLounge,
-        NumberTextTypeDigitalMono]
+        NumberTextTypeIronLounge]
     
     static func random() -> NumberTextTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -100,12 +102,12 @@ class NumberTextNode: SKNode {
         if (nodeType == NumberTextTypes.NumberTextTypeTypeWriter) { typeDescription = "Automania" }
         if (nodeType == NumberTextTypes.NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
         if (nodeType == NumberTextTypes.NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
-        
+        if (nodeType == NumberTextTypes.NumberTextTypeNixie) { typeDescription = "Nixie Tube" }
         
         return typeDescription
     }
     
-    func fontNameForNumberTextType( _ textType : NumberTextTypes ) -> String {
+    static func fontNameForNumberTextType( _ textType : NumberTextTypes ) -> String {
         var fontName = "HelveticaNeue-Medium"
         
         if (textType == .NumberTextTypeHelvicaNeueBold) { fontName = "HelveticaNeue-Bold" }
@@ -124,6 +126,7 @@ class NumberTextNode: SKNode {
         if (textType == .NumberTextTypeIronLounge) { fontName = "IronLounge2" }
         
         if (textType == .NumberTextTypeDigitalMono) { fontName = "Digital-7Mono" }
+        if (textType == .NumberTextTypeNixie) { fontName = "NixieOne" }
         
         //AppleSDGothicNeo-SemiBold     // best VERY CLEAN
         //KohinoorTelugu-Medium         // basic but not bad
@@ -158,7 +161,7 @@ class NumberTextNode: SKNode {
         hourText.horizontalAlignmentMode = .center
         hourText.verticalAlignmentMode = .center
         
-        let fontName = fontNameForNumberTextType(numberTextType)
+        let fontName = NumberTextNode.fontNameForNumberTextType(numberTextType)
         
         //attributed version
         let strokeWidth = -2 * textSize

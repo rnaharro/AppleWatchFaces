@@ -11,9 +11,9 @@ import SpriteKit
 
 //different types of things that can be assigned to a ring on the clock face
 enum RingTypes: String {
-    case RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeSpacer
+    case RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeDigitalTime, RingTypeSpacer
     
-    static let userSelectableValues = [RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeSpacer]
+    static let userSelectableValues = [RingTypeShapeNode, RingTypeTextNode, RingTypeTextRotatingNode, RingTypeDigitalTime, RingTypeSpacer]
 }
 
 //different types of shapes rings can render in
@@ -21,6 +21,21 @@ enum RingRenderShapes: String {
     case RingRenderShapeCircle, RingRenderShapeOval, RingRenderShapeRoundedRect
     
     static let userSelectableValues = [RingRenderShapeCircle, RingRenderShapeOval, RingRenderShapeRoundedRect]
+}
+
+//position types for statically positioned items like date, digital time
+enum RingVerticalPositionTypes: String {
+    case Top,
+    Centered,
+    Bottom,
+    None
+}
+
+enum RingHorizontalPositionTypes: String {
+    case Left,
+    Centered,
+    Right,
+    None
 }
 
 class ClockRingSetting: NSObject {
@@ -74,6 +89,8 @@ class ClockRingSetting: NSObject {
         if (nodeType == RingTypes.RingTypeShapeNode)  { typeDescription = "Shape" }
         if (nodeType == RingTypes.RingTypeTextNode)  { typeDescription = "Text" }
         if (nodeType == RingTypes.RingTypeTextRotatingNode)  { typeDescription = "Rotating Text" }
+        if (nodeType == RingTypes.RingTypeDigitalTime)  { typeDescription = "Digital Time" }
+        
         if (nodeType == RingTypes.RingTypeSpacer )  { typeDescription = "Empty Space" }
         
         return typeDescription
@@ -135,6 +152,11 @@ class ClockRingSetting: NSObject {
     var ringPattern: [Int]
     var ringPatternTotal: Int
     
+    var ringStaticItemHorizontalPosition: RingHorizontalPositionTypes
+    var ringStaticItemVerticalPosition: RingVerticalPositionTypes
+    var ringStaticTimeFormat: DigitalTimeFormats
+    var ringStaticEffects: DigitalTimeEffects
+    
     var indicatorType: FaceIndicatorTypes
     var indicatorSize: Float
     
@@ -152,6 +174,11 @@ class ClockRingSetting: NSObject {
         ringPattern: [Int],
         ringPatternTotal: Int,
         
+        ringStaticItemHorizontalPosition: RingHorizontalPositionTypes,
+        ringStaticItemVerticalPosition: RingVerticalPositionTypes,
+        ringStaticTimeFormat: DigitalTimeFormats,
+        ringStaticEffects: DigitalTimeEffects,
+        
         indicatorType: FaceIndicatorTypes,
         indicatorSize: Float,
         
@@ -159,6 +186,7 @@ class ClockRingSetting: NSObject {
         textSize: Float,
         shouldShowTextOutline: Bool,
         textOutlineDesiredThemeColorIndex: Int
+        
         )
     {
         self.ringType = ringType
@@ -167,6 +195,11 @@ class ClockRingSetting: NSObject {
         self.ringWidth = ringWidth
         self.ringPattern = ringPattern
         self.ringPatternTotal = ringPatternTotal
+        
+        self.ringStaticItemHorizontalPosition = ringStaticItemHorizontalPosition
+        self.ringStaticItemVerticalPosition = ringStaticItemVerticalPosition
+        self.ringStaticTimeFormat = ringStaticTimeFormat
+        self.ringStaticEffects = ringStaticEffects
         
         self.indicatorType = indicatorType
         self.indicatorSize = indicatorSize
@@ -188,6 +221,11 @@ class ClockRingSetting: NSObject {
             ringPattern: [1],
             ringPatternTotal: 12,
             
+            ringStaticItemHorizontalPosition: .None,
+            ringStaticItemVerticalPosition: .None,
+            ringStaticTimeFormat: .None,
+            ringStaticEffects: .None,
+            
             indicatorType: FaceIndicatorTypes.FaceIndicatorTypeBox,
             indicatorSize: 0.15,
             
@@ -198,18 +236,55 @@ class ClockRingSetting: NSObject {
             )
     }
     
+    static func defaultsDigitalTime() -> ClockRingSetting {
+        return ClockRingSetting.init(
+            ringType: RingTypes.RingTypeShapeNode,
+            ringMaterialDesiredThemeColorIndex: 0,
+            ringWidth: 0,
+            ringPattern: [],
+            ringPatternTotal: 0,
+            
+            ringStaticItemHorizontalPosition: .Right,
+            ringStaticItemVerticalPosition: .Top,
+            ringStaticTimeFormat: .HHMM,
+            ringStaticEffects: .innerShadow,
+            
+            indicatorType: FaceIndicatorTypes.FaceIndicatorTypeNone,
+            indicatorSize: 0.15,
+            
+            textType:  NumberTextTypes.NumberTextTypeHelvica,
+            textSize: 0.2,
+            shouldShowTextOutline: false,
+            textOutlineDesiredThemeColorIndex: 0
+        )
+    }
+    
     //MARK: serialization
     
     //init from serialized
     convenience init( jsonObj: JSON ) {
-        
-        //print("minuteTextType", jsonObj["minuteTextType"].stringValue)
-        
         let ringMaterialDesiredThemeColorIndex = jsonObj[ "ringMaterialDesiredThemeColorIndex" ].intValue
 
         var textOutlineDesiredThemeColorIndex = 0
         if (jsonObj["textOutlineDesiredThemeColorIndex"] != JSON.null) {
             textOutlineDesiredThemeColorIndex = jsonObj[ "textOutlineDesiredThemeColorIndex" ].intValue
+        }
+        
+        var ringStaticItemHorizontalPosition:RingHorizontalPositionTypes = .None
+        if (jsonObj["ringStaticItemHorizontalPosition"] != JSON.null) {
+            ringStaticItemHorizontalPosition = RingHorizontalPositionTypes(rawValue: jsonObj["ringStaticItemHorizontalPosition"].stringValue)!
+        }
+        var ringStaticItemVerticalPosition:RingVerticalPositionTypes = .None
+        if (jsonObj["ringStaticItemVerticalPosition"] != JSON.null) {
+            ringStaticItemVerticalPosition = RingVerticalPositionTypes(rawValue: jsonObj["ringStaticItemVerticalPosition"].stringValue)!
+        }
+        var ringStaticTimeFormat:DigitalTimeFormats = .None
+        if (jsonObj["ringStaticTimeFormat"] != JSON.null) {
+            ringStaticTimeFormat = DigitalTimeFormats(rawValue: jsonObj["ringStaticTimeFormat"].stringValue)!
+        }
+        var ringStaticEffects:DigitalTimeEffects = .None
+        if (jsonObj["ringStaticEffects"] != JSON.null) {
+            ringStaticEffects = DigitalTimeEffects(rawValue: jsonObj["ringStaticEffects"].stringValue)!
         }
         
         self.init(
@@ -220,6 +295,10 @@ class ClockRingSetting: NSObject {
             ringWidth : Float( jsonObj[ "ringWidth" ].floatValue ),
             ringPattern: ClockRingSetting.patternArrayFromSerializedArray( jsonObj[ "ringPattern" ] ),
             ringPatternTotal: Int( jsonObj[ "ringPatternTotal" ].intValue ),
+            ringStaticItemHorizontalPosition: ringStaticItemHorizontalPosition,
+            ringStaticItemVerticalPosition: ringStaticItemVerticalPosition,
+            ringStaticTimeFormat: ringStaticTimeFormat,
+            ringStaticEffects: ringStaticEffects,
             
             indicatorType: FaceIndicatorTypes(rawValue: jsonObj["indicatorType"].stringValue)!,
             indicatorSize : Float( jsonObj[ "indicatorSize" ].floatValue ),
@@ -241,6 +320,10 @@ class ClockRingSetting: NSObject {
         serializedDict[ "ringWidth" ] = self.ringWidth.description as AnyObject
         serializedDict[ "ringPattern" ] = self.ringPattern as AnyObject
         serializedDict[ "ringPatternTotal" ] = self.ringPatternTotal.description as AnyObject
+        serializedDict[ "ringStaticItemHorizontalPosition" ] = self.ringStaticItemHorizontalPosition.rawValue as AnyObject
+        serializedDict[ "ringStaticItemVerticalPosition" ] = self.ringStaticItemVerticalPosition.rawValue as AnyObject
+        serializedDict[ "ringStaticTimeFormat" ] = self.ringStaticTimeFormat.rawValue as AnyObject
+        serializedDict[ "ringStaticEffects" ] = self.ringStaticEffects.rawValue as AnyObject
         
         serializedDict[ "indicatorType" ] = self.indicatorType.rawValue as AnyObject
         serializedDict[ "indicatorSize" ] = self.indicatorSize.description as AnyObject

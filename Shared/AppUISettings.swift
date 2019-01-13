@@ -33,8 +33,7 @@ class AppUISettings: NSObject {
     static let watchFrameBorderWidth:CGFloat = 4.0
     static let watchFrameBorderColor = SKColor.darkGray.cgColor
 
-    static let materialFiles = ["vinylAlbum.jpg", "watchGears.jpg", "brass.jpg", "copper.jpg","kork.jpg", "light-wood.jpg",
-                                "wallpaper70s.jpg","wallpaperFlower.jpg","watchGears.jpg"]
+    static let materialFiles = ["brass.jpg","brushedsteel.jpg","light-wood.jpg", "vinylAlbum.jpg", "wallpaper70s.jpg", "watchGears.jpg", "copper.jpg"]
     
     static func materialIsColor( materialName: String ) -> Bool {
         if (materialName.lengthOfBytes(using: String.Encoding.utf8) > 0) {
@@ -118,6 +117,7 @@ class AppUISettings: NSObject {
             
             for filename in filelist {
                 if URL.init(string: filename)?.pathExtension == "jpg"  {
+                    //resize to 312x390
                     try? fileManagerIs.copyItem(atPath: "\(pathFromBundle)/\(filename)", toPath: "\(pathDestDocs)/\(filename)")
                 }
             }

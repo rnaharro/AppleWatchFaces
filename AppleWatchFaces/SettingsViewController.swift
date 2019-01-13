@@ -136,13 +136,14 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
             CameraHandler.shared.showActionSheet(vc: self)
             CameraHandler.shared.imagePickedBlock = { (image) in
                 /* get your image here */
-                let optimumSize = 390 / 1.5 //watchOS
-                let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: optimumSize, height: optimumSize))
+                let resizedImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: 312, height: 390))
+
                 // save it to the docs folder with name of the face
                 let fileName = SettingsViewController.currentClockSetting.uniqueID + AppUISettings.backgroundFileName
-                _ = resizedImage.save(imageName: fileName)
-                SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
                 debugPrint("got an image!" + resizedImage.description + " filename: " + fileName)
+                
+                _ = resizedImage.save(imageName: fileName) //_ = resizedImage.save(imageName: fileName)
+                SettingsViewController.currentClockSetting.clockFaceMaterialName = fileName
                 
                 NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)
                 NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,

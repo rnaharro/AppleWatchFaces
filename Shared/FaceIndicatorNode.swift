@@ -11,7 +11,7 @@ import SceneKit
 
 enum FaceIndicatorTypes: String {
     case FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox,
-    FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox, FaceIndicatorTypeCircle
+    FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox, FaceIndicatorTypeCircle, FaceIndicatorTypeNone
     
     static let randomizableValues = [FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox, FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox]
     static let userSelectableValues = [FaceIndicatorTypeTube, FaceIndicatorTypeSphere, FaceIndicatorTypeBox, FaceIndicatorTypeMediumBox, FaceIndicatorTypeFatBox]
