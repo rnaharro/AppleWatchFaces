@@ -2,11 +2,6 @@
 
 - digital time
     - dont animate time in ring editor, just show HH:MM:SS placeholder
-    - set timer refresh based on format so its not refreshing every second: send out secondChange and minChanged notifications from main scene to save on battery
-    - get outlines working
-    - drop / inner shadows: so it will work with any color / texture
-        https://developer.apple.com/documentation/spritekit/skeffectnode
-        https://stackoverflow.com/questions/10383755/iphone-ios-how-to-create-graphics-effects-like-drop-shadow-etc-what-effects-ar
 
 - ring cells less / more with edit mode on by default
 
@@ -84,4 +79,6 @@
 - ring editor: show selected cell in preview ( just bloom effect current item )
 - allow editing of hand movments ( need thumbnails ? )
 - tinting colors for textures?
+- digital time
+- dont animate time in ring editor, just show HH:MM:SS placeholder
 
