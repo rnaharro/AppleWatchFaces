@@ -121,4 +121,3 @@ Sometimes when sending to watch the watch app crashes -- I think this has to do 
 ## License
 
 `AppleWatchFaces` is released under the GPL-3 license. See [LICENSE](https://github.com/orff/AppleWatchFaces/blob/master/LICENSE) for details.
-
