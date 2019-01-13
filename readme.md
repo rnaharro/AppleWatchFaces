@@ -27,19 +27,19 @@ Follow the installation instructions below to compile from the source and you ca
 
 4. **How can I create my own watch hands?**
 
-Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black wil not tint at all.  Colors in between will blend. 
-
+  Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black wil not tint at all.  Colors in between will blend. 
+  
 5. **Can I use my own background images?**
 
-Yes, tap on the camera icon in the background color picker to pull an image off the phone's camera or gallery.
+  Yes, tap on the camera icon in the background color picker to pull an image off the phone's camera or gallery.
 
 6. **How can I add my own images for use as a background in the watch faces ?**
 
-1. Crop the image to a square at approximately 512x512 pixels ( 72 ppi )
-2. Drop it into the **/Shared/Resources/Materials** folder
-3. Add it into the /AppleWatchFaces/Colors.plist file
-
-9. **Which versions of apple watches does this work with ?**
+    1. Crop the image to a square at approximately 512x512 pixels ( 72 ppi )
+    2. Drop it into the **/Shared/Resources/Materials** folder
+    3. Add it into the /AppleWatchFaces/Colors.plist file
+    
+7. **Which versions of apple watches does this work with ?**
 
 Any watchOS that can run spriteKit should be fine.
 
