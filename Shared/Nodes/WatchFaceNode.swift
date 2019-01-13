@@ -18,11 +18,8 @@ class WatchFaceNode: SKShapeNode {
         case background = 0,
         backgroundShape,
         complications,
-        hourHandHandShadow,
         hourHand,
-        minuteHandShadow,
         minuteHand,
-        secondHandShadow,
         secondHand
     }
     
@@ -36,6 +33,7 @@ class WatchFaceNode: SKShapeNode {
 
         let renderShadows = true
         let shadowMaterial = "#111111AA"
+        let shadowChildZposition:CGFloat = -0.5
         var shadowColor = SKColor.init(hexString: shadowMaterial)
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
@@ -68,7 +66,7 @@ class WatchFaceNode: SKShapeNode {
             let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
             secHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             secHandShadowNode.name = "secondHandShadow"
-            secHandShadowNode.zPosition = CGFloat(PartsZPositions.secondHandShadow.rawValue)
+            secHandShadowNode.zPosition = shadowChildZposition
             secHandNode.addChild(secHandShadowNode)
         }
         
@@ -86,7 +84,7 @@ class WatchFaceNode: SKShapeNode {
             let minHandShadowNode = MinuteHandNode.init(minuteHandType: clockFaceSettings.minuteHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
             minHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             minHandShadowNode.name = "minuteHandShadow"
-            minHandShadowNode.zPosition = CGFloat(PartsZPositions.minuteHandShadow.rawValue)
+            minHandShadowNode.zPosition = shadowChildZposition
             minHandNode.addChild(minHandShadowNode)
         }
         
@@ -105,7 +103,7 @@ class WatchFaceNode: SKShapeNode {
             let hourHandShadowNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
             hourHandShadowNode.position = CGPoint.init(x: 0, y: 0)
             hourHandShadowNode.name = "hourHandShadow"
-            hourHandShadowNode.zPosition = CGFloat(PartsZPositions.hourHandHandShadow.rawValue)
+            hourHandShadowNode.zPosition = shadowChildZposition
             hourHandNode.addChild(hourHandShadowNode)
         }
         
