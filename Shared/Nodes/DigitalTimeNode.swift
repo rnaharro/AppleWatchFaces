@@ -66,6 +66,7 @@ class DigitalTimeNode: SKNode {
             mutableAttributedText.mutableString.setString(timeString)
             
             timeTextShadow.attributedText = mutableAttributedText
+            timeTextShadow.isHidden = false
         }
     }
     
@@ -199,7 +200,7 @@ class DigitalTimeNode: SKNode {
         if (effect == .dropShadow) {
             let shadowNode = timeText.copy() as! SKLabelNode
             shadowNode.name = "textShadow"
-            let shadowColor = SKColor.black
+            let shadowColor = SKColor.black.withAlphaComponent(0.4)
             var attributes: [NSAttributedString.Key : Any] = [
                 .foregroundColor: shadowColor,
                 .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
@@ -210,7 +211,9 @@ class DigitalTimeNode: SKNode {
             }
             shadowNode.attributedText = NSAttributedString(string: hourString, attributes: attributes)
             shadowNode.zPosition = -0.5
-            shadowNode.position = CGPoint.init(x: timeText.position.x+2, y: timeText.position.y-2)
+            let shadowOffset = CGFloat(labelRect.size.height/10)
+            shadowNode.position = CGPoint.init(x: timeText.position.x+shadowOffset, y: timeText.position.y-shadowOffset)
+            shadowNode.isHidden = true
             self.addChild(shadowNode)
         }
         
@@ -262,6 +265,8 @@ class DigitalTimeNode: SKNode {
             timeText.addChild(shadowNode)
         }
         
+        //ONE MORE TIME TO UPDATE ANY NEW ADDITIONS IN EFFECTS
+        setToTime(force: true) //update to latest time to start
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: SKWatchScene.timeChangedSecondNotificationName, object: nil)
     }
     
