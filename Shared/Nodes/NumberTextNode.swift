@@ -25,7 +25,8 @@ enum NumberTextTypes: String {
     NumberTextTypeUltraCondensedSerif,
     NumberTextTypeTypeWriter,
     NumberTextTypeIronLounge,
-    NumberTextTypeDigitalMono
+    NumberTextTypeDigitalMono,
+    NumberTextTypeNixie
     
     static let randomizableValues = [NumberTextTypeModernInteger,
         NumberTextTypeBlackRose,
@@ -42,6 +43,9 @@ enum NumberTextTypes: String {
         NumberTextTypeDigitalMono
         ]
     static let userSelectableValues = [NumberTextTypeModernInteger,
+        NumberTextTypeNixie,
+        NumberTextTypeDINPro,
+        NumberTextTypeDigitalMono,
         NumberTextTypeBlackRose,
         NumberTextTypeCorneriaScript,
         NumberTextTypeGermanica,
@@ -50,11 +54,9 @@ enum NumberTextTypes: String {
         NumberTextTypeHelvica,
         NumberTextTypeHelvicaNeueBold,
         NumberTextTypeNumeralTrajan,
-        NumberTextTypeDINPro,
         NumberTextTypeUltraCondensedSerif,
         NumberTextTypeTypeWriter,
-        NumberTextTypeIronLounge,
-        NumberTextTypeDigitalMono]
+        NumberTextTypeIronLounge]
     
     static func random() -> NumberTextTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -100,7 +102,7 @@ class NumberTextNode: SKNode {
         if (nodeType == NumberTextTypes.NumberTextTypeTypeWriter) { typeDescription = "Automania" }
         if (nodeType == NumberTextTypes.NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
         if (nodeType == NumberTextTypes.NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
-        
+        if (nodeType == NumberTextTypes.NumberTextTypeNixie) { typeDescription = "Nixie Tube" }
         
         return typeDescription
     }
@@ -124,6 +126,7 @@ class NumberTextNode: SKNode {
         if (textType == .NumberTextTypeIronLounge) { fontName = "IronLounge2" }
         
         if (textType == .NumberTextTypeDigitalMono) { fontName = "Digital-7Mono" }
+        if (textType == .NumberTextTypeNixie) { fontName = "NixieOne" }
         
         //AppleSDGothicNeo-SemiBold     // best VERY CLEAN
         //KohinoorTelugu-Medium         // basic but not bad

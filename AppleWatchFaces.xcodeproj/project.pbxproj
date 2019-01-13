@@ -10,6 +10,8 @@
 		310044C621D3C5DF0019794A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310044C421D3C5DF0019794A /* Settings.storyboard */; };
 		3100DC9921EA98F3007423A5 /* dark-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9821EA98F3007423A5 /* dark-shadow.png */; };
 		3100DC9A21EA98F3007423A5 /* dark-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9821EA98F3007423A5 /* dark-shadow.png */; };
+		3100DC9C21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */; };
+		3100DC9D21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */; };
 		31061F302192657200EF511B /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31061F2F2192657200EF511B /* Colors.plist */; };
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
@@ -310,6 +312,7 @@
 /* Begin PBXFileReference section */
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		3100DC9821EA98F3007423A5 /* dark-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-shadow.png"; sourceTree = "<group>"; };
+		3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
 		31061F2F2192657200EF511B /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorRingsSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -689,6 +692,7 @@
 		31A5F7F12196820D000F1677 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */,
 				318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */,
 				31A5F7F221968221000F1677 /* BLACKROSE.TTF */,
 				31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */,
@@ -1134,6 +1138,7 @@
 				310044C621D3C5DF0019794A /* Settings.storyboard in Resources */,
 				310BA1F721B0EA6D00A146B7 /* colorTheme-lightcoffee.jpg in Resources */,
 				314AFC3021D5FC3A00C1208E /* 7E87E210-769E-44FE-9338-F61FBA14213F.jpg in Resources */,
+				3100DC9C21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */,
 				31A5F80821968223000F1677 /* DINPRO-LIGHT.TTF in Resources */,
 				314AFC3A21D5FC3A00C1208E /* 4C7B931C-D3B0-4AFE-9C34-6E6514633914.jpg in Resources */,
 				314AFC2F21D5FC3A00C1208E /* BE8F5A1E-17EC-4626-9CFC-78BC3ED21D8A.jpg in Resources */,
@@ -1169,6 +1174,7 @@
 				31F4F1D5219A6B030050177A /* light-wood.jpg in Resources */,
 				31F4F1D2219A6B030050177A /* brass.jpg in Resources */,
 				31EF99A621A21A2200BB54E7 /* Themes.json in Resources */,
+				3100DC9D21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */,
 				318809102178172600585AB1 /* faceBackground.png in Resources */,
 				31F4F1D1219A6B030050177A /* watchGears.jpg in Resources */,
 				31A5F80F21968223000F1677 /* CONERIASCRIPT.TTF in Resources */,
