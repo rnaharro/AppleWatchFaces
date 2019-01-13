@@ -168,7 +168,7 @@ class DigitalTimeNode: SKNode {
         //get boudary for adding frames
         let labelRect = timeText.calculateAccumulatedFrame()
         //re-use "dark color" for backgrounds
-        let darkColor = SKColor.black.withAlphaComponent(0.4)
+        let darkColor = SKColor.black.withAlphaComponent(0.2)
         //re-use an expanded frame
         let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
         let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
@@ -221,11 +221,11 @@ class DigitalTimeNode: SKNode {
             let shadowNode = SKNode.init()
             shadowNode.name = "shadowNode"
             
-            let shadowHeight:CGFloat = labelRect.height/3
+            let shadowHeight:CGFloat = labelRect.height/2.5
             
             let shadowTexture = SKTexture.init(imageNamed: "dark-shadow.png")
             
-            let topShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight))
+            let topShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight*1.25))
             topShadowNode.position = CGPoint.init(x: 0, y: expandedRect.height/2 - shadowHeight/2)
             shadowNode.addChild(topShadowNode)
             
