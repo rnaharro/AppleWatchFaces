@@ -46,7 +46,7 @@
                     <items>
                         <group width="1" alignment="left" spacing="0.0" id="peu-MO-7Wq">
                             <items>
-                                <spriteKitScene width="184" height="224" alignment="center" preferredFramesPerSecond="60" scene="FaceScene.sks" id="Ubu-78-iLh"/>
+                                <spriteKitScene width="184" height="224" alignment="center" preferredFramesPerSecond="25" scene="FaceScene.sks" id="Ubu-78-iLh"/>
                             </items>
                             <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                         </group>
