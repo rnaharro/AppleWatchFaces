@@ -7,13 +7,8 @@
 //
 
 
-#if os(iOS) || os(tvOS)
-    import UIKit
-#endif
-
-#if os(OSX)
-    import Cocoa
-#endif
+import UIKit
+import Foundation
 
 extension String {
     

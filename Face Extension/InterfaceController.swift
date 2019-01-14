@@ -10,7 +10,7 @@ import WatchKit
 import WatchConnectivity
 import Foundation
 
-class InterfaceController: DigitalTimeHidingHackInterfaceController, WCSessionDelegate, WKCrownDelegate {
+class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDelegate {
     
     @IBOutlet var skInterface: WKInterfaceSKScene!
     
@@ -193,6 +193,7 @@ class InterfaceController: DigitalTimeHidingHackInterfaceController, WCSessionDe
     override func didAppear() {
         super.didAppear() // important for removing digital time display hack
         
+        hideDigitalTime()
         redrawCurrent()
         
         //focus the crown to us at last possible moment
@@ -218,4 +219,20 @@ class InterfaceController: DigitalTimeHidingHackInterfaceController, WCSessionDe
         super.didDeactivate()
     }
 
+}
+
+// Hack in order to disable the digital time on the screen
+extension WKInterfaceController{
+    func hideDigitalTime(){
+        guard let cls = NSClassFromString("SPFullScreenView") else {return}
+        let viewControllers = (((NSClassFromString("UIApplication")?.value(forKey:"sharedApplication") as? NSObject)?.value(forKey: "keyWindow") as? NSObject)?.value(forKey:"rootViewController") as? NSObject)?.value(forKey:"viewControllers") as? [NSObject]
+        viewControllers?.forEach{
+            let views = ($0.value(forKey:"view") as? NSObject)?.value(forKey:"subviews") as? [NSObject]
+            views?.forEach{
+                if $0.isKind(of:cls){
+                    (($0.value(forKey:"timeLabel") as? NSObject)?.value(forKey:"layer") as? NSObject)?.perform(NSSelectorFromString("setOpacity:"),with:CGFloat(0))
+                }
+            }
+        }
+    }
 }
