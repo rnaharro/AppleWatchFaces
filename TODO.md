@@ -1,11 +1,12 @@
 ## TO DO:
 
+- ring editor: 
+    - better highlighting of ring items when selected like the numbers do
+    - add some labels for items to show what we are editiing
+
 - digital time
     - dont animate time in ring editor, just show HH:MM:SS placeholder
 
-- ring cells less / more with edit mode on by default
-
-- get ring settings / editor working
 - scroll to new item ( esp. important for long list )
 - UX for patterns ?
 

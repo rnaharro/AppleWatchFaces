@@ -18,22 +18,6 @@ class DecoratorTextTableViewCell: DecoratorTableViewCell {
     @IBOutlet var showOutlineSwitch: UISwitch!
     @IBOutlet var outlineMaterialSegment: UISegmentedControl!
     
-//    override func transitionToEditMode() {
-//        self.materialSegment.isHidden = true
-//        self.totalNumbersSegment.isHidden = true
-//        self.valueSlider.isHidden = true
-//        self.rotatingSwitch.isHidden = true
-//        self.outlineMaterialSegment.isHidden = true
-//    }
-//    
-//    override func transitionToNormalMode() {
-//        self.materialSegment.isHidden = false
-//        self.totalNumbersSegment.isHidden = false
-//        self.valueSlider.isHidden = false
-//        self.rotatingSwitch.isHidden = false
-//         self.outlineMaterialSegment.isHidden = false
-//    }
-    
     func fontChosen( textType: NumberTextTypes ) {
         //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
         
@@ -109,13 +93,12 @@ class DecoratorTextTableViewCell: DecoratorTableViewCell {
     }
     
     @IBAction func sliderValueDidChange(sender: UISlider ) {
-        self.selectThisCell()
-        
         //debugPrint("slider value:" + String( sender.value ) )
         let clockRingSetting = myClockRingSetting()
         
-        let roundedValue = Float(round(100*sender.value)/100)
+        let roundedValue = Float(round(50*sender.value)/50)
         if roundedValue != clockRingSetting.textSize {
+            self.selectThisCell()
             //debugPrint("new value:" + String( roundedValue ) )
             clockRingSetting.textSize = roundedValue
             NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,

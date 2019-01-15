@@ -22,14 +22,13 @@ class DecoratorSpacerTableViewCell: DecoratorTableViewCell {
 //    }
     
     @IBAction func sliderValueDidChange(sender: UISlider ) {
-        self.selectThisCell()
-        
         //debugPrint("slider value:" + String( sender.value ) )
         let clockRingSetting = myClockRingSetting()
         
-        let roundedValue = Float(round(100*sender.value)/100)
+        let roundedValue = Float(round(50*sender.value)/50)
         if roundedValue != clockRingSetting.ringWidth {
-            clockRingSetting.ringWidth = sender.value
+            self.selectThisCell()
+            clockRingSetting.ringWidth = roundedValue
             NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":"ringWidth" ])
         }

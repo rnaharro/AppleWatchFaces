@@ -15,18 +15,6 @@ class DecoratorShapeTableViewCell: DecoratorTableViewCell {
     @IBOutlet var totalNumbersSegment: UISegmentedControl!
     @IBOutlet var valueSlider: UISlider!
     
-//    override func transitionToEditMode() {
-//        self.materialSegment.isHidden = true
-//        self.totalNumbersSegment.isHidden = true
-//        self.valueSlider.isHidden = true
-//    }
-//    
-//    override func transitionToNormalMode() {
-//        self.materialSegment.isHidden = false
-//        self.totalNumbersSegment.isHidden = false
-//        self.valueSlider.isHidden = false
-//    }
-    
     func shapeChosen( shapeType: FaceIndicatorTypes ) {
         //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
         
@@ -66,15 +54,13 @@ class DecoratorShapeTableViewCell: DecoratorTableViewCell {
     }
     
     @IBAction func sliderValueDidChange(sender: UISlider ) {
-        self.selectThisCell()
-        
-        debugPrint("slider value:" + String( sender.value ) )
         let clockRingSetting = myClockRingSetting()
 
-        let roundedValue = Float(round(100*sender.value)/100)
+        let roundedValue = Float(round(50*sender.value)/50)
         if roundedValue != clockRingSetting.indicatorSize {
-            
-            clockRingSetting.indicatorSize = sender.value
+            self.selectThisCell()
+            debugPrint("slider value:" + String( roundedValue ) )
+            clockRingSetting.indicatorSize = roundedValue
             NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":"indicatorSize" ])
         }
