@@ -12,7 +12,7 @@ import SpriteKit
 class DecoratorPreviewController: UIViewController {
 
     @IBOutlet var skView: SKView!
-    var editBarButton: UIBarButtonItem = UIBarButtonItem()
+    //var editBarButton: UIBarButtonItem = UIBarButtonItem()
     var decoratorsTableViewController: DecoratorsTableViewController?
     
     static let ringSettingsChangedNotificationName = Notification.Name("ringSettingsChanged")
@@ -26,7 +26,7 @@ class DecoratorPreviewController: UIViewController {
         for childnode in watchFaceNode.children {
             
             if childnode.name == "ringNode" || childnode.name == "textRingNode" {
-                debugPrint("ringNode!" + (childnode.name ?? "") )
+                //debugPrint("ringNode!" + (childnode.name ?? "") )
                 ringChildren.append(childnode)
             }
         }
@@ -188,6 +188,8 @@ class DecoratorPreviewController: UIViewController {
         let createButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.compose, target: self, action: #selector(newItem))
         
         if let dtVC = decoratorsTableViewController {
+            //set editing mode here! not in controller
+            dtVC.setEditing(true, animated: false)
             dtVC.editButtonItem.tintColor = UIColor.orange
             createButton.tintColor = UIColor.orange
             self.navigationItem.rightBarButtonItems = [dtVC.editButtonItem, createButton]

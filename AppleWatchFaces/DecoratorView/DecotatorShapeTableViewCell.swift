@@ -15,17 +15,17 @@ class DecoratorShapeTableViewCell: DecoratorTableViewCell {
     @IBOutlet var totalNumbersSegment: UISegmentedControl!
     @IBOutlet var valueSlider: UISlider!
     
-    override func transitionToEditMode() {
-        self.materialSegment.isHidden = true
-        self.totalNumbersSegment.isHidden = true
-        self.valueSlider.isHidden = true
-    }
-    
-    override func transitionToNormalMode() {
-        self.materialSegment.isHidden = false
-        self.totalNumbersSegment.isHidden = false
-        self.valueSlider.isHidden = false
-    }
+//    override func transitionToEditMode() {
+//        self.materialSegment.isHidden = true
+//        self.totalNumbersSegment.isHidden = true
+//        self.valueSlider.isHidden = true
+//    }
+//    
+//    override func transitionToNormalMode() {
+//        self.materialSegment.isHidden = false
+//        self.totalNumbersSegment.isHidden = false
+//        self.valueSlider.isHidden = false
+//    }
     
     func shapeChosen( shapeType: FaceIndicatorTypes ) {
         //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))

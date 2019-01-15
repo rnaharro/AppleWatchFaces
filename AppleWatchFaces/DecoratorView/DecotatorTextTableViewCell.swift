@@ -18,21 +18,21 @@ class DecoratorTextTableViewCell: DecoratorTableViewCell {
     @IBOutlet var showOutlineSwitch: UISwitch!
     @IBOutlet var outlineMaterialSegment: UISegmentedControl!
     
-    override func transitionToEditMode() {
-        self.materialSegment.isHidden = true
-        self.totalNumbersSegment.isHidden = true
-        self.valueSlider.isHidden = true
-        self.rotatingSwitch.isHidden = true
-        self.outlineMaterialSegment.isHidden = true
-    }
-    
-    override func transitionToNormalMode() {
-        self.materialSegment.isHidden = false
-        self.totalNumbersSegment.isHidden = false
-        self.valueSlider.isHidden = false
-        self.rotatingSwitch.isHidden = false
-         self.outlineMaterialSegment.isHidden = false
-    }
+//    override func transitionToEditMode() {
+//        self.materialSegment.isHidden = true
+//        self.totalNumbersSegment.isHidden = true
+//        self.valueSlider.isHidden = true
+//        self.rotatingSwitch.isHidden = true
+//        self.outlineMaterialSegment.isHidden = true
+//    }
+//    
+//    override func transitionToNormalMode() {
+//        self.materialSegment.isHidden = false
+//        self.totalNumbersSegment.isHidden = false
+//        self.valueSlider.isHidden = false
+//        self.rotatingSwitch.isHidden = false
+//         self.outlineMaterialSegment.isHidden = false
+//    }
     
     func fontChosen( textType: NumberTextTypes ) {
         //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))

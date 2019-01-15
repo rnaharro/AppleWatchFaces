@@ -21,13 +21,13 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
     
     @IBOutlet var materialSegment: UISegmentedControl!
     
-    override func transitionToEditMode() {
-        self.valueSlider.isHidden = true
-    }
-    
-    override func transitionToNormalMode() {
-        self.valueSlider.isHidden = false
-    }
+//    override func transitionToEditMode() {
+//        self.valueSlider.isHidden = true
+//    }
+//    
+//    override func transitionToNormalMode() {
+//        self.valueSlider.isHidden = false
+//    }
     
     @IBAction func editType(sender: UIButton ) {
         self.selectThisCell()

@@ -13,13 +13,13 @@ class DecoratorSpacerTableViewCell: DecoratorTableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var valueSlider: UISlider!
     
-    override func transitionToEditMode() {
-        self.valueSlider.isHidden = true
-    }
-    
-    override func transitionToNormalMode() {
-        self.valueSlider.isHidden = false
-    }
+//    override func transitionToEditMode() {
+//        self.valueSlider.isHidden = true
+//    }
+//    
+//    override func transitionToNormalMode() {
+//        self.valueSlider.isHidden = false
+//    }
     
     @IBAction func sliderValueDidChange(sender: UISlider ) {
         self.selectThisCell()

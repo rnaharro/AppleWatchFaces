@@ -13,27 +13,6 @@ class DecoratorTableViewCell: UITableViewCell {
     //var rowIndex:Int=0
     var parentTableview : UITableView?
     
-    func transitionToEditMode() {
-        // to be overriden by children
-    }
-    func transitionToNormalMode() {
-        // to be overriden by children
-    }
-    
-    override func willTransition(to state: UITableViewCell.StateMask) {
-        
-    }
-    override func didTransition(to state: UITableViewCell.StateMask) {
-        if state.contains(UITableViewCell.StateMask.showingEditControl) {
-            debugPrint("moving to edit mode!")
-            transitionToEditMode()
-            self.parentTableview?.reloadSections(IndexSet.init(integer: 0), with: UITableView.RowAnimation.automatic)
-        } else {
-            transitionToNormalMode()
-            self.parentTableview?.reloadSections(IndexSet.init(integer: 0), with: UITableView.RowAnimation.automatic)
-        }
-    }
-    
     func myClockRingSetting()->ClockRingSetting {
         if let tableView = parentTableview, let indexPath = tableView.indexPath(for: self) {
             return (SettingsViewController.currentClockSetting.clockFaceSettings?.ringSettings[indexPath.row])!
@@ -54,6 +33,7 @@ class DecoratorTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
     }
     
     func selectThisCell() {
@@ -64,24 +44,22 @@ class DecoratorTableViewCell: UITableViewCell {
             }
             
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+            tableView.beginUpdates()
+            tableView.endUpdates()
         }
     }
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        //dont change color
-        self.contentView.backgroundColor = self.backgroundColor
-        
-//        if selected {
-//            self.layer.cornerRadius = 2.0
-//            self.layer.borderWidth = 2.0
-//            self.layer.borderColor = UIColor.init(hexString: AppUISettings.settingHighlightColor).cgColor
-//        } else {
-//            self.layer.cornerRadius = 0.0
-//            self.layer.borderWidth = 0.0
-//        }
-    }
 
+        if selected == true {
+            //self.contentView.backgroundColor = UIColor.blue
+            self.backgroundColor = UIColor.init(white: 0.1, alpha: 1.0)
+        } else {
+            //self.contentView.backgroundColor = UIColor.black
+            self.backgroundColor = UIColor.init(white: 0.0, alpha: 1.0)
+        }
+    }
+    
 }
