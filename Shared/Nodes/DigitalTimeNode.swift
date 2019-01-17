@@ -88,7 +88,8 @@ class DigitalTimeNode: SKNode {
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
         
-        //EXIT EARLY DEPENDING ON TYPE -- only move forward (do the update ) once per minute
+        // EXIT EARLY DEPENDING ON TYPE -- only move forward (do the update ) once per minute
+        // saves on framerate & battery by not updating unless its needed
         if (timeFormat != .HHMMSS && seconds != 0 && force == false) {
             return
         }
@@ -267,7 +268,11 @@ class DigitalTimeNode: SKNode {
         
         //ONE MORE TIME TO UPDATE ANY NEW ADDITIONS IN EFFECTS
         setToTime(force: true) //update to latest time to start
+        
+        //check to see if we need to update time every second
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: SKWatchScene.timeChangedSecondNotificationName, object: nil)
+        //force update time if needed ( after restart )
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForForceUpdateTime(notification:)), name: SKWatchScene.timeForceUpdateNotificationName, object: nil)
     }
     
     deinit {
@@ -276,6 +281,10 @@ class DigitalTimeNode: SKNode {
     
     @objc func onNotificationForSecondsChanged(notification:Notification) {
         setToTime()
+    }
+    
+    @objc func onNotificationForForceUpdateTime(notification:Notification) {
+        setToTime(force: true)
     }
     
     required init?(coder aDecoder: NSCoder) {

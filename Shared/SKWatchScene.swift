@@ -15,6 +15,7 @@ class SKWatchScene: SKScene {
     var currentSecond : Int = -1
     var secondHandTimer = Timer()
     
+    static let timeForceUpdateNotificationName = Notification.Name("timeForceUpdate")
     static let timeChangedSecondNotificationName = Notification.Name("timeChangedSecond")
     static let timeChangedMinuteNotificationName = Notification.Name("timeChangedMinute")
     
@@ -38,6 +39,8 @@ class SKWatchScene: SKScene {
     func forceToTime() {
         if let oldNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
             oldNode.setToTime( force: true )
+            //send this notification to get any digital time decorators to update thier time
+            NotificationCenter.default.post(name: SKWatchScene.timeForceUpdateNotificationName, object: nil, userInfo:nil)
         }
     }
     
