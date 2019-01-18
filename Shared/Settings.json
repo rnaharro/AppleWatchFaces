@@ -295,6 +295,91 @@
             "clockCasingMaterialName" : "#1c1c1cff"
         },
         {
+            "title" : "LCD Wear",
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "uniqueID" : "DD6D0D82-3692-4161-9B36-5E7828CBC2EA",
+            "clockFaceMaterialName" : "80sDigital.jpg",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockFaceSettings" : {
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringSettings" : [
+                    {
+                        "ringStaticEffects" : "dropShadow",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "textSize" : "0.9",
+                        "textType" : "NumberTextTypeDigitalMono",
+                        "ringStaticTimeFormat" : "HHMMSS",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringPatternTotal" : "0",
+                        "shouldShowTextOutline" : false,
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringWidth" : "0.0",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Centered",
+                        "indicatorSize" : "0.15"
+                    },
+                    {
+                        "ringStaticEffects" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textSize" : "0.2",
+                        "textType" : "NumberTextTypeHelvica",
+                        "ringStaticTimeFormat" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringPatternTotal" : "12",
+                        "shouldShowTextOutline" : false,
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringWidth" : "0.66",
+                        "ringType" : "RingTypeSpacer",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "None",
+                        "indicatorSize" : "0.15"
+                    },
+                    {
+                        "ringStaticEffects" : "None",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "textSize" : "0.5",
+                        "textType" : "NumberTextTypeDigitalMono",
+                        "ringStaticTimeFormat" : "MMDD",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringPatternTotal" : "0",
+                        "shouldShowTextOutline" : false,
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringWidth" : "0.0",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "indicatorSize" : "0.15"
+                    }
+                ],
+                "shouldShowRomanNumeralText" : false,
+                "shouldShowHandOutlines" : false,
+                "minuteHandType" : "MinuteHandTypeNone",
+                "secondHandType" : "SecondHandNodeTypeNone",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "secondHandMaterialName" : "#FF0000FF",
+                "hourHandType" : "HourHandTypeNone",
+                "ringMaterials" : [
+                    "#383838ff",
+                    "#e2e2e2ff",
+                    "#c6c6c6ff"
+                ],
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "secondHandMovement" : "SecondHandMovementStep"
+            }
+        },
+        {
             "title" : "Heat Wave",
             "faceBackgroundType" : "FaceBackgroundTypeDiagonalSplit",
             "clockFaceMaterialName" : "Squigglies.jpg",

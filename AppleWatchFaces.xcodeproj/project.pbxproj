@@ -13,6 +13,8 @@
 		3100DC9C21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */; };
 		3100DC9D21EBD6C2007423A5 /* NIXIEONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */; };
 		3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
+		31026C8421F26E9900BFC596 /* 80sDigital.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31026C8321F26E9900BFC596 /* 80sDigital.jpg */; };
+		31026C8521F26E9900BFC596 /* 80sDigital.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31026C8321F26E9900BFC596 /* 80sDigital.jpg */; };
 		31061F302192657200EF511B /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31061F2F2192657200EF511B /* Colors.plist */; };
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
@@ -283,6 +285,7 @@
 		31F8ABAB2187E8DB0014E2ED /* WatchSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */; };
 		31F8ABCD2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */; };
 		31F8ABCF2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */; };
+		31F9F9E021F296BE00D92AE0 /* DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31F9F9DF21F296BD00D92AE0 /* DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg */; };
 		31FD61E921891B5000E15DEA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */; };
 		31FD61EB21891B6900E15DEA /* ClockColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */; };
 /* End PBXBuildFile section */
@@ -333,6 +336,7 @@
 		310044C521D3C5DF0019794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleWatchFaces/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		3100DC9821EA98F3007423A5 /* dark-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-shadow.png"; sourceTree = "<group>"; };
 		3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
+		31026C8321F26E9900BFC596 /* 80sDigital.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 80sDigital.jpg; sourceTree = "<group>"; };
 		31061F2F2192657200EF511B /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorRingsSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -549,6 +553,7 @@
 		31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSettingsTableViewController.swift; sourceTree = "<group>"; };
 		31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHandSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHandSettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		31F9F9DF21F296BD00D92AE0 /* DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg"; sourceTree = "<group>"; };
 		31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockColorTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -740,6 +745,7 @@
 		31C05DA621A734120021AEAB /* defaultThumbnails */ = {
 			isa = PBXGroup;
 			children = (
+				31F9F9DF21F296BD00D92AE0 /* DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg */,
 				316AE2BE21F16D1D000665EC /* 1B150806-6EC7-4C39-93BB-BD47C1BC4F83.jpg */,
 				316AE2C321F16D1E000665EC /* 4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80.jpg */,
 				316AE28721F16D12000665EC /* 4D9AB2DE-F81B-4686-89F0-926E75FDC209.jpg */,
@@ -901,6 +907,7 @@
 		31F4F1B9219A57CA0050177A /* Materials */ = {
 			isa = PBXGroup;
 			children = (
+				31026C8321F26E9900BFC596 /* 80sDigital.jpg */,
 				316AE18D21F15B8E000665EC /* 80sTubes.jpg */,
 				316AE19021F15B8F000665EC /* AppleDigital.jpg */,
 				316AE18A21F15B8E000665EC /* BackToTheFuture.jpg */,
@@ -1070,6 +1077,7 @@
 				31A5F80221968223000F1677 /* RATIONALINT.TTF in Resources */,
 				316AE2CD21F16D1F000665EC /* A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg in Resources */,
 				316AE2FF21F16D1F000665EC /* decoratorTheme-biggysmalls.jpg in Resources */,
+				31026C8421F26E9900BFC596 /* 80sDigital.jpg in Resources */,
 				31061F302192657200EF511B /* Colors.plist in Resources */,
 				316AE2FD21F16D1F000665EC /* colorTheme-bluewhite.jpg in Resources */,
 				316AE2EE21F16D1F000665EC /* colorTheme-woodstone.jpg in Resources */,
@@ -1138,6 +1146,7 @@
 				316AE2F221F16D1F000665EC /* decoratorTheme-digitoval.jpg in Resources */,
 				3100DC9921EA98F3007423A5 /* dark-shadow.png in Resources */,
 				316AE1A821F15B90000665EC /* GreyDots.jpg in Resources */,
+				31F9F9E021F296BE00D92AE0 /* DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg in Resources */,
 				316AE2ED21F16D1F000665EC /* colorTheme-80sneon.jpg in Resources */,
 				31F4F1C6219A5CA60050177A /* wallpaper70s.jpg in Resources */,
 				316AE2EF21F16D1F000665EC /* BC4ADB7F-5439-415F-A4A5-0F1F366557ED.jpg in Resources */,
@@ -1208,6 +1217,7 @@
 				31A5F80D21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
 				316AE1A121F15B90000665EC /* Squigglies.jpg in Resources */,
 				316AE1AB21F15B90000665EC /* PixelSquares.jpg in Resources */,
+				31026C8521F26E9900BFC596 /* 80sDigital.jpg in Resources */,
 				31A5F80321968223000F1677 /* RATIONALINT.TTF in Resources */,
 				31F4F1D0219A6B030050177A /* vinylAlbum.jpg in Resources */,
 				31D8633421E165FA005BCB6F /* minuteHand-fancyWhite.png in Resources */,
