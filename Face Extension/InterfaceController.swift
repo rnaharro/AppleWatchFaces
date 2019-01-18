@@ -20,13 +20,14 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     var currentClockSetting: ClockSetting = ClockSetting.defaults()
     var currentClockIndex: Int = 0
     var crownAccumulator = 0.0
+    let crownThreshold = 0.2 // how much rotation is need to switch items
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         crownAccumulator += rotationalDelta
-        if crownAccumulator > 0.1 {
+        if crownAccumulator > crownThreshold {
             nextClock()
             crownAccumulator = 0.0
-        } else if crownAccumulator < -0.1 {
+        } else if crownAccumulator < -crownThreshold {
             prevClock()
             crownAccumulator = 0.0
         }
