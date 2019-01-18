@@ -33,7 +33,10 @@ class AppUISettings: NSObject {
     static let watchFrameBorderWidth:CGFloat = 4.0
     static let watchFrameBorderColor = SKColor.darkGray.cgColor
 
-    static let materialFiles = ["brass.jpg","brushedsteel.jpg","light-wood.jpg", "vinylAlbum.jpg", "wallpaper70s.jpg", "watchGears.jpg", "copper.jpg"]
+    static let materialFiles = [
+        "80sTubes.jpg","AppleDigital.jpg","BackToTheFuture.jpg","Beeker.jpg","BlueSky.jpg","Calculator.jpg","gameBoy.jpg",
+        "GreyDots.jpg","HangingLight.jpg","MelloYello.jpg","OpticalIllusion.jpg","PixelSquares.jpg","RainbowLines.jpg","Squigglies.jpg",
+        "brass.jpg","brushedsteel.jpg","light-wood.jpg", "vinylAlbum.jpg", "wallpaper70s.jpg", "watchGears.jpg", "copper.jpg"]
     
     static func materialIsColor( materialName: String ) -> Bool {
         if (materialName.lengthOfBytes(using: String.Encoding.utf8) > 0) {
