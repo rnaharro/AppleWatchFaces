@@ -270,7 +270,7 @@ class DigitalTimeNode: SKNode {
         setToTime(force: true) //update to latest time to start
         
         //check to see if we need to update time every second
-        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: SKWatchScene.timeChangedSecondNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: ClockTimer.timeChangedSecondNotificationName, object: nil)
         //force update time if needed ( after restart )
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForForceUpdateTime(notification:)), name: SKWatchScene.timeForceUpdateNotificationName, object: nil)
     }

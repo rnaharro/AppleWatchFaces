@@ -359,6 +359,12 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
             self.showMessage( message: "finished decorator theme screenshots.")
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let scene = watchPreviewViewController?.skView.scene as? SKWatchScene {
+            scene.cleanup()
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         if WCSession.isSupported() {

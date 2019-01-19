@@ -12,9 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var clockTimer =  ClockTimer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         printFonts()
+        
+        clockTimer.startTimer()
         
         //TODO: do this only once on initial launch ( save a pref to skip it )
         AppUISettings.createFolders()

@@ -9,15 +9,10 @@
 import SpriteKit
 
 class SKWatchScene: SKScene {
-    private var spinnyNode : SKShapeNode?
     var shouldKeepTime:Bool = true
     static let sizeMulitplier:CGFloat = 100.0 //in pixels
-    var currentSecond : Int = -1
-    var secondHandTimer = Timer()
     
     static let timeForceUpdateNotificationName = Notification.Name("timeForceUpdate")
-    static let timeChangedSecondNotificationName = Notification.Name("timeChangedSecond")
-    static let timeChangedMinuteNotificationName = Notification.Name("timeChangedMinute")
     
     func redraw(clockSetting: ClockSetting) {
         
@@ -55,61 +50,27 @@ class SKWatchScene: SKScene {
         shouldKeepTime = true
     }
     
+    func cleanup() {
+        NotificationCenter.default.removeObserver(self)
+        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
+            watchFaceNode.removeFromParent()
+        }
+    }
+    
     override func sceneDidLoad() {
         //redraw( clockSetting: ClockSetting.defaults() )
-        startClockSecondHandTimer()
+        //check to see if we need to update time every second
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: ClockTimer.timeChangedSecondNotificationName, object: nil)
     }
     
-    override func update(_ currentTime: TimeInterval) {
+    @objc func onNotificationForSecondsChanged(notification:Notification) {
+        //debugPrint("second hand movement action")
         
-        //allow for no time update
         if !shouldKeepTime { return }
         
-//        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
-//            watchFaceNode.setToTime()
-//        }
-    }
-    
-    func startClockSecondHandTimer() {
-        // if old action remove it
-        stopClockSecondHandTimer()
-        
-        let duration = 0.1
-        self.secondHandTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(SKWatchScene.secondHandMovementCheck), userInfo: nil, repeats: true)
-    }
-    
-    func stopClockSecondHandTimer() {
-        if (self.secondHandTimer.isValid) {
-            debugPrint("STOP second hand timer")
-            self.secondHandTimer.invalidate()
-        }
-    }
-    
-    @objc func secondHandMovementCheck() {
-        let date = Date()
-        let calendar = Calendar.current
-    
-        let seconds = Int(calendar.component(.second, from: date))
-        
-        if (self.currentSecond != seconds) {
-            secondHandMovementAction()
-            
-            NotificationCenter.default.post(name: SKWatchScene.timeChangedSecondNotificationName, object: nil, userInfo:nil)
-            if (seconds == 0) {
-                NotificationCenter.default.post(name: SKWatchScene.timeChangedMinuteNotificationName, object: nil, userInfo:nil)
-            }
-            self.currentSecond = seconds
-        }
-        
-    }
-    
-    func secondHandMovementAction() {
-        //debugPrint("second hand movement action")
         if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
             watchFaceNode.setToTime()
         }
-            
-//            typedClockNode.setToTime(true, minuteHandMovement: self.currentClockSetting.clockFaceSettings?.minuteHandMovement, secondHandMovement: self.currentClockSetting.clockFaceSettings?.secondHandMovement)
     }
     
 }

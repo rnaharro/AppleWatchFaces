@@ -12,6 +12,7 @@ import Foundation
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDelegate {
     
+    var clockTimer =  ClockTimer()
     @IBOutlet var skInterface: WKInterfaceSKScene!
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) { }
@@ -162,6 +163,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         
         //create folders to store data later
         AppUISettings.createFolders()
+        
+        //start timer
+        clockTimer.startTimer()
         
         //capture crpwn events
         crownSequencer.delegate = self
