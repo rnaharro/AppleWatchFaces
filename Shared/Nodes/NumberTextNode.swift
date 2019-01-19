@@ -26,7 +26,8 @@ enum NumberTextTypes: String {
     NumberTextTypeTypeWriter,
     NumberTextTypeIronLounge,
     NumberTextTypeDigitalMono,
-    NumberTextTypeNixie
+    NumberTextTypeNixie,
+    NumberTextLCDPhone
     
     static let randomizableValues = [NumberTextTypeModernInteger,
         NumberTextTypeBlackRose,
@@ -40,12 +41,14 @@ enum NumberTextTypes: String {
         NumberTextTypeDINPro,
         NumberTextTypeTypeWriter,
         NumberTextTypeIronLounge,
-        NumberTextTypeDigitalMono
+        NumberTextTypeDigitalMono,
+        NumberTextLCDPhone
         ]
     static let userSelectableValues = [NumberTextTypeModernInteger,
         NumberTextTypeNixie,
         NumberTextTypeDINPro,
         NumberTextTypeDigitalMono,
+        NumberTextLCDPhone,
         NumberTextTypeBlackRose,
         NumberTextTypeCorneriaScript,
         NumberTextTypeGermanica,
@@ -103,7 +106,8 @@ class NumberTextNode: SKNode {
         if (nodeType == NumberTextTypes.NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
         if (nodeType == NumberTextTypes.NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
         if (nodeType == NumberTextTypes.NumberTextTypeNixie) { typeDescription = "Nixie Tube" }
-        
+        if (nodeType == NumberTextTypes.NumberTextLCDPhone) { typeDescription = "LCD Phone" }
+    
         return typeDescription
     }
     
@@ -127,7 +131,8 @@ class NumberTextNode: SKNode {
         
         if (textType == .NumberTextTypeDigitalMono) { fontName = "Digital-7Mono" }
         if (textType == .NumberTextTypeNixie) { fontName = "NixieOne" }
-        
+        if (textType == .NumberTextLCDPhone) { fontName = "Lcdphone" }
+
         //AppleSDGothicNeo-SemiBold     // best VERY CLEAN
         //KohinoorTelugu-Medium         // basic but not bad
         //GillSans-SemiBold             // not amazing curvy

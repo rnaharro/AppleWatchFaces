@@ -40,6 +40,9 @@
 		310D4A5921C0AA9000082A62 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D4A5821C0AA9000082A62 /* Collection+Safe.swift */; };
 		312D4C05218BCBF0008504D2 /* ClockDecoratorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */; };
 		312D4C08218BCDDB008504D2 /* HourHandNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D4C07218BCDDB008504D2 /* HourHandNode.swift */; };
+		312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
+		312E2D6C21F3D72800C2F17F /* LCDPHONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */; };
+		312E2D6D21F3D72800C2F17F /* LCDPHONE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */; };
 		314A010A21960409009BCE3C /* UserClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010921960409009BCE3C /* UserClockSetting.swift */; };
 		314A010D219605AA009BCE3C /* Settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010B219605AA009BCE3C /* Settings.json */; };
 		314A010E219605AA009BCE3C /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010C219605AA009BCE3C /* Themes.json */; };
@@ -216,7 +219,6 @@
 		31B5E8D3218BD63E00DE6429 /* FaceIndicatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D1218BD63E00DE6429 /* FaceIndicatorNode.swift */; };
 		31B5E8D5218BD81800DE6429 /* ClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D4218BD81800DE6429 /* ClockSetting.swift */; };
 		31B5E8D7218BD91400DE6429 /* ClockFaceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D6218BD91400DE6429 /* ClockFaceSetting.swift */; };
-		31B5E8D8218CDF5E00DE6429 /* SKWatchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F92178166B00585AB1 /* SKWatchScene.swift */; };
 		31B5E8D9218CE00E00DE6429 /* ClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D4218BD81800DE6429 /* ClockSetting.swift */; };
 		31B5E8DA218CE01300DE6429 /* ClockFaceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8D6218BD91400DE6429 /* ClockFaceSetting.swift */; };
 		31B5E8DB218CE01600DE6429 /* ClockRingSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B5E8CE218BD5A900DE6429 /* ClockRingSetting.swift */; };
@@ -361,6 +363,7 @@
 		310D4A5821C0AA9000082A62 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		312D4C04218BCBF0008504D2 /* ClockDecoratorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockDecoratorTheme.swift; sourceTree = "<group>"; };
 		312D4C07218BCDDB008504D2 /* HourHandNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourHandNode.swift; sourceTree = "<group>"; };
+		312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LCDPHONE.TTF; sourceTree = "<group>"; };
 		314A010921960409009BCE3C /* UserClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClockSetting.swift; sourceTree = "<group>"; };
 		314A010B219605AA009BCE3C /* Settings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Settings.json; sourceTree = "<group>"; };
 		314A010C219605AA009BCE3C /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
@@ -717,6 +720,7 @@
 		31A5F7F12196820D000F1677 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */,
 				3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */,
 				318A928E21D34C6C0060D89B /* DIGITAL-7-MONO.TTF */,
 				31A5F7F221968221000F1677 /* BLACKROSE.TTF */,
@@ -1096,6 +1100,7 @@
 				316AE2FA21F16D1F000665EC /* 9EE7EBC9-51E6-4291-B96E-E145AD1F0F3A.jpg in Resources */,
 				314A010E219605AA009BCE3C /* Themes.json in Resources */,
 				316AE2DD21F16D1F000665EC /* colorTheme-yellowglow.jpg in Resources */,
+				312E2D6C21F3D72800C2F17F /* LCDPHONE.TTF in Resources */,
 				316AE2CF21F16D1F000665EC /* C660411A-C628-494E-90FB-91DA14BB2644.jpg in Resources */,
 				316AE2E621F16D1F000665EC /* decoratorTheme-decorativelines.jpg in Resources */,
 				316AE2F621F16D1F000665EC /* D1896EB5-1C6E-47D6-8629-2881C0770D58.jpg in Resources */,
@@ -1245,6 +1250,7 @@
 				318808F82178166B00585AB1 /* SKWatchScene.sks in Resources */,
 				316AE1AF21F15B90000665EC /* RainbowLines.jpg in Resources */,
 				31A5F7FF21968223000F1677 /* ROTHERNBURGDECORATIVE.TTF in Resources */,
+				312E2D6D21F3D72800C2F17F /* LCDPHONE.TTF in Resources */,
 				31A5F80721968223000F1677 /* KINGTHINGS.TTF in Resources */,
 				316AE19B21F15B90000665EC /* Calculator.jpg in Resources */,
 				316AE19F21F15B90000665EC /* 80sTubes.jpg in Resources */,
@@ -1368,11 +1374,11 @@
 				31B5E8D9218CE00E00DE6429 /* ClockSetting.swift in Sources */,
 				314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */,
 				31F4F1CF219A60230050177A /* AppUISettings.swift in Sources */,
-				31B5E8D8218CDF5E00DE6429 /* SKWatchScene.swift in Sources */,
 				31F4F1DA219D12DF0050177A /* UserClockSetting.swift in Sources */,
 				31B5E8E1218CE03500DE6429 /* HourHandNode.swift in Sources */,
 				31B5E8DB218CE01600DE6429 /* ClockRingSetting.swift in Sources */,
 				318808FE2178166B00585AB1 /* NotificationController.swift in Sources */,
+				312E2D6A21F2D69F00C2F17F /* SKWatchScene.swift in Sources */,
 				318808FC2178166B00585AB1 /* ExtensionDelegate.swift in Sources */,
 				31B5E8DA218CE01300DE6429 /* ClockFaceSetting.swift in Sources */,
 				31EF999721A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,

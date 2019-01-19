@@ -28,6 +28,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>LCDPHONE.TTF</string>
 		<string>NIXIEONE.TTF</string>
 		<string>DIGITAL-7-MONO.TTF</string>
 		<string>IRONLOUNGE.TTF</string>
