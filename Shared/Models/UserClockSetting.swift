@@ -99,6 +99,42 @@ class UserClockSetting: NSObject {
         return clockSettingsSerializedArray
     }
     
+    static func addMissingFromDefaults() {
+        
+        func sharedSettingHasThisClockSetting(uniqueID : String) -> Bool {
+            for clockSetting in sharedClockSettings {
+                if clockSetting.uniqueID == uniqueID { return true }
+            }
+            return false
+        }
+        
+        guard let path = Bundle.main.path(forResource: "Settings", ofType: "json") else { return }
+        
+        var clockSettingsSerializedArray = [JSON]()
+        clockSettingsSerializedArray = loadSettingArrayFromSaveFile( path: path)
+        
+        let numOriginalClocks = sharedClockSettings.count
+        //loop thru all settings in defaults, and insert any new ones to our clock settings
+        for clockSettingSerialized in clockSettingsSerializedArray {
+            //print("got title", clockSettingSerialized["title"])
+            let newClockSetting = ClockSetting.init(jsonObj: clockSettingSerialized)
+            //if this one already in our list?
+            if !sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID) {
+                sharedClockSettings.insert(newClockSetting, at: 0)
+                //try re-copying the file just in case it was deleted and will be recovered
+                if let image = UIImage.init(named: newClockSetting.uniqueID + ".jpg") {
+                    _ = image.save(imageName: newClockSetting.uniqueID)
+                }
+            }
+        }
+        
+        //if there are new ones, save it
+        if sharedClockSettings.count > numOriginalClocks {
+            saveToFile()
+        }
+        
+    }
+    
     static func resetToDefaults() {
         loadFromFile(true)
         saveToFile()

@@ -20,7 +20,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQr-wG-VwM" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
                                 <rect key="frame" x="16" y="617" width="343" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="SQ2-tJ-30a"/>
+                                    <constraint firstAttribute="height" constant="28" id="69Y-1h-Anb"/>
                                 </constraints>
                                 <state key="normal" title="Reset All Settings">
                                     <color key="titleColor" red="1" green="0.12852664389999999" blue="0.067248547749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -47,15 +47,6 @@
                                     <segue destination="29y-lp-vNa" kind="embed" id="a1c-qq-ojh"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-ba-uhr">
-                                <rect key="frame" x="16" y="548" width="343" height="61"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="ny1-TA-Jfc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="0.12852664389999999" blue="0.067248547749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRL-ux-THg">
                                 <rect key="frame" x="16" y="332" width="343" height="75"/>
                                 <constraints>
@@ -88,24 +79,56 @@
                                     <constraint firstAttribute="height" constant="2" id="axG-Xl-CRF"/>
                                 </constraints>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYi-wg-6NM" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
+                                <rect key="frame" x="16" y="581" width="343" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="pF1-S4-amD"/>
+                                </constraints>
+                                <state key="normal" title="Add From Defaults">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addNewSettingActionWithSender:" destination="jKv-ap-UqF" eventType="touchUpInside" id="g9l-uF-lzk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-ba-uhr">
+                                <rect key="frame" x="16" y="512" width="343" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="BXV-0o-wki"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.12852664389999999" blue="0.067248547749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WQr-wG-VwM" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="0dq-1m-dQb"/>
+                            <constraint firstItem="WQr-wG-VwM" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="1e2-5s-cie"/>
+                            <constraint firstItem="WQr-wG-VwM" firstAttribute="top" secondItem="uYi-wg-6NM" secondAttribute="bottom" constant="8" id="3Mc-xn-xQK"/>
+                            <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="WQr-wG-VwM" secondAttribute="trailing" constant="16" id="5OE-81-CE7"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="trailing" secondItem="vUG-c0-AEw" secondAttribute="trailing" id="DCH-9I-kbV"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="kRL-ux-THg" secondAttribute="trailing" constant="16" id="FJs-3f-kgW"/>
-                            <constraint firstItem="pmc-ba-uhr" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="Oco-GS-pkc"/>
-                            <constraint firstItem="WQr-wG-VwM" firstAttribute="top" secondItem="pmc-ba-uhr" secondAttribute="bottom" constant="8" id="PdR-Ee-WYi"/>
+                            <constraint firstItem="pmc-ba-uhr" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="FhL-hz-tp3"/>
+                            <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="uYi-wg-6NM" secondAttribute="trailing" constant="16" id="HgD-5E-V9p"/>
                             <constraint firstItem="kRL-ux-THg" firstAttribute="top" secondItem="EFY-Sg-kEX" secondAttribute="bottom" constant="8" id="Psl-yw-UH9"/>
-                            <constraint firstItem="vUG-c0-AEw" firstAttribute="bottom" secondItem="WQr-wG-VwM" secondAttribute="bottom" constant="22" id="Q7V-X9-kZG"/>
-                            <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="WQr-wG-VwM" secondAttribute="trailing" constant="16" id="RW2-7E-3jY"/>
+                            <constraint firstItem="uYi-wg-6NM" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="RrO-IY-c2F"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" id="SC3-12-9tL"/>
+                            <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="pmc-ba-uhr" secondAttribute="trailing" constant="16" id="UEt-fY-cuT"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="SFP-PZ-A7W" secondAttribute="trailing" constant="16" id="Vcp-5K-esj"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="trailing" secondItem="0eE-eN-zvf" secondAttribute="trailingMargin" id="WK6-8f-v9C"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="leading" secondItem="0eE-eN-zvf" secondAttribute="leadingMargin" id="deu-9u-VNZ"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="top" secondItem="vUG-c0-AEw" secondAttribute="top" id="fUy-1K-HjO"/>
-                            <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="pmc-ba-uhr" secondAttribute="trailing" constant="16" id="gOa-uK-akG"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="top" secondItem="SFP-PZ-A7W" secondAttribute="bottom" constant="8" id="rsT-RH-coC"/>
+                            <constraint firstItem="vUG-c0-AEw" firstAttribute="bottom" secondItem="WQr-wG-VwM" secondAttribute="bottom" constant="22" id="sEE-Fg-nGq"/>
+                            <constraint firstItem="uYi-wg-6NM" firstAttribute="top" secondItem="pmc-ba-uhr" secondAttribute="bottom" constant="8" id="v8E-pG-99x"/>
                             <constraint firstItem="kRL-ux-THg" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="vqz-kC-4xT"/>
                             <constraint firstItem="SFP-PZ-A7W" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="x2o-zf-CJz"/>
                             <constraint firstItem="SFP-PZ-A7W" firstAttribute="top" secondItem="kRL-ux-THg" secondAttribute="bottom" constant="13" id="z7U-zq-6b2"/>

@@ -109,6 +109,14 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     // array of outstanding transfers
     //validSession.outstandingFileTransfers
     
+    @IBAction func addNewSettingAction(sender: UIButton) {
+        UserClockSetting.addMissingFromDefaults()
+        
+        if let faceChooserTableVC  = faceChooserTableViewController  {
+            faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
+        }
+    }
+    
     @IBAction func resetAllSettingAction(sender: UIButton) {
         UserClockSetting.resetToDefaults()
         
