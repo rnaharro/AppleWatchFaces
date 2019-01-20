@@ -172,6 +172,31 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         }
     }
     
+    @IBAction func redo() {
+        
+    }
+    
+    @IBAction func undo() {
+        
+    }
+    
+    @IBAction func cloneClockSettings() {
+        //add a new item into the shared settings
+        let oldTitle = SettingsViewController.currentClockSetting.title
+        let newClockSetting = SettingsViewController.currentClockSetting.clone(keepUniqueID: false)!
+        newClockSetting.title = oldTitle + " copy"
+        UserClockSetting.sharedClockSettings.insert(newClockSetting, at: currentClockIndex)
+        UserClockSetting.saveToFile()
+        
+        SettingsViewController.currentClockSetting = newClockSetting
+        redrawPreviewClock() //show correct clock
+        redrawSettingsTableAfterGroupChange() //show new title
+        makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
+        
+        //tell chooser view to reload its cells
+        NotificationCenter.default.post(name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil, userInfo:nil)
+    }
+    
     @IBAction func randomColorTheme() {
         SettingsViewController.currentClockSetting.randomize(newColors: true, newBackground: false, newFace: false)
         redrawPreviewClock()

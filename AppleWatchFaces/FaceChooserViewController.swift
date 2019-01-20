@@ -23,6 +23,8 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     var faceChooserTableViewController:FaceChooserTableViewController?
     var faceListReloadType : FaceListReloadType = .none
     
+    static let faceChooserReloadChangeNotificationName = Notification.Name("faceChooserReload")
+    
     @IBAction func sendAllSettingsAction(sender: UIButton) {
         //debugPrint("sendAllSettingsAction tapped")
         if let validSession = session {
@@ -204,6 +206,14 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         filetransferProgress.isHidden = true
         
         UserClockSetting.loadFromFile()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForReloadChange(notification:)), name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil)
+    }
+    
+    @objc func onNotificationForReloadChange(notification:Notification) {
+        if let faceChooserTableVC  = faceChooserTableViewController  {
+            faceChooserTableVC.reloadAllThumbs()
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -226,13 +236,17 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
                 //add a new item into the shared settings
                 let newClockSetting = ClockSetting.defaults()
                 UserClockSetting.sharedClockSettings.insert(newClockSetting, at: 0)
+                
+                //ensure it shows the first one ( our new one )
+                let vc = segue.destination as? SettingsViewController
+                vc?.currentClockIndex = 0
+                //make thumb only works once the VC is fully loaded: doing it here only gets back box
+                //vc?.makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
+                
                 //reload this tableView so it wont crash later trying to only show visible
                 if let faceChooserTableVC  = faceChooserTableViewController  {
                     faceChooserTableVC.reloadAllThumbs()
                 }
-                //ensure it shows the first one ( our new one )
-                let vc = segue.destination as? SettingsViewController
-                vc?.currentClockIndex = 0
             }
         }
         
