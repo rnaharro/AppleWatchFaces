@@ -265,7 +265,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     func generateColorThemeThumbs() {
         SettingsViewController.currentClockSetting = ClockSetting.defaults()
-        if let firstSetting = UserClockSetting.sharedDecoratorThemeSettings.first {
+        if let firstSetting = UserClockSetting.sharedDecoratorThemeSettings.last {
             SettingsViewController.currentClockSetting.applyDecoratorTheme(firstSetting)
         }
         self.redrawPreviewClock()
