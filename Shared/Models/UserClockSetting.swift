@@ -55,56 +55,19 @@ class UserClockSetting: NSObject {
             }
         }
         
-        //keep track of flag to load defaults or not
-        var shouldLoadDefaults = true
-        
         //clear it out
         sharedClockSettings = []
         
         //make placeholder serial array
         var clockSettingsSerializedArray = [JSON]()
-    
+        
         let path = self.ArchiveURL.path
-            do {
-                print("loading JSON file path = \(path)")
-                
-                //let data = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe)
-                let jsonObj = try! JSON(data: jsonData)
-                if jsonObj != JSON.null {
-                    //print("LOADED !!! jsonData:\(jsonObj)")
-                    clockSettingsSerializedArray = jsonObj["clockSettings"].array!
-                    shouldLoadDefaults = false
-                } else {
-                    print("could not get json from file, make sure that file contains valid json.")
-                }
-            } catch let error as NSError {
-                print("error", error.localizedDescription)
-                
-                //TODO: check for exact no file error
-                
-                //if no file, initialize with default data
-                
-            }
+        clockSettingsSerializedArray = loadSettingArrayFromSaveFile( path: path)
         
         //if nothing found / loaded, load defaults
-        
-        if (shouldLoadDefaults || forceLoadDefaults) {
+        if (clockSettingsSerializedArray.count==0 || forceLoadDefaults) {
             if let path = Bundle.main.path(forResource: "Settings", ofType: "json") {
-                do {
-                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe)
-                    let jsonObj = try! JSON(data: data)
-                    if jsonObj != JSON.null {
-                        //print("jsonDataFromDefaults:\(jsonObj)")
-                        clockSettingsSerializedArray = jsonObj["clockSettings"].array!
-                    } else {
-                        print("could not get json from file, make sure that file contains valid json.")
-                    }
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-            } else {
-                print("Invalid filename/path.")
+                clockSettingsSerializedArray = loadSettingArrayFromSaveFile( path: path)
             }
         }
         
@@ -115,7 +78,25 @@ class UserClockSetting: NSObject {
             //debugPrint("n:" + newClockSetting.title + " " + newClockSetting.uniqueID)
             sharedClockSettings.append( newClockSetting )
         }
+    }
+    
+    static func loadSettingArrayFromSaveFile(path: String) -> [JSON] {
+        var clockSettingsSerializedArray = [JSON]()
+        do {
+            print("loading JSON file path = \(path)")
+            let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe)
+            let jsonObj = try! JSON(data: jsonData)
+            if jsonObj != JSON.null {
+                //print("LOADED !!! jsonData:\(jsonObj)")
+                clockSettingsSerializedArray = jsonObj["clockSettings"].array!
+            } else {
+                print("could not get json from file, make sure that file contains valid json.")
+            }
+        } catch let error as NSError {
+            print("error", error.localizedDescription)
+        }
         
+        return clockSettingsSerializedArray
     }
     
     static func resetToDefaults() {
