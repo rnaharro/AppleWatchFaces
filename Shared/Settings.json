@@ -560,6 +560,129 @@
             "clockCasingMaterialName" : "#000000ff"
         },
         {
+            "clockFaceSettings" : {
+                "minuteHandMaterialName" : "#ff7f00ff",
+                "secondHandMaterialName" : "#FFD700FF",
+                "ringSettings" : [
+                    {
+                        "ringPatternTotal" : "12",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.15",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringType" : "RingTypeSpacer",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.08",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "ringPatternTotal" : "0",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.38",
+                        "indicatorSize" : "0.15",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringStaticTimeFormat" : "HHMM",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringWidth" : "0.0",
+                        "ringPattern" : [
+                            
+                        ],
+                        "textType" : "NumberTextLCDPhone"
+                    },
+                    {
+                        "ringPatternTotal" : "0",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.38",
+                        "indicatorSize" : "0.15",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringStaticTimeFormat" : "MMDD",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringType" : "RingTypeDigitalTime",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringWidth" : "0.0",
+                        "ringPattern" : [
+                            
+                        ],
+                        "textType" : "NumberTextLCDPhone"
+                    },
+                    {
+                        "ringPatternTotal" : "12",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.2",
+                        "indicatorSize" : "0.15",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringType" : "RingTypeSpacer",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.0",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textType" : "NumberTextTypeHelvica"
+                    },
+                    {
+                        "ringPatternTotal" : "12",
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.52",
+                        "indicatorSize" : "0.15",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringStaticTimeFormat" : "None",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringType" : "RingTypeTextRotatingNode",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringWidth" : "0.075",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textType" : "NumberTextLCDPhone"
+                    }
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "minuteHandMovement" : "MinuteHandMovementSmooth",
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "ringMaterials" : [
+                    "#c6c6c6ff",
+                    "#ffffffff",
+                    "#008ed6ff"
+                ],
+                "hourHandMaterialName" : "#ff7f00ff",
+                "hourHandType" : "HourHandTypeSwiss",
+                "shouldShowRomanNumeralText" : false,
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "shouldShowHandOutlines" : true,
+                "secondHandType" : "SecondHandTypeRail"
+            },
+            "clockCasingMaterialName" : "#008ed6ff",
+            "title" : "Braille Fire",
+            "clockFaceMaterialName" : "#383838ff",
+            "uniqueID" : "613635D1-63D0-4D4B-9B1E-8BFEE57F34C2",
+            "faceBackgroundType" : "FaceBackgroundTypeDiagonalSplit"
+        },
+        {
             "title" : "Light Bright",
             "faceBackgroundType" : "FaceBackgroundTypeFilled",
             "clockFaceMaterialName" : "HangingLight.jpg",

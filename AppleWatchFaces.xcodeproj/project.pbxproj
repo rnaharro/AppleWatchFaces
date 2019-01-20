@@ -212,6 +212,8 @@
 		31A5F80D21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7FA21968222000F1677 /* ROMAN-TRAJAN-PRO.TTF */; };
 		31A5F80E21968223000F1677 /* CONERIASCRIPT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */; };
 		31A5F80F21968223000F1677 /* CONERIASCRIPT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */; };
+		31AE018221F427BD00300513 /* 613635D1-63D0-4D4B-9B1E-8BFEE57F34C2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AE018121F427BD00300513 /* 613635D1-63D0-4D4B-9B1E-8BFEE57F34C2.jpg */; };
+		31AE018421F427F600300513 /* colorTheme-kale.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AE018321F427F600300513 /* colorTheme-kale.jpg */; };
 		31B3F8C7218F22EF00AD22A5 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8C6218F22EF00AD22A5 /* RoundedButton.swift */; };
 		31B3F8CC218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */; };
 		31B3F8CE218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */; };
@@ -511,6 +513,8 @@
 		31A5F7F921968222000F1677 /* IRONLOUNGE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRONLOUNGE.TTF; sourceTree = "<group>"; };
 		31A5F7FA21968222000F1677 /* ROMAN-TRAJAN-PRO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ROMAN-TRAJAN-PRO.TTF"; sourceTree = "<group>"; };
 		31A5F7FB21968223000F1677 /* CONERIASCRIPT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CONERIASCRIPT.TTF; sourceTree = "<group>"; };
+		31AE018121F427BD00300513 /* 613635D1-63D0-4D4B-9B1E-8BFEE57F34C2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "613635D1-63D0-4D4B-9B1E-8BFEE57F34C2.jpg"; sourceTree = "<group>"; };
+		31AE018321F427F600300513 /* colorTheme-kale.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "colorTheme-kale.jpg"; sourceTree = "<group>"; };
 		31B3F8C6218F22EF00AD22A5 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableHeaderViewCell.swift; sourceTree = "<group>"; };
 		31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -753,6 +757,7 @@
 		31C05DA621A734120021AEAB /* defaultThumbnails */ = {
 			isa = PBXGroup;
 			children = (
+				31AE018121F427BD00300513 /* 613635D1-63D0-4D4B-9B1E-8BFEE57F34C2.jpg */,
 				31F9F9DF21F296BD00D92AE0 /* DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg */,
 				316AE2BE21F16D1D000665EC /* 1B150806-6EC7-4C39-93BB-BD47C1BC4F83.jpg */,
 				316AE2C321F16D1E000665EC /* 4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80.jpg */,
@@ -786,6 +791,7 @@
 				316AE29521F16D14000665EC /* colorTheme-darkness.jpg */,
 				316AE29121F16D13000665EC /* colorTheme-firewatch.jpg */,
 				316AE2AA21F16D19000665EC /* colorTheme-fleshtones.jpg */,
+				31AE018321F427F600300513 /* colorTheme-kale.jpg */,
 				316AE2BA21F16D1C000665EC /* colorTheme-lightcoffee.jpg */,
 				316AE28A21F16D13000665EC /* colorTheme-metallica.jpg */,
 				316AE2C621F16D1F000665EC /* colorTheme-neongreen.jpg */,
@@ -1090,6 +1096,7 @@
 				316AE2FD21F16D1F000665EC /* colorTheme-bluewhite.jpg in Resources */,
 				316AE2EE21F16D1F000665EC /* colorTheme-woodstone.jpg in Resources */,
 				316AE31121F16D1F000665EC /* decoratorTheme-woody.jpg in Resources */,
+				31AE018221F427BD00300513 /* 613635D1-63D0-4D4B-9B1E-8BFEE57F34C2.jpg in Resources */,
 				31D8633521E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */,
 				316AE31021F16D1F000665EC /* 4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80.jpg in Resources */,
 				316AE2E721F16D1F000665EC /* decoratorTheme-newsprint.jpg in Resources */,
@@ -1186,6 +1193,7 @@
 				31A5F80621968223000F1677 /* KINGTHINGS.TTF in Resources */,
 				316AE1AE21F15B90000665EC /* RainbowLines.jpg in Resources */,
 				316AE2D421F16D1F000665EC /* 4D9AB2DE-F81B-4686-89F0-926E75FDC209.jpg in Resources */,
+				31AE018421F427F600300513 /* colorTheme-kale.jpg in Resources */,
 				318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */,
 				316AE2F821F16D1F000665EC /* A838242D-062F-45C6-B638-9CD0278B6560.jpg in Resources */,
 				310044C621D3C5DF0019794A /* Settings.storyboard in Resources */,
