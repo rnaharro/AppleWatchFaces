@@ -13,6 +13,8 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     @IBOutlet var errorMessageLabel: UILabel!
     @IBOutlet var generateThumbsButton: UIButton!
+    @IBOutlet var undoButton: RoundedButton!
+    @IBOutlet var redoButton: RoundedButton!
     
     var session: WCSession?
     var watchPreviewViewController:WatchPreviewViewController?
@@ -20,6 +22,10 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     static var currentClockSetting: ClockSetting = ClockSetting.defaults()
     var currentClockIndex = 0
+    var undoArray = [ClockSetting]()
+    var undoIndex = 0
+    
+    //used when generating thumbnails / etc
     var timerClockIndex = 0
     var timer = Timer()
     
@@ -130,6 +136,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
         redrawPreviewClock()
+        addToUndoStack()
     }
     
     @objc func onNotificationForGetCameraImage(notification:Notification) {
@@ -172,13 +179,41 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         }
     }
     
+    ////////////////
+    func setUndoRedoButtonStatus() {
+        debugPrint("undoArray count:" + undoArray.count.description + " " + "index:" + undoIndex.description)
+        if undoArray.count>1 {
+            undoButton.isEnabled = true
+        } else {
+            undoButton.isEnabled = false
+        }
+        if undoArray.count < undoIndex {
+            redoButton.isEnabled = true
+        } else {
+            redoButton.isEnabled = false
+        }
+    }
+    
+    func addToUndoStack() {
+        undoArray.append(SettingsViewController.currentClockSetting.clone()!)
+        undoIndex = undoArray.count - 1
+        setUndoRedoButtonStatus()
+    }
+    
     @IBAction func redo() {
         
     }
     
     @IBAction func undo() {
-        
+        guard let _ = undoArray.popLast() else { return } //current setting
+        guard let lastSettings = undoArray.last else { return }
+        SettingsViewController.currentClockSetting = lastSettings
+        redrawPreviewClock() //show correct clockr
+        redrawSettingsTableAfterGroupChange() //show new title
+        undoIndex = undoIndex - 1
+        setUndoRedoButtonStatus()
     }
+    /////////////////
     
     @IBAction func cloneClockSettings() {
         //add a new item into the shared settings
@@ -401,6 +436,8 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         //get current selected clock
         redrawSettingsTableAfterGroupChange()
         redrawPreviewClock()
+        
+        addToUndoStack() //will update button status
     }
     
     override func viewDidLoad() {

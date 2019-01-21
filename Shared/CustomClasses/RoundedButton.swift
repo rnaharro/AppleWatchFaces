@@ -49,6 +49,13 @@ class RoundedButton:UIButton {
         }
     }
     
+    //hacky but effective
+    open override var isEnabled: Bool{
+        didSet {
+            alpha = isEnabled ? 1.0 : 0.5
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

@@ -99,6 +99,9 @@
                                 <state key="normal" title="Redo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
@@ -118,6 +121,9 @@
                                     <constraint firstAttribute="width" constant="50" id="ts5-nl-Dr3"/>
                                 </constraints>
                                 <state key="normal" title="Undo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="disabled">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -214,6 +220,8 @@
                     <connections>
                         <outlet property="errorMessageLabel" destination="QiH-q3-0ff" id="JxF-K8-isp"/>
                         <outlet property="generateThumbsButton" destination="kok-Ex-gcC" id="40J-on-Kla"/>
+                        <outlet property="redoButton" destination="WJh-XF-vaw" id="P3W-Tq-Bxu"/>
+                        <outlet property="undoButton" destination="jXb-cq-O9c" id="EUi-ZG-PdJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
