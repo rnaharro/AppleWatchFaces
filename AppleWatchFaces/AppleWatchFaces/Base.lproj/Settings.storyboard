@@ -28,13 +28,13 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L09-xH-or1">
-                                <rect key="frame" x="0.0" y="275" width="375" height="392"/>
+                                <rect key="frame" x="0.0" y="268" width="375" height="355"/>
                                 <connections>
                                     <segue destination="g3k-ac-9zQ" kind="embed" id="9MD-Q2-0lQ"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NJL-vA-esZ">
-                                <rect key="frame" x="16" y="239" width="343" height="28"/>
+                                <rect key="frame" x="16" y="234" width="343" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="fHK-v5-DIc"/>
                                 </constraints>
@@ -49,119 +49,48 @@
                                     <action selector="groupChangeActionWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="LJy-AJ-JPp"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mqq-m7-d7p" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="184" y="27" width="175" height="28"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="pvs-yB-9Q5">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="AxN-0q-rts"/>
+                                    <constraint firstAttribute="height" constant="44" id="9OK-Y9-k6X"/>
                                 </constraints>
-                                <state key="normal" title="Send to Watch">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="sendSettingActionWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bL5-J1-OEN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-Li-lzJ" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="184" y="199" width="50" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="1Wd-ZS-eLK"/>
-                                    <constraint firstAttribute="width" constant="50" id="HLE-ZT-JQW"/>
-                                </constraints>
-                                <state key="normal" title="Clone">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="cloneClockSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="RmB-fW-mGH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJh-XF-vaw" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="309" y="199" width="50" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="dF9-ZN-QVc"/>
-                                    <constraint firstAttribute="height" constant="28" id="meJ-Qb-tKV"/>
-                                </constraints>
-                                <state key="normal" title="Redo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="redo" destination="BYZ-38-t0r" eventType="touchUpInside" id="WzE-RU-GLc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXb-cq-O9c" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="251" y="199" width="50" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="ELm-Cx-wqQ"/>
-                                    <constraint firstAttribute="width" constant="50" id="ts5-nl-Dr3"/>
-                                </constraints>
-                                <state key="normal" title="Undo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="undo" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Qh-bC-szu"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kok-Ex-gcC" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="184" y="91" width="175" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="pbi-Mp-Kbc"/>
-                                </constraints>
-                                <state key="normal" title="Generate Thumbs!">
-                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="generateThumbsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NdC-KJ-aVC"/>
-                                </connections>
-                            </button>
+                                <items>
+                                    <barButtonItem systemItem="compose" id="ImB-2b-5Ib">
+                                        <connections>
+                                            <action selector="cloneClockSettings" destination="BYZ-38-t0r" id="Wiq-zJ-aSB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="undo" id="7l3-wd-tEQ">
+                                        <connections>
+                                            <action selector="undo" destination="BYZ-38-t0r" id="hxo-lZ-2la"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="redo" id="Yl6-rk-mWd">
+                                        <connections>
+                                            <action selector="redo" destination="BYZ-38-t0r" id="wan-a8-hl7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0xz-sN-uSp"/>
+                                    <barButtonItem style="plain" id="C2J-f5-IyH">
+                                        <view key="customView" contentMode="scaleToFill" id="SDL-eu-NWA">
+                                            <rect key="frame" x="315" y="5.5" width="44" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-apple-watch" translatesAutoresizingMaskIntoConstraints="NO" id="ggC-VU-AOX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiH-q3-0ff">
-                                <rect key="frame" x="184" y="138" width="175" height="53"/>
+                                <rect key="frame" x="184" y="30" width="175" height="53"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="bNt-Nv-rhT"/>
+                                    <constraint firstAttribute="height" constant="53" id="nlZ-bV-3AP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.12852664389999999" blue="0.067248547749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -171,32 +100,21 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="NJL-vA-esZ" firstAttribute="top" secondItem="DN7-J7-N45" secondAttribute="bottom" constant="12" id="3Ng-1Q-JXO"/>
-                            <constraint firstItem="QiH-q3-0ff" firstAttribute="leading" secondItem="DN7-J7-N45" secondAttribute="trailing" constant="8" id="77G-i3-jwu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WJh-XF-vaw" secondAttribute="trailing" constant="16" id="79g-wF-MkG"/>
-                            <constraint firstItem="L09-xH-or1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7PF-C3-mmT"/>
-                            <constraint firstItem="L09-xH-or1" firstAttribute="top" secondItem="NJL-vA-esZ" secondAttribute="bottom" constant="9" id="Bmr-bh-T63"/>
+                            <constraint firstItem="QiH-q3-0ff" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="2Pi-Pb-56k"/>
+                            <constraint firstItem="NJL-vA-esZ" firstAttribute="top" secondItem="DN7-J7-N45" secondAttribute="bottom" constant="7" id="3Ng-1Q-JXO"/>
+                            <constraint firstItem="QiH-q3-0ff" firstAttribute="leading" secondItem="DN7-J7-N45" secondAttribute="trailing" constant="8" id="Cp4-3J-mfw"/>
+                            <constraint firstItem="pvs-yB-9Q5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DGD-mH-alP"/>
+                            <constraint firstItem="pvs-yB-9Q5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E0w-kY-QCq"/>
+                            <constraint firstItem="pvs-yB-9Q5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Enf-i0-LZk"/>
                             <constraint firstItem="NJL-vA-esZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="I51-gu-qPh"/>
-                            <constraint firstItem="NJL-vA-esZ" firstAttribute="top" secondItem="WJh-XF-vaw" secondAttribute="bottom" constant="12" id="Kdj-1o-IIA"/>
-                            <constraint firstItem="ibf-Li-lzJ" firstAttribute="leading" secondItem="DN7-J7-N45" secondAttribute="trailing" constant="8" id="Obr-tK-66S"/>
-                            <constraint firstItem="NJL-vA-esZ" firstAttribute="top" secondItem="ibf-Li-lzJ" secondAttribute="bottom" constant="12" id="PGn-6s-Nm1"/>
-                            <constraint firstItem="NJL-vA-esZ" firstAttribute="top" secondItem="WJh-XF-vaw" secondAttribute="bottom" constant="12" id="PgY-mZ-d9d"/>
+                            <constraint firstItem="L09-xH-or1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KBj-i2-g0a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NJL-vA-esZ" secondAttribute="trailing" constant="16" id="QKo-M4-KnQ"/>
+                            <constraint firstItem="pvs-yB-9Q5" firstAttribute="top" secondItem="L09-xH-or1" secondAttribute="bottom" id="RNe-2Z-N53"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QiH-q3-0ff" secondAttribute="trailing" constant="16" id="Rxk-Gw-vjE"/>
                             <constraint firstItem="DN7-J7-N45" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="TLv-9L-Qto"/>
-                            <constraint firstItem="ibf-Li-lzJ" firstAttribute="top" secondItem="QiH-q3-0ff" secondAttribute="bottom" constant="8" id="U57-86-uOa"/>
+                            <constraint firstItem="L09-xH-or1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TbU-Ce-N5u"/>
                             <constraint firstItem="DN7-J7-N45" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UBL-Mt-9PI"/>
-                            <constraint firstItem="Mqq-m7-d7p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="kp9-ds-eFz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kok-Ex-gcC" secondAttribute="trailing" constant="16" id="oDl-UO-Ije"/>
-                            <constraint firstItem="NJL-vA-esZ" firstAttribute="top" secondItem="jXb-cq-O9c" secondAttribute="bottom" constant="12" id="oyL-mM-YbW"/>
-                            <constraint firstItem="QiH-q3-0ff" firstAttribute="top" secondItem="kok-Ex-gcC" secondAttribute="bottom" constant="17" id="pNa-OU-WOs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QiH-q3-0ff" secondAttribute="trailing" constant="16" id="r7g-E9-3ue"/>
-                            <constraint firstItem="Mqq-m7-d7p" firstAttribute="leading" secondItem="DN7-J7-N45" secondAttribute="trailing" constant="8" id="rLS-GG-GPe"/>
-                            <constraint firstAttribute="bottom" secondItem="L09-xH-or1" secondAttribute="bottom" id="sIa-d8-XUb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mqq-m7-d7p" secondAttribute="trailing" constant="16" id="u6O-S4-rJH"/>
-                            <constraint firstItem="L09-xH-or1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="viL-1J-OB2"/>
-                            <constraint firstItem="kok-Ex-gcC" firstAttribute="leading" secondItem="DN7-J7-N45" secondAttribute="trailing" constant="8" id="wpc-on-H9d"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WJh-XF-vaw" secondAttribute="trailing" constant="16" id="xyP-7r-og3"/>
-                            <constraint firstItem="WJh-XF-vaw" firstAttribute="leading" secondItem="jXb-cq-O9c" secondAttribute="trailing" constant="8" id="zpc-Kv-Hbu"/>
+                            <constraint firstItem="L09-xH-or1" firstAttribute="top" secondItem="NJL-vA-esZ" secondAttribute="bottom" constant="7" id="gr9-ch-zmj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -219,9 +137,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="errorMessageLabel" destination="QiH-q3-0ff" id="JxF-K8-isp"/>
-                        <outlet property="generateThumbsButton" destination="kok-Ex-gcC" id="40J-on-Kla"/>
-                        <outlet property="redoButton" destination="WJh-XF-vaw" id="P3W-Tq-Bxu"/>
-                        <outlet property="undoButton" destination="jXb-cq-O9c" id="EUi-ZG-PdJ"/>
+                        <outlet property="redoButton" destination="Yl6-rk-mWd" id="ezs-Pd-HVh"/>
+                        <outlet property="undoButton" destination="7l3-wd-tEQ" id="8gT-hg-ufg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1474,5 +1391,6 @@
     </scenes>
     <resources>
         <image name="cameraIcon" width="533" height="533"/>
+        <image name="icons-apple-watch" width="360" height="360"/>
     </resources>
 </document>

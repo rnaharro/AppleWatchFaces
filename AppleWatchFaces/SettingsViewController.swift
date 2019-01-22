@@ -12,9 +12,9 @@ import WatchConnectivity
 class SettingsViewController: UIViewController, WCSessionDelegate {
     
     @IBOutlet var errorMessageLabel: UILabel!
-    @IBOutlet var generateThumbsButton: UIButton!
-    @IBOutlet var undoButton: RoundedButton!
-    @IBOutlet var redoButton: RoundedButton!
+    @IBOutlet var generateThumbsButton: UIBarButtonItem!
+    @IBOutlet var undoButton: UIBarButtonItem!
+    @IBOutlet var redoButton: UIBarButtonItem!
     
     var session: WCSession?
     weak var watchPreviewViewController:WatchPreviewViewController?
@@ -107,7 +107,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         }
     }
     
-    @IBAction func sendSettingAction(sender: UIButton) {
+    @IBAction func sendSettingAction(sender: UIBarButtonItem) {
         //debugPrint("sendSetting tapped")
         if let validSession = session, let jsonData = SettingsViewController.currentClockSetting.toJSONData() {
             
@@ -169,7 +169,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
                 nextClock()
             }
             if userInfo["action"] == "sendSetting" {
-                sendSettingAction(sender: UIButton() )
+                sendSettingAction(sender: UIBarButtonItem() )
             }
         }
     }
@@ -215,6 +215,16 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         redoArray = []
     }
     
+    static func clearUndoStack() {
+        undoArray = []
+        redoArray = []
+    }
+    
+    func clearUndoAndUpdateButtons() {
+        SettingsViewController.clearUndoStack()
+        setUndoRedoButtonStatus()
+    }
+    
     @IBAction func redo() {
         guard let lastSettings = SettingsViewController.redoArray.popLast() else { return } //current setting
         SettingsViewController.undoArray.append(SettingsViewController.currentClockSetting)
@@ -248,6 +258,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         redrawPreviewClock() //show correct clock
         redrawSettingsTableAfterGroupChange() //show new title
         makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
+        clearUndoAndUpdateButtons()
         
         //tell chooser view to reload its cells
         NotificationCenter.default.post(name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil, userInfo:nil)
@@ -274,6 +285,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
         redrawPreviewClock()
         redrawSettingsTableAfterGroupChange()
+        clearUndoAndUpdateButtons()
     }
     
     @IBAction func prevClock() {
@@ -285,6 +297,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
         redrawPreviewClock()
         redrawSettingsTableAfterGroupChange()
+        clearUndoAndUpdateButtons()
     }
     
     func makeThumb( fileName: String) {
@@ -333,9 +346,9 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         redrawSettingsTableAfterGroupChange()
     }
     
-    @IBAction func generateThumbs(sender: UIButton) {
+    @IBAction func generateThumbs(sender: UIBarButtonItem) {
         //fixed a bug where it was possible to trigger it when hidden
-        guard generateThumbsButton.isHidden == false else {return }
+        guard generateThumbsButton.isEnabled == true else {return }
         
         if watchPreviewViewController != nil {
             watchPreviewViewController?.stopTimeForScreenShot()
@@ -472,7 +485,12 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         
         //show gen thumbs button, only in simulator and only if its turned on in AppUISettings
         #if (arch(i386) || arch(x86_64))
-            self.generateThumbsButton.isHidden = !(AppUISettings.showRenderThumbsButton)
+        if (AppUISettings.showRenderThumbsButton) {
+            let generateButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(generateThumbs(sender:)) )
+            generateButton.tintColor = UIColor.orange
+            self.navigationItem.rightBarButtonItems?.append(generateButton)
+        }
+        
         #endif
         
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
