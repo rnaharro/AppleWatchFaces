@@ -11,7 +11,6 @@ import SpriteKit
 
 class WatchPreviewViewController: UIViewController {
 
-    weak var settingsViewController:SettingsViewController?
     @IBOutlet var skView: SKView!
     
     func stopTimeForScreenShot() {
@@ -43,23 +42,23 @@ class WatchPreviewViewController: UIViewController {
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            if settingsViewController != nil {
-        
+            
                 switch swipeGesture.direction {
                 case UISwipeGestureRecognizer.Direction.right:
                     print("Swiped right")
-                    settingsViewController?.prevClock()
+                    NotificationCenter.default.post(name: SettingsViewController.settingsPreviewSwipedNotificationName, object: nil, userInfo:["action":"prevClock"])
+                    //settingsViewController?.prevClock()
                 case UISwipeGestureRecognizer.Direction.left:
                     print("Swiped left")
-                    settingsViewController?.nextClock()
+                    NotificationCenter.default.post(name: SettingsViewController.settingsPreviewSwipedNotificationName, object: nil, userInfo:["action":"nextClock"])
+                    //settingsViewController?.nextClock()
                 case UISwipeGestureRecognizer.Direction.up:
                     print("Swiped up")
-                    settingsViewController?.sendSettingAction(sender: UIButton() )
+                    NotificationCenter.default.post(name: SettingsViewController.settingsPreviewSwipedNotificationName, object: nil, userInfo:["action":"sendSetting"])
+                    //settingsViewController?.sendSettingAction(sender: UIButton() )
                 default:
                     break
                 }
-                
-            }
         }
     }
     

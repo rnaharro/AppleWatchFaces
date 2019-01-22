@@ -31,6 +31,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     static let settingsChangedNotificationName = Notification.Name("settingsChanged")
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
+    static let settingsPreviewSwipedNotificationName = Notification.Name("swipedOnPreview")
     
     func showError( errorMessage: String) {
         DispatchQueue.main.async {
@@ -89,7 +90,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     {
         if segue.destination is WatchPreviewViewController {
             let vc = segue.destination as? WatchPreviewViewController
-            vc!.settingsViewController = self
             watchPreviewViewController = vc
         }
         if segue.destination is WatchSettingsTableViewController {
@@ -157,6 +157,21 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
                 NotificationCenter.default.post(name: WatchSettingsTableViewController.settingsTableSectionReloadNotificationName, object: nil,
                                                 userInfo:["settingType":"clockFaceMaterialName"])
             }
+    }
+    
+    @objc func onNotificationForPreviewSwiped(notification:Notification) {
+        
+        if let userInfo = notification.userInfo as? [String: String] {
+            if userInfo["action"] == "prevClock" {
+                prevClock()
+            }
+            if userInfo["action"] == "nextClock" {
+                nextClock()
+            }
+            if userInfo["action"] == "sendSetting" {
+                sendSettingAction(sender: UIButton() )
+            }
+        }
     }
     
     func redrawPreviewClock() {
@@ -319,7 +334,9 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     }
     
     @IBAction func generateThumbs(sender: UIButton) {
-    
+        //fixed a bug where it was possible to trigger it when hidden
+        guard generateThumbsButton.isHidden == false else {return }
+        
         if watchPreviewViewController != nil {
             watchPreviewViewController?.stopTimeForScreenShot()
             self.showMessage( message: "starting screenshots, check log for folder name")
@@ -461,6 +478,10 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
         
         self.errorMessageLabel.alpha = 0.0
+        
+        
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForPreviewSwiped(notification:)), name: SettingsViewController.settingsPreviewSwipedNotificationName, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSettingsChanged(notification:)), name: SettingsViewController.settingsChangedNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGetCameraImage(notification:)), name: SettingsViewController.settingsGetCameraImageNotificationName, object: nil)
