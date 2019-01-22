@@ -33,6 +33,9 @@ class IndicatorsSecondaryColorSettingsTableViewCell: ColorSettingsTableViewCell 
         let newColor = colorList[indexPath.row]
         debugPrint("selected cell ringMaterials[1]: " + newColor)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceSettings?.ringMaterials[1] = newColor
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

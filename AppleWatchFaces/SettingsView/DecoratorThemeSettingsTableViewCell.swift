@@ -27,6 +27,9 @@ class DecoratorThemeSettingsTableViewCell: WatchSettingsSelectableTableViewCell,
         let theme =  UserClockSetting.sharedDecoratorThemeSettings[indexPath.row]
         debugPrint("selected decorator theme: " + theme.title)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.applyDecoratorTheme(theme)
         SettingsViewController.currentClockSetting.decoratorThemeTitle = theme.title

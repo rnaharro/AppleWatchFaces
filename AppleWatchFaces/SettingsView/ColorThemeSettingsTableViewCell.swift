@@ -27,6 +27,9 @@ class ColorThemeSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
         let colorTheme =  UserClockSetting.sharedColorThemeSettings[indexPath.row]
         debugPrint("selected color theme: " + colorTheme.title)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.applyColorTheme(colorTheme)
         SettingsViewController.currentClockSetting.themeTitle = colorTheme.title

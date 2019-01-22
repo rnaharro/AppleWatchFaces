@@ -25,6 +25,10 @@ class TitleSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UITextFi
     func textFieldDidEndEditing(_ textField: UITextField) {
         //hello!
         let newTitle = textField.text ?? ""
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         debugPrint("did end editing title:" + newTitle)
         SettingsViewController.currentClockSetting.title = newTitle
         

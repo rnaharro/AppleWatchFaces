@@ -36,6 +36,9 @@ class FaceShapeSettingSettingsTableViewCell: WatchSettingsSelectableTableViewCel
         let renderShape = RingRenderShapes.userSelectableValues[indexPath.row]
         //debugPrint("selected cell SecondHandMovements: " + secondHandMovement.rawValue)
 
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceSettings?.ringRenderShape = renderShape
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

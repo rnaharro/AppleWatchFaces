@@ -48,6 +48,9 @@ class HourHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICol
         let hourHandType = HourHandTypes.userSelectableValues[indexPath.row]
         debugPrint("selected cell hourHandType: " + hourHandType.rawValue)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceSettings?.hourHandType = hourHandType
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

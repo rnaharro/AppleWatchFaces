@@ -47,6 +47,9 @@ class FaceBackgroundSettingsTableViewCell: WatchSettingsSelectableTableViewCell,
         let settingType = FaceBackgroundTypes.userSelectableValues[indexPath.row]
         debugPrint("selected cell faceBackgroundTypes: " + settingType.rawValue)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.faceBackgroundType = settingType
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

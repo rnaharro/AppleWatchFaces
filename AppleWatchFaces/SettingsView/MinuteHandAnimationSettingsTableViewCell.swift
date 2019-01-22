@@ -34,6 +34,9 @@ class MinuteHandAnimationSettingsTableViewCell: WatchSettingsSelectableTableView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let minuteHandMovement = MinuteHandMovements.userSelectableValues[indexPath.row]
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceSettings?.minuteHandMovement = minuteHandMovement
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

@@ -48,6 +48,9 @@ class MinuteHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
         let minuteHandType = MinuteHandTypes.userSelectableValues[indexPath.row]
         debugPrint("selected cell minuteHandType: " + minuteHandType.rawValue)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceSettings?.minuteHandType = minuteHandType
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

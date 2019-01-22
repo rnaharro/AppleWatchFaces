@@ -35,6 +35,9 @@ class HourHandColorSettingsTableViewCell: ColorSettingsTableViewCell {
         let newColor = colorList[indexPath.row]
         debugPrint("selected cell hourHandColor: " + newColor)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceSettings?.hourHandMaterialName = newColor
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

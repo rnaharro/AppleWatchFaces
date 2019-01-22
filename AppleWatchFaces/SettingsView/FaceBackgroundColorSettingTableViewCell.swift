@@ -36,6 +36,9 @@ class FaceBackgroundColorSettingTableViewCell: ColorSettingsTableViewCell {
         
         let newColor = colorList[indexPath.row]
     
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceMaterialName = newColor
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

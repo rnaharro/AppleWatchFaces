@@ -25,6 +25,11 @@ class HandOptionsSettingTableViewCell : WatchSettingsSelectableTableViewCell, UI
     
     @IBAction func switchValueDidChange( sender: UISwitch ) {
         guard let clockFaceSettings = SettingsViewController.currentClockSetting.clockFaceSettings else { return }
+        
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
+        //update the value
         clockFaceSettings.shouldShowHandOutlines = sender.isOn
         
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil)

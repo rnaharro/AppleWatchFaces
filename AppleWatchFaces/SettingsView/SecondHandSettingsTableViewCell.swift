@@ -49,6 +49,9 @@ class SecondHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
         let secondHandType = SecondHandTypes.userSelectableValues[indexPath.row]
         debugPrint("selected cell secondHandType: " + secondHandType.rawValue)
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //update the value
         SettingsViewController.currentClockSetting.clockFaceSettings?.secondHandType = secondHandType
         NotificationCenter.default.post(name: SettingsViewController.settingsChangedNotificationName, object: nil, userInfo:nil) //userInfo:["data": 42, "isImportant": true]
