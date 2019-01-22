@@ -28,6 +28,9 @@ class DecoratorsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //add to undo stack for actions to be able to undo
+        SettingsViewController.addToUndoStack()
+        
         //important only select one at a time
         self.tableView.allowsMultipleSelection = false
         self.tableView.allowsSelectionDuringEditing = true
