@@ -17,7 +17,8 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
     @IBOutlet var horizontalPositionSegment: UISegmentedControl!
     @IBOutlet var verticalPositionSegment: UISegmentedControl!
     @IBOutlet var timeFormatSegment: UISegmentedControl!
-    @IBOutlet var timeEffectSegment: UISegmentedControl!
+    @IBOutlet var timeEffectLabel: UILabel!
+    //@IBOutlet var timeEffectSegment: UISegmentedControl!
     
     @IBOutlet var materialSegment: UISegmentedControl!
     
@@ -34,6 +35,13 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsEditDetailNotificationName, object: nil,
                                         userInfo:["settingType":"textType", "decoratorDigitalTimeTableViewCell":self ])
+    }
+    
+    @IBAction func editEffect(sender: UIButton ) {
+        self.selectThisCell()
+        
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsEditDetailNotificationName, object: nil,
+                                        userInfo:["settingType":"effectType", "decoratorDigitalTimeTableViewCell":self ])
     }
     
     @IBAction func horizontalPositionSegmentDidChange(sender: UISegmentedControl ) {
@@ -54,18 +62,6 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         }
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
                                         userInfo:["settingType":"ringStaticItemHorizontalPosition" ])
-    }
-    
-    @IBAction func timeEffectSegmentDidChange(sender: UISegmentedControl ) {
-        self.selectThisCell()
-        
-        //debugPrint("segment value:" + String( sender.selectedSegmentIndex ) )
-        let clockRingSetting = myClockRingSetting()
-        
-        clockRingSetting.ringStaticEffects = DigitalTimeEffects.userSelectableValues[sender.selectedSegmentIndex]
-    
-        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
-                                        userInfo:["settingType":"ringStaticEffects" ])
     }
     
     @IBAction func verticalPositionSegmentDidChange(sender: UISegmentedControl ) {
@@ -136,6 +132,17 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         
     }
     
+    func effectChosen( effectType: DigitalTimeEffects ) {
+        //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
+        
+        let clockRingSetting = myClockRingSetting()
+        clockRingSetting.ringStaticEffects = effectType
+        self.timeEffectLabel.text = effectText( clockRingSetting: clockRingSetting )
+        
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":"ringStaticEffects" ])
+    }
+    
     func fontChosen( textType: NumberTextTypes ) {
         //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
         
@@ -151,10 +158,15 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         return ClockRingSetting.descriptionForRingType(clockRingSetting.ringType) + " : " + NumberTextNode.descriptionForType(clockRingSetting.textType)
     }
     
+    func effectText( clockRingSetting: ClockRingSetting ) -> String {
+        return "Effect : " + DigitalTimeNode.descriptionForTimeEffects(clockRingSetting.ringStaticEffects)
+    }
+    
     override func setupUIForClockRingSetting( clockRingSetting: ClockRingSetting ) {
         super.setupUIForClockRingSetting(clockRingSetting: clockRingSetting)
     
-        self.titleLabel.text = titleText(clockRingSetting: clockRingSetting)
+        titleLabel.text = titleText(clockRingSetting: clockRingSetting)
+        timeEffectLabel.text = effectText(clockRingSetting: clockRingSetting)
         
         valueSlider.minimumValue = AppUISettings.ringSettigsSliderTextMin
         valueSlider.maximumValue = AppUISettings.ringSettigsSliderTextMax
@@ -186,13 +198,7 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
             verticalPositionSegment.isEnabled = true //TODO: not sure what to put here
         }
         
-        timeEffectSegment.removeAllSegments()
-        for (index, item) in DigitalTimeEffects.userSelectableValues.enumerated() {
-            timeEffectSegment.insertSegment(withTitle: item.rawValue, at: index, animated: false)
-        }
-        if let indexFound = DigitalTimeEffects.userSelectableValues.firstIndex(of: clockRingSetting.ringStaticEffects) {
-            timeEffectSegment.selectedSegmentIndex = indexFound
-        }
+        
         
         timeFormatSegment.removeAllSegments()
         for (index, item) in DigitalTimeFormats.userSelectableValues.enumerated() {

@@ -86,60 +86,77 @@ class DecoratorPreviewController: UIViewController {
     @objc func onSettingEditDetailNotification(notification:Notification)
     {
         
+        func showSettingsAlert( title: String, alertActions: [UIAlertAction]) {
+            let optionMenu = UIAlertController(title: nil, message: title, preferredStyle: .actionSheet)
+            optionMenu.view.tintColor = UIColor.black
+            
+            for action in alertActions {
+                optionMenu.addAction(action)
+            }
+        
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            optionMenu.addAction(cancelAction)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        
         if let settingType = notification.userInfo?["settingType"] as? String, settingType == "indicatorType", let decoratorShapeTableViewCell = notification.userInfo?["decoratorShapeTableViewCell"] as? DecoratorShapeTableViewCell  {
             
-            let optionMenu = UIAlertController(title: nil, message: "Choose Shape", preferredStyle: .actionSheet)
-            optionMenu.view.tintColor = UIColor.black
+            var actions:[UIAlertAction] = []
             
             for shapeType in FaceIndicatorTypes.userSelectableValues {
                 let newAction = UIAlertAction(title: FaceIndicatorNode.descriptionForType(shapeType), style: .default, handler: { action in
                     decoratorShapeTableViewCell.shapeChosen(shapeType: shapeType)
                 } )
-                optionMenu.addAction(newAction)
+                actions.append(newAction)
             }
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            optionMenu.addAction(cancelAction)
-            
-            self.present(optionMenu, animated: true, completion: nil)
-            
+            showSettingsAlert( title: "Choose Shape", alertActions: actions )
         }
         
         if let settingType = notification.userInfo?["settingType"] as? String, settingType == "textType", let decoratorDigitalTimeTableViewCell = notification.userInfo?["decoratorDigitalTimeTableViewCell"] as? DecoratorDigitalTimeTableViewCell  {
             
-            let optionMenu = UIAlertController(title: nil, message: "Choose Font For Time", preferredStyle: .actionSheet)
-            optionMenu.view.tintColor = UIColor.black
+            var actions:[UIAlertAction] = []
             
             for textType in NumberTextTypes.userSelectableValues {
                 let newAction = UIAlertAction(title: NumberTextNode.descriptionForType(textType), style: .default, handler: { action in
                     decoratorDigitalTimeTableViewCell.fontChosen(textType: textType)
                 } )
-                optionMenu.addAction(newAction)
+                actions.append(newAction)
             }
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            optionMenu.addAction(cancelAction)
+            showSettingsAlert( title: "Choose Font For Time", alertActions: actions )
+        }
+        
+        if let settingType = notification.userInfo?["settingType"] as? String, settingType == "effectType", let decoratorTextTableViewCell = notification.userInfo?["decoratorDigitalTimeTableViewCell"] as? DecoratorDigitalTimeTableViewCell  {
             
-            self.present(optionMenu, animated: true, completion: nil)
+            var actions:[UIAlertAction] = []
+            
+            for effectType in DigitalTimeEffects.userSelectableValues {
+                let newAction = UIAlertAction(title: DigitalTimeNode.descriptionForTimeEffects(effectType), style: .default, handler: { action in
+                    decoratorTextTableViewCell.effectChosen(effectType: effectType)
+                } )
+                actions.append(newAction)
+            }
+            
+            showSettingsAlert( title: "Choose Effect", alertActions: actions )
         }
         
         if let settingType = notification.userInfo?["settingType"] as? String, settingType == "textType", let decoratorTextTableViewCell = notification.userInfo?["decoratorTextTableViewCell"] as? DecoratorTextTableViewCell  {
             
-                let optionMenu = UIAlertController(title: nil, message: "Choose Font", preferredStyle: .actionSheet)
-                optionMenu.view.tintColor = UIColor.black
-                
-                for textType in NumberTextTypes.userSelectableValues {
-                    let newAction = UIAlertAction(title: NumberTextNode.descriptionForType(textType), style: .default, handler: { action in
-                        decoratorTextTableViewCell.fontChosen(textType: textType)
-                    } )
-                    optionMenu.addAction(newAction)
-                }
-                
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-                optionMenu.addAction(cancelAction)
-                
-                self.present(optionMenu, animated: true, completion: nil)
+            var actions:[UIAlertAction] = []
+            
+            for textType in NumberTextTypes.userSelectableValues {
+                let newAction = UIAlertAction(title: NumberTextNode.descriptionForType(textType), style: .default, handler: { action in
+                    decoratorTextTableViewCell.fontChosen(textType: textType)
+                } )
+                actions.append(newAction)
+            }
+            
+            showSettingsAlert( title: "Choose Font", alertActions: actions )
         }
+        
+        
         
         
     }
