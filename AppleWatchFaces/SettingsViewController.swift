@@ -422,10 +422,11 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        //TODO: probably not needed
+        //force clean up memory
         if let scene = watchPreviewViewController?.skView.scene as? SKWatchScene {
             scene.cleanup()
         }
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -434,7 +435,9 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
             session?.delegate = self
             session?.activate()
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //get current selected clock
         redrawSettingsTableAfterGroupChange()
         redrawPreviewClock()
