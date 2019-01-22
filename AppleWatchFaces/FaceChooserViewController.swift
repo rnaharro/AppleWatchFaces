@@ -20,7 +20,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     @IBOutlet var errorMessageLabel: UILabel!
     @IBOutlet var filetransferProgress: UIProgressView!
     var totalTransfers:Int = 0
-    var faceChooserTableViewController:FaceChooserTableViewController?
+    weak var faceChooserTableViewController:FaceChooserTableViewController?
     var faceListReloadType : FaceListReloadType = .none
     
     static let faceChooserReloadChangeNotificationName = Notification.Name("faceChooserReload")

@@ -11,7 +11,7 @@ import SpriteKit
 
 class WatchPreviewViewController: UIViewController {
 
-    var settingsViewController:SettingsViewController?
+    weak var settingsViewController:SettingsViewController?
     @IBOutlet var skView: SKView!
     
     func stopTimeForScreenShot() {

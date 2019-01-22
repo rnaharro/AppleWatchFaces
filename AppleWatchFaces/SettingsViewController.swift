@@ -17,8 +17,8 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     @IBOutlet var redoButton: RoundedButton!
     
     var session: WCSession?
-    var watchPreviewViewController:WatchPreviewViewController?
-    var watchSettingsTableViewController:WatchSettingsTableViewController?
+    weak var watchPreviewViewController:WatchPreviewViewController?
+    weak var watchSettingsTableViewController:WatchSettingsTableViewController?
     
     static var currentClockSetting: ClockSetting = ClockSetting.defaults()
     var currentClockIndex = 0
@@ -135,6 +135,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     }
     
     @objc func onNotificationForSettingsChanged(notification:Notification) {
+        debugPrint("onNotificationForSettingsChanged called")
         redrawPreviewClock()
         addToUndoStack()
     }
@@ -424,6 +425,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         if let scene = watchPreviewViewController?.skView.scene as? SKWatchScene {
             scene.cleanup()
         }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
