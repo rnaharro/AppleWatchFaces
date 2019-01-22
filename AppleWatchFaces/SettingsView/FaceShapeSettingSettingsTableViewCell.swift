@@ -54,10 +54,10 @@ class FaceShapeSettingSettingsTableViewCell: WatchSettingsSelectableTableViewCel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "settingsFaceShapeCell", for: indexPath) as! FaceShapeSettingCollectionViewCell
         
         let shape = RingRenderShapes.userSelectableValues[indexPath.row]
-        cell.title.text = ClockRingSetting.descriptionForRingRenderShapes(shape)
         
         //design path in layer
-        let shapeLayer = CAShapeLayer()
+        cell.shapeLayer = CAShapeLayer()
+        let shapeLayer = cell.shapeLayer!
         let path = WatchFaceNode.getShapePath( ringRenderShape: shape )
     
         path.apply(CGAffineTransform.init(scaleX: 0.35, y: 0.35))  //scale/stratch
@@ -67,8 +67,9 @@ class FaceShapeSettingSettingsTableViewCell: WatchSettingsSelectableTableViewCel
         
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = SKColor.white.cgColor
+        
         shapeLayer.fillColor = fillColor.cgColor
-        shapeLayer.lineWidth = 2.0
+        shapeLayer.lineWidth = 4.0
         
         cell.layer.addSublayer(shapeLayer)
         

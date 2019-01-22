@@ -17,9 +17,9 @@ class SettingsOptionsViewController: UIViewController {
         Defaults.saveAdvancedOption(showAdvanced: sender.isOn)
     }
     
-    @IBAction func showOptionPathRenderingSwitchDidChange( sender: UISwitch ) {
-        Defaults.saveAdvancedOptionPathRendering(advancedOptionPathRendering: sender.isOn)
-    }
+//    @IBAction func showOptionPathRenderingSwitchDidChange( sender: UISwitch ) {
+//        Defaults.saveAdvancedOptionPathRendering(advancedOptionPathRendering: sender.isOn)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -31,9 +31,9 @@ class SettingsOptionsViewController: UIViewController {
         if let showAdvanced = options.showAdvancedOptionsKey {
             optionShowAdvanced.isOn = showAdvanced
         }
-        if let showOptionPathRendering = options.advancedOptionPathRenderingKey {
-            optionShowPathRenderingOptions.isOn = showOptionPathRendering
-        }
+//        if let showOptionPathRendering = options.advancedOptionPathRenderingKey {
+//            optionShowPathRenderingOptions.isOn = showOptionPathRendering
+//        }
 
     }
     

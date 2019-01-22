@@ -75,6 +75,7 @@ class HourHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICol
         }
         
         if let scene = cell.skView.scene {
+            scene.backgroundColor = SKColor.black
             //debugPrint("old scene")
             scene.removeAllChildren()
             

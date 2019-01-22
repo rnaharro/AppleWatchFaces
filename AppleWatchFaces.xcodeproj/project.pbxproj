@@ -15,6 +15,7 @@
 		3100DC9E21EC26A3007423A5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5BC4A21A39DAF00C1B35E /* StringExtension.swift */; };
 		31026C8421F26E9900BFC596 /* 80sDigital.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31026C8321F26E9900BFC596 /* 80sDigital.jpg */; };
 		31026C8521F26E9900BFC596 /* 80sDigital.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31026C8321F26E9900BFC596 /* 80sDigital.jpg */; };
+		3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */; };
 		31061F302192657200EF511B /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31061F2F2192657200EF511B /* Colors.plist */; };
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
@@ -343,6 +344,7 @@
 		3100DC9821EA98F3007423A5 /* dark-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-shadow.png"; sourceTree = "<group>"; };
 		3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
 		31026C8321F26E9900BFC596 /* 80sDigital.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 80sDigital.jpg; sourceTree = "<group>"; };
+		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		31061F2F2192657200EF511B /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorRingsSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -868,40 +870,40 @@
 		31EF9991219E602D00BB54E7 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				31BC68E921931F1400DD8CD6 /* ColorSettingsTableViewCell.swift */,
+				31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */,
+				310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */,
+				310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */,
+				3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */,
+				310BA1CF21B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift */,
+				310BA1D021B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift */,
 				31BC68EF2193DFEE00DD8CD6 /* FaceBackgroundColorSettingTableViewCell.swift */,
+				31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */,
+				31EF999A21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift */,
 				318A928621CDABA20060D89B /* FaceShapeSettingCollectionViewCell.swift */,
 				318A928721CDABA20060D89B /* FaceShapeSettingSettingsTableViewCell.swift */,
-				3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */,
-				3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */,
-				3153880121CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift */,
-				3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */,
-				3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */,
-				31F4F1B5219899420050177A /* SettingsTableHeaderView.xib */,
-				31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */,
-				31BC68E921931F1400DD8CD6 /* ColorSettingsTableViewCell.swift */,
-				31EF999821A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift */,
-				31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */,
-				31B5E8E3218CEF9000DE6429 /* MinuteHandSettingsTableViewCell.swift */,
-				31BC68EB2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift */,
 				31B5E8E7218CF6E300DE6429 /* HourHandSettingsTableViewCell.swift */,
 				31BC68ED2193D88D00DD8CD6 /* HourHandColorSettingsTableViewCell.swift */,
-				31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */,
-				31EF999A21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift */,
-				31B3F8CF218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift */,
-				31B5E8E5218CEFF100DE6429 /* MinuteHandSettingCollectionViewCell.swift */,
 				31B5E8E8218CF6E400DE6429 /* HourHandSettingCollectionViewCell.swift */,
-				31B3F8CD218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift */,
-				31EF999C21A0C63A00BB54E7 /* MainBackgroundColorSettingTableViewCell.swift */,
+				310D4A4E21BD6BD600082A62 /* HandOptionsSettingTableViewCell.swift */,
+				310D4A5021BD90D100082A62 /* HandOutlineColorSettingTableViewCell.swift */,
 				3109D1DC21A872DF00561F13 /* IndicatorsMainColorSettingsTableViewCell.swift */,
 				3109D1DE21A8806B00561F13 /* IndicatorsSecondaryColorSettingsTableViewCell.swift */,
 				3109D1E021A88F3F00561F13 /* IndicatorsThirdColorSettingsTableViewCell.swift */,
+				31EF999C21A0C63A00BB54E7 /* MainBackgroundColorSettingTableViewCell.swift */,
+				31B5E8E5218CEFF100DE6429 /* MinuteHandSettingCollectionViewCell.swift */,
+				3153880521CB395200A972BC /* MinuteHandAnimationSettingCollectionViewCell.swift */,
+				3153880621CB395300A972BC /* MinuteHandAnimationSettingsTableViewCell.swift */,
+				31BC68EB2193D20A00DD8CD6 /* MinuteHandColorSettingsTableViewCell.swift */,
+				31B5E8E3218CEF9000DE6429 /* MinuteHandSettingsTableViewCell.swift */,
+				3153880121CB336400A972BC /* SecondHandAnimationSettingCollectionViewCell.swift */,
+				3153880221CB336400A972BC /* SecondHandAnimationSettingsTableViewCell.swift */,
+				31F4F1B5219899420050177A /* SettingsTableHeaderView.xib */,
+				31B3F8CB218F2F1F00AD22A5 /* SettingsTableHeaderViewCell.swift */,
+				31F8ABCC2187EB520014E2ED /* SecondHandSettingsTableViewCell.swift */,
+				31F8ABCE2187EE2F0014E2ED /* SecondHandSettingCollectionViewCell.swift */,
+				31B3F8CF218F4BAE00AD22A5 /* SecondHandColorSettingsTableViewCell.swift */,
 				310BA1C521AF736400A146B7 /* TitleSettingsTableViewCell.swift */,
-				310BA1C721AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift */,
-				310BA1C921AFAF9200A146B7 /* ColorThemeSettingCollectionViewCell.swift */,
-				310BA1CF21B08F1A00A146B7 /* DecoratorThemeSettingCollectionViewCell.swift */,
-				310BA1D021B08F1A00A146B7 /* DecoratorThemeSettingsTableViewCell.swift */,
-				310D4A4E21BD6BD600082A62 /* HandOptionsSettingTableViewCell.swift */,
-				310D4A5021BD90D100082A62 /* HandOutlineColorSettingTableViewCell.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -963,6 +965,7 @@
 				318A928A21D059120060D89B /* UserDefaults.swift */,
 				314AFC0F21D51A7000C1208E /* CameraHandler.swift */,
 				314AFC1221D543C200C1208E /* UICollectionView+Selection.swift */,
+				3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1330,6 +1333,7 @@
 				31B3F8CE218F4A0700AD22A5 /* ColorSettingCollectionViewCell.swift in Sources */,
 				310D4A4F21BD6BD600082A62 /* HandOptionsSettingTableViewCell.swift in Sources */,
 				31EF999921A0BF3D00BB54E7 /* FaceBackgroundSettingsTableViewCell.swift in Sources */,
+				3105674621F77E6D0078F3C6 /* UIViewController+Toast.swift in Sources */,
 				31B5E8E4218CEF9000DE6429 /* MinuteHandSettingsTableViewCell.swift in Sources */,
 				310BA1C821AFAADB00A146B7 /* ColorThemeSettingsTableViewCell.swift in Sources */,
 				31FD61E921891B5000E15DEA /* SwiftyJSON.swift in Sources */,

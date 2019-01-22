@@ -80,6 +80,7 @@ class FaceBackgroundSettingsTableViewCell: WatchSettingsSelectableTableViewCell,
         
         if let scene = cell.skView.scene {
             //debugPrint("old scene")
+            scene.backgroundColor = SKColor.black
             scene.removeAllChildren()
             
             cell.faceBackgroundType = FaceBackgroundTypes.userSelectableValues[indexPath.row]

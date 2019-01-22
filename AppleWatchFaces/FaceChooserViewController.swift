@@ -17,7 +17,6 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     
     var session: WCSession?
     @IBOutlet var sendToWatchButton: UIButton!
-    @IBOutlet var errorMessageLabel: UILabel!
     @IBOutlet var filetransferProgress: UIProgressView!
     var totalTransfers:Int = 0
     weak var faceChooserTableViewController:FaceChooserTableViewController?
@@ -79,7 +78,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         guard let validSession = session, totalTransfers>0 else {
             filetransferProgress.isHidden = true
             sendToWatchButton.isEnabled = true
-            self.showError(errorMessage: "Lost watch session.")
+            self.showError(errorMessage: "Lost watch session")
             return
         }
         
@@ -89,7 +88,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         guard transfers.count>0 else {
             filetransferProgress.isHidden = true
             sendToWatchButton.isEnabled = true
-            self.showMessage(message: "Background images sent.")
+            self.showMessage(message: "Background images sent")
             return
         }
         
@@ -112,11 +111,14 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     //validSession.outstandingFileTransfers
     
     @IBAction func addNewSettingAction(sender: UIButton) {
+        let originalCount = UserClockSetting.sharedClockSettings.count
         UserClockSetting.addMissingFromDefaults()
         
         if let faceChooserTableVC  = faceChooserTableViewController  {
             faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
         }
+        let newCount = UserClockSetting.sharedClockSettings.count
+        showMessage(message: "Added from defaults, " + (newCount - originalCount).description + " added" )
     }
     
     @IBAction func resetAllSettingAction(sender: UIButton) {
@@ -129,6 +131,8 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         if let faceChooserTableVC  = faceChooserTableViewController  {
             faceChooserTableVC.reloadAllThumbs() // may have deleted or insterted, so reloadData
         }
+        
+        self.showMessage(message: "All faces reset to defaults")
     }
     
     func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
@@ -141,44 +145,28 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         //debugPrint("session activationDidCompleteWith")
-        showMessage( message: "Watch session active.")
+        showMessage( message: "Watch session active")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
         //debugPrint("session sessionDidBecomeInactive")
-        showError(errorMessage: "Watch session became inactive.")
+        showError(errorMessage: "Watch session became inactive")
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
         //debugPrint("session sessionDidDeactivate")
-        showError(errorMessage: "Watch session deactivated.")
+        showError(errorMessage: "Watch session deactivated")
     }
     
     func showError( errorMessage: String) {
         DispatchQueue.main.async {
-            self.errorMessageLabel.textColor = UIColor.red
-            self.errorMessageLabel.text = errorMessage
-            
-            self.errorMessageLabel.alpha = 1.0
-            UIView.animate(withDuration: 1.0, delay: 3.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                self.errorMessageLabel.alpha = 0.0
-            }) { (completed) in
-                //
-            }
+            self.showToast(message: errorMessage, color: UIColor.red, heightFromBottom: 150.0)
         }
     }
     
     func showMessage( message: String) {
         DispatchQueue.main.async {
-            self.errorMessageLabel.textColor = UIColor.lightGray
-            self.errorMessageLabel.text = message
-            
-            self.errorMessageLabel.alpha = 1.0
-            UIView.animate(withDuration: 1.0, delay: 3.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                self.errorMessageLabel.alpha = 0.0
-            }) { (completed) in
-                //
-            }
+            self.showToast(message: message, color: UIColor.lightGray, heightFromBottom: 150.0)
         }
     }
     

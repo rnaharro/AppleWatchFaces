@@ -38,47 +38,24 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFY-Sg-kEX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="260"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="250"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="LZO-MN-agi"/>
+                                    <constraint firstAttribute="height" constant="250" id="LZO-MN-agi"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="29y-lp-vNa" kind="embed" id="a1c-qq-ojh"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRL-ux-THg">
-                                <rect key="frame" x="16" y="332" width="343" height="75"/>
+                                <rect key="frame" x="16" y="322" width="343" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="7Z9-zH-s0X"/>
+                                    <constraint firstAttribute="height" constant="31" id="7Z9-zH-s0X"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="agd-5H-ERh" kind="embed" id="GWj-uB-179"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFP-PZ-A7W" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
-                                <rect key="frame" x="16" y="420" width="343" height="30"/>
-                                <state key="normal" title="Send All to Watch">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="sendAllSettingsActionWithSender:" destination="jKv-ap-UqF" eventType="touchUpInside" id="RgR-My-gti"/>
-                                </connections>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wSK-gw-Ds2">
-                                <rect key="frame" x="16" y="458" width="343" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="axG-Xl-CRF"/>
-                                </constraints>
-                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYi-wg-6NM" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
                                 <rect key="frame" x="16" y="581" width="343" height="28"/>
                                 <constraints>
@@ -99,15 +76,29 @@
                                     <action selector="addNewSettingActionWithSender:" destination="jKv-ap-UqF" eventType="touchUpInside" id="g9l-uF-lzk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-ba-uhr">
-                                <rect key="frame" x="16" y="512" width="343" height="61"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFP-PZ-A7W" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
+                                <rect key="frame" x="16" y="361" width="343" height="30"/>
+                                <state key="normal" title="Send All to Watch">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendAllSettingsActionWithSender:" destination="jKv-ap-UqF" eventType="touchUpInside" id="RgR-My-gti"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wSK-gw-Ds2">
+                                <rect key="frame" x="16" y="399" width="343" height="2"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="BXV-0o-wki"/>
+                                    <constraint firstAttribute="height" constant="2" id="axG-Xl-CRF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="0.12852664389999999" blue="0.067248547749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -116,22 +107,19 @@
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="WQr-wG-VwM" secondAttribute="trailing" constant="16" id="5OE-81-CE7"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="trailing" secondItem="vUG-c0-AEw" secondAttribute="trailing" id="DCH-9I-kbV"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="kRL-ux-THg" secondAttribute="trailing" constant="16" id="FJs-3f-kgW"/>
-                            <constraint firstItem="pmc-ba-uhr" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="FhL-hz-tp3"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="uYi-wg-6NM" secondAttribute="trailing" constant="16" id="HgD-5E-V9p"/>
                             <constraint firstItem="kRL-ux-THg" firstAttribute="top" secondItem="EFY-Sg-kEX" secondAttribute="bottom" constant="8" id="Psl-yw-UH9"/>
                             <constraint firstItem="uYi-wg-6NM" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="RrO-IY-c2F"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" id="SC3-12-9tL"/>
-                            <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="pmc-ba-uhr" secondAttribute="trailing" constant="16" id="UEt-fY-cuT"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="SFP-PZ-A7W" secondAttribute="trailing" constant="16" id="Vcp-5K-esj"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="trailing" secondItem="0eE-eN-zvf" secondAttribute="trailingMargin" id="WK6-8f-v9C"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="leading" secondItem="0eE-eN-zvf" secondAttribute="leadingMargin" id="deu-9u-VNZ"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="top" secondItem="vUG-c0-AEw" secondAttribute="top" id="fUy-1K-HjO"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="top" secondItem="SFP-PZ-A7W" secondAttribute="bottom" constant="8" id="rsT-RH-coC"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="bottom" secondItem="WQr-wG-VwM" secondAttribute="bottom" constant="22" id="sEE-Fg-nGq"/>
-                            <constraint firstItem="uYi-wg-6NM" firstAttribute="top" secondItem="pmc-ba-uhr" secondAttribute="bottom" constant="8" id="v8E-pG-99x"/>
                             <constraint firstItem="kRL-ux-THg" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="vqz-kC-4xT"/>
                             <constraint firstItem="SFP-PZ-A7W" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="x2o-zf-CJz"/>
-                            <constraint firstItem="SFP-PZ-A7W" firstAttribute="top" secondItem="kRL-ux-THg" secondAttribute="bottom" constant="13" id="z7U-zq-6b2"/>
+                            <constraint firstItem="SFP-PZ-A7W" firstAttribute="top" secondItem="kRL-ux-THg" secondAttribute="bottom" constant="8" id="z7U-zq-6b2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vUG-c0-AEw"/>
                     </view>
@@ -151,7 +139,6 @@
                     </navigationItem>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="errorMessageLabel" destination="pmc-ba-uhr" id="vKC-GB-9v8"/>
                         <outlet property="filetransferProgress" destination="wSK-gw-Ds2" id="GlN-iu-BXQ"/>
                         <outlet property="sendToWatchButton" destination="SFP-PZ-A7W" id="wLh-QB-q7P"/>
                     </connections>
@@ -373,7 +360,7 @@
             <objects>
                 <viewController id="agd-5H-ERh" customClass="SettingsOptionsViewController" customModule="AppleWatchFaces" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3nK-zF-Rqc">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="75"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Advanced Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKp-Ux-jkT">
@@ -392,46 +379,24 @@
                                     <action selector="showAdvancedOptionsSwitchDidChangeWithSender:" destination="agd-5H-ERh" eventType="valueChanged" id="DCA-Op-9J8"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Path Rendering Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byw-ko-fsV">
-                                <rect key="frame" x="1" y="49" width="283" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yGg-Zy-9VG">
-                                <rect key="frame" x="294" y="44" width="51" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="49" id="SKn-VY-eYV"/>
-                                    <constraint firstAttribute="height" constant="31" id="wV7-eP-5ch"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="showOptionPathRenderingSwitchDidChangeWithSender:" destination="agd-5H-ERh" eventType="valueChanged" id="Uw3-ow-QES"/>
-                                </connections>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="byw-ko-fsV" firstAttribute="centerY" secondItem="yGg-Zy-9VG" secondAttribute="centerY" id="AEE-Rz-4km"/>
                             <constraint firstAttribute="trailing" secondItem="gMV-gU-a7Z" secondAttribute="trailing" id="Iiq-Tv-kLp"/>
-                            <constraint firstItem="yGg-Zy-9VG" firstAttribute="leading" secondItem="byw-ko-fsV" secondAttribute="trailing" constant="10" id="Lca-KK-LP3"/>
                             <constraint firstItem="gMV-gU-a7Z" firstAttribute="top" secondItem="3nK-zF-Rqc" secondAttribute="top" id="YNY-od-GW9"/>
                             <constraint firstItem="gMV-gU-a7Z" firstAttribute="leading" secondItem="EKp-Ux-jkT" secondAttribute="trailing" constant="10" id="aBP-Bm-Nea"/>
-                            <constraint firstItem="yGg-Zy-9VG" firstAttribute="top" secondItem="gMV-gU-a7Z" secondAttribute="bottom" constant="13" id="bpI-xg-k4o"/>
-                            <constraint firstItem="byw-ko-fsV" firstAttribute="leading" secondItem="EKp-Ux-jkT" secondAttribute="leading" id="cOl-9x-01A"/>
                             <constraint firstItem="EKp-Ux-jkT" firstAttribute="centerY" secondItem="gMV-gU-a7Z" secondAttribute="centerY" id="g2v-bm-4Qc"/>
-                            <constraint firstAttribute="trailing" secondItem="yGg-Zy-9VG" secondAttribute="trailing" id="qIL-rY-xAq"/>
                             <constraint firstItem="EKp-Ux-jkT" firstAttribute="leading" secondItem="3nK-zF-Rqc" secondAttribute="leadingMargin" constant="-15" id="wCY-iX-Qf7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Irb-C0-nHU"/>
                     </view>
                     <connections>
                         <outlet property="optionShowAdvanced" destination="gMV-gU-a7Z" id="jD6-Gd-c94"/>
-                        <outlet property="optionShowPathRenderingOptions" destination="yGg-Zy-9VG" id="YYi-cs-2B8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTV-Q0-dg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-522.39999999999998" y="789.35532233883066"/>
+            <point key="canvasLocation" x="-751" y="573"/>
         </scene>
         <!--Settings-->
         <scene sceneID="5S7-1m-XcQ">

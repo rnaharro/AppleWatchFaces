@@ -12,19 +12,19 @@ import SpriteKit
 class FaceShapeSettingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var thumbnail : UIImageView!
-    @IBOutlet weak var title : UILabel!
+    var shapeLayer:CAShapeLayer? = nil
     
     override var isSelected: Bool {
         didSet {
             if self.isSelected {
-                title.textColor = UIColor.init(hexString: AppUISettings.settingHighlightColor)
-                thumbnail.layer.borderWidth = AppUISettings.settingLineWidthBeforeScale
-                thumbnail.layer.borderColor = UIColor.init(hexString: AppUISettings.settingHighlightColor ).cgColor
-                thumbnail.layer.cornerRadius = 14.0
+                if let shapeLayer = shapeLayer {
+                        let color = AppUISettings.settingHighlightColor
+                        shapeLayer.strokeColor = SKColor.init(hexString: color).cgColor
+                }
             } else {
-                title.textColor = UIColor.init(hexString: "#FFFFFFFF")
-                thumbnail.layer.borderWidth = 0.0
-                thumbnail.layer.cornerRadius = 14.0
+                if let shapeLayer = shapeLayer {
+                    shapeLayer.strokeColor = SKColor.clear.cgColor
+                }
             }
             
         }

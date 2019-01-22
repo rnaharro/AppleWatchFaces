@@ -83,6 +83,7 @@ class SecondHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
         if let scene = cell.skView.scene {
             //debugPrint("old scene")
             scene.removeAllChildren()
+            scene.backgroundColor = SKColor.black
             
             cell.secondHandType = SecondHandTypes.userSelectableValues[indexPath.row]
             

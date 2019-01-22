@@ -11,7 +11,6 @@ import WatchConnectivity
 
 class SettingsViewController: UIViewController, WCSessionDelegate {
     
-    @IBOutlet var errorMessageLabel: UILabel!
     @IBOutlet var generateThumbsButton: UIBarButtonItem!
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
@@ -35,45 +34,29 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     func showError( errorMessage: String) {
         DispatchQueue.main.async {
-            self.errorMessageLabel.textColor = UIColor.red
-            self.errorMessageLabel.text = errorMessage
-            
-            self.errorMessageLabel.alpha = 1.0
-            UIView.animate(withDuration: 1.0, delay: 3.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                self.errorMessageLabel.alpha = 0.0
-            }) { (completed) in
-                //
-            }
+            self.showToast(message: errorMessage, color: UIColor.red)
         }
     }
     
     func showMessage( message: String) {
         DispatchQueue.main.async {
-            self.errorMessageLabel.textColor = UIColor.lightGray
-            self.errorMessageLabel.text = message
-            self.errorMessageLabel.alpha = 1.0
-        
-            UIView.animate(withDuration: 1.0, delay: 3.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                self.errorMessageLabel.alpha = 0.0
-            }) { (completed) in
-                //
-            }
+            self.showToast(message: message, color: UIColor.lightGray)
         }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         //debugPrint("session activationDidCompleteWith")
-        showMessage( message: "Watch session active.")
+        showMessage( message: "Watch session active")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
         //debugPrint("session sessionDidBecomeInactive")
-        showError(errorMessage: "Watch session became inactive.")
+        showError(errorMessage: "Watch session became inactive")
     }
 
     func sessionDidDeactivate(_ session: WCSession) {
         //debugPrint("session sessionDidDeactivate")
-        showError(errorMessage: "Watch session deactivated.")
+        showError(errorMessage: "Watch session deactivated")
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -107,13 +90,13 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         }
     }
     
-    @IBAction func sendSettingAction(sender: UIBarButtonItem) {
+    @IBAction func sendSettingAction() {
         //debugPrint("sendSetting tapped")
         if let validSession = session, let jsonData = SettingsViewController.currentClockSetting.toJSONData() {
             
             validSession.sendMessageData(jsonData, replyHandler: { reply in
                 //debugPrint("reply")
-                self.showMessage( message: "Watch replied success.")
+                self.showMessage( message: "Watch replied success")
             }, errorHandler: { error in
                 //debugPrint("error: \(error)")
                 self.showError(errorMessage: error.localizedDescription)
@@ -125,7 +108,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
             let fileManager = FileManager.default
             // check if the image is stored already
             if fileManager.fileExists(atPath: imageURL.path) {
-                self.showMessage( message: "Sending background image.")
+                self.showMessage( message: "Sending background image")
                 validSession.transferFile(imageURL, metadata: ["type":"clockFaceMaterialImage", "filename":filename])
             }
             
@@ -169,7 +152,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
                 nextClock()
             }
             if userInfo["action"] == "sendSetting" {
-                sendSettingAction(sender: UIBarButtonItem() )
+                sendSettingAction()
             }
         }
     }
@@ -259,6 +242,8 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         redrawSettingsTableAfterGroupChange() //show new title
         makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
         clearUndoAndUpdateButtons()
+        
+        showError(errorMessage: "Face copied")
         
         //tell chooser view to reload its cells
         NotificationCenter.default.post(name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil, userInfo:nil)
@@ -494,10 +479,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         #endif
         
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
-        
-        self.errorMessageLabel.alpha = 0.0
-        
-        
         
          NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForPreviewSwiped(notification:)), name: SettingsViewController.settingsPreviewSwipedNotificationName, object: nil)
         
