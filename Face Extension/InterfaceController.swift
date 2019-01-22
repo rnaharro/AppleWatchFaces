@@ -190,8 +190,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             // Present the scene
             self.skInterface.presentScene(scene)
             
-            // Use a value that will maintain a consistent frame rate
-            self.skInterface.preferredFramesPerSecond = 30
+//            // Use a value that will maintain a consistent frame rate
+//            self.skInterface.preferredFramesPerSecond = 30
         }
     }
     
