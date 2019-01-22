@@ -24,7 +24,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NJL-vA-esZ">
-                                <rect key="frame" x="16" y="234" width="343" height="28"/>
+                                <rect key="frame" x="0.0" y="234" width="375" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="fHK-v5-DIc"/>
                                 </constraints>
@@ -100,9 +100,9 @@
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DGD-mH-alP"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="E0w-kY-QCq"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Enf-i0-LZk"/>
-                            <constraint firstItem="NJL-vA-esZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="I51-gu-qPh"/>
+                            <constraint firstItem="NJL-vA-esZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="I51-gu-qPh"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KBj-i2-g0a"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NJL-vA-esZ" secondAttribute="trailing" constant="16" id="QKo-M4-KnQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NJL-vA-esZ" secondAttribute="trailing" id="QKo-M4-KnQ"/>
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="top" secondItem="L09-xH-or1" secondAttribute="bottom" id="RNe-2Z-N53"/>
                             <constraint firstItem="DN7-J7-N45" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="TLv-9L-Qto"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TbU-Ce-N5u"/>
@@ -129,6 +129,7 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="groupSegmentControl" destination="NJL-vA-esZ" id="Rem-4J-72w"/>
                         <outlet property="redoButton" destination="Yl6-rk-mWd" id="ezs-Pd-HVh"/>
                         <outlet property="undoButton" destination="7l3-wd-tEQ" id="8gT-hg-ufg"/>
                     </connections>
@@ -503,7 +504,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="g6y-S5-AAd" id="4e5-GM-dv5"/>
                                                     </connections>
@@ -565,7 +565,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="uad-oZ-7PI" id="TtE-UR-Yry"/>
                                                     </connections>
@@ -724,7 +723,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="kXW-W9-pZD" id="33X-MR-nxn"/>
                                                     </connections>
@@ -751,7 +749,7 @@
                                 <rect key="frame" x="0.0" y="1050" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j9t-aJ-bZY" id="cbT-jL-8we">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v7v-zT-wDu">
@@ -807,7 +805,7 @@
                                 <rect key="frame" x="0.0" y="1150" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gzf-wX-PUp" id="GVO-AU-6g6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Px-AN-4nu">
@@ -877,7 +875,7 @@
                                 <rect key="frame" x="0.0" y="1280" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s4M-Qx-GZL" id="Gyl-og-gLv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KEJ-DC-r6Z">
@@ -903,7 +901,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="RKG-Vw-JFm" id="mpx-Ph-zmB"/>
                                                     </connections>
@@ -930,7 +927,7 @@
                                 <rect key="frame" x="0.0" y="1380" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wsc-L4-sN6" id="qUK-oX-fRy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vdC-I5-V82">
@@ -1012,7 +1009,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="N1z-nX-pOe" id="FOL-El-fYx"/>
                                                     </connections>
@@ -1065,7 +1061,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="xkj-oa-lOf" id="Cpq-uN-1ve"/>
                                                     </connections>
@@ -1175,7 +1170,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="Jtl-TH-pFv" id="a9f-ea-uEJ"/>
                                                     </connections>
@@ -1202,7 +1196,7 @@
                                 <rect key="frame" x="0.0" y="1900" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cBF-K6-ajO" id="tLF-Cw-Xf3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eNl-dd-BHb">
@@ -1228,7 +1222,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="IGe-eU-mSU" id="Xb0-BF-3OD"/>
                                                     </connections>
@@ -1255,7 +1248,7 @@
                                 <rect key="frame" x="0.0" y="2000" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4pw-fi-3fU" id="oYN-9G-2EQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T3v-Wq-Ir2">
@@ -1281,7 +1274,6 @@
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" red="0.14900952579999999" green="0.1490265727" blue="0.14899522069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <outlet property="circleView" destination="HMv-Qm-c7R" id="T9I-50-IK3"/>
                                                     </connections>
@@ -1308,7 +1300,7 @@
                                 <rect key="frame" x="0.0" y="2100" width="375" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r2U-qH-aGk" id="GOX-gB-X5I">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wy-e6-zdB">

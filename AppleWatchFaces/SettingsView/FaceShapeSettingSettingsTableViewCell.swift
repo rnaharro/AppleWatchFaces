@@ -60,7 +60,7 @@ class FaceShapeSettingSettingsTableViewCell: WatchSettingsSelectableTableViewCel
         let shapeLayer = cell.shapeLayer!
         let path = WatchFaceNode.getShapePath( ringRenderShape: shape )
     
-        path.apply(CGAffineTransform.init(scaleX: 0.35, y: 0.35))  //scale/stratch
+        path.apply(CGAffineTransform.init(scaleX: 0.225, y: 0.225))  //scale/stratch
         path.apply(CGAffineTransform.init(translationX: 50.0, y: 58.0)) //repos
         
         let fillColor = SKColor.init(hexString: "#ddddddff")

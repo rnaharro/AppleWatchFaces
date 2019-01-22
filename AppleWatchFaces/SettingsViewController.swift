@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 import WatchConnectivity
 
 class SettingsViewController: UIViewController, WCSessionDelegate {
@@ -14,6 +15,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     @IBOutlet var generateThumbsButton: UIBarButtonItem!
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
+    @IBOutlet var groupSegmentControl: UISegmentedControl!
     
     var session: WCSession?
     weak var watchPreviewViewController:WatchPreviewViewController?
@@ -467,6 +469,22 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //style the section segment
+        // Add lines below selectedSegmentIndex
+        groupSegmentControl.backgroundColor = .clear
+        groupSegmentControl.tintColor = .clear
+        
+        // Add lines below the segmented control's tintColor
+        groupSegmentControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
+            NSAttributedString.Key.foregroundColor: SKColor.white
+            ], for: .normal)
+        
+        groupSegmentControl.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
+            NSAttributedString.Key.foregroundColor: SKColor.init(hexString: AppUISettings.settingHighlightColor)
+            ], for: .selected)
         
         //show gen thumbs button, only in simulator and only if its turned on in AppUISettings
         #if (arch(i386) || arch(x86_64))

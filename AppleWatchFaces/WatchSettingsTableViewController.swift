@@ -55,7 +55,7 @@ class WatchSettingsTableViewController: UITableViewController {
             ["title":"Hand Outline Color",          "category":"advanced",    "rowHeight":"100.0","cellID":"handOutlineColorTableViewCell"]
         ],
         [
-            ["title":"Indicator Path",             "category":"path-render", "rowHeight":"120.0","cellID":"ringShapeSettingsTableViewCellID"],
+            ["title":"Indicator Path",             "category":"path-render", "rowHeight":"100.0","cellID":"ringShapeSettingsTableViewCellID"],
             ["title":"Indicator Parts",             "category":"advanced",    "rowHeight":"66.0","cellID":"ringEditorTableViewCellID"],
             ["title":"Indicators Main Color",       "category":"normal",      "rowHeight":"100.0","cellID":"ringMainColorsTableViewCell"],
             ["title":"Indicators Secondary Color",  "category":"normal",      "rowHeight":"100.0","cellID":"ringSecondaryColorsTableViewCell"],
