@@ -11,15 +11,22 @@ import SpriteKit
 import SceneKit
 import Foundation
 
+#if os(watchOS)
+import WatchKit
+import ClockKit
+#endif
+
 enum DigitalTimeFormats: String {
     case HHMMSS,
     HHMM,
     DDMM,
     MMDD,
     DD,
+    Battery,
     None
     
     static let userSelectableValues = [
+        Battery,
         DD,
         MMDD,
         DDMM,
@@ -32,6 +39,7 @@ enum DigitalTimeEffects: String {
     case  innerShadow,
     darkInnerShadow,
     dropShadow,
+    digital8,
     frame,
     darkFrame,
     roundedFrame,
@@ -41,6 +49,7 @@ enum DigitalTimeEffects: String {
         innerShadow,
         darkInnerShadow,
         dropShadow,
+        digital8,
         frame,
         darkFrame,
         roundedFrame,
@@ -78,14 +87,6 @@ class DigitalTimeNode: SKNode {
         // Called before each frame is rendered
         let date = Date()
         let calendar = Calendar.current
-//        let formatter = DateFormatter()
-//        let monthComponents = formatter.shortMonthSymbols
-        
-        //let month = CGFloat(calendar.component(.month, from: date))
-        let day = CGFloat(calendar.component(.day, from: date))
-        
-        let hour = CGFloat(calendar.component(.hour, from: date))
-        let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
         
         // EXIT EARLY DEPENDING ON TYPE -- only move forward (do the update ) once per minute
@@ -93,7 +94,46 @@ class DigitalTimeNode: SKNode {
         if (timeFormat != .HHMMSS && seconds != 0 && force == false) {
             return
         }
+        let timeString = getTimeString()
+        updateTime(timeString: timeString)
+    }
+    
+    func  getTimeString() -> String {
         
+        if timeFormat == .Battery {
+            
+            #if os(watchOS)
+            
+            WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
+            var batteryPercent = WKInterfaceDevice.current().batteryLevel
+            //var batteryState = WKInterfaceDevice.current().batteryState
+            WKInterfaceDevice.current().isBatteryMonitoringEnabled = false
+            
+            if batteryPercent > 1.0 {
+                batteryPercent = 1.0
+            }
+            if batteryPercent < 0.0 {
+                batteryPercent = 0.0
+            }
+        
+            return Int(batteryPercent * 100).description + "%"
+            #else
+            return "100%"
+            #endif
+        }
+        
+        let date = Date()
+        let calendar = Calendar.current
+        //        let formatter = DateFormatter()
+        //        let monthComponents = formatter.shortMonthSymbols
+        
+        //let month = CGFloat(calendar.component(.month, from: date))
+        let day = CGFloat(calendar.component(.day, from: date))
+        
+        let hour = CGFloat(calendar.component(.hour, from: date))
+        let minutes = CGFloat(calendar.component(.minute, from: date))
+        let seconds = CGFloat(calendar.component(.second, from: date))
+
         let monthString = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1]
         //let monthNumString = String(format: "%02d", Int(month))
         let dayString = String(format: "%02d", Int(day))
@@ -118,7 +158,7 @@ class DigitalTimeNode: SKNode {
             timeString = " " //empty can cause crash on calcuating size  (calculateAccumulatedFrame)
         }
         
-        updateTime(timeString: timeString)
+        return timeString
     }
     
     //used when generating node for digital time ( a mini digital clock )
@@ -131,7 +171,7 @@ class DigitalTimeNode: SKNode {
         
         //TODO this should dependant on overall scale setting?
         let textScale = Float(0.0175)
-        let hourString = DigitalTimeNode.descriptionForTimeFormats(timeFormat)
+        let hourString = getTimeString()
         
         let timeText = SKLabelNode.init(text: hourString)
         timeText.name = "timeTextNode"
@@ -198,10 +238,10 @@ class DigitalTimeNode: SKNode {
             self.addChild(frameNode)
         }
         
-        if (effect == .dropShadow) {
+        if (effect == .dropShadow || effect == .digital8) {
             let shadowNode = timeText.copy() as! SKLabelNode
             shadowNode.name = "textShadow"
-            let shadowColor = SKColor.black.withAlphaComponent(0.4)
+            let shadowColor = SKColor.black.withAlphaComponent(0.3)
             var attributes: [NSAttributedString.Key : Any] = [
                 .foregroundColor: shadowColor,
                 .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
@@ -212,11 +252,42 @@ class DigitalTimeNode: SKNode {
             }
             shadowNode.attributedText = NSAttributedString(string: hourString, attributes: attributes)
             shadowNode.zPosition = -0.5
-            let shadowOffset = CGFloat(labelRect.size.height/10)
+            let shadowOffset = CGFloat(labelRect.size.height/15)
             shadowNode.position = CGPoint.init(x: timeText.position.x+shadowOffset, y: timeText.position.y-shadowOffset)
             shadowNode.isHidden = true
             self.addChild(shadowNode)
-        }
+            
+            if (effect == .digital8) {
+                var digital8String = ""
+                for i in 0..<hourString.count {
+                    let index = hourString.index(hourString.startIndex, offsetBy: i)
+                    let char = hourString[index]
+                    if char == ":" || char == " " {
+                        digital8String.append(contentsOf: char.description)
+                    } else {
+                        digital8String.append(contentsOf: "8")
+                    }
+                }
+                
+                let digital8Node = timeText.copy() as! SKLabelNode
+                digital8Node.name = "textDigital8"
+                let shadowColor = SKColor.black.withAlphaComponent(0.2)
+                var attributes: [NSAttributedString.Key : Any] = [
+                    .foregroundColor: shadowColor,
+                    .font: UIFont.init(name: fontName, size: CGFloat( Float(textSize) / textScale ))!
+                ]
+                if strokeColor != nil {
+                    attributes[.strokeWidth] = round(strokeWidth)
+                    attributes[.strokeColor] = strokeColor
+                }
+                digital8Node.attributedText = NSAttributedString(string: digital8String, attributes: attributes)
+                digital8Node.zPosition = -0.5
+                //let shadowOffset:CGFloat = 0
+                digital8Node.position = CGPoint.init(x: timeText.position.x+shadowOffset, y: timeText.position.y-shadowOffset)
+                digital8Node.isHidden = false
+                self.addChild(digital8Node)
+            }
+         }
         
         if (effect == .innerShadow || effect == .darkInnerShadow) {
             let shadowNode = SKNode.init()
@@ -265,9 +336,6 @@ class DigitalTimeNode: SKNode {
             
             timeText.addChild(shadowNode)
         }
-        
-        //ONE MORE TIME TO UPDATE ANY NEW ADDITIONS IN EFFECTS
-        setToTime(force: true) //update to latest time to start
         
         //check to see if we need to update time every second
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForSecondsChanged(notification:)), name: ClockTimer.timeChangedSecondNotificationName, object: nil)
@@ -338,6 +406,8 @@ class DigitalTimeNode: SKNode {
             description = "Dark Inner Shadow"
         case .dropShadow:
             description = "Drop Shadow"
+        case .digital8:
+            description = "Digital 8s"
         case .frame:
             description = "Frame"
         case .roundedFrame:
