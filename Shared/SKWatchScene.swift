@@ -51,7 +51,7 @@ class SKWatchScene: SKScene {
     }
     
     func cleanup() {
-        NotificationCenter.default.removeObserver(self)
+        //NotificationCenter.default.removeObserver(self)
         if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
             watchFaceNode.removeFromParent()
         }
