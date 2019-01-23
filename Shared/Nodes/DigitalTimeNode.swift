@@ -19,16 +19,20 @@ import ClockKit
 enum DigitalTimeFormats: String {
     case HHMMSS,
     HHMM,
+    DADD,
     DDMM,
     MMDD,
+    DA,
     DD,
     Battery,
     None
     
     static let userSelectableValues = [
         Battery,
+        DA,
         DD,
         MMDD,
+        DADD,
         DDMM,
         HHMM,
         HHMMSS
@@ -134,7 +138,8 @@ class DigitalTimeNode: SKNode {
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
 
-        let monthString = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1]
+        let monthWord = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1].uppercased()
+        let dayWord = calendar.shortWeekdaySymbols[calendar.component(.weekday, from: date)-1].uppercased()
         //let monthNumString = String(format: "%02d", Int(month))
         let dayString = String(format: "%02d", Int(day))
         
@@ -146,10 +151,14 @@ class DigitalTimeNode: SKNode {
         switch timeFormat {
         case .DD:
             timeString = dayString
+        case .DA:
+            timeString = dayWord
+        case .DADD:
+            timeString = dayWord + " " + dayString
         case .DDMM:
-            timeString = dayString + " " + monthString
+            timeString = dayString + " " + monthWord
         case .MMDD:
-            timeString = monthString + " " + dayString
+            timeString = monthWord + " " + dayString
         case .HHMM:
             timeString = hourString + ":" + minString
         case .HHMMSS:
@@ -254,7 +263,6 @@ class DigitalTimeNode: SKNode {
             shadowNode.zPosition = -0.5
             let shadowOffset = CGFloat(labelRect.size.height/15)
             shadowNode.position = CGPoint.init(x: timeText.position.x+shadowOffset, y: timeText.position.y-shadowOffset)
-            shadowNode.isHidden = true
             self.addChild(shadowNode)
             
             if (effect == .digital8) {
@@ -363,6 +371,12 @@ class DigitalTimeNode: SKNode {
         var description = ""
         
         switch format {
+        case .Battery:
+            description = "Battery %"
+        case .DA:
+            description = "DA"
+        case .DADD:
+            description = "DA&DD"
         case .DD:
             description = "DD"
         case .DDMM:
@@ -371,6 +385,8 @@ class DigitalTimeNode: SKNode {
             description = "MO&DD"
         case .HHMM:
             description = "HH:MM"
+        case .HHMMSS:
+            description = "HH:MM:SS"
         default:
             description = "None"
         }

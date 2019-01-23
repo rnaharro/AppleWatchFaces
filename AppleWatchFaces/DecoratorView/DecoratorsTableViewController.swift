@@ -101,7 +101,7 @@ class DecoratorsTableViewController: UITableViewController {
                 case .RingTypeShapeNode:
                     cellHeight =  160.0
                 case .RingTypeDigitalTime:
-                    cellHeight =  295.0
+                    cellHeight =  290.0
                 case .RingTypeSpacer:
                     cellHeight =  cellHeight + 0
                 }

@@ -16,7 +16,8 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
     
     @IBOutlet var horizontalPositionSegment: UISegmentedControl!
     @IBOutlet var verticalPositionSegment: UISegmentedControl!
-    @IBOutlet var timeFormatSegment: UISegmentedControl!
+    
+    @IBOutlet var timeFormatLabel: UILabel!
     @IBOutlet var timeEffectLabel: UILabel!
     //@IBOutlet var timeEffectSegment: UISegmentedControl!
     
@@ -42,6 +43,13 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         
         NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsEditDetailNotificationName, object: nil,
                                         userInfo:["settingType":"effectType", "decoratorDigitalTimeTableViewCell":self ])
+    }
+    
+    @IBAction func editFormat(sender: UIButton ) {
+        self.selectThisCell()
+        
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsEditDetailNotificationName, object: nil,
+                                        userInfo:["settingType":"formatType", "decoratorDigitalTimeTableViewCell":self ])
     }
     
     @IBAction func horizontalPositionSegmentDidChange(sender: UISegmentedControl ) {
@@ -132,6 +140,17 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         
     }
     
+    func formatChosen( formatType: DigitalTimeFormats ) {
+        //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
+        
+        let clockRingSetting = myClockRingSetting()
+        clockRingSetting.ringStaticTimeFormat = formatType
+        self.timeFormatLabel.text = formatText( clockRingSetting: clockRingSetting )
+        
+        NotificationCenter.default.post(name: DecoratorPreviewController.ringSettingsChangedNotificationName, object: nil,
+                                        userInfo:["settingType":"ringStaticEffects" ])
+    }
+    
     func effectChosen( effectType: DigitalTimeEffects ) {
         //debugPrint("fontChosen" + NumberTextNode.descriptionForType(textType))
         
@@ -162,11 +181,16 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
         return "Effect : " + DigitalTimeNode.descriptionForTimeEffects(clockRingSetting.ringStaticEffects)
     }
     
+    func formatText( clockRingSetting: ClockRingSetting ) -> String {
+        return "Format : " + DigitalTimeNode.descriptionForTimeFormats(clockRingSetting.ringStaticTimeFormat)
+    }
+    
     override func setupUIForClockRingSetting( clockRingSetting: ClockRingSetting ) {
         super.setupUIForClockRingSetting(clockRingSetting: clockRingSetting)
     
         titleLabel.text = titleText(clockRingSetting: clockRingSetting)
         timeEffectLabel.text = effectText(clockRingSetting: clockRingSetting)
+        timeFormatLabel.text = formatText( clockRingSetting: clockRingSetting )
         
         valueSlider.minimumValue = AppUISettings.ringSettigsSliderTextMin
         valueSlider.maximumValue = AppUISettings.ringSettigsSliderTextMax
@@ -196,16 +220,6 @@ class DecoratorDigitalTimeTableViewCell: DecoratorTableViewCell {
             verticalPositionSegment.selectedSegmentIndex = 2
         case .None:
             verticalPositionSegment.isEnabled = true //TODO: not sure what to put here
-        }
-        
-        
-        
-        timeFormatSegment.removeAllSegments()
-        for (index, item) in DigitalTimeFormats.userSelectableValues.enumerated() {
-            timeFormatSegment.insertSegment(withTitle: item.rawValue, at: index, animated: false)
-        }
-        if let indexFound = DigitalTimeFormats.userSelectableValues.firstIndex(of: clockRingSetting.ringStaticTimeFormat) {
-            timeFormatSegment.selectedSegmentIndex = indexFound
         }
         
     }

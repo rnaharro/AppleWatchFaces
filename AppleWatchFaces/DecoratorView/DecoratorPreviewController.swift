@@ -142,6 +142,20 @@ class DecoratorPreviewController: UIViewController {
             showSettingsAlert( title: "Choose Effect", alertActions: actions )
         }
         
+        if let settingType = notification.userInfo?["settingType"] as? String, settingType == "formatType", let decoratorTextTableViewCell = notification.userInfo?["decoratorDigitalTimeTableViewCell"] as? DecoratorDigitalTimeTableViewCell  {
+            
+            var actions:[UIAlertAction] = []
+            
+            for formatType in DigitalTimeFormats.userSelectableValues {
+                let newAction = UIAlertAction(title: DigitalTimeNode.descriptionForTimeFormats(formatType), style: .default, handler: { action in
+                    decoratorTextTableViewCell.formatChosen(formatType: formatType)
+                } )
+                actions.append(newAction)
+            }
+            
+            showSettingsAlert( title: "Choose Format", alertActions: actions )
+        }
+        
         if let settingType = notification.userInfo?["settingType"] as? String, settingType == "textType", let decoratorTextTableViewCell = notification.userInfo?["decoratorTextTableViewCell"] as? DecoratorTextTableViewCell  {
             
             var actions:[UIAlertAction] = []
