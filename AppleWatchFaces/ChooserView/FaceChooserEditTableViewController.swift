@@ -10,7 +10,7 @@ import UIKit
 
 class FaceChooserEditTableViewController: UITableViewController {
     
-    var faceChooserViewController: FaceChooserViewController?
+    weak var faceChooserViewController: FaceChooserViewController?
     
     @IBAction func exit() {
         if let fcVC = self.faceChooserViewController {
