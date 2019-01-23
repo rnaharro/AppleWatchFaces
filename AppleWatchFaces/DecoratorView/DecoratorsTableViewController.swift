@@ -10,7 +10,7 @@ import UIKit
 
 class DecoratorsTableViewController: UITableViewController {
 
-    var decoratorPreviewController: DecoratorPreviewController?
+    weak var decoratorPreviewController: DecoratorPreviewController?
     
     func addNewItem( ringType: RingTypes) {
         self.tableView.beginUpdates()

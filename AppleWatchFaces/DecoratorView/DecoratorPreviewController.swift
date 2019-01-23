@@ -13,7 +13,7 @@ class DecoratorPreviewController: UIViewController {
 
     @IBOutlet var skView: SKView!
     //var editBarButton: UIBarButtonItem = UIBarButtonItem()
-    var decoratorsTableViewController: DecoratorsTableViewController?
+    weak var decoratorsTableViewController: DecoratorsTableViewController?
     
     static let ringSettingsChangedNotificationName = Notification.Name("ringSettingsChanged")
     static let ringSettingsEditDetailNotificationName = Notification.Name("ringSettingsEditDetail")
@@ -211,6 +211,12 @@ class DecoratorPreviewController: UIViewController {
         self.present(optionMenu, animated: true, completion: nil)
         
 //        decoratorsTableViewController.newItem()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let scene = skView.scene as? SKWatchScene {
+            scene.cleanup()
+        }
     }
     
     override func viewDidLoad() {
