@@ -11,10 +11,11 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandNodeTypeNone
+    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeDial,
+        SecondHandNodeTypeNone
     
     static let randomizableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandNodeTypeNone]
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandNodeTypeNone]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeDial, SecondHandNodeTypeNone]
     
     static func random() -> SecondHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -102,6 +103,85 @@ class SecondHandNode: SKSpriteNode {
         return typeKeysArray
     }
     
+    func getArcNode() -> SKNode {
+        func filledShapeNode() -> SKShapeNode {
+            let w = CGFloat( CGFloat(3.12) / 1.425 )
+            let h = CGFloat( CGFloat(3.9)  / 1.425 )
+            let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
+            shape.setMaterial(material: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+            
+            shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
+            return shape
+        }
+        
+        let cornerRadius:CGFloat = 0.2
+        let innerRadius:CGFloat = 80.0
+        let outerRadius:CGFloat = 100.0
+        let initalAngleforTop = CGFloat(Double.pi * 0.5)
+        let startAngle:CGFloat = initalAngleforTop
+        let endAngle:CGFloat = CGFloat(Double.pi * 0.5) - self.zRotation // CGFloat(Double.pi * 1.0)
+        let center = CGPoint(x: 0, y: 0)
+        
+        let innerTheta = asin(cornerRadius / 2.0 / (innerRadius + cornerRadius)) * 2.0
+        let outerTheta = asin(cornerRadius / 2.0 / (outerRadius - cornerRadius)) * 2.0
+        
+        let circlePath = UIBezierPath(arcCenter: center, radius: innerRadius + cornerRadius,
+                                      startAngle: endAngle - innerTheta, endAngle: startAngle + innerTheta, clockwise: false)
+        circlePath.addArc(withCenter: center, radius: outerRadius - cornerRadius, startAngle: startAngle + outerTheta, endAngle: endAngle - outerTheta, clockwise: true)
+        circlePath.apply(CGAffineTransform.init(scaleX: -1, y: 1)) //flip
+        
+        let shape = SKShapeNode.init(path: circlePath.cgPath)
+        shape.name = "arcShape"
+        shape.position = CGPoint.init(x: 0, y: 0.0)
+//        shape.setMaterial(material: self.material)
+//        shape.strokeColor = self.strokeColor
+//        shape.lineWidth = self.lineWidth
+        
+        if AppUISettings.materialIsColor(materialName: material) {
+            shape.fillColor = SKColor.init(hexString: material)
+            shape.strokeColor = strokeColor
+            shape.lineWidth = lineWidth
+        } else {
+            //has image, mask into shape!
+            shape.fillColor = SKColor.white
+            
+            let cropNode = SKCropNode()
+            cropNode.name = "arcShape"
+            let filledNode = filledShapeNode()
+            cropNode.addChild(filledNode)
+            cropNode.maskNode = shape
+            return cropNode
+        }
+        
+        return shape
+    }
+    
+    override var zRotation: CGFloat {
+        didSet {
+            if secondHandType == .SecondHandTypeDial {
+                if let oldArcShape = self.childNode(withName: "arcShape") {
+                    oldArcShape.removeFromParent()
+                    let newNode = getArcNode()
+                    newNode.zRotation = -zRotation
+                    self.addChild(newNode)
+                }
+            }
+        }
+    }
+    
+    func clearRotation() {
+        self.zRotation = 0
+    }
+    
+    let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
+    var secondHandType:SecondHandTypes = .SecondHandNodeTypeNone
+    var material = ""
+    var strokeColor:SKColor = SKColor.white
+    var lineWidth: CGFloat = 0.0
+    var arcAngle:CGFloat = 0.0
+    
     convenience init(secondHandType: SecondHandTypes) {
         self.init(secondHandType: secondHandType, material: "#ffffffff")
     }
@@ -114,9 +194,17 @@ class SecondHandNode: SKSpriteNode {
     
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
         self.name = "secondHand"
+        self.secondHandType = secondHandType
+        self.material = material
+        self.strokeColor = strokeColor
+        self.lineWidth = lineWidth
         
         if (secondHandType == SecondHandTypes.SecondHandNodeTypeNone) {
             // do nothing ? need to erase ?
+        }
+        
+        if (secondHandType == SecondHandTypes.SecondHandTypeDial) {
+            self.addChild(getArcNode())
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeFancyRed) {
