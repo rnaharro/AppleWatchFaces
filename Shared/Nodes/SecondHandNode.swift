@@ -37,6 +37,13 @@ enum SecondHandMovements: String {
 
 class SecondHandNode: SKSpriteNode {
     
+    let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
+    var secondHandType:SecondHandTypes = .SecondHandNodeTypeNone
+    var material = ""
+    var strokeColor:SKColor = SKColor.white
+    var lineWidth: CGFloat = 0.0
+    var arcAngle:CGFloat = 0.0
+    
     static func descriptionForType(_ nodeType: SecondHandTypes) -> String {
         var typeDescription = ""
         
@@ -47,6 +54,7 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == SecondHandTypes.SecondHandTypePointy)  { typeDescription = "Pointy" }
         if (nodeType == SecondHandTypes.SecondHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
         if (nodeType == SecondHandTypes.SecondHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
+        if (nodeType == SecondHandTypes.SecondHandTypeDial)  { typeDescription = "Flat Dial" }
         if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
         
         // IMAGE BASED EXAMPLES
@@ -103,84 +111,27 @@ class SecondHandNode: SKSpriteNode {
         return typeKeysArray
     }
     
-    func getArcNode() -> SKNode {
-        func filledShapeNode() -> SKShapeNode {
-            let w = CGFloat( CGFloat(3.12) / 1.425 )
-            let h = CGFloat( CGFloat(3.9)  / 1.425 )
-            let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-            
-            shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
-            return shape
-        }
-        
-        let cornerRadius:CGFloat = 0.2
-        let innerRadius:CGFloat = 80.0
-        let outerRadius:CGFloat = 100.0
-        let initalAngleforTop = CGFloat(Double.pi * 0.5)
-        let startAngle:CGFloat = initalAngleforTop
-        let endAngle:CGFloat = CGFloat(Double.pi * 0.5) - self.zRotation // CGFloat(Double.pi * 1.0)
-        let center = CGPoint(x: 0, y: 0)
-        
-        let innerTheta = asin(cornerRadius / 2.0 / (innerRadius + cornerRadius)) * 2.0
-        let outerTheta = asin(cornerRadius / 2.0 / (outerRadius - cornerRadius)) * 2.0
-        
-        let circlePath = UIBezierPath(arcCenter: center, radius: innerRadius + cornerRadius,
-                                      startAngle: endAngle - innerTheta, endAngle: startAngle + innerTheta, clockwise: false)
-        circlePath.addArc(withCenter: center, radius: outerRadius - cornerRadius, startAngle: startAngle + outerTheta, endAngle: endAngle - outerTheta, clockwise: true)
-        circlePath.apply(CGAffineTransform.init(scaleX: -1, y: 1)) //flip
-        
-        let shape = SKShapeNode.init(path: circlePath.cgPath)
-        shape.name = "arcShape"
-        shape.position = CGPoint.init(x: 0, y: 0.0)
-//        shape.setMaterial(material: self.material)
-//        shape.strokeColor = self.strokeColor
-//        shape.lineWidth = self.lineWidth
-        
-        if AppUISettings.materialIsColor(materialName: material) {
-            shape.fillColor = SKColor.init(hexString: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-        } else {
-            //has image, mask into shape!
-            shape.fillColor = SKColor.white
-            
-            let cropNode = SKCropNode()
-            cropNode.name = "arcShape"
-            let filledNode = filledShapeNode()
-            cropNode.addChild(filledNode)
-            cropNode.maskNode = shape
-            return cropNode
-        }
-        
-        return shape
-    }
-    
     override var zRotation: CGFloat {
         didSet {
             if secondHandType == .SecondHandTypeDial {
-                if let oldArcShape = self.childNode(withName: "arcShape") {
+                if let oldArcShape = self.childNode(withName: "arcNode") {
                     oldArcShape.removeFromParent()
-                    let newNode = getArcNode()
-                    newNode.zRotation = -zRotation
-                    self.addChild(newNode)
                 }
+                addArcNode()
             }
         }
+    }
+    
+    func addArcNode() {
+        let newNode = ArcNode.init(cornerRadius: 0.0, innerRadius: 80.0, outerRadius: 110.0, endAngle: zRotation, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+        newNode.name = "arcNode"
+        newNode.zRotation = -zRotation
+        self.addChild(newNode)
     }
     
     func clearRotation() {
         self.zRotation = 0
     }
-    
-    let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
-    var secondHandType:SecondHandTypes = .SecondHandNodeTypeNone
-    var material = ""
-    var strokeColor:SKColor = SKColor.white
-    var lineWidth: CGFloat = 0.0
-    var arcAngle:CGFloat = 0.0
     
     convenience init(secondHandType: SecondHandTypes) {
         self.init(secondHandType: secondHandType, material: "#ffffffff")
@@ -204,7 +155,11 @@ class SecondHandNode: SKSpriteNode {
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeDial) {
-            self.addChild(getArcNode())
+            //causes really strange bug trying to remove this later
+            //first one is drawn in preview and then overriden later
+//            let newNode = ArcNode.init(cornerRadius: 0.0, innerRadius: 80.0, outerRadius: 110.0, endAngle: CGFloat(Double.pi * 0.5), material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+//            newNode.name = "arcNodePreview"
+//            self.addChild(newNode)
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeFancyRed) {

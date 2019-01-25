@@ -11,8 +11,7 @@ import SpriteKit
 
 class WatchFaceNode: SKShapeNode {
     
-    var secondHandMovement: SecondHandMovements = .SecondHandMovementStep
-    var minuteHandMovement: MinuteHandMovements = .MinuteHandMovementStep
+    var clockFaceSettings: ClockFaceSetting = ClockFaceSetting.defaults()
     
     enum PartsZPositions: Int {
         case background = 0,
@@ -30,18 +29,14 @@ class WatchFaceNode: SKShapeNode {
         
         //nothing to without these settings
         guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
-
+        self.clockFaceSettings = clockFaceSettings
+        
         let renderShadows = true
         let shadowMaterial = "#111111AA"
         let shadowChildZposition:CGFloat = -0.5
         var shadowColor = SKColor.init(hexString: shadowMaterial)
         shadowColor = shadowColor.withAlphaComponent(0.4)
         let shadowLineWidth:CGFloat = 2.0
-        
-        //debugPrint("secondhandMovement:" + clockFaceSettings.secondHandMovement.rawValue)
-        //debugPrint("minuteHandMovement:" + clockFaceSettings.minuteHandMovement.rawValue)
-        self.secondHandMovement = clockFaceSettings.secondHandMovement
-        self.minuteHandMovement = clockFaceSettings.minuteHandMovement
         
         let backgroundNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.FaceBackgroundTypeFilled , material: clockSetting.clockCasingMaterialName)
         backgroundNode.name = "background"
@@ -280,6 +275,12 @@ class WatchFaceNode: SKShapeNode {
         if let secondHand = self.childNode(withName: "secondHand") {
             let newZAngle = -1 * deg2rad(sec * 6)
             
+            //TODO: figure out how to get these animations working for dials
+            var secondHandMovement = clockFaceSettings.secondHandMovement
+            if clockFaceSettings.secondHandType == .SecondHandTypeDial {
+                secondHandMovement = .SecondHandMovementStep
+            }
+            
             //movement jump each second
             if (secondHandMovement == .SecondHandMovementStep || force) {
                 secondHand.zRotation = newZAngle
@@ -326,10 +327,10 @@ class WatchFaceNode: SKShapeNode {
             }
         }
         if let minuteHand = self.childNode(withName: "minuteHand") {
-            if (minuteHandMovement == .MinuteHandMovementStep) {
+            if (clockFaceSettings.minuteHandMovement == .MinuteHandMovementStep) {
                 minuteHand.zRotation = -1 * deg2rad(min * 6)
             }
-            if (minuteHandMovement == .MinuteHandMovementSmooth) {
+            if (clockFaceSettings.minuteHandMovement == .MinuteHandMovementSmooth) {
                 minuteHand.zRotation = -1 * deg2rad((min + sec/60) * 6)
             }
         }
@@ -355,7 +356,7 @@ class WatchFaceNode: SKShapeNode {
     }
     
     func setToScreenShotTime() {
-        self.secondHandMovement = .SecondHandMovementStep
+        clockFaceSettings.secondHandMovement = .SecondHandMovementStep
         positionHands(sec: AppUISettings.screenShotSeconds, min: AppUISettings.screenShotMinutes, hour: AppUISettings.screenShotHour)
     }
     
