@@ -277,7 +277,7 @@ class WatchFaceNode: SKShapeNode {
             
             //TODO: figure out how to get these animations working for dials
             var secondHandMovement = clockFaceSettings.secondHandMovement
-            if clockFaceSettings.secondHandType == .SecondHandTypeDial {
+            if SecondHandTypes.isDialType(type: clockFaceSettings.secondHandType) {
                 secondHandMovement = .SecondHandMovementStep
             }
             
@@ -335,7 +335,7 @@ class WatchFaceNode: SKShapeNode {
             }
         }
         if let hourHand = self.childNode(withName: "hourHand") {
-            hourHand.zRotation = -1 * deg2rad(hour * 30 + min/2)
+            hourHand.zRotation = 1 * deg2rad((24-hour) * 30 - min/2) //-1 * deg2rad(hour * 30 + min/2)
         }
     }
     

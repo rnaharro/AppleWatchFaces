@@ -88,14 +88,24 @@ class MinuteHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
             
             let scaleMultiplier:CGFloat = 0.008
             
-            let handNode = MinuteHandNode.init(minuteHandType: MinuteHandTypes.userSelectableValues[indexPath.row])
+            let handNode = MinuteHandNode.init(minuteHandType: cell.minuteHandType)
+            //TODO: hack to avoid drawing initial arc in secondHandNode
+            if MinuteHandTypes.isDialType(type: cell.minuteHandType) {
+                handNode.zRotation = CGFloat(Double.pi * 0.5)
+                handNode.addArcNode()
+            }
             handNode.setScale(scaleMultiplier)
             handNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/9)
             scene.addChild(handNode)
             
             let highlightColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
             let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 1.3
-            let selectedHandNode = MinuteHandNode.init(minuteHandType: MinuteHandTypes.userSelectableValues[indexPath.row], material: "#aaaaaaff", strokeColor: highlightColor, lineWidth:highlightLineWidth * 0.7)
+            let selectedHandNode = MinuteHandNode.init(minuteHandType: cell.minuteHandType, material: "#aaaaaaff", strokeColor: highlightColor, lineWidth:highlightLineWidth * 0.7)
+            //TODO: hack to avoid drawing initial arc in secondHandNode
+            if MinuteHandTypes.isDialType(type: cell.minuteHandType) {
+                selectedHandNode.zRotation = CGFloat(Double.pi * 0.5)
+                selectedHandNode.addArcNode()
+            }
             selectedHandNode.name = "selectedNode"
             selectedHandNode.setScale(scaleMultiplier)
             selectedHandNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/10)

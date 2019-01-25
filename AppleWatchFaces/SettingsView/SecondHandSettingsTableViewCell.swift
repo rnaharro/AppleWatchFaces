@@ -91,7 +91,7 @@ class SecondHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
             
             let handNode = SecondHandNode.init(secondHandType: cell.secondHandType)
             //TODO: hack to avoid drawing initial arc in secondHandNode
-            if cell.secondHandType == .SecondHandTypeDial {
+            if SecondHandTypes.isDialType(type: cell.secondHandType) {
                 handNode.zRotation = CGFloat(Double.pi * 0.5)
                 handNode.addArcNode()
             }
@@ -103,7 +103,7 @@ class SecondHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
             let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 1.3
             let selectedHandNode = SecondHandNode.init(secondHandType: cell.secondHandType, material: "#ff0000ff", strokeColor: highlightColor, lineWidth:highlightLineWidth)
             //TODO: hack to avoid drawing initial arc in secondHandNode
-            if cell.secondHandType == .SecondHandTypeDial {
+            if SecondHandTypes.isDialType(type: cell.secondHandType) {
                 selectedHandNode.zRotation = CGFloat(Double.pi * 0.5)
                 selectedHandNode.addArcNode()
             }

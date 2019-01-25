@@ -11,14 +11,18 @@ import UIKit
 import SpriteKit
 
 enum MinuteHandTypes: String {
-    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeNone
+    case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeFlatDial, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeNone]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeFlatDial, MinuteHandTypeNone]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
         return randomizableValues[randomIndex]
+    }
+    
+    static func isDialType(type: MinuteHandTypes) -> Bool {
+        return ([MinuteHandTypeFlatDial].lastIndex(of: type) != nil)
     }
 }
 
@@ -36,6 +40,14 @@ enum MinuteHandMovements: String {
 
 class MinuteHandNode: SKSpriteNode {
     
+    let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
+    var minuteHandType:MinuteHandTypes = .MinuteHandTypeNone
+    var material = ""
+    var strokeColor:SKColor = SKColor.white
+    var lineWidth: CGFloat = 0.0
+    var arcAngle:CGFloat = 0.0
+    var cornerRadius:CGFloat = 0.0
+    
     static func descriptionForType(_ nodeType: MinuteHandTypes) -> String {
         var typeDescription = ""
         
@@ -46,6 +58,8 @@ class MinuteHandNode: SKSpriteNode {
         if (nodeType == MinuteHandTypes.MinuteHandTypeBoxy)  { typeDescription = "Boxy" }
         if (nodeType == MinuteHandTypes.MinuteHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
         if (nodeType == MinuteHandTypes.MinuteHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
+        if (nodeType == MinuteHandTypes.MinuteHandTypeFlatDial)  { typeDescription = "Flat Dial" }
+        
         
         //image based example
         if (nodeType == MinuteHandTypes.MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
@@ -80,6 +94,22 @@ class MinuteHandNode: SKSpriteNode {
         return typeDescription
     }
     
+    override var zRotation: CGFloat {
+        didSet {
+            if MinuteHandTypes.isDialType(type: minuteHandType) {
+                if let oldArcShape = self.childNode(withName: "arcNode") { oldArcShape.removeFromParent() }
+                addArcNode()
+            }
+        }
+    }
+    
+    func addArcNode() {
+        let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: 50.0, outerRadius: 80.0, endAngle: zRotation, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+        newNode.name = "arcNode"
+        newNode.zRotation = -zRotation
+        self.addChild(newNode)
+    }
+    
     convenience init(minuteHandType: MinuteHandTypes) {
         self.init(minuteHandType: minuteHandType, material: "#ffffffff")
     }
@@ -92,6 +122,15 @@ class MinuteHandNode: SKSpriteNode {
     
         super.init(texture: nil, color: SKColor.white, size: CGSize())
         self.name = "minuteHand"
+        
+        self.minuteHandType = minuteHandType
+        self.material = material
+        self.strokeColor = strokeColor
+        self.lineWidth = lineWidth
+        
+        if (MinuteHandTypes.isDialType(type: minuteHandType)) {
+            
+        }
         
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeImageFancyWhite) {
             let im = UIImage.init(named: "minuteHand-fancyWhite.png")
