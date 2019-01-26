@@ -19,6 +19,7 @@ import ClockKit
 enum DigitalTimeFormats: String {
     case HHMMSS,
     HHMM,
+    HHMMPM,
     DADD,
     DDMM,
     MMDD,
@@ -35,6 +36,7 @@ enum DigitalTimeFormats: String {
         DADD,
         DDMM,
         HHMM,
+        HHMMPM,
         HHMMSS
     ]
 }
@@ -65,7 +67,6 @@ class DigitalTimeNode: SKNode {
     var timeFormat: DigitalTimeFormats = .DD
     
     func updateTime( timeString: String ) {
-        
         if let timeText = self.childNode(withName: "timeTextNode") as? SKLabelNode {
             //let mutableAttributedString = NSMutableAttributedString(string: timeString, attributes: myAttributes)
             let mutableAttributedText = timeText.attributedText!.mutableCopy() as! NSMutableAttributedString
@@ -107,45 +108,60 @@ class DigitalTimeNode: SKNode {
         if timeFormat == .Battery {
             
             #if os(watchOS)
+                WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
+                var batteryPercent = WKInterfaceDevice.current().batteryLevel
+                //var batteryState = WKInterfaceDevice.current().batteryState
+                WKInterfaceDevice.current().isBatteryMonitoringEnabled = false
             
-            WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
-            var batteryPercent = WKInterfaceDevice.current().batteryLevel
-            //var batteryState = WKInterfaceDevice.current().batteryState
-            WKInterfaceDevice.current().isBatteryMonitoringEnabled = false
+                if batteryPercent > 1.0 {
+                    batteryPercent = 1.0
+                }
+                if batteryPercent < 0.0 {
+                    batteryPercent = 0.0
+                }
             
-            if batteryPercent > 1.0 {
-                batteryPercent = 1.0
-            }
-            if batteryPercent < 0.0 {
-                batteryPercent = 0.0
-            }
-        
-            return Int(batteryPercent * 100).description + "%"
+                return Int(batteryPercent * 100).description + "%"
             #else
-            return "100%"
+                return "100%"
             #endif
         }
         
+        func timeStringWithoutAMPM( dateFormatterTime: DateFormatter)->String {
+            var timeStr = dateFormatterTime.string(from: Date())
+            //var ampmStr = ""
+            if let rng = timeStr.range(of: dateFormatterTime.amSymbol) {
+                //ampmStr = dateFormatterTime.amSymbol
+                timeStr.removeSubrange(rng)
+            } else if let rng = timeStr.range(of: dateFormatterTime.pmSymbol) {
+                //aampmStr = dateFormatterTime.pmSymbol
+                timeStr.removeSubrange(rng)
+            }
+            return timeStr
+        }
+        
         let date = Date()
-        let calendar = Calendar.current
-        //        let formatter = DateFormatter()
-        //        let monthComponents = formatter.shortMonthSymbols
+        var calendar = Calendar.current
+        calendar.locale = NSLocale.current
         
         //let month = CGFloat(calendar.component(.month, from: date))
         let day = CGFloat(calendar.component(.day, from: date))
         
-        let hour = CGFloat(calendar.component(.hour, from: date))
-        let minutes = CGFloat(calendar.component(.minute, from: date))
-        let seconds = CGFloat(calendar.component(.second, from: date))
+//        let hour = CGFloat(calendar.component(.hour, from: date))
+//        let minutes = CGFloat(calendar.component(.minute, from: date))
+//        let seconds = CGFloat(calendar.component(.second, from: date))
 
         let monthWord = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1].uppercased()
         let dayWord = calendar.shortWeekdaySymbols[calendar.component(.weekday, from: date)-1].uppercased()
-        //let monthNumString = String(format: "%02d", Int(month))
+   
         let dayString = String(format: "%02d", Int(day))
         
-        let hourString = String(format: "%02d", Int(hour))
-        let minString = String(format: "%02d", Int(minutes))
-        let secString = String(format: "%02d", Int(seconds))
+        let dateFormatterTime = DateFormatter()
+        dateFormatterTime.dateStyle = .none
+        dateFormatterTime.timeStyle = .short
+        
+//        let hourString = String(format: "%02d", Int(hour))
+//        let minString = String(format: "%02d", Int(minutes))
+//        let secString = String(format: "%02d", Int(seconds))
         
         var timeString = ""
         switch timeFormat {
@@ -160,9 +176,11 @@ class DigitalTimeNode: SKNode {
         case .MMDD:
             timeString = monthWord + " " + dayString
         case .HHMM:
-            timeString = hourString + ":" + minString
+            dateFormatterTime.timeStyle = .short
+            timeString = timeStringWithoutAMPM(dateFormatterTime: dateFormatterTime)
         case .HHMMSS:
-            timeString = hourString + ":" + minString + ":" + secString
+            dateFormatterTime.timeStyle = .medium
+            timeString = timeStringWithoutAMPM(dateFormatterTime: dateFormatterTime)
         default:
             timeString = " " //empty can cause crash on calcuating size  (calculateAccumulatedFrame)
         }
@@ -385,6 +403,8 @@ class DigitalTimeNode: SKNode {
             description = "MO&DD"
         case .HHMM:
             description = "HH:MM"
+        case .HHMMPM:
+            description = "HH:MMpm"
         case .HHMMSS:
             description = "HH:MM:SS"
         default:
