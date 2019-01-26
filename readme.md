@@ -7,7 +7,7 @@ The iOS app allows for the user to create **their own** watch faces by choosing 
 
 To see what type of default faces it comes with, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/Shared/Resources/defaultThumbnails), here are some examples:
 
-<img src="Shared/Resources/defaultThumbnails/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/E3B2EAB9-5ABA-4D0D-A1DC-11D3673B36FD.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg" width="25%"></img>
+<img src="Shared/Resources/defaultThumbnails/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/E3B2EAB9-5ABA-4D0D-A1DC-11D3673B36FD.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80.jpg" width="25%"></img>
 
 ## Frequently Asked Questions
 
