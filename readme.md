@@ -3,6 +3,8 @@
 
 ![APPLEWATCHFACES USAGE](AppleWatchFacesQuickDemo.gif)
 
+To see what type of faces example faces there are, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/Shared/Resources/defaultThumbnails)
+
 ## Frequently Asked Questions
 
 1. **Can I download this from the app store ?**
