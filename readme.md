@@ -8,7 +8,7 @@ The iOS app allows for the user to create **their own** watch faces by choosing 
 To see what type of default faces it comes with, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/Shared/Resources/defaultThumbnails)
 
 Here are some of my favorites:
-[1](https://github.com/orff/AppleWatchFaces/blob/master/Shared/Resources/defaultThumbnails/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg)
+![1](https://github.com/orff/AppleWatchFaces/blob/master/Shared/Resources/defaultThumbnails/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg)
 
 ## Frequently Asked Questions
 
