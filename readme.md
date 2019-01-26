@@ -5,11 +5,9 @@
 
 The iOS app allows for the user to create **their own** watch faces by choosing from hands and adding in common watch face "indicators" like rings of circles or a little date label.  Additionally, you can add a new face to your list and choose from pre-defined "themes" of colors or indicators/hands from the default watch faces. 
 
-To see what type of default faces it comes with, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/Shared/Resources/defaultThumbnails)
+To see what type of default faces it comes with, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/Shared/Resources/defaultThumbnails), here are some examples:
 
-![1](https://github.com/orff/AppleWatchFaces/blob/master/Shared/Resources/defaultThumbnails/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg) ![2](https://github.com/orff/AppleWatchFaces/blob/master/Shared/Resources/defaultThumbnails/A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg) ![3](https://github.com/orff/AppleWatchFaces/blob/master/Shared/Resources/defaultThumbnails/E3B2EAB9-5ABA-4D0D-A1DC-11D3673B36FD.jpg) ![4](https://github.com/orff/AppleWatchFaces/blob/master/Shared/Resources/defaultThumbnails/DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg)
-
-<img src="Shared/Resources/defaultThumbnails/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg" width="15%"></img> <img src="Shared/Resources/defaultThumbnails/A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg" width="15%"></img> 
+<img src="Shared/Resources/defaultThumbnails/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/E3B2EAB9-5ABA-4D0D-A1DC-11D3673B36FD.jpg" width="25%"></img> <img src="Shared/Resources/defaultThumbnails/DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg" width="25%"></img>
 
 ## Frequently Asked Questions
 
