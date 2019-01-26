@@ -3,7 +3,7 @@
 
 ![APPLEWATCHFACES USAGE](AppleWatchFacesQuickDemo.gif)
 
-To see what type of faces example faces there are, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/Shared/Resources/defaultThumbnails)
+The iOS app allows for the user to create **their own** watch faces by choosing from hands and adding in common watch face "indicators" like rings of circles or a little date label.  Additionally, you can add a new face to your list and choose from pre-defined "themes" of colors or indicators/hands from the default watch faces. To see what type of default faces it comes with, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/Shared/Resources/defaultThumbnails)
 
 ## Frequently Asked Questions
 
