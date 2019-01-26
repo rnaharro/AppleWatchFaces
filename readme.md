@@ -29,15 +29,15 @@ Follow the installation instructions below to compile from the source and you ca
 
   Currently the watch hands are using UIKit paths and has support for PNGs.  See the example **SecondHandTypes.SecondHandTypeFancyRed** in Shared/Nodes/MinuteHand.swift.  The code will attempt to tint the PNG pixels with the chosen hand color.  White pixels will colorize to the chosen color, and black wil not tint at all.  Colors in between will blend. 
   
-5. **Can I use my own background images?**
+5. **Can I use my own background images from my phone in the app?**
 
   Yes, tap on the camera icon in the background color picker to pull an image off the phone's camera or gallery.
 
 6. **How can I add my own images for use as a background in the watch faces ?**
 
-    1. Crop the image to a square at approximately 512x512 pixels ( 72 ppi )
-    2. Drop it into the **/Shared/Resources/Materials** folder
-    3. Add it into the /AppleWatchFaces/Colors.plist file
+    1. Crop the image to a square at approximately 312x390 pixels ( 72 ppi )
+    2. Drop it into the **/Shared/Resources/Materials** folder ( add to the project )
+    3. Add it into the /Shared/AppUISettings file materialFiles array
     
 7. **Which versions of apple watches does this work with ?**
 
@@ -45,7 +45,7 @@ Any watchOS that can run spriteKit should be fine.
 
 8. **Are you planning to do complications ?**
 
-Maybe, I've seen some open source battery / date ones. Those would be the simplest to implement. Positioning out of the way of the other things might be one initial problem to solve.
+Currently the app supports date/time and battery "decorators" that do their best to stay out of the way of the other items that make up the watch face rings.
 
 9. **Are all the designs round  ?**
 
@@ -53,9 +53,15 @@ In [PR 11](https://github.com/orff/AppleWatchFaces/pull/11) support for rounded 
 
 10. **What about digital clocks  ?**
 
-I haven't thought much about the interface or settings for a digital clock that would make it interesting other than font, position, or flipping animation. A flip clock or nixie tube watch face might be pretty interesting to look at.  Feel free to create an issue or wiki with your ideas.
+In [PR 18](https://github.com/orff/AppleWatchFaces/pull/18) added support for date/time labels as "indicators" in the iOS editor app.  Add them and edit settings appropriately.
+
+11. **Can I back up, edit, or restore my faces?**
+
+See Back-Up / Restore in the Usage section below.
 
 ## Installation / Side Load
+
+Some users are having limited success installing the ad-hoc IPA file in the [releases](https://github.com/orff/AppleWatchFaces/releases) using tools like impactor and app DBPro.  For best results, sign up as an Apple developer and side-load:
 
 1. Install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) on your mac
 
@@ -83,7 +89,7 @@ If you are still having issues, please check out a [sideloading tutorial](http:/
 
 1. The main view is for previewing all the faces and deciding if you want to edit one of the them.  You can create a new one with the *create* button or tap *edit* to re-order or delete.  Tapping *send all to watch* will send all current designs to the watch and go to the first one.
 1. On the editor view, you can modify settings for that watch face, like the colors, hands, or indicators ( the parts that make up the face like the shapes and numbers that the hands point to ).  
-1. On the editor view, swipe left and right to go to other faces in the list and swipe up to preview this design on the watch -- same as the *send to watch* button
+1. On the editor view, swipe left and right to go to other faces in the list and swipe up to preview this design on the watch: this the same as the tapping the watch button in the toolbar
 1. On the indicators view you can edit the shapes and numbers that make up the face backgrounds.  The designs are rendered on the watch as shapes like circle or squares and text numbers that are *rings* from the outside to the inside of the watch face.  By editing the list of shapes and text items and *empty space* items, you can change the design of the items in the face and see in the preview watch on the top.
 
 ![APPLEWATCHFACES INDICATORS](AppleWatchFaceIndicators.gif)
@@ -91,6 +97,14 @@ If you are still having issues, please check out a [sideloading tutorial](http:/
 5. You can also just choose from pre-defined *color themes* or *indicator themes* which will override current color or parts with known good settings
 
 ![APPLEWATCHFACES THEMES](AppleWatchFacesThemes.gif)
+
+6. Undo / Redo if you make a mistake.  
+7. Tapping Save in the upper right will lock in these settings in the main list and regenerate the thumbnail.  
+8. To abort all current changes tap back without tapping save.
+
+### Back-Up / Restore My Settings
+
+If you need to re-install, or just want to manually edit the settings file. Use iTunes file sharing to save or overwrite the userClockSettingsV[XX].json file.  
 
 ### Watch App
 
