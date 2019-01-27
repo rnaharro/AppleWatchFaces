@@ -84,11 +84,6 @@ class HourHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICol
             let scaleMultiplier:CGFloat = 0.007
             
             let handNode = HourHandNode.init(hourHandType: cell.hourHandType)
-            //TODO: hack to avoid drawing initial arc in hand node
-            if HourHandTypes.isDialType(type: cell.hourHandType) {
-                handNode.zRotation = CGFloat(Double.pi * 0.5)
-                handNode.addArcNode()
-            }
             handNode.setScale(scaleMultiplier)
             handNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/7)
             scene.addChild(handNode)
@@ -97,11 +92,6 @@ class HourHandSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICol
             let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 1.3
             let selectedHandNode = HourHandNode.init(hourHandType: cell.hourHandType, material: "#ffffff00", strokeColor: highlightColor, lineWidth:highlightLineWidth)
             selectedHandNode.name = "selectedNode"
-            //TODO: hack to avoid drawing initial arc in hand node
-            if HourHandTypes.isDialType(type: cell.hourHandType) {
-                selectedHandNode.zRotation = CGFloat(Double.pi * 0.5)
-                selectedHandNode.addArcNode()
-            }
             selectedHandNode.setScale(scaleMultiplier)
             selectedHandNode.position = CGPoint.init(x: scene.size.width/2, y: scene.size.width/7)
             

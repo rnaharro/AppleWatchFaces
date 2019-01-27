@@ -285,8 +285,8 @@ class WatchFaceNode: SKShapeNode {
             minuteHand.positionHands(sec: sec, min: min, minuteHandMovement: clockFaceSettings.minuteHandMovement, force: force)
         }
         
-        if let hourHand = self.childNode(withName: "hourHand") {
-            hourHand.zRotation = 1 * MathFunctions.deg2rad((24-hour) * 30 - min/2) //-1 * deg2rad(hour * 30 + min/2)
+        if let hourHand = self.childNode(withName: "hourHand") as? HourHandNode {
+            hourHand.positionHands(min: min, hour: hour, force: force)
         }
     }
     
