@@ -27,6 +27,10 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 class MathFunctions: NSObject {
     
+    static func deg2rad(_ number: CGFloat) -> CGFloat {
+        return number * .pi / 180
+    }
+    
     static func getQuadrant ( _ angleInRadians: Float ) -> Int {
         var quad = 0
         if (angleInRadians < Float( Double.pi/2) ) { quad = 1 }

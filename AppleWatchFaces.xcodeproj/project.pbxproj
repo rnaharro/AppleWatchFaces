@@ -626,9 +626,9 @@
 		312D4C06218BCDB5008504D2 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				314A010F21962FF4009BCE3C /* WatchFaceNode.swift */,
 				31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */,
 				31D8633A21E5954B005BCB6F /* NumberTextNode.swift */,
-				314A010F21962FF4009BCE3C /* WatchFaceNode.swift */,
 				31EF999221A0AF4F00BB54E7 /* FaceBackgroundNode.swift */,
 				31B5E8D1218BD63E00DE6429 /* FaceIndicatorNode.swift */,
 				31B5E8CC218BD26B00DE6429 /* MinuteHandNode.swift */,

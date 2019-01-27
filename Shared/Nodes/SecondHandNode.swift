@@ -133,6 +133,62 @@ class SecondHandNode: SKSpriteNode {
         self.addChild(newNode)
     }
     
+    //position from main watch node
+    func positionHands( sec: CGFloat, secondHandMovement: SecondHandMovements, force: Bool ) {
+        let newZAngle = -1 * MathFunctions.deg2rad(sec * 6)
+
+        //TODO: figure out how to get these animations working for dials
+        var secondHandMovementTmp = secondHandMovement
+        if SecondHandTypes.isDialType(type: secondHandType) {
+            secondHandMovementTmp = .SecondHandMovementStep
+        }
+        
+        //movement jump each second
+        if (secondHandMovementTmp == .SecondHandMovementStep || force) {
+            self.zRotation = newZAngle
+        }
+        
+        //movment smoothly rotate each second
+        if (secondHandMovementTmp == .SecondHandMovementSmooth && !force) {
+            //debugPrint("smooth sec:" + sec.description + " zAngle: " +  self.zRotation.description + " newAngle:" + newZAngle.description )
+            self.removeAllActions()
+            if sec == 0 { self.zRotation = MathFunctions.deg2rad(6) } //fix to keep it from spinning back around
+            
+            let smoothSecondAction = SKAction.rotate(toAngle: newZAngle, duration: 0.99)
+            self.run(smoothSecondAction)
+        }
+        
+        //movement to oscillate
+        if (secondHandMovementTmp == .SecondHandMovementOscillate && !force) {
+            let stepUnderValue = CGFloat(0.05)
+            let duration = 0.99
+            
+            self.removeAllActions()
+            if sec == 0 { self.zRotation = MathFunctions.deg2rad(6) } //fix to keep it from spinning back around
+            
+            let rotSecondAction1 = SKAction.rotate(toAngle: newZAngle+stepUnderValue, duration: duration/2)
+            rotSecondAction1.timingMode = .easeIn
+            let rotSecondAction2 = SKAction.rotate(toAngle: newZAngle, duration: duration/2)
+            rotSecondAction2.timingMode = .easeOut
+            
+            self.run( SKAction.sequence( [ rotSecondAction1, rotSecondAction2 ]) )
+        }
+        
+        //movement to step over
+        if (secondHandMovementTmp == .SecondHandMovementStepOver && !force) {
+            let stepOverValue = CGFloat(0.030)
+            let duration = 0.5
+            
+            self.removeAllActions()
+            if sec == 0 { self.zRotation = MathFunctions.deg2rad(6) } //fix to keep it from spinning back around
+            
+            let rotSecondAction1 = SKAction.rotate(toAngle: newZAngle-stepOverValue, duration: duration/5)
+            let rotSecondAction2 = SKAction.rotate(toAngle: newZAngle, duration: duration/2)
+            
+            self.run( SKAction.sequence( [ rotSecondAction1, rotSecondAction2 ]) )
+        }
+    }
+    
     convenience init(secondHandType: SecondHandTypes) {
         self.init(secondHandType: secondHandType, material: "#ffffffff")
     }

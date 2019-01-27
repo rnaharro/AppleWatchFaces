@@ -272,70 +272,21 @@ class WatchFaceNode: SKShapeNode {
     }
     
     func positionHands( sec: CGFloat, min: CGFloat, hour: CGFloat, force: Bool ) {
-        if let secondHand = self.childNode(withName: "secondHand") {
-            let newZAngle = -1 * deg2rad(sec * 6)
-            
-            //TODO: figure out how to get these animations working for dials
-            var secondHandMovement = clockFaceSettings.secondHandMovement
-            if SecondHandTypes.isDialType(type: clockFaceSettings.secondHandType) {
-                secondHandMovement = .SecondHandMovementStep
-            }
-            
-            //movement jump each second
-            if (secondHandMovement == .SecondHandMovementStep || force) {
-                secondHand.zRotation = newZAngle
-            }
-            
-            //movment smoothly rotate each second
-            if (secondHandMovement == .SecondHandMovementSmooth && !force) {
-                //debugPrint("smooth sec:" + sec.description + " zAngle: " +  secondHand.zRotation.description + " newAngle:" + newZAngle.description )
-                secondHand.removeAllActions()
-                if sec == 0 { secondHand.zRotation = deg2rad(6) } //fix to keep it from spinning back around
-                
-                let smoothSecondAction = SKAction.rotate(toAngle: newZAngle, duration: 0.99)
-                secondHand.run(smoothSecondAction)
-            }
-            
-            //movement to oscillate
-            if (secondHandMovement == .SecondHandMovementOscillate && !force) {
-                let stepUnderValue = CGFloat(0.05)
-                let duration = 0.99
-            
-                secondHand.removeAllActions()
-                if sec == 0 { secondHand.zRotation = deg2rad(6) } //fix to keep it from spinning back around
-                
-                let rotSecondAction1 = SKAction.rotate(toAngle: newZAngle+stepUnderValue, duration: duration/2)
-                rotSecondAction1.timingMode = .easeIn
-                let rotSecondAction2 = SKAction.rotate(toAngle: newZAngle, duration: duration/2)
-                rotSecondAction2.timingMode = .easeOut
-                
-                secondHand.run( SKAction.sequence( [ rotSecondAction1, rotSecondAction2 ]) )
-            }
-            
-            //movement to step over
-            if (secondHandMovement == .SecondHandMovementStepOver && !force) {
-                let stepOverValue = CGFloat(0.030)
-                let duration = 0.5
-                
-                secondHand.removeAllActions()
-                if sec == 0 { secondHand.zRotation = deg2rad(6) } //fix to keep it from spinning back around
-                
-                let rotSecondAction1 = SKAction.rotate(toAngle: newZAngle-stepOverValue, duration: duration/5)
-                let rotSecondAction2 = SKAction.rotate(toAngle: newZAngle, duration: duration/2)
-    
-                secondHand.run( SKAction.sequence( [ rotSecondAction1, rotSecondAction2 ]) )
-            }
+        
+        if let secondHand = self.childNode(withName: "secondHand") as? SecondHandNode {
+            secondHand.positionHands(sec: sec, secondHandMovement: clockFaceSettings.secondHandMovement, force: force)
         }
+        
         if let minuteHand = self.childNode(withName: "minuteHand") {
             if (clockFaceSettings.minuteHandMovement == .MinuteHandMovementStep) {
-                minuteHand.zRotation = -1 * deg2rad(min * 6)
+                minuteHand.zRotation = -1 * MathFunctions.deg2rad(min * 6)
             }
             if (clockFaceSettings.minuteHandMovement == .MinuteHandMovementSmooth) {
-                minuteHand.zRotation = -1 * deg2rad((min + sec/60) * 6)
+                minuteHand.zRotation = -1 * MathFunctions.deg2rad((min + sec/60) * 6)
             }
         }
         if let hourHand = self.childNode(withName: "hourHand") {
-            hourHand.zRotation = 1 * deg2rad((24-hour) * 30 - min/2) //-1 * deg2rad(hour * 30 + min/2)
+            hourHand.zRotation = 1 * MathFunctions.deg2rad((24-hour) * 30 - min/2) //-1 * deg2rad(hour * 30 + min/2)
         }
     }
     
@@ -362,10 +313,6 @@ class WatchFaceNode: SKShapeNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    func deg2rad(_ number: CGFloat) -> CGFloat {
-        return number * .pi / 180
     }
     
     static func getShapePath( ringRenderShape: RingRenderShapes) -> UIBezierPath {

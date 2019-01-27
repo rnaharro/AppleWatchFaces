@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/WatchFaceNode.swift"
-            timestampString = "570082039.780425"
+            timestampString = "570303621.00738"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/SecondHandNode.swift"
-            timestampString = "570082039.780969"
+            timestampString = "570303621.007684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "init(secondHandType:material:strokeColor:lineWidth:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/SecondHandNode.swift"
-            timestampString = "570082039.781058"
+            timestampString = "570303621.008973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "init(secondHandType:material:strokeColor:lineWidth:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/DigitalTimeNode.swift"
-            timestampString = "569905641.585091"
+            timestampString = "570303621.009323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "init(digitalTimeTextType:timeFormat:textSize:effect:horizontalPosition:fillColor:strokeColor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,12 +522,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/WatchFaceNode.swift"
-            timestampString = "570082039.78122"
+            timestampString = "570303621.009374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
-            landmarkName = "positionHands(sec:min:hour:force:)"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "getShapePath(ringRenderShape:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
