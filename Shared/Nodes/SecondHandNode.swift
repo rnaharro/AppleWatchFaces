@@ -216,7 +216,6 @@ class SecondHandNode: SKSpriteNode {
             
             //skinny
             if secondHandType == .SecondHandTypeThinDial {
-                let radiusCenter:CGFloat = 95.0
                 innerRadius = radiusCenter - ArcNode.skinnyRadiusWidth/2
                 outerRadius = radiusCenter + ArcNode.skinnyRadiusWidth/2
             }

@@ -281,14 +281,10 @@ class WatchFaceNode: SKShapeNode {
             secondHand.positionHands(sec: sec, secondHandMovement: clockFaceSettings.secondHandMovement, force: force)
         }
         
-        if let minuteHand = self.childNode(withName: "minuteHand") {
-            if (clockFaceSettings.minuteHandMovement == .MinuteHandMovementStep) {
-                minuteHand.zRotation = -1 * MathFunctions.deg2rad(min * 6)
-            }
-            if (clockFaceSettings.minuteHandMovement == .MinuteHandMovementSmooth) {
-                minuteHand.zRotation = -1 * MathFunctions.deg2rad((min + sec/60) * 6)
-            }
+        if let minuteHand = self.childNode(withName: "minuteHand") as? MinuteHandNode {
+            minuteHand.positionHands(sec: sec, min: min, minuteHandMovement: clockFaceSettings.minuteHandMovement, force: force)
         }
+        
         if let hourHand = self.childNode(withName: "hourHand") {
             hourHand.zRotation = 1 * MathFunctions.deg2rad((24-hour) * 30 - min/2) //-1 * deg2rad(hour * 30 + min/2)
         }
