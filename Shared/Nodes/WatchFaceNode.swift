@@ -50,8 +50,12 @@ class WatchFaceNode: SKShapeNode {
         
         self.addChild(backgroundShapeNode)
         
-        let secondHandFillColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
-        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandFillColor, lineWidth: 1.0)
+        var secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.secondHandMaterialName)
+        //allow for dials to have outlines
+        if (SecondHandTypes.isDialType(type: clockFaceSettings.secondHandType) && clockFaceSettings.shouldShowHandOutlines) {
+            secondHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
+        }
+        let secHandNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: clockFaceSettings.secondHandMaterialName, strokeColor: secondHandStrokeColor, lineWidth: 1.0)
         secHandNode.name = "secondHand"
         secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
         

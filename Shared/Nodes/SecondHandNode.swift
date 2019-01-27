@@ -11,10 +11,10 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeRoundedDial,
+    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial,
         SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeRoundedDial, SecondHandNodeTypeNone]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandNodeTypeNone]
     static let randomizableValues = userSelectableValues
     
     static func random() -> SecondHandTypes {
@@ -23,7 +23,7 @@ enum SecondHandTypes: String {
     }
     
     static func isDialType(type: SecondHandTypes) -> Bool {
-        return ([SecondHandTypeFlatDial, SecondHandTypeRoundedDial].lastIndex(of: type) != nil)
+        return ([SecondHandTypeFlatDial, SecondHandTypeThinDial].lastIndex(of: type) != nil)
     }
 }
 
@@ -46,8 +46,11 @@ class SecondHandNode: SKSpriteNode {
     var material = ""
     var strokeColor:SKColor = SKColor.white
     var lineWidth: CGFloat = 0.0
-    var arcAngle:CGFloat = 0.0
     var cornerRadius:CGFloat = 0.0
+    
+    //used for dials
+    var innerRadius:CGFloat = 0.0
+    var outerRadius:CGFloat = 0.0
     
     static func descriptionForType(_ nodeType: SecondHandTypes) -> String {
         var typeDescription = ""
@@ -60,7 +63,7 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == SecondHandTypes.SecondHandTypeSquaredHole)  { typeDescription = "Squared Hole" }
         if (nodeType == SecondHandTypes.SecondHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
         if (nodeType == SecondHandTypes.SecondHandTypeFlatDial)  { typeDescription = "Flat Dial" }
-        if (nodeType == SecondHandTypes.SecondHandTypeRoundedDial)  { typeDescription = "Rounded Dial" }
+        if (nodeType == SecondHandTypes.SecondHandTypeThinDial)  { typeDescription = "Thin Dial" }
         if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
         
         // IMAGE BASED EXAMPLES
@@ -117,39 +120,33 @@ class SecondHandNode: SKSpriteNode {
         return typeKeysArray
     }
     
-    override var zRotation: CGFloat {
-        didSet {
-            if SecondHandTypes.isDialType(type: secondHandType) {
-                if let oldArcShape = self.childNode(withName: "arcNode") { oldArcShape.removeFromParent() }
-                addArcNode()
-            }
-        }
-    }
-    
-    func addArcNode() {
-        let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: 80.0, outerRadius: 110.0, endAngle: zRotation, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+    func addArcNode(endAngle: CGFloat) {
+        let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
+            endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
         newNode.name = "arcNode"
-        newNode.zRotation = -zRotation
         self.addChild(newNode)
     }
     
     //position from main watch node
     func positionHands( sec: CGFloat, secondHandMovement: SecondHandMovements, force: Bool ) {
+        
         let newZAngle = -1 * MathFunctions.deg2rad(sec * 6)
-
-        //TODO: figure out how to get these animations working for dials
-        var secondHandMovementTmp = secondHandMovement
+        
         if SecondHandTypes.isDialType(type: secondHandType) {
-            secondHandMovementTmp = .SecondHandMovementStep
+            self.removeAllChildren() //removing by name wasny cleaing up the init one *shrug*
+            addArcNode(endAngle: newZAngle)
+            
+            //EXIT
+            return
         }
         
         //movement jump each second
-        if (secondHandMovementTmp == .SecondHandMovementStep || force) {
+        if (secondHandMovement == .SecondHandMovementStep || force) {
             self.zRotation = newZAngle
         }
         
         //movment smoothly rotate each second
-        if (secondHandMovementTmp == .SecondHandMovementSmooth && !force) {
+        if (secondHandMovement == .SecondHandMovementSmooth && !force) {
             //debugPrint("smooth sec:" + sec.description + " zAngle: " +  self.zRotation.description + " newAngle:" + newZAngle.description )
             self.removeAllActions()
             if sec == 0 { self.zRotation = MathFunctions.deg2rad(6) } //fix to keep it from spinning back around
@@ -159,7 +156,7 @@ class SecondHandNode: SKSpriteNode {
         }
         
         //movement to oscillate
-        if (secondHandMovementTmp == .SecondHandMovementOscillate && !force) {
+        if (secondHandMovement == .SecondHandMovementOscillate && !force) {
             let stepUnderValue = CGFloat(0.05)
             let duration = 0.99
             
@@ -175,7 +172,7 @@ class SecondHandNode: SKSpriteNode {
         }
         
         //movement to step over
-        if (secondHandMovementTmp == .SecondHandMovementStepOver && !force) {
+        if (secondHandMovement == .SecondHandMovementStepOver && !force) {
             let stepOverValue = CGFloat(0.030)
             let duration = 0.5
             
@@ -207,15 +204,24 @@ class SecondHandNode: SKSpriteNode {
         self.lineWidth = lineWidth
         
         if (secondHandType == SecondHandTypes.SecondHandNodeTypeNone) {
-            // do nothing ? need to erase ?
+            //none :-)
         }
         
         if (SecondHandTypes.isDialType(type: secondHandType)) {
-            //causes really strange bug trying to remove this later, dont draw one arc initially
-            if secondHandType == .SecondHandTypeRoundedDial {
-                self.cornerRadius = 5.0
-                self.lineWidth = 5.0
+            
+            //fat
+            let radiusCenter:CGFloat = 95.0
+            innerRadius = radiusCenter - ArcNode.fatRadiusWidth/2
+            outerRadius = radiusCenter + ArcNode.fatRadiusWidth/2
+            
+            //skinny
+            if secondHandType == .SecondHandTypeThinDial {
+                let radiusCenter:CGFloat = 95.0
+                innerRadius = radiusCenter - ArcNode.skinnyRadiusWidth/2
+                outerRadius = radiusCenter + ArcNode.skinnyRadiusWidth/2
             }
+            
+            addArcNode( endAngle: CGFloat.pi * 0.5)
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeFancyRed) {

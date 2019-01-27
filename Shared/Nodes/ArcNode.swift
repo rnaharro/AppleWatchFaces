@@ -11,6 +11,9 @@ import SpriteKit
 
 class ArcNode: SKNode {
 
+    static let fatRadiusWidth:CGFloat = 30.0 //difference between inner and out radius
+    static let skinnyRadiusWidth:CGFloat = 15.0 //difference between inner and out radius
+    
     static func filledShapeNode(material: String) -> SKShapeNode {
         let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
         
