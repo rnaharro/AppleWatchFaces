@@ -14,19 +14,27 @@ class ClockTimer {
     var secondHandTimer = Timer()
     static let timeChangedSecondNotificationName = Notification.Name("timeChangedSecond")
     static let timeChangedMinuteNotificationName = Notification.Name("timeChangedMinute")
+    static var currentDate = Date()
+    
+    func stopTimer() {
+        self.secondHandTimer.invalidate()
+    }
     
     func startTimer() {
+        stopTimer() //just in case
+        
         let duration = 0.1
         self.secondHandTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(ClockTimer.secondHandMovementCheck), userInfo: nil, repeats: true)
     }
     
     @objc func secondHandMovementCheck() {
         let date = Date()
-        let calendar = Calendar.current
         
+        let calendar = Calendar.current
         let seconds = Int(calendar.component(.second, from: date))
         
         if (self.currentSecond != seconds) {
+            ClockTimer.currentDate = Date()
             NotificationCenter.default.post(name: ClockTimer.timeChangedSecondNotificationName, object: nil, userInfo:nil)
             if (seconds == 0) {
                 NotificationCenter.default.post(name: ClockTimer.timeChangedMinuteNotificationName, object: nil, userInfo:nil)

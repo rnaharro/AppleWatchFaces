@@ -90,7 +90,7 @@ class DigitalTimeNode: SKNode {
     
     func setToTime(force: Bool) {
         // Called before each frame is rendered
-        let date = Date()
+        let date = ClockTimer.currentDate
         let calendar = Calendar.current
         let seconds = CGFloat(calendar.component(.second, from: date))
         
@@ -127,7 +127,7 @@ class DigitalTimeNode: SKNode {
         }
         
         func timeStringWithoutAMPM( dateFormatterTime: DateFormatter)->String {
-            var timeStr = dateFormatterTime.string(from: Date())
+            var timeStr = dateFormatterTime.string(from: ClockTimer.currentDate)
             //var ampmStr = ""
             if let rng = timeStr.range(of: dateFormatterTime.amSymbol) {
                 //ampmStr = dateFormatterTime.amSymbol
@@ -139,7 +139,7 @@ class DigitalTimeNode: SKNode {
             return timeStr
         }
         
-        let date = Date()
+        let date = ClockTimer.currentDate
         var calendar = Calendar.current
         calendar.locale = NSLocale.current
         

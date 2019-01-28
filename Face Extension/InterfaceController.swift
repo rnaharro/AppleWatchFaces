@@ -8,7 +8,7 @@
 
 import WatchKit
 import WatchConnectivity
-import Foundation
+import UIKit
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDelegate {
     
@@ -22,6 +22,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
     var currentClockIndex: Int = 0
     var crownAccumulator = 0.0
     let crownThreshold = 0.4 // how much rotation is need to switch items
+    
+    var timeTravelTimer = Timer()
+    var timeTravelSpeed:CGFloat = 0.0
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         crownAccumulator += rotationalDelta
@@ -157,6 +160,42 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
 //            self.processApplicationContext()
 //        }
 //    }
+    
+    @objc func timeTravelMovementTick() {
+        let timeInterval = TimeInterval.init(exactly: Int(timeTravelSpeed))!
+        ClockTimer.currentDate.addTimeInterval(timeInterval)
+        
+        if let skWatchScene = self.skInterface.scene as? SKWatchScene {
+            skWatchScene.forceToTime()
+        }
+        //SKWatchScene.onNotificationForForceUpdateTime //ClockTimer.timeChangedSecondNotificationName
+        //NotificationCenter.default.post(name: ClockTimer.timeChangedSecondNotificationName, object: nil, userInfo:nil)
+    }
+    
+    @IBAction func respondToPanGesture(gesture: WKPanGestureRecognizer) {
+        
+        if gesture.state == .began {
+            clockTimer.stopTimer()
+            let duration = 1.0/24 //smaller = faster updates
+            
+            timeTravelTimer.invalidate()
+            timeTravelTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(InterfaceController.timeTravelMovementTick), userInfo: nil, repeats: true)
+        }
+        if gesture.state == .changed {
+            let translationPoint = gesture.translationInObject()
+            timeTravelSpeed = translationPoint.x * 10.0
+        }
+        if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
+            clockTimer.startTimer()
+            
+            timeTravelTimer.invalidate()
+            
+            ClockTimer.currentDate = Date()
+            if let skWatchScene = self.skInterface.scene as? SKWatchScene {
+                skWatchScene.forceToTime()
+            }
+        }
+    }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)

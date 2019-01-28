@@ -296,7 +296,7 @@ class WatchFaceNode: SKShapeNode {
     
     func setToTime( force: Bool ) {
         // Called before each frame is rendered
-        let date = Date()
+        let date = ClockTimer.currentDate
         let calendar = Calendar.current
         
         let hour = CGFloat(calendar.component(.hour, from: date))
