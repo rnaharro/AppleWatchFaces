@@ -56,6 +56,17 @@ class FaceBackgroundNode: SKSpriteNode {
         return typeKeysArray
     }
     
+    static func filledShapeNode(material: String) -> SKShapeNode {
+        let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
+        
+        let w = CGFloat( CGFloat(3.20) / 1.4 )// / 1.425
+        let h = CGFloat( CGFloat(3.9)  / 1.4 )// / 1.425
+        let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
+        shape.setMaterial(material: material)
+        shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
+        return shape
+    }
+    
     convenience init(backgroundType: FaceBackgroundTypes, material: String) {
         self.init(backgroundType: backgroundType, material: material, strokeColor: SKColor.clear, lineWidth: 1.0)
     }
@@ -66,23 +77,11 @@ class FaceBackgroundNode: SKSpriteNode {
         
         self.name = "FaceBackground"
         let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
-        let xBounds = 312 / 2.85
-        let yBounds = 390 / 2.85
-        
-        func filledShapeNode() -> SKShapeNode {
-            let w = CGFloat( CGFloat(3.12) / 1.425 )
-            let h = CGFloat( CGFloat(3.9)  / 1.425 )
-            let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
-            shape.setMaterial(material: material)
-            shape.strokeColor = strokeColor
-            shape.lineWidth = lineWidth
-            
-            shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
-            return shape
-        }
+        let xBounds = 320 / 2.8
+        let yBounds = 390 / 2.8
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
-            let shape = filledShapeNode()
+            let shape = FaceBackgroundNode.filledShapeNode(material: material)
             self.addChild(shape)
         }
         
@@ -121,7 +120,7 @@ class FaceBackgroundNode: SKSpriteNode {
                 shape.fillColor = SKColor.white
                 
                 let cropNode = SKCropNode()
-                let filledNode = filledShapeNode()
+                let filledNode = FaceBackgroundNode.filledShapeNode(material: material)
                 cropNode.addChild(filledNode)
                 cropNode.maskNode = shape
                 self.addChild(cropNode)
@@ -148,7 +147,7 @@ class FaceBackgroundNode: SKSpriteNode {
                 shape.fillColor = SKColor.white
                 
                 let cropNode = SKCropNode()
-                let filledNode = filledShapeNode()
+                let filledNode = FaceBackgroundNode.filledShapeNode(material: material)
                 cropNode.addChild(filledNode)
                 cropNode.maskNode = shape
                 self.addChild(cropNode)
@@ -170,7 +169,7 @@ class FaceBackgroundNode: SKSpriteNode {
             } else {
                 //has image, mask into shape!
                 let cropNode = SKCropNode()
-                let filledNode = filledShapeNode()
+                let filledNode = FaceBackgroundNode.filledShapeNode(material: material)
                 cropNode.addChild(filledNode)
                 circleNode.fillColor = SKColor.white
                 cropNode.maskNode = circleNode

@@ -14,17 +14,6 @@ class ArcNode: SKNode {
     static let fatRadiusWidth:CGFloat = 30.0 //difference between inner and out radius
     static let skinnyRadiusWidth:CGFloat = 15.0 //difference between inner and out radius
     
-    static func filledShapeNode(material: String) -> SKShapeNode {
-        let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
-        
-        let w = CGFloat( CGFloat(3.12) / 1.425 )
-        let h = CGFloat( CGFloat(3.9)  / 1.425 )
-        let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
-        shape.setMaterial(material: material)
-        shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
-        return shape
-    }
-    
     init(cornerRadius: CGFloat, innerRadius: CGFloat, outerRadius: CGFloat, endAngle: CGFloat,
          material: String, strokeColor: SKColor, lineWidth: CGFloat) {
         
@@ -63,7 +52,7 @@ class ArcNode: SKNode {
             
             let cropNode = SKCropNode()
             cropNode.name = "arcShape"
-            let filledNode = ArcNode.filledShapeNode(material: material)
+            let filledNode = FaceBackgroundNode.filledShapeNode(material: material)
             cropNode.addChild(filledNode)
             cropNode.maskNode = shape
             
