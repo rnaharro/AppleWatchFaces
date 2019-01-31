@@ -440,30 +440,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <skView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCn-kE-fRp">
-                                <rect key="frame" x="107" y="20" width="161" height="200"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="161" id="Phs-wl-DTO"/>
-                                    <constraint firstAttribute="height" constant="200" id="TyE-hm-bss"/>
-                                </constraints>
-                            </skView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAB-Wp-loS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KJj-j9-zzo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generating Thumbnails" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u45-Ew-Ug7">
+                                            <rect key="frame" x="8" y="50" width="359" height="23.5"/>
+                                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <skView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCn-kE-fRp">
+                                            <rect key="frame" x="107" y="81.5" width="161" height="200"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="161" id="Phs-wl-DTO"/>
+                                                <constraint firstAttribute="height" constant="200" id="TyE-hm-bss"/>
+                                            </constraints>
+                                        </skView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ueb-SN-j82">
+                                            <rect key="frame" x="107" y="301" width="161" height="3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="3" id="aef-oB-tCH"/>
+                                                <constraint firstAttribute="width" constant="161" id="oXQ-nQ-b9d"/>
+                                            </constraints>
+                                            <color key="progressTintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </progressView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="u45-Ew-Ug7" firstAttribute="top" secondItem="KJj-j9-zzo" secondAttribute="top" constant="50" id="1Rt-AZ-CH7"/>
+                                        <constraint firstItem="ueb-SN-j82" firstAttribute="top" secondItem="KJj-j9-zzo" secondAttribute="top" constant="301" id="DQe-Aq-zhe"/>
+                                        <constraint firstItem="u45-Ew-Ug7" firstAttribute="trailing" secondItem="KJj-j9-zzo" secondAttribute="trailingMargin" id="HSQ-ny-8TH"/>
+                                        <constraint firstItem="oCn-kE-fRp" firstAttribute="top" secondItem="u45-Ew-Ug7" secondAttribute="bottom" constant="8" id="PVk-Ru-23W"/>
+                                        <constraint firstItem="ueb-SN-j82" firstAttribute="leading" secondItem="oCn-kE-fRp" secondAttribute="leading" id="RC4-sr-WVp"/>
+                                        <constraint firstItem="oCn-kE-fRp" firstAttribute="centerX" secondItem="KJj-j9-zzo" secondAttribute="centerX" id="WJP-7x-mDX"/>
+                                        <constraint firstItem="ueb-SN-j82" firstAttribute="top" secondItem="oCn-kE-fRp" secondAttribute="bottom" constant="19.5" id="Ztc-HA-44c"/>
+                                        <constraint firstItem="u45-Ew-Ug7" firstAttribute="leading" secondItem="KJj-j9-zzo" secondAttribute="leadingMargin" id="wuU-fp-aZs"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oCn-kE-fRp" firstAttribute="leading" secondItem="enV-QE-z4O" secondAttribute="leading" constant="107" id="Fdw-4d-Fhv"/>
-                            <constraint firstItem="oCn-kE-fRp" firstAttribute="centerX" secondItem="sHW-bK-Ht2" secondAttribute="centerX" id="dZg-Dx-RKu"/>
-                            <constraint firstItem="oCn-kE-fRp" firstAttribute="top" secondItem="enV-QE-z4O" secondAttribute="top" id="fTn-PF-080"/>
+                            <constraint firstItem="hAB-Wp-loS" firstAttribute="top" secondItem="sHW-bK-Ht2" secondAttribute="top" id="0Ws-yT-Hy5"/>
+                            <constraint firstItem="hAB-Wp-loS" firstAttribute="trailing" secondItem="enV-QE-z4O" secondAttribute="trailing" id="4dK-8b-Ulu"/>
+                            <constraint firstItem="hAB-Wp-loS" firstAttribute="leading" secondItem="enV-QE-z4O" secondAttribute="leading" id="9P4-hc-4eX"/>
+                            <constraint firstItem="hAB-Wp-loS" firstAttribute="bottom" secondItem="enV-QE-z4O" secondAttribute="bottom" id="DzJ-Ym-S9r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="enV-QE-z4O"/>
                     </view>
                     <connections>
+                        <outlet property="progressView" destination="ueb-SN-j82" id="QzL-lk-Hff"/>
                         <outlet property="skView" destination="oCn-kE-fRp" id="86p-SK-xra"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKi-2K-kKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-374" y="904"/>
+            <point key="canvasLocation" x="-375.19999999999999" y="903.59820089955031"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

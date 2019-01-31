@@ -12,6 +12,7 @@ import SpriteKit
 class GenerateThumbnailsViewController: UIViewController {
 
     @IBOutlet var skView: SKView!
+    @IBOutlet var progressView: UIProgressView!
     var settingsWithoutThumbs:[ClockSetting] = []
     //used when generating thumbnails / etc
     var timerClockIndex = 0
@@ -34,6 +35,8 @@ class GenerateThumbnailsViewController: UIViewController {
     @objc func screenshotThumbActionFromTimer() {
         
         if (timerClockIndex < settingsWithoutThumbs.count) {
+            let progress = Float(Float(timerClockIndex) / Float(settingsWithoutThumbs.count))
+            progressView.progress = progress
             
             let setting = settingsWithoutThumbs[timerClockIndex]
             if let watchScene = skView.scene as? SKWatchScene {
@@ -60,6 +63,11 @@ class GenerateThumbnailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //make the watch frame look
+        skView.layer.cornerRadius = AppUISettings.watchFrameCornerRadius
+        skView.layer.borderWidth = AppUISettings.watchFrameBorderWidth
+        skView.layer.borderColor = AppUISettings.watchFrameBorderColor
 
         // Load the SKScene
         if let scene = SKWatchScene(fileNamed: "SKWatchScene") {

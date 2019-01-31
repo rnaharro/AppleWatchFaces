@@ -76,9 +76,10 @@ class WatchPreviewViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        skView.layer.cornerRadius = 28.0
-        skView.layer.borderWidth = 4.0
-        skView.layer.borderColor = SKColor.darkGray.cgColor
+        //make the watch frame look
+        skView.layer.cornerRadius = AppUISettings.watchFrameCornerRadius
+        skView.layer.borderWidth = AppUISettings.watchFrameBorderWidth
+        skView.layer.borderColor = AppUISettings.watchFrameBorderColor
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(WatchPreviewViewController.respondToSwipeGesture(gesture:) ))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left

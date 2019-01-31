@@ -113,20 +113,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="oju-CW-kdg">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="save" id="z8s-zY-eqQ">
-                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="saveClock" destination="BYZ-38-t0r" id="JrC-jf-8WD"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="action" id="6sw-cg-Iga">
-                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="shareAll" destination="BYZ-38-t0r" id="Hm5-y3-ODd"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="6sw-cg-Iga">
+                            <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="shareAll" destination="BYZ-38-t0r" id="Hm5-y3-ODd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
