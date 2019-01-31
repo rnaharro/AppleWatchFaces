@@ -171,6 +171,13 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //generate thumbs and exit if needed
+        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+        guard missingThumbs.count==0 else {
+            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
+            return
+        }
+        
         if WCSession.isSupported() {
             session = WCSession.default
             session?.delegate = self

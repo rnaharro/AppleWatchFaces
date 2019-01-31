@@ -323,7 +323,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         UserClockSetting.saveToFile() //remove this to reset to defaults each time app loads
         self.showMessage( message: SettingsViewController.currentClockSetting.title + " saved.")
         
-        makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
+        //makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
     }
     
     @IBAction func revertClock() {
@@ -444,6 +444,15 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
+        if (self.isMovingFromParent) {
+            // moving back, if anything has changed, lets save
+            if SettingsViewController.undoArray.count>0 {
+                saveClock()
+                _ = UIImage.delete(imageName: SettingsViewController.currentClockSetting.uniqueID)
+            }
+        }
+        
         //TODO: probably not needed
         //force clean up memory
         if let scene = watchPreviewViewController?.skView.scene as? SKWatchScene {
@@ -464,6 +473,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         redrawSettingsTableAfterGroupChange()
         redrawPreviewClock()
         
+        SettingsViewController.clearUndoStack()
         setUndoRedoButtonStatus()
     }
     

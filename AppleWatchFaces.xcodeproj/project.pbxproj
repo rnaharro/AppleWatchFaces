@@ -297,6 +297,7 @@
 		31FD61E921891B5000E15DEA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */; };
 		31FD61EB21891B6900E15DEA /* ClockColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */; };
 		FDC17D0221FF98CE0064D962 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318808F52178166B00585AB1 /* InterfaceController.swift */; };
+		FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -571,6 +572,7 @@
 		31F9F9DF21F296BD00D92AE0 /* DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg"; sourceTree = "<group>"; };
 		31FD61E821891B4F00E15DEA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31FD61EA21891B6900E15DEA /* ClockColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockColorTheme.swift; sourceTree = "<group>"; };
+		FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,6 +675,7 @@
 				31EF9991219E602D00BB54E7 /* SettingsView */,
 				31F56FA321857FC100455FC6 /* WatchPreviewViewController.swift */,
 				31F8ABAA2187E8DB0014E2ED /* WatchSettingsTableViewController.swift */,
+				FDC17D032202B05A0064D962 /* GenerateThumbnailsViewController.swift */,
 				3107B5D421B40681005BD26D /* DecoratorView */,
 				310044C421D3C5DF0019794A /* Settings.storyboard */,
 				318808D4217815E600585AB1 /* FaceChooser.storyboard */,
@@ -1328,6 +1331,7 @@
 				31EF999F21A2045B00BB54E7 /* FaceChooserTableViewController.swift in Sources */,
 				31E5BC4E21A3A0F700C1B35E /* UIImage+Loading.swift in Sources */,
 				31EF999B21A0BF9E00BB54E7 /* FaceBackgroundSettingCollectionViewCell.swift in Sources */,
+				FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */,
 				3107B5D821B47437005BD26D /* DecotatorShapeTableViewCell.swift in Sources */,
 				314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */,
 				314A011021962FF4009BCE3C /* WatchFaceNode.swift in Sources */,

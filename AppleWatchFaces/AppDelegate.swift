@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: do this only once on initial launch ( save a pref to skip it )
         AppUISettings.createFolders()
         //TODO: definitely only do this once or resetting to defaults
-        AppUISettings.copyFolders()
+        //AppUISettings.copyFolders()
         
         return true
     }

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -99,15 +100,39 @@
                                     <constraint firstAttribute="height" constant="2" id="axG-Xl-CRF"/>
                                 </constraints>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOa-yd-cQO" customClass="RoundedButton" customModule="AppleWatchFaces" customModuleProvider="target">
+                                <rect key="frame" x="16" y="545" width="343" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="BJd-SC-CP1"/>
+                                </constraints>
+                                <state key="normal" title="Regenerate Thumbnails">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="iTd-pE-BHn" kind="popoverPresentation" identifier="callMissingThumbsGeneratorID" popoverAnchorView="vOa-yd-cQO" id="SlZ-pB-i5y">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WQr-wG-VwM" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="1e2-5s-cie"/>
                             <constraint firstItem="WQr-wG-VwM" firstAttribute="top" secondItem="uYi-wg-6NM" secondAttribute="bottom" constant="8" id="3Mc-xn-xQK"/>
+                            <constraint firstItem="uYi-wg-6NM" firstAttribute="top" secondItem="vOa-yd-cQO" secondAttribute="bottom" constant="8" id="3zQ-12-lOw"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="WQr-wG-VwM" secondAttribute="trailing" constant="16" id="5OE-81-CE7"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="trailing" secondItem="vUG-c0-AEw" secondAttribute="trailing" id="DCH-9I-kbV"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="kRL-ux-THg" secondAttribute="trailing" constant="16" id="FJs-3f-kgW"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="uYi-wg-6NM" secondAttribute="trailing" constant="16" id="HgD-5E-V9p"/>
+                            <constraint firstItem="vUG-c0-AEw" firstAttribute="trailing" secondItem="vOa-yd-cQO" secondAttribute="trailing" constant="16" id="LbI-C1-Pba"/>
                             <constraint firstItem="kRL-ux-THg" firstAttribute="top" secondItem="EFY-Sg-kEX" secondAttribute="bottom" constant="8" id="Psl-yw-UH9"/>
                             <constraint firstItem="uYi-wg-6NM" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="RrO-IY-c2F"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" id="SC3-12-9tL"/>
@@ -115,6 +140,7 @@
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="trailing" secondItem="0eE-eN-zvf" secondAttribute="trailingMargin" id="WK6-8f-v9C"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="leading" secondItem="0eE-eN-zvf" secondAttribute="leadingMargin" id="deu-9u-VNZ"/>
                             <constraint firstItem="EFY-Sg-kEX" firstAttribute="top" secondItem="vUG-c0-AEw" secondAttribute="top" id="fUy-1K-HjO"/>
+                            <constraint firstItem="vOa-yd-cQO" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="oOl-A4-63s"/>
                             <constraint firstItem="wSK-gw-Ds2" firstAttribute="top" secondItem="SFP-PZ-A7W" secondAttribute="bottom" constant="8" id="rsT-RH-coC"/>
                             <constraint firstItem="vUG-c0-AEw" firstAttribute="bottom" secondItem="WQr-wG-VwM" secondAttribute="bottom" constant="22" id="sEE-Fg-nGq"/>
                             <constraint firstItem="kRL-ux-THg" firstAttribute="leading" secondItem="vUG-c0-AEw" secondAttribute="leading" constant="16" id="vqz-kC-4xT"/>
@@ -396,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTV-Q0-dg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-751" y="573"/>
+            <point key="canvasLocation" x="-1038" y="618"/>
         </scene>
         <!--Settings-->
         <scene sceneID="5S7-1m-XcQ">
@@ -406,8 +432,41 @@
             </objects>
             <point key="canvasLocation" x="808.79999999999995" y="129.98500749625188"/>
         </scene>
+        <!--Generate Thumbnails View Controller-->
+        <scene sceneID="1lM-Pa-HcD">
+            <objects>
+                <viewController id="iTd-pE-BHn" customClass="GenerateThumbnailsViewController" customModule="AppleWatchFaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sHW-bK-Ht2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <skView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCn-kE-fRp">
+                                <rect key="frame" x="107" y="20" width="161" height="200"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="Phs-wl-DTO"/>
+                                    <constraint firstAttribute="height" constant="200" id="TyE-hm-bss"/>
+                                </constraints>
+                            </skView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oCn-kE-fRp" firstAttribute="leading" secondItem="enV-QE-z4O" secondAttribute="leading" constant="107" id="Fdw-4d-Fhv"/>
+                            <constraint firstItem="oCn-kE-fRp" firstAttribute="centerX" secondItem="sHW-bK-Ht2" secondAttribute="centerX" id="dZg-Dx-RKu"/>
+                            <constraint firstItem="oCn-kE-fRp" firstAttribute="top" secondItem="enV-QE-z4O" secondAttribute="top" id="fTn-PF-080"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="enV-QE-z4O"/>
+                    </view>
+                    <connections>
+                        <outlet property="skView" destination="oCn-kE-fRp" id="86p-SK-xra"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKi-2K-kKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="904"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bWw-bL-6IE"/>
+        <segue reference="k1T-5T-jKT"/>
     </inferredMetricsTieBreakers>
 </document>
