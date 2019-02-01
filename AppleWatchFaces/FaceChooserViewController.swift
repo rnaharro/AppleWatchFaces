@@ -17,6 +17,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     
     var session: WCSession?
     @IBOutlet var sendToWatchButton: UIButton!
+    @IBOutlet var themeThumbsButton: UIButton!
     @IBOutlet var filetransferProgress: UIProgressView!
     var totalTransfers:Int = 0
     weak var faceChooserTableViewController:FaceChooserTableViewController?
@@ -160,13 +161,13 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     
     func showError( errorMessage: String) {
         DispatchQueue.main.async {
-            self.showToast(message: errorMessage, color: UIColor.red, heightFromBottom: 150.0)
+            self.showToast(message: errorMessage, color: UIColor.red, heightFromBottom: 170.0)
         }
     }
     
     func showMessage( message: String) {
         DispatchQueue.main.async {
-            self.showToast(message: message, color: UIColor.lightGray, heightFromBottom: 150.0)
+            self.showToast(message: message, color: UIColor.lightGray, heightFromBottom: 170.0)
         }
     }
     
@@ -206,6 +207,14 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         
         UserClockSetting.loadFromFile()
         
+        //show gen thumbs button, only in simulator and only if its turned on in AppUISettings
+        #if (arch(i386) || arch(x86_64))
+        if (AppUISettings.showRenderThumbsButton) {
+            themeThumbsButton.isHidden = false
+        }
+        
+        #endif
+        
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForReloadChange(notification:)), name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil)
     }
     
@@ -217,6 +226,11 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        if segue.identifier == "themeThumbsSegueID" {
+            if let gtvc = segue.destination as? GenerateThumbnailsViewController {
+                gtvc.shouldGenerateThemeThumbs = true
+            }
+        }
         if segue.destination is FaceChooserTableViewController {
             let vc = segue.destination as? FaceChooserTableViewController
             faceChooserTableViewController = vc

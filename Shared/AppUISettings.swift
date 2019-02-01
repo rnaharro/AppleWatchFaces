@@ -17,6 +17,7 @@ class AppUISettings: NSObject {
     Eventually, we might want to load this from JSON or a plist ? */
     
     //turn this of override in code to turn the button on to re-render the thumbnails into the docs folder using the simulator
+    // only need to do this if you make changes to the themes.json file and need fresh icons
     static let showRenderThumbsButton = false
  
     //the color used when highlighting the cell items

@@ -11,8 +11,7 @@ import SpriteKit
 import WatchConnectivity
 
 class SettingsViewController: UIViewController, WCSessionDelegate {
-    
-    @IBOutlet var generateThumbsButton: UIBarButtonItem!
+
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
     @IBOutlet var groupSegmentControl: UISegmentedControl!
@@ -25,10 +24,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     var currentClockIndex = 0
     static var undoArray = [ClockSetting]()
     static var redoArray = [ClockSetting]()
-    
-    //used when generating thumbnails / etc
-    var timerClockIndex = 0
-    var timer = Timer()
     
     static let settingsChangedNotificationName = Notification.Name("settingsChanged")
     static let settingsGetCameraImageNotificationName = Notification.Name("getBackgroundImageFromCamera")
@@ -242,25 +237,12 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         SettingsViewController.currentClockSetting = newClockSetting
         redrawPreviewClock() //show correct clock
         redrawSettingsTableAfterGroupChange() //show new title
-        makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
         clearUndoAndUpdateButtons()
         
         showError(errorMessage: "Face copied")
         
         //tell chooser view to reload its cells
         NotificationCenter.default.post(name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil, userInfo:nil)
-    }
-    
-    @IBAction func randomColorTheme() {
-        SettingsViewController.currentClockSetting.randomize(newColors: true, newBackground: false, newFace: false)
-        redrawPreviewClock()
-        redrawSettingsTableAfterGroupChange()
-    }
-    
-    @IBAction func randomFaceTheme() {
-        SettingsViewController.currentClockSetting.randomize(newColors: false, newBackground: false, newFace: true)
-        redrawPreviewClock()
-        redrawSettingsTableAfterGroupChange()
     }
     
     @IBAction func nextClock() {
@@ -333,116 +315,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         redrawSettingsTableAfterGroupChange()
     }
     
-    @IBAction func generateThumbs(sender: UIBarButtonItem) {
-        //fixed a bug where it was possible to trigger it when hidden
-        guard generateThumbsButton.isEnabled == true else {return }
-        
-        if watchPreviewViewController != nil {
-            watchPreviewViewController?.stopTimeForScreenShot()
-            self.showMessage( message: "starting screenshots, check log for folder name")
-      
-            // start the timer
-            timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(screenshotThumbActionFromTimer), userInfo: nil, repeats: true)
-        }
-    }
-    
-    func generateColorThemeThumbs() {
-        SettingsViewController.currentClockSetting = ClockSetting.defaults()
-        if let firstSetting = UserClockSetting.sharedDecoratorThemeSettings.last {
-            SettingsViewController.currentClockSetting.applyDecoratorTheme(firstSetting)
-        }
-        self.redrawPreviewClock()
-        
-        timerClockIndex = 0
-        
-        // start the timer
-        timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(screenshotColorThemeActionFromTimer), userInfo: nil, repeats: true)
-    }
-    
-    func generateDecoratorThemeThumbs() {
-        SettingsViewController.currentClockSetting = ClockSetting.defaults()
-        if let firstSetting = UserClockSetting.sharedColorThemeSettings.first {
-            SettingsViewController.currentClockSetting.applyColorTheme(firstSetting)
-        }
-        self.redrawPreviewClock()
-        
-        timerClockIndex = 0
-        
-        // start the timer
-        timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(screenshotDecoratorThemeActionFromTimer), userInfo: nil, repeats: true)
-    }
-    
-    // called every time interval from the timer
-    @objc func screenshotThumbActionFromTimer() {
-    
-        if (timerClockIndex < UserClockSetting.sharedClockSettings.count) {
-            
-            let setting = UserClockSetting.sharedClockSettings[timerClockIndex]
-            SettingsViewController.currentClockSetting = setting
-            self.redrawPreviewClock()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
-                self.makeThumb(fileName: setting.uniqueID)
-            })
-            
-            timerClockIndex += 1
-            
-        } else {
-            timer.invalidate()
-            
-            self.showMessage( message: "finished screenshots.")
-            
-            //start the color theme shots
-            generateColorThemeThumbs()
-        }
-        
-        
-    }
-    
-    // called every time interval from the timer
-    @objc func screenshotColorThemeActionFromTimer() {
-        
-        if (timerClockIndex < UserClockSetting.sharedColorThemeSettings.count) {
-            
-            let colorTheme = UserClockSetting.sharedColorThemeSettings[timerClockIndex]
-            SettingsViewController.currentClockSetting.applyColorTheme(colorTheme)
-            self.redrawPreviewClock()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
-                self.makeThumb(fileName: colorTheme.filename(), cornerCrop:true )
-            })
-            timerClockIndex += 1
-        } else {
-            timer.invalidate()
-            
-            self.showMessage( message: "finished color theme screenshots.")
-            
-            //start the color theme shots
-            generateDecoratorThemeThumbs()
-        }
-    }
-    
-    // called every time interval from the timer
-    @objc func screenshotDecoratorThemeActionFromTimer() {
-        
-        if (timerClockIndex < UserClockSetting.sharedDecoratorThemeSettings.count) {
-            
-            let decoratorTheme = UserClockSetting.sharedDecoratorThemeSettings[timerClockIndex]
-            SettingsViewController.currentClockSetting.applyDecoratorTheme(decoratorTheme)
-            self.redrawPreviewClock()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100), execute: {
-                self.makeThumb(fileName: decoratorTheme.filename(), cornerCrop:true )
-            })
-            timerClockIndex += 1
-        } else {
-            timer.invalidate()
-            
-            self.watchPreviewViewController?.resumeTime()
-            self.showMessage( message: "finished decorator theme screenshots.")
-        }
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         
         if (self.isMovingFromParent) {
@@ -496,16 +368,6 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
             NSAttributedString.Key.font : UIFont(name: "DINCondensed-Bold", size: 20)!,
             NSAttributedString.Key.foregroundColor: SKColor.init(hexString: AppUISettings.settingHighlightColor)
             ], for: .selected)
-        
-        //show gen thumbs button, only in simulator and only if its turned on in AppUISettings
-        #if (arch(i386) || arch(x86_64))
-        if (AppUISettings.showRenderThumbsButton) {
-            let generateButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(generateThumbs(sender:)) )
-            generateButton.tintColor = UIColor.orange
-            self.navigationItem.rightBarButtonItems?.append(generateButton)
-        }
-        
-        #endif
         
         SettingsViewController.currentClockSetting = UserClockSetting.sharedClockSettings[currentClockIndex].clone()!
         

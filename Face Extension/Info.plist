@@ -30,6 +30,8 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>WKExtensionDelegateClassName</key>
+	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>LCDPHONE.TTF</string>
@@ -46,7 +48,5 @@
 		<string>GERMANICA.TTF</string>
 		<string>BLACKROSE.TTF</string>
 	</array>
-	<key>WKExtensionDelegateClassName</key>
-	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 </dict>
 </plist>
