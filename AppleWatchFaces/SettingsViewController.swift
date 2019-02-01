@@ -473,12 +473,13 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
         redrawSettingsTableAfterGroupChange()
         redrawPreviewClock()
         
-        SettingsViewController.clearUndoStack()
         setUndoRedoButtonStatus()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SettingsViewController.clearUndoStack()
         
         //style the section segment
         // Add lines below selectedSegmentIndex
