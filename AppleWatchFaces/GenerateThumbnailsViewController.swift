@@ -116,7 +116,9 @@ class GenerateThumbnailsViewController: UIViewController {
             timer.invalidate()
             
             self.dismiss(animated: true) {
-                //
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.resumeTimer()
+                }
             }
         }
     }
@@ -144,7 +146,9 @@ class GenerateThumbnailsViewController: UIViewController {
             
             //self.showMessage( message: "finished screenshots.")
             self.dismiss(animated: true) {
-                //
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.resumeTimer()
+                }
             }
         }
         
@@ -164,7 +168,9 @@ class GenerateThumbnailsViewController: UIViewController {
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             
-            scene.stopTimeForScreenShot()
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.stopTimerForScreenShot()
+            }
             
             // Present the scene
             skView.presentScene(scene)

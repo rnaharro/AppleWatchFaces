@@ -49,6 +49,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func stopTimerForScreenShot() {
+        clockTimer.stopTimer()
+        //set time to screenShotime
+        let calendar = NSCalendar.current
+        if let screenshotDate = calendar.date(bySettingHour: Int(AppUISettings.screenShotHour), minute: Int(AppUISettings.screenShotMinutes), second: Int(AppUISettings.screenShotMinutes), of: Date()) {
+            ClockTimer.currentDate = screenshotDate
+        }
+    }
+    
+    func resumeTimer() {
+        clockTimer.startTimer()
+    }
+    
     func printFonts() {
         let fontFamilyNames = UIFont.familyNames
         for familyName in fontFamilyNames {

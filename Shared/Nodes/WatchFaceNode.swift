@@ -305,12 +305,7 @@ class WatchFaceNode: SKShapeNode {
         
         positionHands(sec: seconds, min: minutes, hour: hour, force: force)
     }
-    
-    func setToScreenShotTime() {
-        clockFaceSettings.secondHandMovement = .SecondHandMovementStep
-        positionHands(sec: AppUISettings.screenShotSeconds, min: AppUISettings.screenShotMinutes, hour: AppUISettings.screenShotHour)
-    }
-    
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -14,15 +14,15 @@ class WatchPreviewViewController: UIViewController {
     @IBOutlet var skView: SKView!
     
     func stopTimeForScreenShot() {
-        if let watchScene = skView.scene as? SKWatchScene {
-            watchScene.stopTimeForScreenShot()
-        }
+//        if let watchScene = skView.scene as? SKWatchScene {
+//            watchScene.stopTimeForScreenShot()
+//        }
     }
     
     func resumeTime() {
-        if let watchScene = skView.scene as? SKWatchScene {
-            watchScene.resumeTime()
-        }
+//        if let watchScene = skView.scene as? SKWatchScene {
+//            watchScene.resumeTime()
+//        }
     }
     
     func makeThumb( imageName:String, cornerCrop: Bool ) -> Bool {

@@ -9,7 +9,6 @@
 import SpriteKit
 
 class SKWatchScene: SKScene {
-    var shouldKeepTime:Bool = true
     static let sizeMulitplier:CGFloat = 100.0 //in pixels
     
     static let timeForceUpdateNotificationName = Notification.Name("timeForceUpdate")
@@ -23,11 +22,7 @@ class SKWatchScene: SKScene {
             oldNode.removeFromParent()
         }
         
-        if !shouldKeepTime {
-            newWatchFaceNode.setToScreenShotTime()
-        } else {
-            newWatchFaceNode.setToTime( force: true )
-        }
+        newWatchFaceNode.setToTime( force: true )
         self.addChild(newWatchFaceNode)
     }
     
@@ -37,17 +32,6 @@ class SKWatchScene: SKScene {
             //send this notification to get any digital time decorators to update thier time
             NotificationCenter.default.post(name: SKWatchScene.timeForceUpdateNotificationName, object: nil, userInfo:nil)
         }
-    }
-    
-    func stopTimeForScreenShot() {
-        shouldKeepTime = false
-        if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
-            watchFaceNode.setToScreenShotTime()
-        }
-    }
-    
-    func resumeTime() {
-        shouldKeepTime = true
     }
     
     func cleanup() {
@@ -65,8 +49,6 @@ class SKWatchScene: SKScene {
     
     @objc func onNotificationForSecondsChanged(notification:Notification) {
         //debugPrint("second hand movement action")
-        
-        if !shouldKeepTime { return }
         
         if let watchFaceNode = self.childNode(withName: "watchFaceNode") as? WatchFaceNode {
             watchFaceNode.setToTime()
