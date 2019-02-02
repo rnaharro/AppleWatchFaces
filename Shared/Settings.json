@@ -1,6 +1,431 @@
 {
     "clockSettings" : [
         {
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#ff7f00ff",
+                "shouldShowRomanNumeralText" : false,
+                "secondHandType" : "SecondHandTypeFlatDial",
+                "shouldShowHandOutlines" : true,
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "ringMaterials" : [
+                    "#ff7f00ff",
+                    "#00ff00ff",
+                    "#00ff00ff"
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "hourHandType" : "HourHandTypeFlatDial",
+                "hourHandMaterialName" : "#ffd6adff",
+                "minuteHandType" : "MinuteHandTypeFlatDial",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMaterialName" : "#ffaa56ff",
+                "ringSettings" : [
+                    {
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.06",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeHelvica",
+                        "textSize" : "0.2",
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "ringStaticTimeFormat" : "HHMM",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeDigitalMono",
+                        "textSize" : "0.34",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "ringStaticTimeFormat" : "DADD",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeDigitalMono",
+                        "textSize" : "0.34",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    }
+                ]
+            },
+            "clockFaceMaterialName" : "#000000ff",
+            "clockCasingMaterialName" : "#6dff6dff",
+            "uniqueID" : "7DC86581-387F-46C7-BD57-BACF0C3C9DC2",
+            "title" : "Orange Neon Rings",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled"
+        },
+        {
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#00ff00ff",
+                "shouldShowRomanNumeralText" : false,
+                "secondHandType" : "SecondHandNodeTypeNone",
+                "shouldShowHandOutlines" : true,
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "ringMaterials" : [
+                    "#38ff38ff",
+                    "#00ff00ff",
+                    "#00ff00ff"
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "hourHandType" : "HourHandTypeFlatDial",
+                "hourHandMaterialName" : "#008400ff",
+                "minuteHandType" : "MinuteHandTypeFlatDial",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMaterialName" : "#00ad00ff",
+                "ringSettings" : [
+                    {
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.06",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeHelvica",
+                        "textSize" : "0.2",
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticTimeFormat" : "HHMM",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeDigitalMono",
+                        "textSize" : "0.6",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticTimeFormat" : "DADD",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeDigitalMono",
+                        "textSize" : "0.6",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    }
+                ]
+            },
+            "clockFaceMaterialName" : "#000000ff",
+            "clockCasingMaterialName" : "#6dff6dff",
+            "uniqueID" : "092FC45D-AC6B-470D-B18F-D49B5C54831E",
+            "title" : "Green Neon Rings",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled"
+        },
+        {
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#4c0099ff",
+                "shouldShowRomanNumeralText" : false,
+                "secondHandType" : "SecondHandTypeFlatDial",
+                "shouldShowHandOutlines" : true,
+                "handOutlineMaterialName" : "#aa56ffff",
+                "ringMaterials" : [
+                    "#ff38ffff",
+                    "#00ff00ff",
+                    "#00ff00ff"
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "hourHandType" : "HourHandTypeFlatDial",
+                "hourHandMaterialName" : "#aa56ffff",
+                "minuteHandType" : "MinuteHandTypeFlatDial",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMaterialName" : "#7f00ffff",
+                "ringSettings" : [
+                    {
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.06",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeHelvica",
+                        "textSize" : "0.2",
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "ringStaticTimeFormat" : "HHMM",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextLCDPhone",
+                        "textSize" : "0.34",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "ringStaticTimeFormat" : "DADD",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextLCDPhone",
+                        "textSize" : "0.32",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    }
+                ]
+            },
+            "clockFaceMaterialName" : "#330066ff",
+            "clockCasingMaterialName" : "#190033ff",
+            "uniqueID" : "18A6F50D-E136-4F74-B009-C50CDA0BA344",
+            "title" : "Purple Neon Rings",
+            "faceBackgroundType" : "FaceBackgroundTypeCircle"
+        },
+        {
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "light-wood.jpg",
+                "shouldShowRomanNumeralText" : false,
+                "secondHandType" : "SecondHandTypeFlatDial",
+                "shouldShowHandOutlines" : false,
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "ringMaterials" : [
+                    "#332600ff",
+                    "#332600ff",
+                    "#997200ff"
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "hourHandType" : "HourHandTypeFlatDial",
+                "hourHandMaterialName" : "light-wood.jpg",
+                "minuteHandType" : "MinuteHandTypeFlatDial",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMaterialName" : "light-wood.jpg",
+                "ringSettings" : [
+                    {
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.075",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeHelvica",
+                        "textSize" : "0.2",
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "ringStaticTimeFormat" : "HHMM",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeModernInteger",
+                        "textSize" : "0.4",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "ringStaticTimeFormat" : "DADD",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeModernInteger",
+                        "textSize" : "0.34",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    }
+                ]
+            },
+            "clockFaceMaterialName" : "#3f1f00ff",
+            "clockCasingMaterialName" : "light-wood.jpg",
+            "uniqueID" : "067BC615-AF45-482D-AE6F-D58C3E347206",
+            "title" : "Masked Wooden Rings",
+            "faceBackgroundType" : "FaceBackgroundTypeCircle"
+        },
+        {
+            "clockFaceSettings" : {
+                "secondHandMaterialName" : "#ffca2bff",
+                "shouldShowRomanNumeralText" : false,
+                "secondHandType" : "SecondHandTypeThinDial",
+                "shouldShowHandOutlines" : true,
+                "handOutlineMaterialName" : "#002133ff",
+                "ringMaterials" : [
+                    "#c6c6c6ff",
+                    "#008ed6ff",
+                    "#ffdf82ff"
+                ],
+                "secondHandMovement" : "SecondHandMovementStep",
+                "hourHandType" : "HourHandTypeThinDial",
+                "hourHandMaterialName" : "#008ed6ff",
+                "minuteHandType" : "MinuteHandTypeFlatDial",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMaterialName" : "#ff7f00ff",
+                "ringSettings" : [
+                    {
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringWidth" : "0.075",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeHelvica",
+                        "textSize" : "0.2",
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "ringStaticTimeFormat" : "DADD",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeModernInteger",
+                        "textSize" : "0.4",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    },
+                    {
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringWidth" : "0.0",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "ringStaticTimeFormat" : "HHMM",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "indicatorSize" : "0.15",
+                        "textType" : "NumberTextTypeModernInteger",
+                        "textSize" : "0.44",
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "ringMaterialDesiredThemeColorIndex" : 1,
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringStaticEffects" : "dropShadow",
+                        "ringPatternTotal" : "0",
+                        "textOutlineDesiredThemeColorIndex" : "0"
+                    }
+                ]
+            },
+            "clockFaceMaterialName" : "#003d5bff",
+            "clockCasingMaterialName" : "#ffca2bff",
+            "uniqueID" : "DB31731B-5D3F-4193-930D-822AE64CF622",
+            "title" : "Layered Rings",
+            "faceBackgroundType" : "FaceBackgroundTypeVerticalSplit"
+        },
+        {
             "title" : "Beach Vibes",
             "faceBackgroundType" : "FaceBackgroundTypeFilled",
             "clockFaceMaterialName" : "BlueSky.jpg",
