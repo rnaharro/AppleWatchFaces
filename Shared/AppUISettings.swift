@@ -54,10 +54,9 @@ class AppUISettings: NSObject {
     
     //time settings used when generating thumbnail screen shots
     //  ( focuses goods in upper-right )
-    static let screenShotSeconds:CGFloat = 4
-    static let screenShotHour:CGFloat = 12
-    static let screenShotMinutes:CGFloat = 7
-    
+    static let screenShotSeconds:CGFloat = 25
+    static let screenShotHour:CGFloat = 9
+    static let screenShotMinutes:CGFloat = 41
 
     //ring text slider
     static let ringSettigsSliderTextMin:Float = 0

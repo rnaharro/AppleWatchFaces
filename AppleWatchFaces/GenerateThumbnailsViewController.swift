@@ -181,6 +181,9 @@ class GenerateThumbnailsViewController: UIViewController {
         skView.showsNodeCount = false
 
         if shouldGenerateThemeThumbs == true {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.stopTimerForThemeShots()
+            }
             generateColorThemeThumbs()
         } else {
             generateMissingThumbs()

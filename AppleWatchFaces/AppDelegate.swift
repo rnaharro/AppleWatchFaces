@@ -53,7 +53,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clockTimer.stopTimer()
         //set time to screenShotime
         let calendar = NSCalendar.current
-        if let screenshotDate = calendar.date(bySettingHour: Int(AppUISettings.screenShotHour), minute: Int(AppUISettings.screenShotMinutes), second: Int(AppUISettings.screenShotMinutes), of: Date()) {
+        if let screenshotDate = calendar.date(bySettingHour: Int(AppUISettings.screenShotHour), minute: Int(AppUISettings.screenShotMinutes), second: Int(AppUISettings.screenShotSeconds), of: Date()) {
+            ClockTimer.currentDate = screenshotDate
+        }
+    }
+    
+    func stopTimerForThemeShots() {
+        clockTimer.stopTimer()
+        //set time to theme time, this time works well to put hands in upper right
+        let calendar = NSCalendar.current
+        if let screenshotDate = calendar.date(bySettingHour: Int(12), minute: Int(7), second: Int(4), of: Date()) {
             ClockTimer.currentDate = screenshotDate
         }
     }
