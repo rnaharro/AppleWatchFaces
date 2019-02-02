@@ -120,6 +120,16 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         }
         let newCount = UserClockSetting.sharedClockSettings.count
         showMessage(message: "Added from defaults, " + (newCount - originalCount).description + " added" )
+        
+        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+        guard missingThumbs.count==0 else {
+            //first run, reload everything
+            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
+                faceListReloadType = .full
+            }
+            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
+            return
+        }
     }
     
     @IBAction func resetAllSettingAction(sender: UIButton) {
