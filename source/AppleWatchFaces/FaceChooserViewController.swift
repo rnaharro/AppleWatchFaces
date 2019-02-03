@@ -182,6 +182,12 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
+        guard missingThemeThumbs.count==0 else {
+            return
+        }
+        
         //generate thumbs and exit if needed
         let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
         guard missingThumbs.count==0 else {
@@ -224,6 +230,13 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         }
         
         #endif
+        
+        //generate theme thumbs and exit if needed
+        let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
+        guard missingThemeThumbs.count==0 else {
+            self.performSegue(withIdentifier: "themeThumbsSegueID", sender: nil)
+            return
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForReloadChange(notification:)), name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil)
     }

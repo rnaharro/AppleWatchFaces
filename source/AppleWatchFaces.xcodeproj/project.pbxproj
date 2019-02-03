@@ -117,6 +117,10 @@
 		319095FB21CC898200F71BC6 /* BezierPath+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095F921CC898100F71BC6 /* BezierPath+Length.swift */; };
 		319095FC21CC898200F71BC6 /* PathElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319095FA21CC898100F71BC6 /* PathElement.swift */; };
 		3196401E22076439005CF169 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 3196401D22076439005CF169 /* readme.md */; };
+		3196402422077360005CF169 /* secondhandAnimation-smooth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3196402022077360005CF169 /* secondhandAnimation-smooth.jpg */; };
+		3196402522077360005CF169 /* secondhandAnimation-stepOver.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3196402122077360005CF169 /* secondhandAnimation-stepOver.jpg */; };
+		3196402622077360005CF169 /* secondhandAnimation-step.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3196402222077360005CF169 /* secondhandAnimation-step.jpg */; };
+		3196402722077360005CF169 /* secondhandAnimation-oscillate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3196402322077360005CF169 /* secondhandAnimation-oscillate.jpg */; };
 		31A5F7EF21966CED000F1677 /* MathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5F7EE21966CED000F1677 /* MathFunctions.swift */; };
 		31A5F7F021966CED000F1677 /* MathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5F7EE21966CED000F1677 /* MathFunctions.swift */; };
 		31A5F7FC21968223000F1677 /* BLACKROSE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 31A5F7F221968221000F1677 /* BLACKROSE.TTF */; };
@@ -351,6 +355,10 @@
 		319095F921CC898100F71BC6 /* BezierPath+Length.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Length.swift"; sourceTree = "<group>"; };
 		319095FA21CC898100F71BC6 /* PathElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathElement.swift; sourceTree = "<group>"; };
 		3196401D22076439005CF169 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = ../readme.md; sourceTree = "<group>"; };
+		3196402022077360005CF169 /* secondhandAnimation-smooth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "secondhandAnimation-smooth.jpg"; sourceTree = "<group>"; };
+		3196402122077360005CF169 /* secondhandAnimation-stepOver.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "secondhandAnimation-stepOver.jpg"; sourceTree = "<group>"; };
+		3196402222077360005CF169 /* secondhandAnimation-step.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "secondhandAnimation-step.jpg"; sourceTree = "<group>"; };
+		3196402322077360005CF169 /* secondhandAnimation-oscillate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "secondhandAnimation-oscillate.jpg"; sourceTree = "<group>"; };
 		31A5F7EE21966CED000F1677 /* MathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathFunctions.swift; sourceTree = "<group>"; };
 		31A5F7F221968221000F1677 /* BLACKROSE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = BLACKROSE.TTF; sourceTree = "<group>"; };
 		31A5F7F321968221000F1677 /* ROTHERNBURGDECORATIVE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ROTHERNBURGDECORATIVE.TTF; sourceTree = "<group>"; };
@@ -559,9 +567,21 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		3196401F22077360005CF169 /* defaultThumbnails */ = {
+			isa = PBXGroup;
+			children = (
+				3196402022077360005CF169 /* secondhandAnimation-smooth.jpg */,
+				3196402122077360005CF169 /* secondhandAnimation-stepOver.jpg */,
+				3196402222077360005CF169 /* secondhandAnimation-step.jpg */,
+				3196402322077360005CF169 /* secondhandAnimation-oscillate.jpg */,
+			);
+			path = defaultThumbnails;
+			sourceTree = "<group>";
+		};
 		31A5F7EA2196692B000F1677 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3196401F22077360005CF169 /* defaultThumbnails */,
 				3100DC9821EA98F3007423A5 /* dark-shadow.png */,
 				31D8633121E165FA005BCB6F /* hourHands */,
 				31D8632F21E165FA005BCB6F /* minuteHands */,
@@ -850,6 +870,8 @@
 				31A5F80221968223000F1677 /* RATIONALINT.TTF in Resources */,
 				31026C8421F26E9900BFC596 /* 80sDigital.jpg in Resources */,
 				31061F302192657200EF511B /* Colors.plist in Resources */,
+				3196402622077360005CF169 /* secondhandAnimation-step.jpg in Resources */,
+				3196402422077360005CF169 /* secondhandAnimation-smooth.jpg in Resources */,
 				31D8633521E165FA005BCB6F /* hourHand-fancyWhite.png in Resources */,
 				31F4F1B6219899420050177A /* SettingsTableHeaderView.xib in Resources */,
 				318A92AB21D3C2840060D89B /* Decorators.storyboard in Resources */,
@@ -882,8 +904,10 @@
 				31D8633321E165FA005BCB6F /* minuteHand-fancyWhite.png in Resources */,
 				31A5F80C21968223000F1677 /* ROMAN-TRAJAN-PRO.TTF in Resources */,
 				31F4F1C4219A5C840050177A /* light-wood.jpg in Resources */,
+				3196402522077360005CF169 /* secondhandAnimation-stepOver.jpg in Resources */,
 				316AE1AA21F15B90000665EC /* PixelSquares.jpg in Resources */,
 				316AE19C21F15B90000665EC /* HangingLight.jpg in Resources */,
+				3196402722077360005CF169 /* secondhandAnimation-oscillate.jpg in Resources */,
 				31A5F80621968223000F1677 /* KINGTHINGS.TTF in Resources */,
 				316AE1AE21F15B90000665EC /* RainbowLines.jpg in Resources */,
 				318808D6217815E600585AB1 /* FaceChooser.storyboard in Resources */,

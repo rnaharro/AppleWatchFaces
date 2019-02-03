@@ -42,8 +42,6 @@ extension UIImage {
         if fileManager.fileExists(atPath: getImageURL(imageName: imageName).path ) {
             //debugPrint("UIIMAGE.load!")
             
-            
-            
             if let imageData: Data = try? Data(contentsOf: getImageURL(imageName: imageName) ),
                 let image: UIImage = UIImage(data: imageData, scale: screenScale) {
                 return image

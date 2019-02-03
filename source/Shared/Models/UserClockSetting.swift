@@ -196,6 +196,22 @@ class UserClockSetting: NSObject {
         return clockSettingsMissing
     }
     
+    //return an array of themes that are missing thumbnail images
+    static func themesWithoutThumbNails() -> [ClockColorTheme] {
+        var clockThemesMissing:[ClockColorTheme] = []
+        for themeSetting in sharedColorThemeSettings {
+            let fileManager = FileManager.default
+            // check if the image is stored already
+            let url = UIImage.getImageURL(imageName: themeSetting.filename() )
+            if !fileManager.fileExists(atPath: url.path ) {
+                clockThemesMissing.append(themeSetting)
+            }
+        }
+        return clockThemesMissing
+    }
+    
+    
+    
     static func firstColorTheme() -> ClockColorTheme {
         return sharedColorThemeSettings[0]
     }
