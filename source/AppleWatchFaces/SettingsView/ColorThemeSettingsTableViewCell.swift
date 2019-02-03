@@ -47,7 +47,9 @@ class ColorThemeSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "settingsColorThemeCell", for: indexPath) as! ColorThemeSettingCollectionViewCell
         
         let theme = UserClockSetting.sharedColorThemeSettings[indexPath.row]
-        cell.thumbnail.image = UIImage.init(named: theme.filename() + ".jpg")
+        if let newImage = UIImage.getImageFor(imageName: theme.filename() ) {
+            cell.thumbnail.image = newImage
+        }
         cell.thumbnail.layer.cornerRadius = AppUISettings.cornerRadiusForSettingsThumbs
         cell.title.text = theme.title
         
