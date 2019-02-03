@@ -66,14 +66,13 @@ extension UIImage {
         
         if (cornerCrop) {
             if let cgImage = self.cgImage {
-                let toRect = CGRect.init(x: 200, y: 80, width: 200, height: 200)
+                let toRect = CGRect.init(x: 112, y: 70, width: 86*2, height: 102*2)
                 let croppedCGImage: CGImage = cgImage.cropping(to: toRect)!
                 let croppedImage = UIImage(cgImage: croppedCGImage)
                 return ((try? croppedImage.jpegData(compressionQuality: 0.75)?.write(to: imageUrl )) != nil)
             }
         }
         return ((try? self.jpegData(compressionQuality: 0.75)?.write(to: imageUrl )) != nil)
-        
     }
     
     static func delete(imageName: String ) -> Bool {
