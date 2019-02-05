@@ -23,7 +23,7 @@ enum NumberTextTypes: String {
     NumberTextTypeNumeralTrajan,
     NumberTextTypeDINPro,
     NumberTextTypeUltraCondensedSerif,
-    NumberTextTypeTypeWriter,
+    NumberTextTypeSystem,
     NumberTextTypeIronLounge,
     NumberTextTypeDigitalMono,
     NumberTextTypeNixie,
@@ -39,7 +39,7 @@ enum NumberTextTypes: String {
         NumberTextTypeHelvicaNeueBold,
         NumberTextTypeNumeralTrajan,
         NumberTextTypeDINPro,
-        NumberTextTypeTypeWriter,
+        NumberTextTypeSystem,
         NumberTextTypeIronLounge,
         NumberTextTypeDigitalMono,
         NumberTextLCDPhone
@@ -58,7 +58,7 @@ enum NumberTextTypes: String {
         NumberTextTypeHelvicaNeueBold,
         NumberTextTypeNumeralTrajan,
         NumberTextTypeUltraCondensedSerif,
-        NumberTextTypeTypeWriter,
+        NumberTextTypeSystem,
         NumberTextTypeIronLounge]
     
     static func random() -> NumberTextTypes {
@@ -102,7 +102,7 @@ class NumberTextNode: SKNode {
         if (nodeType == NumberTextTypes.NumberTextTypeDINPro)  { typeDescription = "DIN Pro" }
         if (nodeType == NumberTextTypes.NumberTextTypeUltraCondensedSerif)  { typeDescription = "Ultra Condensed" }
         
-        if (nodeType == NumberTextTypes.NumberTextTypeTypeWriter) { typeDescription = "Automania" }
+        if (nodeType == NumberTextTypes.NumberTextTypeSystem) { typeDescription = "System / San Fransisco" }
         if (nodeType == NumberTextTypes.NumberTextTypeIronLounge) { typeDescription = "Iron Lounge" }
         if (nodeType == NumberTextTypes.NumberTextTypeDigitalMono) { typeDescription = "Digital MonoSpaced" }
         if (nodeType == NumberTextTypes.NumberTextTypeNixie) { typeDescription = "Nixie Tube" }
@@ -126,12 +126,15 @@ class NumberTextNode: SKNode {
         if (textType == .NumberTextTypeDINPro) { fontName = "DINPro-Light" }
         if (textType == .NumberTextTypeUltraCondensedSerif) { fontName = "UltraCondensedSerif" }
         
-        if (textType == .NumberTextTypeTypeWriter) { fontName = "AmericanTypewriter" }
         if (textType == .NumberTextTypeIronLounge) { fontName = "IronLounge2" }
         
         if (textType == .NumberTextTypeDigitalMono) { fontName = "Digital-7Mono" }
         if (textType == .NumberTextTypeNixie) { fontName = "NixieOne" }
         if (textType == .NumberTextLCDPhone) { fontName = "Lcdphone" }
+        
+        if (textType == .NumberTextTypeSystem) {
+            fontName = UIFont.systemFont(ofSize: 18.0).familyName
+        }
 
         //AppleSDGothicNeo-SemiBold     // best VERY CLEAN
         //KohinoorTelugu-Medium         // basic but not bad

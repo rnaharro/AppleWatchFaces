@@ -430,7 +430,7 @@
                     "ringPattern" : [
                         1
                     ],
-                    "textType" : "NumberTextTypeTypeWriter",
+                    "textType" : "NumberTextTypeSystem",
                     "indicatorSize" : "0.06",
                     "ringPatternTotal" : "4",
                     "textSize" : "0.89",
