@@ -15,6 +15,7 @@
 		3105674921F7E9210078F3C6 /* DigitalTimeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */; };
 		31056B5F2218D2CE00D0E15C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
 		31056B602218D2CE00D0E15C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31056B5E2218D2CE00D0E15C /* Media.xcassets */; };
+		31056B622218DC1700D0E15C /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31056B612218DC1700D0E15C /* ComplicationController.swift */; };
 		31061F302192657200EF511B /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31061F2F2192657200EF511B /* Colors.plist */; };
 		31061F322192716C00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
 		31061F332192730A00EF511B /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31061F312192716C00EF511B /* SKColor.swift */; };
@@ -218,6 +219,7 @@
 		3100DC9B21EBD6C2007423A5 /* NIXIEONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = NIXIEONE.TTF; sourceTree = "<group>"; };
 		3105674521F77E6D0078F3C6 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		31056B5E2218D2CE00D0E15C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		31056B612218DC1700D0E15C /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		31061F2F2192657200EF511B /* Colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		31061F312192716C00EF511B /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
 		3107B5CE21B3FCFA005BD26D /* DecoratorRingsSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorRingsSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 			children = (
 				3188090E2178170C00585AB1 /* Assets */,
 				318808F52178166B00585AB1 /* InterfaceController.swift */,
+				31056B612218DC1700D0E15C /* ComplicationController.swift */,
 				318808FB2178166B00585AB1 /* ExtensionDelegate.swift */,
 				318808FD2178166B00585AB1 /* NotificationController.swift */,
 				318808FF2178166B00585AB1 /* Assets.xcassets */,
@@ -892,6 +895,7 @@
 				314AFC1121D5284900C1208E /* UIImage+Loading.swift in Sources */,
 				31F4F1CF219A60230050177A /* AppUISettings.swift in Sources */,
 				31F4F1DA219D12DF0050177A /* UserClockSetting.swift in Sources */,
+				31056B622218DC1700D0E15C /* ComplicationController.swift in Sources */,
 				31B5E8E1218CE03500DE6429 /* HourHandNode.swift in Sources */,
 				31B5E8DB218CE01600DE6429 /* ClockRingSetting.swift in Sources */,
 				318808FE2178166B00585AB1 /* NotificationController.swift in Sources */,
