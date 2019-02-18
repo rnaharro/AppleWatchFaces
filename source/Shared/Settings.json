@@ -1,6 +1,91 @@
 {
     "clockSettings" : [
         {
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "title" : "Pac Man Fever",
+            "clockFaceSettings" : {
+                "secondHandMovement" : "SecondHandMovementStep",
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "ringSettings" : [
+                    {
+                        "textSize" : "0.2",
+                        "textType" : "NumberTextTypeHelvica",
+                        "ringWidth" : "0.06",
+                        "ringStaticEffects" : "None",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "shouldShowTextOutline" : false,
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "12",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringType" : "RingTypeSpacer",
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "None"
+                    },
+                    {
+                        "textSize" : "0.34",
+                        "textType" : "NumberTextJoystix",
+                        "ringWidth" : "0.0",
+                        "ringStaticEffects" : "None",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "shouldShowTextOutline" : false,
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "0",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringType" : "RingTypeDigitalTime",
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "HHMM"
+                    },
+                    {
+                        "textSize" : "0.22",
+                        "textType" : "NumberTextJoystix",
+                        "ringWidth" : "0.0",
+                        "ringStaticEffects" : "None",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "shouldShowTextOutline" : false,
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "ringPatternTotal" : "0",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringType" : "RingTypeDigitalTime",
+                        "indicatorSize" : "0.15",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringStaticTimeFormat" : "DADD"
+                    }
+                ],
+                "minuteHandType" : "MinuteHandTypePacMan",
+                "ringMaterials" : [
+                    "#FFFFFFFF",
+                    "#e2e2e2ff",
+                    "#c6c6c6ff"
+                ],
+                "shouldShowRomanNumeralText" : false,
+                "secondHandType" : "SecondHandTypePacMan",
+                "handOutlineMaterialName" : "#8e8e8eff",
+                "secondHandMaterialName" : "#FF0000FF",
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "shouldShowHandOutlines" : false,
+                "hourHandType" : "HourHandTypePacMan",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "hourHandMaterialName" : "#FFFFFFFF"
+            },
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "clockFaceMaterialName" : "PacManLevel1.jpg",
+            "uniqueID" : "FEAAD64D-8CAA-4092-85DA-5D19978A2800"
+        },
+        {
             "clockFaceSettings" : {
                 "secondHandMaterialName" : "#ff7f00ff",
                 "shouldShowRomanNumeralText" : false,
