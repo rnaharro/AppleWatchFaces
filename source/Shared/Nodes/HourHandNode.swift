@@ -10,10 +10,11 @@ import SpriteKit
 
 enum HourHandTypes: String {
     case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial,
-        HourHandTypeNone
+    HourHandTypePacMan, HourHandTypeNone
     
     static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeImageFancyWhite, HourHandTypeThinDial, HourHandTypeNone]
-    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypeNone]
+    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan,
+                                       HourHandTypeNone]
     
     static func random() -> HourHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -38,6 +39,10 @@ class HourHandNode: SKSpriteNode {
     var innerRadius:CGFloat = 0.0
     var outerRadius:CGFloat = 0.0
     
+    //positioning in pac man background
+    let pacManPathSize = CGSize.init(width: 100.0, height: 65.0)
+    let pacManOffsetPoint = CGPoint.init(x: 0.0, y: -5.0)
+    
     static func descriptionForType(_ nodeType: HourHandTypes) -> String {
         var typeDescription = ""
         
@@ -53,10 +58,11 @@ class HourHandNode: SKSpriteNode {
         if (nodeType == HourHandTypes.HourHandTypeCutout)  { typeDescription = "Square Cutout" }
         if (nodeType == HourHandTypes.HourHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == HourHandTypes.HourHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        if (nodeType == HourHandTypes.HourHandTypePacMan)  { typeDescription = "Dot Eater" }
         
         //image ex
         if (nodeType == HourHandTypes.HourHandTypeCutout)  { typeDescription = "Image: Fancy White" }
-
+        
         return typeDescription
     }
     
@@ -89,6 +95,19 @@ class HourHandNode: SKSpriteNode {
         
         let newZAngle = 1 * MathFunctions.deg2rad((24-hour) * 30 - min/2) //-1 * deg2rad(hour * 30 + min/2)
         
+        if hourHandType == .HourHandTypePacMan {
+            
+            let movementPath = DotsNode.rectPath(pathHeight: pacManPathSize.height, pathWidth: pacManPathSize.width, xOffset: 0.0)
+            if let ghostNode = self.childNode(withName: "ghostNode") {
+                let min = CGFloat(hour/24)
+                let ptOnPath =  movementPath.point(at: min)!
+                ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+            }
+            
+            //EXIT
+            return
+        }
+        
         if HourHandTypes.isDialType(type: hourHandType) {
             self.removeAllChildren() //removing by name wasny cleaing up the init one *shrug*
             addArcNode(endAngle: newZAngle)
@@ -109,7 +128,7 @@ class HourHandNode: SKSpriteNode {
     }
     
     init(hourHandType: HourHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat) {
-
+        
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
         
         self.name = "hourHand"
@@ -117,6 +136,16 @@ class HourHandNode: SKSpriteNode {
         self.material = material
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
+        
+        if (hourHandType == .HourHandTypePacMan) {
+            //add a ghost sprite
+            //make sure to position along the path
+            
+            let ghostNode = SKSpriteNode.init(imageNamed: "PacManRedGost")
+            ghostNode.name = "ghostNode"
+            ghostNode.setScale(0.5)
+            self.addChild(ghostNode)
+        }
         
         if (HourHandTypes.isDialType(type: hourHandType) ) {
             //fat
@@ -185,10 +214,10 @@ class HourHandNode: SKSpriteNode {
             
             self.addChild(shape)
         }
-
+        
         
         if (hourHandType == .HourHandTypeBoxy) {
-
+            
             let rectanglePath = UIBezierPath(rect: CGRect(x: -1.5, y: -11, width: 3, height: 60))
             
             let shape = SKShapeNode.init(path: rectanglePath.cgPath)
@@ -237,7 +266,7 @@ class HourHandNode: SKSpriteNode {
         }
         
         if (hourHandType == .HourHandTypeSwiss) {
-        
+            
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: -5, y: -10))
             bezierPath.addLine(to: CGPoint(x: 5, y: -10))
@@ -255,7 +284,7 @@ class HourHandNode: SKSpriteNode {
         }
         
         if (hourHandType == .HourHandTypeRounded) {
-    
+            
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: 3, y: 43.5))
             bezierPath.addCurve(to: CGPoint(x: 3, y: 5.77), controlPoint1: CGPoint(x: 3, y: 43.5), controlPoint2: CGPoint(x: 3, y: 20.44))
@@ -427,5 +456,6 @@ class HourHandNode: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
+

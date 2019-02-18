@@ -12,10 +12,10 @@ import SpriteKit
 
 enum MinuteHandTypes: String {
     case MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeRoman, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeFlatDial,
-        MinuteHandTypeThinDial, MinuteHandTypeNone
+    MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeNone
     
     static let randomizableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeSquaredHole]
-    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypeNone]
+    static let userSelectableValues = [MinuteHandTypeSwiss, MinuteHandTypeRounded, MinuteHandTypeBoxy, MinuteHandTypeFatBoxy, MinuteHandTypeSquaredHole, MinuteHandTypeRoman, MinuteHandTypeSphere, MinuteHandTypeImageFancyWhite, MinuteHandTypeFlatDial, MinuteHandTypeThinDial, MinuteHandTypePacMan, MinuteHandTypeNone]
     
     static func random() -> MinuteHandTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -48,6 +48,9 @@ class MinuteHandNode: SKSpriteNode {
     var lineWidth: CGFloat = 0.0
     var cornerRadius:CGFloat = 0.0
     
+    let pacManPathSize = CGSize.init(width: 100.0, height: 65.0)
+    let pacManOffsetPoint = CGPoint.init(x: 0.0, y: -5.0)
+    
     //used for dials
     var innerRadius:CGFloat = 0.0
     var outerRadius:CGFloat = 0.0
@@ -65,6 +68,8 @@ class MinuteHandNode: SKSpriteNode {
         
         if (nodeType == MinuteHandTypes.MinuteHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == MinuteHandTypes.MinuteHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        
+        if (nodeType == MinuteHandTypes.MinuteHandTypePacMan)  { typeDescription = "Dot Eater" }
         
         //image based example
         if (nodeType == MinuteHandTypes.MinuteHandTypeImageFancyWhite)  { typeDescription = "Image: Fancy White" }
@@ -110,6 +115,19 @@ class MinuteHandNode: SKSpriteNode {
         
         let newZAngle = -1 * MathFunctions.deg2rad(min * 6)
         
+        if minuteHandType == .MinuteHandTypePacMan {
+            
+            let movementPath = DotsNode.rectPath(pathHeight: pacManPathSize.height, pathWidth: pacManPathSize.width, xOffset: 0.0)
+            if let ghostNode = self.childNode(withName: "ghostNode") {
+                let min = CGFloat(min/60)
+                let ptOnPath =  movementPath.point(at: min)!
+                ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+            }
+            
+            //EXIT
+            return
+        }
+        
         if MinuteHandTypes.isDialType(type: minuteHandType) {
             self.removeAllChildren() //removing by name wasny cleaing up the init one *shrug*
             addArcNode(endAngle: newZAngle)
@@ -136,7 +154,7 @@ class MinuteHandNode: SKSpriteNode {
     }
     
     init(minuteHandType: MinuteHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat) {
-    
+        
         super.init(texture: nil, color: SKColor.white, size: CGSize())
         self.name = "minuteHand"
         
@@ -145,8 +163,18 @@ class MinuteHandNode: SKSpriteNode {
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
         
+        if (minuteHandType == .MinuteHandTypePacMan) {
+            //add a ghost sprite
+            //make sure to position along the path
+            
+            let ghostNode = SKSpriteNode.init(imageNamed: "PacManBlueGost")
+            ghostNode.name = "ghostNode"
+            ghostNode.setScale(0.5)
+            self.addChild(ghostNode)
+        }
+        
         if (MinuteHandTypes.isDialType(type: minuteHandType)) {
-                    
+            
             //fat
             let radiusCenter:CGFloat = 65.0
             innerRadius = radiusCenter - ArcNode.fatRadiusWidth/2
@@ -215,7 +243,7 @@ class MinuteHandNode: SKSpriteNode {
         }
         
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeSquaredHole) {
-
+            
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: 1.5, y: 83.7))
             bezierPath.addLine(to: CGPoint(x: -1.5, y: 83.7))
@@ -239,7 +267,7 @@ class MinuteHandNode: SKSpriteNode {
             shape.lineWidth = lineWidth
             
             self.addChild(shape)
-
+            
         }
         
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeBoxy) {
@@ -258,7 +286,7 @@ class MinuteHandNode: SKSpriteNode {
             bezierPath.addLine(to: CGPoint(x: 1.5, y: 97))
             bezierPath.addLine(to: CGPoint(x: 1.5, y: 97))
             bezierPath.close()
-
+            
             bezierPath.flatness = 0.1
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
@@ -288,7 +316,7 @@ class MinuteHandNode: SKSpriteNode {
         }
         
         if (minuteHandType == MinuteHandTypes.MinuteHandTypeRounded) {
-        
+            
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: 3, y: 79.5))
             bezierPath.addCurve(to: CGPoint(x: 3, y: 5.77), controlPoint1: CGPoint(x: 3, y: 79.5), controlPoint2: CGPoint(x: 3, y: 20.44))
@@ -300,7 +328,7 @@ class MinuteHandNode: SKSpriteNode {
             bezierPath.addCurve(to: CGPoint(x: 0, y: 82.5), controlPoint1: CGPoint(x: -3, y: 81.16), controlPoint2: CGPoint(x: -1.66, y: 82.5))
             bezierPath.addCurve(to: CGPoint(x: 3, y: 79.5), controlPoint1: CGPoint(x: 1.66, y: 82.5), controlPoint2: CGPoint(x: 3, y: 81.16))
             bezierPath.close()
-
+            
             bezierPath.flatness = 0.1
             
             let shape = SKShapeNode.init(path: bezierPath.cgPath)
@@ -492,7 +520,7 @@ class MinuteHandNode: SKSpriteNode {
             minuteHandPath.addCurve(to: CGPoint(x: 1.48, y: 198.04), controlPoint1: CGPoint(x: 2.38, y: 197.11), controlPoint2: CGPoint(x: 1.9, y: 197.55))
             minuteHandPath.addCurve(to: CGPoint(x: -0.73, y: 202.26), controlPoint1: CGPoint(x: 0.41, y: 199.26), controlPoint2: CGPoint(x: -0.33, y: 200.73))
             minuteHandPath.close()
-
+            
             minuteHandPath.flatness = 0.05
             
             let shape = SKShapeNode.init(path: minuteHandPath.cgPath)
@@ -503,11 +531,12 @@ class MinuteHandNode: SKSpriteNode {
             
             self.addChild(shape)
         }
-    
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
+

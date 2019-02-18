@@ -11,10 +11,11 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial,
-        SecondHandNodeTypeNone
+    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan,
+    SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandNodeTypeNone]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandNodeTypeNone ]
+    
     static let randomizableValues = userSelectableValues
     
     static func random() -> SecondHandTypes {
@@ -64,6 +65,8 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == SecondHandTypes.SecondHandTypeSphere)  { typeDescription = "Magnetic Sphere" }
         if (nodeType == SecondHandTypes.SecondHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == SecondHandTypes.SecondHandTypeThinDial)  { typeDescription = "Thin Dial" }
+        if (nodeType == SecondHandTypes.SecondHandTypePacMan)  { typeDescription = "Dot Eater" }
+        
         if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
         
         // IMAGE BASED EXAMPLES
@@ -122,7 +125,7 @@ class SecondHandNode: SKSpriteNode {
     
     func addArcNode(endAngle: CGFloat) {
         let newNode = ArcNode.init(cornerRadius: cornerRadius, innerRadius: innerRadius, outerRadius: outerRadius,
-            endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
+                                   endAngle: endAngle, material: material, strokeColor: strokeColor, lineWidth: lineWidth)
         newNode.name = "arcNode"
         self.addChild(newNode)
     }
@@ -131,6 +134,14 @@ class SecondHandNode: SKSpriteNode {
     func positionHands( sec: CGFloat, secondHandMovement: SecondHandMovements, force: Bool ) {
         
         let newZAngle = -1 * MathFunctions.deg2rad(sec * 6)
+        
+        if secondHandType == .SecondHandTypePacMan {
+            if let dotsNode = self.childNode(withName: "dotsNode") as? DotsNode {
+                dotsNode.hideUpTo(lastShow: Int(sec))
+            }
+            //EXIT
+            return
+        }
         
         if SecondHandTypes.isDialType(type: secondHandType) {
             self.removeAllChildren() //removing by name wasny cleaing up the init one *shrug*
@@ -195,8 +206,9 @@ class SecondHandNode: SKSpriteNode {
     }
     
     init(secondHandType: SecondHandTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat) {
-    
+        
         super.init(texture: nil, color: SKColor.clear, size: CGSize())
+        
         self.name = "secondHand"
         self.secondHandType = secondHandType
         self.material = material
@@ -205,6 +217,21 @@ class SecondHandNode: SKSpriteNode {
         
         if (secondHandType == SecondHandTypes.SecondHandNodeTypeNone) {
             //none :-)
+        }
+        
+        if (secondHandType == SecondHandTypes.SecondHandTypePacMan) {
+            let dotsW:CGFloat = 158
+            let dotsH:CGFloat = 189
+            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#ffb8ae", strokeColor: SKColor.init(hexString: "#ffb8ae"), lineWidth: 1.0, numDots: 66)
+            pathNode.name = "dotsNode"
+            pathNode.zPosition = 2.0
+            
+            //hacks to fit
+            pathNode.position = CGPoint.init(x: -1.0, y: -5.5) //-y is down
+            pathNode.xScale = 1.065
+            pathNode.yScale = 1.027
+            
+            self.addChild(pathNode)
         }
         
         if (SecondHandTypes.isDialType(type: secondHandType)) {
@@ -258,7 +285,7 @@ class SecondHandNode: SKSpriteNode {
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypePointy) {
-        
+            
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: 0.5, y: 93))
             bezierPath.addCurve(to: CGPoint(x: 0.94, y: 3.89), controlPoint1: CGPoint(x: 0.5, y: 93), controlPoint2: CGPoint(x: 0.81, y: 30.59))
@@ -296,10 +323,10 @@ class SecondHandNode: SKSpriteNode {
             
             self.addChild(shape)
         }
-
+        
         
         if (secondHandType == SecondHandTypes.SecondHandTypeBlocky) {
-
+            
             let bezierPath = UIBezierPath()
             bezierPath.move(to: CGPoint(x: 0.8, y: 95))
             bezierPath.addCurve(to: CGPoint(x: 0.8, y: 11.59), controlPoint1: CGPoint(x: 0.8, y: 95), controlPoint2: CGPoint(x: 0.8, y: 41.91))
@@ -338,7 +365,7 @@ class SecondHandNode: SKSpriteNode {
         }
         
         if (secondHandType == SecondHandTypes.SecondHandTypeRoman) {
-        
+            
             let secondHandPath = UIBezierPath()
             secondHandPath.move(to: CGPoint(x: -0.18, y: 291.2))
             secondHandPath.addCurve(to: CGPoint(x: -0.52, y: 291.18), controlPoint1: CGPoint(x: -0.29, y: 291.2), controlPoint2: CGPoint(x: -0.41, y: 291.19))
@@ -502,7 +529,7 @@ class SecondHandNode: SKSpriteNode {
             shape.strokeColor = strokeColor
             shape.lineWidth = lineWidth
             shape.setScale(0.31)
-        
+            
             self.addChild(shape)
         }
         
@@ -511,5 +538,6 @@ class SecondHandNode: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
+
