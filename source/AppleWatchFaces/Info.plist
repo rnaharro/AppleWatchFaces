@@ -30,6 +30,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>JOYSTIX.TTF</string>
 		<string>LCDPHONE.TTF</string>
 		<string>NIXIEONE.TTF</string>
 		<string>DIGITAL-7-MONO.TTF</string>
