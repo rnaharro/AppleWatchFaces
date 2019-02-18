@@ -48,6 +48,8 @@
 		312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */; };
 		313AE3DD221A770C00C02462 /* JOYSTIX.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */; };
 		313AE3DE221A770D00C02462 /* JOYSTIX.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */; };
+		313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
+		313AE3E1221A777E00C02462 /* DotsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313AE3DF221A777E00C02462 /* DotsNode.swift */; };
 		314A010A21960409009BCE3C /* UserClockSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A010921960409009BCE3C /* UserClockSetting.swift */; };
 		314A010D219605AA009BCE3C /* Settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010B219605AA009BCE3C /* Settings.json */; };
 		314A010E219605AA009BCE3C /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 314A010C219605AA009BCE3C /* Themes.json */; };
@@ -249,6 +251,7 @@
 		312E2D6B21F3D72800C2F17F /* LCDPHONE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LCDPHONE.TTF; sourceTree = "<group>"; };
 		312E2D6E21F3E16A00C2F17F /* ClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimer.swift; sourceTree = "<group>"; };
 		313AE3DC221A76DA00C02462 /* JOYSTIX.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = JOYSTIX.TTF; sourceTree = "<group>"; };
+		313AE3DF221A777E00C02462 /* DotsNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsNode.swift; sourceTree = "<group>"; };
 		314A010921960409009BCE3C /* UserClockSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClockSetting.swift; sourceTree = "<group>"; };
 		314A010B219605AA009BCE3C /* Settings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Settings.json; sourceTree = "<group>"; };
 		314A010C219605AA009BCE3C /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
@@ -399,6 +402,7 @@
 		312D4C06218BCDB5008504D2 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				313AE3DF221A777E00C02462 /* DotsNode.swift */,
 				314A010F21962FF4009BCE3C /* WatchFaceNode.swift */,
 				31D8633921E5954B005BCB6F /* DigitalTimeNode.swift */,
 				31D8633A21E5954B005BCB6F /* NumberTextNode.swift */,
@@ -833,6 +837,7 @@
 				FDC17D042202B05A0064D962 /* GenerateThumbnailsViewController.swift in Sources */,
 				3107B5D821B47437005BD26D /* DecotatorShapeTableViewCell.swift in Sources */,
 				314AFC1321D543C200C1208E /* UICollectionView+Selection.swift in Sources */,
+				313AE3E0221A777E00C02462 /* DotsNode.swift in Sources */,
 				314A011021962FF4009BCE3C /* WatchFaceNode.swift in Sources */,
 				31EF999621A0B6B700BB54E7 /* SKShapeNode.swift in Sources */,
 				31EF99A221A205F200BB54E7 /* FaceChooserTableViewCell.swift in Sources */,
@@ -884,6 +889,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313AE3E1221A777E00C02462 /* DotsNode.swift in Sources */,
 				312E2D7021F3E16A00C2F17F /* ClockTimer.swift in Sources */,
 				31D8633E21E5954B005BCB6F /* NumberTextNode.swift in Sources */,
 				31B5E8DE218CE02D00DE6429 /* FaceIndicatorNode.swift in Sources */,
