@@ -31,7 +31,7 @@ class WatchFaceNode: SKShapeNode {
         guard let clockFaceSettings = clockSetting.clockFaceSettings else { return }
         self.clockFaceSettings = clockFaceSettings
         
-        let renderShadows = true
+        var renderShadows = false
         let shadowMaterial = "#111111AA"
         let shadowChildZposition:CGFloat = -0.5
         var shadowColor = SKColor.init(hexString: shadowMaterial)
@@ -60,6 +60,13 @@ class WatchFaceNode: SKShapeNode {
         secHandNode.zPosition = CGFloat(PartsZPositions.secondHand.rawValue)
         
         self.addChild(secHandNode)
+        
+        //whitelist rendring shadows
+        let typesThatShouldHaveShadows = [SecondHandTypes.SecondHandTypeBlocky, SecondHandTypes.SecondHandTypeFlatDial,
+                                          SecondHandTypes.SecondHandTypePointy, SecondHandTypes.SecondHandTypePointy, SecondHandTypes.SecondHandTypeSquaredHole]
+        if (typesThatShouldHaveShadows.firstIndex(of: clockFaceSettings.secondHandType) != nil) {
+            renderShadows = true
+        }
         
         if renderShadows {
             let secHandShadowNode = SecondHandNode.init(secondHandType: clockFaceSettings.secondHandType, material: shadowMaterial, strokeColor: shadowColor, lineWidth: shadowLineWidth)
@@ -91,7 +98,7 @@ class WatchFaceNode: SKShapeNode {
         if (clockFaceSettings.shouldShowHandOutlines) {
             hourHandStrokeColor = SKColor.init(hexString: clockFaceSettings.handOutlineMaterialName)
         }
-    
+        
         let hourHandNode = HourHandNode.init(hourHandType: clockFaceSettings.hourHandType, material: clockFaceSettings.hourHandMaterialName, strokeColor: hourHandStrokeColor, lineWidth: 1.0)
         hourHandNode.name = "hourHand"
         hourHandNode.zPosition = CGFloat(PartsZPositions.hourHand.rawValue)
@@ -136,7 +143,7 @@ class WatchFaceNode: SKShapeNode {
             //move it closer to center
             currentDistance = currentDistance - ringSetting.ringWidth
         }
-
+        
     }
     
     func generateRingNode( _ clockFaceNode: SKShapeNode, patternTotal: Int, patternArray: [Int], ringType: RingTypes, material: String, currentDistance: Float, clockFaceSettings: ClockFaceSetting, ringSettings: ClockRingSetting, renderNumbers: Bool, renderShapes: Bool, ringShape: UIBezierPath ) {
@@ -251,7 +258,7 @@ class WatchFaceNode: SKShapeNode {
                 let angle = atan2(scaledPoint.y, scaledPoint.x)
                 outerRingNode.zRotation = angle + CGFloat(Double.pi/2)
             }
-
+            
             outerRingNode.zPosition = 1
             outerRingNode.position = scaledPoint
             
@@ -305,7 +312,7 @@ class WatchFaceNode: SKShapeNode {
         
         positionHands(sec: seconds, min: minutes, hour: hour, force: force)
     }
-        
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -374,3 +381,4 @@ class WatchFaceNode: SKShapeNode {
     
     
 }
+
