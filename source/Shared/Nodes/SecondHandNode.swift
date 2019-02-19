@@ -137,7 +137,8 @@ class SecondHandNode: SKSpriteNode {
         
         if secondHandType == .SecondHandTypePacMan {
             if let dotsNode = self.childNode(withName: "dotsNode") as? DotsNode {
-                dotsNode.hideUpTo(lastShow: Int(sec))
+                dotsNode.positionHands( sec: sec, secondHandMovement: secondHandMovement, force: force )
+//                dotsNode.hideUpTo(lastShow: Int(sec), force: force)
             }
             //EXIT
             return

@@ -69,7 +69,7 @@ class PacNode: SKNode {
 class DotsNode: SKNode {
     
     var numDots: Int = 0
-    var forcePacManPos = true
+    //var forcePacManPos = true
     
     static func rectPath(pathHeight: CGFloat, pathWidth: CGFloat, xOffset: CGFloat) -> UIBezierPath {
         let left = -pathWidth/2
@@ -88,9 +88,10 @@ class DotsNode: SKNode {
         return rectPath
     }
     
-    func hideUpTo(lastShow:Int) {
+    func positionHands( sec: CGFloat, secondHandMovement: SecondHandMovements, force: Bool ) {
         
-        let adjustedHideUpTo = Int(Float(lastShow) * (Float(numDots)/Float(60)))
+        //TODO: too slow, could be hiding last one unless force=true
+        let adjustedHideUpTo = Int(Float(sec) * (Float(numDots)/Float(60)))
         //debugPrint("adj:" + adjustedHideUpTo.description)
         for dot in 0 ... self.numDots-1 {
             if let dotNode = self.childNode(withName: "dot" + String(dot)) {
@@ -123,12 +124,12 @@ class DotsNode: SKNode {
                     pacman.zRotation = CGFloat(-Double.pi/2)
                 }
 
-                if (forcePacManPos) {
+                if (force || secondHandMovement == .SecondHandMovementStep) {
+                    pacman.removeAction(forKey: "moveAction")
                     pacman.position = lastDotNode.position
-                    forcePacManPos = false
                 } else {
                     let moveAction = SKAction.move(to: lastDotNode.position, duration: 1.0)
-                    pacman.run(moveAction)
+                    pacman.run(moveAction, withKey: "moveAction")
 
                 }
      
