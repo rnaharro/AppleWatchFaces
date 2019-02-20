@@ -120,12 +120,13 @@ class MinuteHandNode: SKSpriteNode {
             let movementPath = DotsNode.rectPath(pathHeight: pacManPathSize.height, pathWidth: pacManPathSize.width, xOffset: 0.0)
             if let ghostNode = self.childNode(withName: "ghostNode") {
                 var percent = CGFloat(min/60)
-                debugPrint("min:" + min.description + " perc:"+percent.description)
-//                if (minuteHandMovement == .MinuteHandMovementSmooth) {
-//                    percent = CGFloat(min/60 + sec/60)
-//                }
-                let ptOnPath =  movementPath.point(at: percent)!
-                ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+                //debugPrint("min:" + min.description + " perc:"+percent.description)
+                if (minuteHandMovement == .MinuteHandMovementSmooth) {
+                    percent = CGFloat((min + sec/60)/60)
+                }
+                if let ptOnPath =  movementPath.point(at: percent) {
+                    ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+                }
             }
             
             //EXIT

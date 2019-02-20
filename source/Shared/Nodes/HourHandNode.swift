@@ -99,9 +99,11 @@ class HourHandNode: SKSpriteNode {
             
             let movementPath = DotsNode.rectPath(pathHeight: pacManPathSize.height, pathWidth: pacManPathSize.width, xOffset: 0.0)
             if let ghostNode = self.childNode(withName: "ghostNode") {
-                let percent = CGFloat(hour/12) // - min/60)
-                let ptOnPath =  movementPath.point(at: percent)!
-                ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+                let percent = CGFloat( (hour + min/60)/12 )
+                //debugPrint("h:" + hour.description + " p:" + percent.description)
+                if let ptOnPath =  movementPath.point(at: percent) {
+                    ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+                }
             }
             
             //EXIT
