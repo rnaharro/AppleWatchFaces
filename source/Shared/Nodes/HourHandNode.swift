@@ -93,14 +93,14 @@ class HourHandNode: SKSpriteNode {
     
     func positionHands( min: CGFloat, hour: CGFloat, force: Bool ) {
         
-        let newZAngle = 1 * MathFunctions.deg2rad((24-hour) * 30 - min/2) //-1 * deg2rad(hour * 30 + min/2)
+        let newZAngle = 1 * MathFunctions.deg2rad((12-hour) * 30 - min/2)
         
         if hourHandType == .HourHandTypePacMan {
             
             let movementPath = DotsNode.rectPath(pathHeight: pacManPathSize.height, pathWidth: pacManPathSize.width, xOffset: 0.0)
             if let ghostNode = self.childNode(withName: "ghostNode") {
-                let min = CGFloat(hour/24)
-                let ptOnPath =  movementPath.point(at: min)!
+                let percent = CGFloat(hour/12) // - min/60)
+                let ptOnPath =  movementPath.point(at: percent)!
                 ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
             }
             

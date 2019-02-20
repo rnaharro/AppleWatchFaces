@@ -310,7 +310,11 @@ class WatchFaceNode: SKShapeNode {
         let minutes = CGFloat(calendar.component(.minute, from: date))
         let seconds = CGFloat(calendar.component(.second, from: date))
         
-        positionHands(sec: seconds, min: minutes, hour: hour, force: force)
+        //normalize 24 hour to 12
+        var hour12 = hour
+        if hour12>12 { hour12 -= 12 }
+        
+        positionHands(sec: seconds, min: minutes, hour: hour12, force: force)
     }
     
     required init?(coder aDecoder: NSCoder) {
