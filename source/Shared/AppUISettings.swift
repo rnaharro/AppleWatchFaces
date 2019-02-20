@@ -35,7 +35,7 @@ class AppUISettings: NSObject {
     static let watchFrameBorderColor = SKColor.darkGray.cgColor
 
     static let materialFiles = [
-       "PacManLevel1.jpg", "80sTubes.jpg","AppleDigital.jpg","BackToTheFuture.jpg","Beeker.jpg","BlueSky.jpg","Calculator.jpg","gameBoy.jpg",
+       "PacManLevel1.jpg", "MsPacManLevel1", "80sTubes.jpg","AppleDigital.jpg","BackToTheFuture.jpg","Beeker.jpg","BlueSky.jpg","Calculator.jpg","gameBoy.jpg",
         "GreyDots.jpg","HangingLight.jpg","MelloYello.jpg","OpticalIllusion.jpg","PixelSquares.jpg","RainbowLines.jpg","Squigglies.jpg",
         "80sDigital.jpg", "brass.jpg","brushedsteel.jpg","light-wood.jpg", "vinylAlbum.jpg", "wallpaper70s.jpg", "watchGears.jpg", "copper.jpg"]
     
