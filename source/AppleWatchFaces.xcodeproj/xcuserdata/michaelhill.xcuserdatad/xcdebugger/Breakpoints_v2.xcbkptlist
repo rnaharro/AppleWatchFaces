@@ -74,13 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsViewController.swift"
-            timestampString = "569905641.582693"
+            timestampString = "572315696.4676811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
-            landmarkName = "screenshotColorThemeActionFromTimer()"
-            landmarkType = "7">
+            startingLineNumber = "383"
+            endingLineNumber = "383">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -266,7 +264,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "569905641.583308"
+            timestampString = "572315696.467968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -282,7 +280,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "569905641.583567"
+            timestampString = "572315696.468034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -298,7 +296,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "569905641.5837981"
+            timestampString = "572315696.4680901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -330,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsViewController.swift"
-            timestampString = "569905641.584065"
+            timestampString = "572315696.468164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "onNotificationForGetCameraImage(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,7 +424,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Face Extension/InterfaceController.swift"
-            timestampString = "569905641.584784"
+            timestampString = "572315696.468298"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -442,12 +440,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppleWatchFaces/SettingsViewController.swift"
-            timestampString = "569905641.584864"
+            timestampString = "572315696.468352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "undo()"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "cloneClockSettings()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -490,7 +488,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Nodes/HourHandNode.swift"
-            timestampString = "572314511.085683"
+            timestampString = "572315696.468441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"

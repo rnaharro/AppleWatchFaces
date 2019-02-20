@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
 
     @IBOutlet var undoButton: UIBarButtonItem!
     @IBOutlet var redoButton: UIBarButtonItem!
+    
     @IBOutlet var groupSegmentControl: UISegmentedControl!
     
     var session: WCSession?
@@ -142,12 +143,12 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     @objc func onNotificationForPreviewSwiped(notification:Notification) {
         
         if let userInfo = notification.userInfo as? [String: String] {
-            if userInfo["action"] == "prevClock" {
-                prevClock()
-            }
-            if userInfo["action"] == "nextClock" {
-                nextClock()
-            }
+//            if userInfo["action"] == "prevClock" {
+//                prevClock()
+//            }
+//            if userInfo["action"] == "nextClock" {
+//                nextClock()
+//            }
             if userInfo["action"] == "sendSetting" {
                 sendSettingAction()
             }

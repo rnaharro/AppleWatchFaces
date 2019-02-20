@@ -13,6 +13,46 @@ class WatchPreviewViewController: UIViewController {
 
     @IBOutlet var skView: SKView!
     
+    var timeTravelTimer = Timer()
+    var timeTravelSpeed:CGFloat = 0.0
+    
+    @objc func timeTravelMovementTick() {
+        let timeInterval = TimeInterval.init(exactly: Int(timeTravelSpeed))!
+        ClockTimer.currentDate.addTimeInterval(timeInterval)
+        
+        if let skWatchScene = self.skView.scene as? SKWatchScene {
+            skWatchScene.forceToTime()
+        }
+    }
+    
+    @IBAction func respondToPanGesture(gesture: UIPanGestureRecognizer) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let clockTimer = appDelegate.clockTimer
+        
+        if gesture.state == .began {
+            clockTimer.stopTimer()
+            let duration = 1.0/24 //smaller = faster updates
+            
+            timeTravelTimer.invalidate()
+            timeTravelTimer = Timer.scheduledTimer( timeInterval: duration, target:self, selector: #selector(WatchPreviewViewController.timeTravelMovementTick), userInfo: nil, repeats: true)
+        }
+        if gesture.state == .changed {
+            let translationPoint = gesture.translation(in: skView)
+            timeTravelSpeed = translationPoint.x * 10.0
+        }
+        if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
+            clockTimer.startTimer()
+            
+            timeTravelTimer.invalidate()
+            
+            ClockTimer.currentDate = Date()
+            if let skWatchScene = self.skView.scene as? SKWatchScene {
+                skWatchScene.forceToTime()
+            }
+        }
+    }
+    
     func stopTimeForScreenShot() {
 //        if let watchScene = skView.scene as? SKWatchScene {
 //            watchScene.stopTimeForScreenShot()

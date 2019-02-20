@@ -93,6 +93,34 @@
                                     <segue destination="gcy-GJ-xSo" kind="embed" id="ImA-iE-Dqj"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDK-Qz-PpH">
+                                <rect key="frame" x="0.0" y="107" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="1Zs-hl-GPr"/>
+                                    <constraint firstAttribute="height" constant="40" id="z5E-0Y-S92"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="prevClock" destination="BYZ-38-t0r" eventType="touchUpInside" id="Riz-5o-GD5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76T-g5-ywR">
+                                <rect key="frame" x="335" y="107" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="XhX-mu-Gnm"/>
+                                    <constraint firstAttribute="width" constant="40" id="hv6-ds-dDv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextClock" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pwl-3Q-bNu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -107,7 +135,11 @@
                             <constraint firstItem="pvs-yB-9Q5" firstAttribute="top" secondItem="L09-xH-or1" secondAttribute="bottom" id="RNe-2Z-N53"/>
                             <constraint firstItem="DN7-J7-N45" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="TLv-9L-Qto"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TbU-Ce-N5u"/>
+                            <constraint firstItem="jDK-Qz-PpH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="87" id="fBs-Pj-87n"/>
+                            <constraint firstItem="jDK-Qz-PpH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fil-d1-Caj"/>
                             <constraint firstItem="L09-xH-or1" firstAttribute="top" secondItem="NJL-vA-esZ" secondAttribute="bottom" constant="7" id="gr9-ch-zmj"/>
+                            <constraint firstItem="76T-g5-ywR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="igM-w7-dvn"/>
+                            <constraint firstItem="76T-g5-ywR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="87" id="rEM-PR-nyc"/>
                             <constraint firstItem="DN7-J7-N45" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z3e-2C-pBv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -143,6 +175,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="LM3-Ln-PA8" appends="YES" id="y9d-4E-pRN"/>
+                                </connections>
                             </skView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,6 +188,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKm-1s-s5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="LM3-Ln-PA8">
+                    <connections>
+                        <action selector="respondToPanGestureWithGesture:" destination="gcy-GJ-xSo" id="zcu-IH-2Df"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1461" y="130"/>
         </scene>
