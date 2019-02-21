@@ -10,10 +10,10 @@ import SpriteKit
 
 enum HourHandTypes: String {
     case HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeRoman, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial,
-    HourHandTypePacMan, HourHandTypeNone
+    HourHandTypePacMan, HourHandTypeMsPacMan, HourHandTypeNone
     
     static let randomizableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeImageFancyWhite, HourHandTypeThinDial, HourHandTypeNone]
-    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan,
+    static let userSelectableValues = [HourHandTypeSwiss, HourHandTypeRounded, HourHandTypeBoxy, HourHandTypeFatBoxy, HourHandTypeSquaredHole, HourHandTypeRoman, HourHandTypeSphere, HourHandTypeCutout, HourHandTypeImageFancyWhite, HourHandTypeFlatDial, HourHandTypeThinDial, HourHandTypePacMan, HourHandTypeMsPacMan,
                                        HourHandTypeNone]
     
     static func random() -> HourHandTypes {
@@ -43,6 +43,9 @@ class HourHandNode: SKSpriteNode {
     let pacManPathSize = CGSize.init(width: 100.0, height: 65.0)
     let pacManOffsetPoint = CGPoint.init(x: 0.0, y: -5.0)
     
+    let msPacManPathSize = CGSize.init(width: 83.0, height: 54.0)
+    let msPacManOffsetPoint = CGPoint.init(x: 0.0, y: -1.0)
+    
     static func descriptionForType(_ nodeType: HourHandTypes) -> String {
         var typeDescription = ""
         
@@ -59,6 +62,7 @@ class HourHandNode: SKSpriteNode {
         if (nodeType == HourHandTypes.HourHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == HourHandTypes.HourHandTypeThinDial)  { typeDescription = "Thin Dial" }
         if (nodeType == HourHandTypes.HourHandTypePacMan)  { typeDescription = "Dot Eater" }
+        if (nodeType == HourHandTypes.HourHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         
         //image ex
         if (nodeType == HourHandTypes.HourHandTypeCutout)  { typeDescription = "Image: Fancy White" }
@@ -95,14 +99,22 @@ class HourHandNode: SKSpriteNode {
         
         let newZAngle = 1 * MathFunctions.deg2rad((12-hour) * 30 - min/2)
         
-        if hourHandType == .HourHandTypePacMan {
+        if hourHandType == .HourHandTypePacMan || hourHandType == .HourHandTypeMsPacMan {
             
-            let movementPath = DotsNode.rectPath(pathHeight: pacManPathSize.height, pathWidth: pacManPathSize.width, xOffset: 0.0)
+            var movementPath = DotsNode.rectPath(pathHeight: pacManPathSize.height, pathWidth: pacManPathSize.width, xOffset: 0.0)
+            if (hourHandType == .HourHandTypeMsPacMan) {
+                movementPath = DotsNode.rectPath(pathHeight: msPacManPathSize.height, pathWidth: msPacManPathSize.width, xOffset: 0.0)
+            }
             if let ghostNode = self.childNode(withName: "ghostNode") {
                 let percent = CGFloat( (hour + min/60)/12 )
                 
                 if let ptOnPath =  movementPath.point(at: percent) {
-                    ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+                    if (hourHandType == .HourHandTypePacMan) {
+                        ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+                    }
+                    if (hourHandType == .HourHandTypeMsPacMan) {
+                        ghostNode.position = CGPoint.init(x: ptOnPath.x + msPacManOffsetPoint.x, y: ptOnPath.y + msPacManOffsetPoint.y)
+                    }
                 } else {
                     debugPrint("error pacman hand h:" + hour.description + " m:" + min.description + " p:" + percent.description)
                 }
@@ -141,13 +153,18 @@ class HourHandNode: SKSpriteNode {
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
         
-        if (hourHandType == .HourHandTypePacMan) {
+        if (hourHandType == .HourHandTypePacMan || hourHandType == .HourHandTypeMsPacMan) {
             //add a ghost sprite
             //make sure to position along the path
             
             let ghostNode = SKSpriteNode.init(imageNamed: "PacManRedGost")
             ghostNode.name = "ghostNode"
-            ghostNode.setScale(0.5)
+            if hourHandType == .HourHandTypePacMan {
+                ghostNode.setScale(0.5)
+            }
+            if hourHandType == .HourHandTypeMsPacMan {
+                ghostNode.setScale(0.45)
+            }
             self.addChild(ghostNode)
         }
         

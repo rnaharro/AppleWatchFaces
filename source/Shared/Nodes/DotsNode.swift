@@ -69,6 +69,7 @@ class PacNode: SKNode {
 class DotsNode: SKNode {
     
     var numDots: Int = 0
+    var secondHandType:SecondHandTypes = .SecondHandNodeTypeNone
     //var forcePacManPos = true
     
     static func rectPath(pathHeight: CGFloat, pathWidth: CGFloat, xOffset: CGFloat) -> UIBezierPath {
@@ -106,13 +107,19 @@ class DotsNode: SKNode {
         if let lastDotNode = self.childNode(withName: "dot" + String(adjustedHideUpTo)) {
             //set pacMan position to this position
             if let pacman = self.childNode(withName: "pacMan") {
-    
+                
+                //dot to turn on
+                var cornerNums = [7, 25, 40, 58]
+                if secondHandType == .SecondHandTypeMsPacMan {
+                    cornerNums = [10, 28, 49, 67]
+                }
+                
                 //point him correctly
                 pacman.zRotation = CGFloat(Double.pi*2) // right
-                if adjustedHideUpTo>7 { pacman.zRotation = CGFloat(-Double.pi/2) } //down
-                if adjustedHideUpTo>25 { pacman.zRotation = CGFloat(Double.pi) } //left
-                if adjustedHideUpTo>40 { pacman.zRotation = CGFloat(Double.pi/2) } //up
-                if adjustedHideUpTo>58 { pacman.zRotation = CGFloat(Double.pi*2) } //right
+                if adjustedHideUpTo>cornerNums[0] { pacman.zRotation = CGFloat(-Double.pi/2) } //down
+                if adjustedHideUpTo>cornerNums[1] { pacman.zRotation = CGFloat(Double.pi) } //left
+                if adjustedHideUpTo>cornerNums[2] { pacman.zRotation = CGFloat(Double.pi/2) } //up
+                if adjustedHideUpTo>cornerNums[3] { pacman.zRotation = CGFloat(Double.pi*2) } //right
                 
                 if (force || secondHandMovement == .SecondHandMovementStep) {
                     pacman.removeAction(forKey: "moveAction")
@@ -129,10 +136,11 @@ class DotsNode: SKNode {
     }
     
     init(pathHeight: CGFloat, pathWidth: CGFloat,
-         material: String, strokeColor: SKColor, lineWidth: CGFloat, numDots: Int) {
+         material: String, strokeColor: SKColor, lineWidth: CGFloat, numDots: Int, secondHandType: SecondHandTypes) {
         
         super.init()
         
+        self.secondHandType = secondHandType
         self.numDots = numDots
         
         let rectPath = DotsNode.rectPath(pathHeight: pathHeight, pathWidth: pathWidth, xOffset: 5.0)

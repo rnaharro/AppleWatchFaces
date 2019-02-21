@@ -11,10 +11,10 @@ import SpriteKit
 import SceneKit
 
 enum SecondHandTypes: String {
-    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan,
+    case SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypeRoman, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan,
     SecondHandNodeTypeNone
     
-    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandNodeTypeNone ]
+    static let userSelectableValues = [SecondHandTypeSwiss, SecondHandTypeRail, SecondHandTypeBlocky, SecondHandTypePointy, SecondHandTypeSquaredHole, SecondHandTypeRoman, SecondHandTypeSphere, SecondHandTypeFancyRed, SecondHandTypeFlatDial, SecondHandTypeThinDial, SecondHandTypePacMan, SecondHandTypeMsPacMan, SecondHandNodeTypeNone ]
     
     static let randomizableValues = userSelectableValues
     
@@ -66,6 +66,7 @@ class SecondHandNode: SKSpriteNode {
         if (nodeType == SecondHandTypes.SecondHandTypeFlatDial)  { typeDescription = "Flat Dial" }
         if (nodeType == SecondHandTypes.SecondHandTypeThinDial)  { typeDescription = "Thin Dial" }
         if (nodeType == SecondHandTypes.SecondHandTypePacMan)  { typeDescription = "Dot Eater" }
+        if (nodeType == SecondHandTypes.SecondHandTypeMsPacMan)  { typeDescription = "Ms Dot Eater" }
         
         if (nodeType == SecondHandTypes.SecondHandNodeTypeNone)  { typeDescription = "None" }
         
@@ -135,10 +136,9 @@ class SecondHandNode: SKSpriteNode {
         
         let newZAngle = -1 * MathFunctions.deg2rad(sec * 6)
         
-        if secondHandType == .SecondHandTypePacMan {
+        if secondHandType == .SecondHandTypePacMan || secondHandType == .SecondHandTypeMsPacMan {
             if let dotsNode = self.childNode(withName: "dotsNode") as? DotsNode {
                 dotsNode.positionHands( sec: sec, secondHandMovement: secondHandMovement, force: force )
-//                dotsNode.hideUpTo(lastShow: Int(sec), force: force)
             }
             //EXIT
             return
@@ -223,7 +223,7 @@ class SecondHandNode: SKSpriteNode {
         if (secondHandType == SecondHandTypes.SecondHandTypePacMan) {
             let dotsW:CGFloat = 158
             let dotsH:CGFloat = 189
-            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#ffb8ae", strokeColor: SKColor.init(hexString: "#ffb8ae"), lineWidth: 1.0, numDots: 66)
+            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#ffb8ae", strokeColor: SKColor.init(hexString: "#ffb8ae"), lineWidth: 1.0, numDots: 66, secondHandType: secondHandType)
             pathNode.name = "dotsNode"
             pathNode.zPosition = 2.0
             
@@ -231,6 +231,21 @@ class SecondHandNode: SKSpriteNode {
             pathNode.position = CGPoint.init(x: -1.0, y: -5.5) //-y is down
             pathNode.xScale = 1.065
             pathNode.yScale = 1.027
+            
+            self.addChild(pathNode)
+        }
+        
+        if (secondHandType == SecondHandTypes.SecondHandTypeMsPacMan) {
+            let dotsW:CGFloat = 197
+            let dotsH:CGFloat = 169
+            let pathNode = DotsNode.init(pathHeight: dotsH, pathWidth: dotsW, material: "#dcdcfd", strokeColor: SKColor.init(hexString: "#dcdcfd"), lineWidth: 0.5, numDots: 78, secondHandType: secondHandType)
+            pathNode.name = "dotsNode"
+            pathNode.zPosition = 2.0
+            
+            //hacks to fit
+            pathNode.position = CGPoint.init(x: -0.0, y: 2.75) //-y is down
+            pathNode.xScale = 0.98
+            pathNode.yScale = 1.0
             
             self.addChild(pathNode)
         }
