@@ -312,7 +312,7 @@ class WatchFaceNode: SKShapeNode {
         
         //normalize 24 hour to 12
         var hour12 = hour
-        if hour12>12 { hour12 -= 12 }
+        if hour12>=12 { hour12 -= 12 }
         
         positionHands(sec: seconds, min: minutes, hour: hour12, force: force)
     }

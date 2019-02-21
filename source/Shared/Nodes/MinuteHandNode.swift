@@ -126,6 +126,8 @@ class MinuteHandNode: SKSpriteNode {
                 }
                 if let ptOnPath =  movementPath.point(at: percent) {
                     ghostNode.position = CGPoint.init(x: ptOnPath.x + pacManOffsetPoint.x, y: ptOnPath.y + pacManOffsetPoint.y)
+                }  else {
+                    debugPrint("error pacman hand m:" + min.description + " s:" + sec.description + " p:" + percent.description)
                 }
             }
             
