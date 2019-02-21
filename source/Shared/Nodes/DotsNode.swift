@@ -108,22 +108,12 @@ class DotsNode: SKNode {
             if let pacman = self.childNode(withName: "pacMan") {
     
                 //point him correctly
-                let p1 = pacman.position
-                let p2 = lastDotNode.position
+                pacman.zRotation = CGFloat(Double.pi*2) // right
+                if adjustedHideUpTo>7 { pacman.zRotation = CGFloat(-Double.pi/2) } //down
+                if adjustedHideUpTo>25 { pacman.zRotation = CGFloat(Double.pi) } //left
+                if adjustedHideUpTo>40 { pacman.zRotation = CGFloat(Double.pi/2) } //up
+                if adjustedHideUpTo>58 { pacman.zRotation = CGFloat(Double.pi*2) } //right
                 
-                if p2.x > p1.x { // &&
-                    pacman.zRotation = CGFloat(Double.pi*2)
-                }
-                if p2.x < p1.x {
-                    pacman.zRotation = CGFloat(Double.pi)
-                }
-                if p2.y > p1.y && p2.x <= p1.x { //rght
-                    pacman.zRotation = CGFloat(Double.pi/2)
-                }
-                if p2.y < p1.y && p2.x >= p1.x {
-                    pacman.zRotation = CGFloat(-Double.pi/2)
-                }
-
                 if (force || secondHandMovement == .SecondHandMovementStep) {
                     pacman.removeAction(forKey: "moveAction")
                     pacman.position = lastDotNode.position
