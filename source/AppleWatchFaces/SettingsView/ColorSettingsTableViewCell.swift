@@ -9,7 +9,8 @@
 import UIKit
 import SpriteKit
 
-class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollectionViewDataSource, UICollectionViewDelegate,
+    UICollectionViewDelegateFlowLayout {
     
     public var colorList : [String] = []
     var sizedCameraImage : UIImage?
@@ -39,14 +40,34 @@ class ColorSettingsTableViewCell: WatchSettingsSelectableTableViewCell, UICollec
         return colorList.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        //NOTE: 99 is the total size
+        if AppUISettings.materialIsColor(materialName: colorList[indexPath.row] ) {
+            return CGSize.init(width: 33, height: 33)
+        } else {
+            return CGSize.init(width: 99*0.8, height: 99)
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "settingsColorCell", for: indexPath) as! ColorSettingCollectionViewCell
-                
+        
+        //buffer
+        let buffer:CGFloat = CGFloat(Int(cell.frame.size.width / 10))
+        let corner:CGFloat = CGFloat(Int(buffer / 2))
+        cell.circleView.frame = CGRect.init(x: corner, y: corner, width: cell.frame.size.width-buffer, height: cell.frame.size.height-buffer)
+        
         if AppUISettings.materialIsColor(materialName: colorList[indexPath.row] ) {
+            cell.circleView.layer.cornerRadius = cell.circleView.frame.height / 2
             cell.circleView.backgroundColor = SKColor.init(hexString: colorList[indexPath.row] )
         } else {
             if let image = UIImage.init(named: colorList[indexPath.row] ) {
-                cell.circleView.backgroundColor = SKColor.init(patternImage: image)
+                cell.circleView.layer.cornerRadius = 0
+                //TODO: if this idea sticks, resize this on app start and cache them so they arent built on-demand
+                let scaledImage = AppUISettings.imageWithImage(image: image, scaledToSize: CGSize.init(width: cell.frame.size.width-buffer, height: cell.frame.size.height-buffer))
+                cell.circleView.backgroundColor = SKColor.init(patternImage: scaledImage)
             }
         }
         

@@ -38,7 +38,9 @@ class ColorSettingCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        circleView.layer.cornerRadius = circleView.layer.frame.height / 2
+        //moved to cell draw
+        //circleView.layer.cornerRadius = circleView.layer.frame.height / 2
+        
         circleView.layer.borderWidth = 0.0
         circleView.layer.borderColor = SKColor.clear.cgColor
         
