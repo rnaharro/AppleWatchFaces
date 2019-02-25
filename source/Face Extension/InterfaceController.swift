@@ -229,8 +229,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
             // Present the scene
             self.skInterface.presentScene(scene)
             
-//            // Use a value that will maintain a consistent frame rate
-//            self.skInterface.preferredFramesPerSecond = 30
+            //first time draw
+            redrawCurrent()
         }
     }
     
@@ -238,7 +238,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
         super.didAppear() // important for removing digital time display hack
         
         hideDigitalTime()
-        redrawCurrent()
         
         //focus the crown to us at last possible moment
         crownSequencer.focus()

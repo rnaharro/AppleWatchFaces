@@ -49,11 +49,16 @@ class PacNode: SKNode {
         let moveMouthAction = SKAction.customAction(withDuration: TimeInterval(Float(totalTime))) {
             node, elapsedTime in
             
-            if let node = node as? PacNode {
-                let percent = fabs(Double(totalTime/2 - elapsedTime))*2
-                
-                node.animateMouth(percent: CGFloat(percent))
+            let rounded = Double(elapsedTime).rounded(toPlaces: 2)
+            let rem = (rounded * 100).truncatingRemainder(dividingBy: 10.0)
+            //debugPrint("elapsed:" + elapsedTime.description + " rnd:" + rounded.description + "rem:" + rem.description)
+            if  rem <= 1.0, let node = node as? PacNode {
+                    //debugPrint("matched:" + elapsedTime.description)
+                    let percent = fabs(Double(totalTime/2 - elapsedTime))*2
+                    node.animateMouth(percent: CGFloat(percent))
             }
+            
+            
         }
         let repeatingAction = SKAction.repeatForever(moveMouthAction)
         self.run(repeatingAction)
