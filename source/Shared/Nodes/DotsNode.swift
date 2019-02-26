@@ -15,7 +15,7 @@ class PacNode: SKNode {
         let triWidth:CGFloat = 9.0
         let triHeight:CGFloat = 8.0 // less = closing mouth
         let triPath = UIBezierPath.init()
-        triPath.move(to: CGPoint.init(x: 0, y: 0) )
+        triPath.move(to: CGPoint.init(x: -2.0, y: 0) )
         triPath.addLine(to: CGPoint.init(x: triWidth, y: triHeight*percent))
         triPath.addLine(to: CGPoint.init(x: triWidth, y: -triHeight*percent))
         triPath.close()
@@ -37,11 +37,60 @@ class PacNode: SKNode {
         self.addChild(getMouthNode(percent: percent))
     }
     
-    init(radius: CGFloat) {
+    init(radius: CGFloat, secondHandType: SecondHandTypes) {
         super.init()
         
         let circleNode = SKShapeNode.init(circleOfRadius: radius)
         circleNode.fillColor = SKColor.init(hexString: "#ffff04")
+        
+        //add the bow
+        if secondHandType == .SecondHandTypeMsPacMan {
+            let bowNode = SKEffectNode.init()
+            bowNode.zPosition = 4.0
+            let bowSideSize = CGSize.init(width: radius/2, height: radius/1.5)
+            
+            let bowShapeL = SKShapeNode.init(ellipseOf: bowSideSize)
+            bowShapeL.zPosition = bowNode.zPosition
+            bowShapeL.lineWidth = 0.0
+            bowShapeL.fillColor = SKColor.red
+            bowShapeL.position = CGPoint.init(x: -radius/3.5, y: 0)
+            bowNode.addChild(bowShapeL)
+            
+            let bowShapeR = SKShapeNode.init(ellipseOf: bowSideSize)
+            bowShapeR.zPosition = bowNode.zPosition
+            bowShapeR.fillColor = SKColor.red
+            bowShapeR.lineWidth = 0.0
+            bowShapeR.position = CGPoint.init(x: radius/2.5, y: 0)
+            bowNode.addChild(bowShapeR)
+            
+            let bowShapeM = SKShapeNode.init(ellipseOf: CGSize.init(width: radius/2, height: radius/4))
+            bowShapeM.zPosition = bowNode.zPosition
+            bowShapeM.fillColor = SKColor.red
+            bowShapeM.lineWidth = 0.0
+            bowShapeM.position = CGPoint.init(x: 0, y: 0)
+            bowNode.addChild(bowShapeM)
+            
+            let eyeShape = SKShapeNode.init(rectOf: CGSize.init(width: radius/2, height: radius/6))
+            eyeShape.zPosition = bowNode.zPosition
+            eyeShape.fillColor = SKColor.black
+            eyeShape.lineWidth = 0.0
+            eyeShape.position = CGPoint.init(x: 0, y: -radius/1.5)
+            bowNode.addChild(eyeShape)
+            
+            let moleShape = SKShapeNode.init(rectOf: CGSize.init(width: radius/8, height: radius/8))
+            moleShape.zPosition = bowNode.zPosition
+            moleShape.fillColor = SKColor.black
+            moleShape.lineWidth = 0.0
+            moleShape.position = CGPoint.init(x: -radius/2.2, y: -radius*1.2)
+            bowNode.addChild(moleShape)
+            
+            bowNode.position = CGPoint.init(x: -radius/1.7, y: radius/1.1)
+            bowNode.zRotation = CGFloat(Double.pi/6)
+            
+            //merge for performance
+            bowNode.shouldRasterize = true
+            circleNode.addChild(bowNode)
+        }
         
         self.addChild(circleNode)
         
@@ -121,10 +170,23 @@ class DotsNode: SKNode {
                 
                 //point him correctly
                 pacman.zRotation = CGFloat(Double.pi*2) // right
-                if adjustedHideUpTo>cornerNums[0] { pacman.zRotation = CGFloat(-Double.pi/2) } //down
-                if adjustedHideUpTo>cornerNums[1] { pacman.zRotation = CGFloat(Double.pi) } //left
-                if adjustedHideUpTo>cornerNums[2] { pacman.zRotation = CGFloat(Double.pi/2) } //up
-                if adjustedHideUpTo>cornerNums[3] { pacman.zRotation = CGFloat(Double.pi*2) } //right
+                
+                if adjustedHideUpTo>cornerNums[0] { //down
+                    pacman.zRotation = CGFloat(-Double.pi/2)
+                    pacman.yScale = 1.0
+                }
+                if adjustedHideUpTo>cornerNums[1] { //left
+                    pacman.zRotation = CGFloat(Double.pi)
+                    pacman.yScale = -1.0 //flip for bow
+                }
+                if adjustedHideUpTo>cornerNums[2] {  //up
+                    pacman.zRotation = CGFloat(Double.pi/2)
+                    pacman.yScale = 1.0
+                }
+                if adjustedHideUpTo>cornerNums[3] { //right
+                    pacman.zRotation = CGFloat(Double.pi*2)
+                    pacman.yScale = 1.0
+                }
                 
                 if (force || secondHandMovement == .SecondHandMovementStep) {
                     pacman.removeAction(forKey: "moveAction")
@@ -157,7 +219,7 @@ class DotsNode: SKNode {
             
             if (dot == 0) {
                 //draw pac Man
-                let pacNameNode = PacNode.init(radius: 8.0)
+                let pacNameNode = PacNode.init(radius: 7.0, secondHandType: secondHandType)
                 pacNameNode.name = "pacMan"
                 pacNameNode.position = currentPos!
                 pacNameNode.zPosition = 2.0
