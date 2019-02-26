@@ -20,6 +20,8 @@ enum DigitalTimeFormats: String {
     case HHMMSS,
     HHMM,
     HHMMPM,
+    HH,
+    MM,
     DADD,
     DDMM,
     MMDD,
@@ -37,7 +39,9 @@ enum DigitalTimeFormats: String {
         DDMM,
         HHMM,
         HHMMPM,
-        HHMMSS
+        HHMMSS,
+        HH,
+        MM
     ]
 }
 
@@ -146,8 +150,8 @@ class DigitalTimeNode: SKNode {
         //let month = CGFloat(calendar.component(.month, from: date))
         let day = CGFloat(calendar.component(.day, from: date))
         
-//        let hour = CGFloat(calendar.component(.hour, from: date))
-//        let minutes = CGFloat(calendar.component(.minute, from: date))
+        let hour = CGFloat(calendar.component(.hour, from: date))
+        let minutes = CGFloat(calendar.component(.minute, from: date))
 //        let seconds = CGFloat(calendar.component(.second, from: date))
 
         let monthWord = calendar.shortMonthSymbols[calendar.component(.month, from: date)-1].uppercased()
@@ -159,8 +163,8 @@ class DigitalTimeNode: SKNode {
         dateFormatterTime.dateStyle = .none
         dateFormatterTime.timeStyle = .short
         
-//        let hourString = String(format: "%02d", Int(hour))
-//        let minString = String(format: "%02d", Int(minutes))
+        let hourString = String(format: "%02d", Int(hour))
+        let minString = String(format: "%02d", Int(minutes))
 //        let secString = String(format: "%02d", Int(seconds))
         
         var timeString = ""
@@ -181,6 +185,10 @@ class DigitalTimeNode: SKNode {
         case .HHMMSS:
             dateFormatterTime.timeStyle = .medium
             timeString = timeStringWithoutAMPM(dateFormatterTime: dateFormatterTime)
+        case .HH:
+            timeString = hourString
+        case .MM:
+            timeString = minString
         default:
             timeString = " " //empty can cause crash on calcuating size  (calculateAccumulatedFrame)
         }
@@ -407,6 +415,10 @@ class DigitalTimeNode: SKNode {
             description = "HH:MMpm"
         case .HHMMSS:
             description = "HH:MM:SS"
+        case .HH:
+            description = "HH"
+        case .MM:
+            description = "MM"
         default:
             description = "None"
         }
