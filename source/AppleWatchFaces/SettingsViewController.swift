@@ -289,15 +289,9 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     @IBAction func shareAll() {
         makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
-        if let newImage = UIImage.getImageFor(imageName: SettingsViewController.currentClockSetting.uniqueID) {
-            let myWebsite = NSURL(string:"https://github.com/orff/AppleWatchFaces")!
-            
-            let text = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created using " + myWebsite.absoluteString!
-            let shareAll = [newImage, text] as [Any]
-            let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view
-            self.present(activityViewController, animated: true, completion: nil)
-        }
+        let activityViewController = UIActivityViewController(activityItems: [ImageProvider(), TextProvider()], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func saveClock() {
@@ -380,3 +374,40 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
 }
 
+class TextProvider: NSObject, UIActivityItemSource {
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return NSObject()
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        
+        let myWebsiteURL = NSURL(string:"https://github.com/orff/AppleWatchFaces")!.absoluteString!
+        //let appName = "AppleWatchFaces on github"
+        let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created using "
+        
+        if activityType == .postToFacebook  {
+            return nil
+        }
+        
+        return watchFaceCreatedText + myWebsiteURL
+    }
+}
+
+class ImageProvider: NSObject, UIActivityItemSource {
+    
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        if let newImage = UIImage.getImageFor(imageName: SettingsViewController.currentClockSetting.uniqueID) {
+            return newImage
+        } else {
+            return UIImage.init()
+        }
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        if let newImage = UIImage.getImageFor(imageName: SettingsViewController.currentClockSetting.uniqueID) {
+            return newImage
+        } else {
+            return UIImage.init()
+        }
+    }
+}
