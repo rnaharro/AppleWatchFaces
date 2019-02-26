@@ -385,6 +385,9 @@ class TextProvider: NSObject, UIActivityItemSource {
         //let appName = "AppleWatchFaces on github"
         let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created using "
         
+        //copy to clipboard for insta / FB
+        UIPasteboard.general.string = watchFaceCreatedText + myWebsiteURL
+        
         if activityType == .postToFacebook  {
             return nil
         }
