@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIFileSharingEnabled</key>
-	<true/>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>App needs access to photo library to same images of watch faces </string>
-	<key>NSCameraUsageDescription</key>
-	<string>App Needs to use camera to take watch face background pictures</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -28,6 +22,10 @@
 	<string>4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>App Needs to use camera to take watch face background pictures</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App needs access to photo library to same images of watch faces </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>JOYSTIX.TTF</string>
@@ -45,6 +43,8 @@
 		<string>GERMANICA.TTF</string>
 		<string>BLACKROSE.TTF</string>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
