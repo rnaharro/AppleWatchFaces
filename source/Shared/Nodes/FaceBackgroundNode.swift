@@ -8,6 +8,7 @@
 
 import SpriteKit
 import SceneKit
+import WatchKit
 
 enum FaceBackgroundTypes: String {
     case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeNone
@@ -56,14 +57,29 @@ class FaceBackgroundNode: SKSpriteNode {
         return typeKeysArray
     }
     
-    static func filledShapeNode(material: String) -> SKShapeNode {
-        let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
+    static func getScreenBoundsForImages() -> CGSize {
+        #if os(watchOS)
+            let screenBounds = WKInterfaceDevice.current().screenBounds
+        //this is needed * ratio to fit 320x390 images to 42 & 44mm
+            let overscan:CGFloat = 1.17
+            let mult = (390/(screenBounds.height*2)) * overscan
+            let ratio = screenBounds.size.height / screenBounds.size.width
+            let w = screenBounds.size.width * mult * ratio
+            let h = screenBounds.size.height * mult * ratio
+        #else
+            let w = CGFloat( CGFloat(320) / 1.42 ) // 1.42
+            let h = CGFloat( CGFloat(390) / 1.42 ) // 1.42
+        #endif
         
-        let w = CGFloat( CGFloat(3.20) / 1.4 )// / 1.425
-        let h = CGFloat( CGFloat(3.9)  / 1.4 )// / 1.425
-        let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier))
+        return CGSize.init(width: w, height: h)
+    }
+    
+    static func filledShapeNode(material: String) -> SKShapeNode {
+        let size = getScreenBoundsForImages()
+        let shape = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: size.width, height: size.height))
+        shape.lineWidth = 0.0
         shape.setMaterial(material: material)
-        shape.position = CGPoint.init(x: -(w * sizeMultiplier)/2, y: -(h * sizeMultiplier)/2)
+        shape.position = CGPoint.init(x: -size.width/2, y: -size.height/2)
         return shape
     }
     
@@ -77,8 +93,8 @@ class FaceBackgroundNode: SKSpriteNode {
         
         self.name = "FaceBackground"
         let sizeMultiplier = CGFloat(SKWatchScene.sizeMulitplier)
-        let xBounds = 320 / 2.8
-        let yBounds = 390 / 2.8
+        let xBounds = FaceBackgroundNode.getScreenBoundsForImages().width / 2.0
+        let yBounds = FaceBackgroundNode.getScreenBoundsForImages().height / 2.0
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
             let shape = FaceBackgroundNode.filledShapeNode(material: material)
