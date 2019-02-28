@@ -99,17 +99,14 @@ class UserClockSetting: NSObject {
         return clockSettingsSerializedArray
     }
     
-    static func addMissingFromDefaults() {
-        
-        func sharedSettingHasThisClockSetting(uniqueID : String) -> Bool {
-            for clockSetting in sharedClockSettings {
-                if clockSetting.uniqueID == uniqueID { return true }
-            }
-            return false
+    static func sharedSettingHasThisClockSetting(uniqueID : String) -> Bool {
+        for clockSetting in sharedClockSettings {
+            if clockSetting.uniqueID == uniqueID { return true }
         }
-        
-        guard let path = Bundle.main.path(forResource: "Settings", ofType: "json") else { return }
-        
+        return false
+    }
+    
+    static func addNewFromPath(path: String, importDuplicatesAsNew: Bool) {
         var clockSettingsSerializedArray = [JSON]()
         clockSettingsSerializedArray = loadSettingArrayFromSaveFile( path: path)
         
@@ -117,7 +114,16 @@ class UserClockSetting: NSObject {
         //loop thru all settings in defaults, and insert any new ones to our clock settings
         for clockSettingSerialized in clockSettingsSerializedArray {
             //print("got title", clockSettingSerialized["title"])
-            let newClockSetting = ClockSetting.init(jsonObj: clockSettingSerialized)
+            var newClockSetting = ClockSetting.init(jsonObj: clockSettingSerialized)
+            
+            if (importDuplicatesAsNew && sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID)) {
+                if let clonedSetting = newClockSetting.clone(keepUniqueID: false) {
+                    let newTitle = newClockSetting.title + " copy"
+                    newClockSetting = clonedSetting
+                    newClockSetting.title = newTitle
+                }
+            }
+            
             //if this one already in our list?
             if !sharedSettingHasThisClockSetting(uniqueID: newClockSetting.uniqueID) {
                 sharedClockSettings.insert(newClockSetting, at: 0)
@@ -132,7 +138,11 @@ class UserClockSetting: NSObject {
         if sharedClockSettings.count > numOriginalClocks {
             saveToFile()
         }
-        
+    }
+    
+    static func addMissingFromDefaults() {
+        guard let path = Bundle.main.path(forResource: "Settings", ofType: "json") else { return }
+        addNewFromPath(path: path, importDuplicatesAsNew: false)
     }
     
     static func resetToDefaults() {

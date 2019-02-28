@@ -375,24 +375,49 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
 }
 
 class TextProvider: NSObject, UIActivityItemSource {
+    
+    let myWebsiteURL = NSURL(string:"https://github.com/orff/AppleWatchFaces")!.absoluteString!
+    //let appName = "AppleWatchFaces on github"
+    let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created"
+    
+    func atachmentURL()->URL {
+        let filename = SettingsViewController.currentClockSetting.filename() + ".awf"
+        return UserClockSetting.DocumentsDirectory.appendingPathComponent(filename)
+    }
+    func createTempTextFile() {
+        //TODO: move this to temporary file to be less cleanup later / trash on device
+        //JSON save to file
+        var serializedArray = [NSDictionary]()
+        serializedArray.append(SettingsViewController.currentClockSetting.serializedSettings())
+        //debugPrint("saving setting: ", clockSetting.title)
+        UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: atachmentURL())
+    }
+
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return NSObject()
     }
     
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
+    
+        return watchFaceCreatedText
+    }
+    
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
         
-        let myWebsiteURL = NSURL(string:"https://github.com/orff/AppleWatchFaces")!.absoluteString!
-        //let appName = "AppleWatchFaces on github"
-        let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created using "
-        
         //copy to clipboard for insta / FB
-        UIPasteboard.general.string = watchFaceCreatedText + myWebsiteURL
+        UIPasteboard.general.string = watchFaceCreatedText + " using " + myWebsiteURL
         
         if activityType == .postToFacebook  {
             return nil
         }
         
-        return watchFaceCreatedText + myWebsiteURL
+        //attach a file of the curent setting
+        if activityType == .mail {
+            createTempTextFile()
+            return atachmentURL()
+        }
+        
+        return watchFaceCreatedText + " using " + myWebsiteURL
     }
 }
 

@@ -24,6 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    // MARK: - Handle File Sharing
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard url.pathExtension == "awf" else { return false }
+        
+        UserClockSetting.addNewFromPath(path: url.path, importDuplicatesAsNew: true)
+        
+        //tell chooser view to reload its cells and regen thumbs
+        NotificationCenter.default.post(name: FaceChooserViewController.faceChooserRegenerateChangeNotificationName, object: nil, userInfo:nil)
+
+        return true
+    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

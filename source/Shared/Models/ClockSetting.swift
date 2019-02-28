@@ -156,6 +156,11 @@ class ClockSetting: NSObject {
 //        return theSetting!
 //    }
     
+    func filename()->String {
+        let newName = self.title.components(separatedBy: CharacterSet.alphanumerics.inverted).joined().lowercased()
+        return newName
+    }
+    
     static func defaults() -> ClockSetting {
         return ClockSetting.init(
             clockFaceMaterialName: "#000000FF",

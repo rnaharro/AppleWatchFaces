@@ -24,6 +24,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
     var faceListReloadType : FaceListReloadType = .none
     
     static let faceChooserReloadChangeNotificationName = Notification.Name("faceChooserReload")
+    static let faceChooserRegenerateChangeNotificationName = Notification.Name("faceChooserRegenerate")
     
     @IBAction func sendAllSettingsAction(sender: UIButton) {
         //debugPrint("sendAllSettingsAction tapped")
@@ -181,6 +182,20 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         }
     }
     
+    func shouldRegenerateThumbNailsAndExit() -> Bool {
+        //generate thumbs and exit if needed
+        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
+        if (missingThumbs.count > 0) {
+            //first run, reload everything
+            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
+                faceListReloadType = .full
+            }
+            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
+            return true
+        }
+        return false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         let missingThemeThumbs = UserClockSetting.themesWithoutThumbNails()
@@ -189,13 +204,7 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         }
         
         //generate thumbs and exit if needed
-        let missingThumbs = UserClockSetting.settingsWithoutThumbNails()
-        guard missingThumbs.count==0 else {
-            //first run, reload everything
-            if missingThumbs.count == UserClockSetting.sharedClockSettings.count {
-                faceListReloadType = .full
-            }
-            self.performSegue(withIdentifier: "callMissingThumbsGeneratorID", sender: nil)
+        if shouldRegenerateThumbNailsAndExit() {
             return
         }
         
@@ -239,6 +248,17 @@ class FaceChooserViewController: UIViewController, WCSessionDelegate {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForReloadChange(notification:)), name: FaceChooserViewController.faceChooserReloadChangeNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationForGenerateThumbs(notification:)), name: FaceChooserViewController.faceChooserRegenerateChangeNotificationName, object: nil)
+        
+    }
+    
+    @objc func onNotificationForGenerateThumbs(notification:Notification) {
+        if let faceChooserTableVC  = faceChooserTableViewController  {
+            faceChooserTableVC.reloadAllThumbs()
+        }
+        delay(0.5) {
+             _ = self.shouldRegenerateThumbNailsAndExit()
+        }
     }
     
     @objc func onNotificationForReloadChange(notification:Notification) {
