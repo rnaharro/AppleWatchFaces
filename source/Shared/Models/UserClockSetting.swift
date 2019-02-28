@@ -140,16 +140,7 @@ class UserClockSetting: NSObject {
         saveToFile()
     }
 
-    static func saveToFile () {
-        //JSON save to file
-        var serializedArray = [NSDictionary]()
-        for clockSetting in sharedClockSettings {
-            serializedArray.append(clockSetting.serializedSettings() )
-            
-            //debugPrint("saving setting: ", clockSetting.title)
-            
-        }
-        
+    static func saveDictToFile(serializedArray:[NSDictionary], pathURL: URL) {
         let dictionary = ["clockSettings": serializedArray]
         
         if JSONSerialization.isValidJSONObject(dictionary) {
@@ -159,9 +150,9 @@ class UserClockSetting: NSObject {
                 // here "jsonData" is the dictionary encoded in JSON data
                 let theJSONText = NSString(data: jsonData, encoding: String.Encoding.ascii.rawValue)
                 print("JSON string = \(theJSONText!)")
-                    
+                
                 //save to a file
-                let path = self.ArchiveURL.path
+                let path = pathURL.path
                 debugPrint("SAVING: JSON file path = \(path)")
                 
                 //writing
@@ -171,7 +162,7 @@ class UserClockSetting: NSObject {
                 catch let error as NSError {
                     debugPrint("save write file error: ", error.localizedDescription)
                 }
-
+                
                 
             } catch let error as NSError {
                 debugPrint("save JSON serialization error: ", error.localizedDescription)
@@ -179,7 +170,17 @@ class UserClockSetting: NSObject {
         } else {
             debugPrint("ERROR: settings cant be coverted to JSON")
         }
-        
+    }
+    
+    static func saveToFile () {
+        //JSON save to file
+        var serializedArray = [NSDictionary]()
+        for clockSetting in sharedClockSettings {
+            serializedArray.append(clockSetting.serializedSettings() )
+            //debugPrint("saving setting: ", clockSetting.title)
+        }
+        let archiveURL = self.ArchiveURL
+        saveDictToFile(serializedArray: serializedArray, pathURL: archiveURL)
     }
     
     //return an array of clockSettings that are missing thumbnail images
