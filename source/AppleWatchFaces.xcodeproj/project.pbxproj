@@ -447,7 +447,6 @@
 		318808CF217815E600585AB1 /* AppleWatchFaces */ = {
 			isa = PBXGroup;
 			children = (
-				312E853B22264F67001C450B /* AppleWatchFaces.entitlements */,
 				318808D0217815E600585AB1 /* AppDelegate.swift */,
 				31F4F1D8219D08890050177A /* FaceChooserViewController.swift */,
 				31EF99A021A2046100BB54E7 /* ChooserView */,
@@ -465,6 +464,7 @@
 				318808D7217815E700585AB1 /* Assets.xcassets */,
 				31061F2F2192657200EF511B /* Colors.plist */,
 				318808DC217815E700585AB1 /* Info.plist */,
+				312E853B22264F67001C450B /* AppleWatchFaces.entitlements */,
 			);
 			path = AppleWatchFaces;
 			sourceTree = "<group>";
@@ -472,10 +472,10 @@
 		318808E52178166A00585AB1 /* Face */ = {
 			isa = PBXGroup;
 			children = (
-				312E853C22264F6F001C450B /* Face.entitlements */,
 				318808E62178166A00585AB1 /* Interface.storyboard */,
 				318808E92178166B00585AB1 /* Assets.xcassets */,
 				318808EB2178166B00585AB1 /* Info.plist */,
+				312E853C22264F6F001C450B /* Face.entitlements */,
 			);
 			path = Face;
 			sourceTree = "<group>";
@@ -483,7 +483,6 @@
 		318808F42178166B00585AB1 /* Face Extension */ = {
 			isa = PBXGroup;
 			children = (
-				312E853D22264F73001C450B /* Face Extension.entitlements */,
 				3188090E2178170C00585AB1 /* Assets */,
 				318808F52178166B00585AB1 /* InterfaceController.swift */,
 				31056B612218DC1700D0E15C /* ComplicationController.swift */,
@@ -491,6 +490,7 @@
 				318808FD2178166B00585AB1 /* NotificationController.swift */,
 				318808FF2178166B00585AB1 /* Assets.xcassets */,
 				318809012178166B00585AB1 /* Info.plist */,
+				312E853D22264F73001C450B /* Face Extension.entitlements */,
 				318809022178166B00585AB1 /* PushNotificationPayload.apns */,
 			);
 			path = "Face Extension";
