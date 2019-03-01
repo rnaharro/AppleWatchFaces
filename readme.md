@@ -108,6 +108,10 @@ If you are still having issues, please check out a [sideloading tutorial](http:/
 7. Tapping Save in the upper right will lock in these settings in the main list and regenerate the thumbnail.  
 8. To abort all current changes tap back without tapping save.
 
+### Sharing / Importing
+
+Best is email, but there is a share sheet implementation to export out the faces, custom gallery/phone backgrounds and the JSON settings as an .awf file.  If you open one of these files on your phone with the OS handler, you should see and option for "copy to AppleWatchFaces" which will import it into the app.
+
 ### Back-Up / Restore My Settings
 
 If you need to re-install, or just want to manually edit the settings file. Use iTunes file sharing to save or overwrite the userClockSettingsV[XX].json file.  
@@ -129,10 +133,6 @@ If you need to re-install, or just want to manually edit the settings file. Use 
 1. Open the Settings app  on your Apple Watch.
 2. Go to General > Wake Screen, then tap Wake for 70 Seconds.
 
-
-## Known Issues
-
-Sometimes when sending to watch the watch app crashes -- I think this has to do with using resources folders vs. Asset folders in spriteKit, but I have not had time to dive into it.
 
 ## Authors
 
