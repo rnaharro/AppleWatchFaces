@@ -1,6 +1,252 @@
 {
     "clockSettings" : [
         {
+            "clockFaceMaterialName" : "#000000ff",
+            "clockFaceSettings" : {
+                "ringRenderShape" : "RingRenderShapeCircle",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "minuteHandType" : "MinuteHandTypeNone",
+                "hourHandType" : "HourHandTypeNone",
+                "secondHandMovement" : "SecondHandMovementStep",
+                "shouldShowHandOutlines" : false,
+                "secondHandType" : "SecondHandTypeThinDial",
+                "minuteHandMaterialName" : "#ffaa56ff",
+                "secondHandMaterialName" : "#703800ff",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#ffd6adff",
+                "ringMaterials" : [
+                    "#ff7f00ff",
+                    "#ffaa56ff",
+                    "#c6c6c6"
+                ],
+                "ringSettings" : [
+                    {
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringWidth" : "0.08",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textSize" : "0.2",
+                        "ringStaticTimeFormat" : "None",
+                        "textType" : "NumberTextTypeHelvica",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticItemHorizontalPosition" : "Right",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "0",
+                        "textSize" : "0.2",
+                        "ringStaticTimeFormat" : "DDMM",
+                        "textType" : "NumberTextTypeSystem",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringStaticItemHorizontalPosition" : "Left",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "0",
+                        "textSize" : "0.2",
+                        "ringStaticTimeFormat" : "Battery",
+                        "textType" : "NumberTextTypeSystem",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringWidth" : "0.56",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textSize" : "0.2",
+                        "ringStaticTimeFormat" : "None",
+                        "textType" : "NumberTextTypeHelvica",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "Top",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "0",
+                        "textSize" : "1.0",
+                        "ringStaticTimeFormat" : "HH",
+                        "textType" : "NumberTextLCDPhone",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "0",
+                        "textSize" : "1.02",
+                        "ringStaticTimeFormat" : "MM",
+                        "textType" : "NumberTextLCDPhone",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    }
+                ],
+                "handOutlineMaterialName" : "#8e8e8eff"
+            },
+            "uniqueID" : "2554B281-CE68-4675-B644-C93A1917D59B",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockCasingMaterialName" : "#111111ff",
+            "title" : "Orange Bold LCD"
+        },
+        {
+            "clockFaceMaterialName" : "#FFFFFFFF",
+            "clockFaceSettings" : {
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "hourHandType" : "HourHandTypeSwiss",
+                "secondHandMovement" : "SecondHandMovementStep",
+                "shouldShowHandOutlines" : false,
+                "secondHandType" : "SecondHandTypeSwiss",
+                "minuteHandMaterialName" : "#000000FF",
+                "secondHandMaterialName" : "#FF0000FF",
+                "shouldShowRomanNumeralText" : false,
+                "hourHandMaterialName" : "#000000FF",
+                "ringMaterials" : [
+                    "#000000FF",
+                    "",
+                    ""
+                ],
+                "ringSettings" : [
+                    {
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "60",
+                        "textSize" : "0.2",
+                        "ringStaticTimeFormat" : "None",
+                        "textType" : "NumberTextTypeDINPro",
+                        "indicatorSize" : "0.2",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeShapeNode",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeMediumBox",
+                        "ringWidth" : "0.07",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textSize" : "0.2",
+                        "ringStaticTimeFormat" : "None",
+                        "textType" : "NumberTextTypeHelvica",
+                        "indicatorSize" : "0.66",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeSpacer",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "ringWidth" : "0.3",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "ringStaticEffects" : "None",
+                        "ringPatternTotal" : "12",
+                        "textSize" : "0.2",
+                        "ringStaticTimeFormat" : "None",
+                        "textType" : "NumberTextTypeHelvica",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    },
+                    {
+                        "ringType" : "RingTypeDigitalTime",
+                        "shouldShowTextOutline" : false,
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "ringStaticEffects" : "darkInnerShadow",
+                        "ringPatternTotal" : "0",
+                        "textSize" : "0.24",
+                        "ringStaticTimeFormat" : "DADD",
+                        "textType" : "NumberTextTypeSystem",
+                        "indicatorSize" : "0.15",
+                        "ringPattern" : [
+                            
+                        ],
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 0
+                    }
+                ],
+                "handOutlineMaterialName" : "#ffffffff"
+            },
+            "uniqueID" : "F49C57B8-9632-4DD4-AC4E-9ECC09C7BC04",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockCasingMaterialName" : "#1c1c1cff",
+            "title" : "Swiss Watch"
+        },
+        {
             "clockCasingMaterialName" : "#FF0000FF",
             "clockFaceSettings" : {
                 "handOutlineMaterialName" : "#8e8e8eff",
