@@ -289,7 +289,7 @@ class SettingsViewController: UIViewController, WCSessionDelegate {
     
     @IBAction func shareAll() {
         makeThumb(fileName: SettingsViewController.currentClockSetting.uniqueID)
-        let activityViewController = UIActivityViewController(activityItems: [ImageProvider(), TextProvider()], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [TextProvider(), ImageProvider(), BackgroundTextProvider(), BackgroundImageProvider(), AttachmentProvider()], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -379,6 +379,32 @@ class TextProvider: NSObject, UIActivityItemSource {
     let myWebsiteURL = NSURL(string:"https://github.com/orff/AppleWatchFaces")!.absoluteString!
     //let appName = "AppleWatchFaces on github"
     let watchFaceCreatedText = "Watch face \"" + SettingsViewController.currentClockSetting.title + "\" I created"
+
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return NSObject()
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
+    
+        return watchFaceCreatedText
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        
+        let promoText = watchFaceCreatedText + " using " + myWebsiteURL + "."
+        
+        //copy to clipboard for insta / FB
+        UIPasteboard.general.string = promoText
+        
+        if activityType == .postToFacebook  {
+            return nil
+        }
+        
+        return promoText
+    }
+}
+
+class AttachmentProvider: NSObject, UIActivityItemSource {
     
     func atachmentURL()->URL {
         let filename = SettingsViewController.currentClockSetting.filename() + ".awf"
@@ -392,32 +418,20 @@ class TextProvider: NSObject, UIActivityItemSource {
         //debugPrint("saving setting: ", clockSetting.title)
         UserClockSetting.saveDictToFile(serializedArray: serializedArray, pathURL: atachmentURL())
     }
-
+    
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return NSObject()
     }
     
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
-    
-        return watchFaceCreatedText
-    }
-    
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        
-        //copy to clipboard for insta / FB
-        UIPasteboard.general.string = watchFaceCreatedText + " using " + myWebsiteURL
         
         if activityType == .postToFacebook  {
             return nil
         }
         
-        //attach a file of the curent setting
-        if activityType == .mail {
-            createTempTextFile()
-            return atachmentURL()
-        }
-        
-        return watchFaceCreatedText + " using " + myWebsiteURL
+        createTempTextFile()
+        return atachmentURL()
+
     }
 }
 
@@ -433,9 +447,62 @@ class ImageProvider: NSObject, UIActivityItemSource {
     
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
         if let newImage = UIImage.getImageFor(imageName: SettingsViewController.currentClockSetting.uniqueID) {
+            if activityType == .mail {
+                return newImage
+            } else {
+                return newImage
+            }
+        } else {
+            return nil
+        }
+    }
+}
+
+class BackgroundTextProvider: NSObject, UIActivityItemSource {
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return NSObject()
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        if activityType == .postToFacebook  {
+            return nil
+        }
+        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
+        if !AppUISettings.materialIsColor(materialName: material) && UIImage.getImageFor(imageName: material) != nil {
+            return "Background and settings file attached."
+        }
+        return "Settings file attached."
+    }
+    
+}
+
+class BackgroundImageProvider: NSObject, UIActivityItemSource {
+    
+    func getBackgroundImage() -> UIImage? {
+        var newImage: UIImage?
+        let material = SettingsViewController.currentClockSetting.clockFaceMaterialName
+        if !AppUISettings.materialIsColor(materialName: material) {
+            if let image = UIImage.getImageFor(imageName: material)  {
+                newImage = image
+            }
+        }
+        
+        return newImage
+    }
+    
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        if let newImage = getBackgroundImage() {
             return newImage
         } else {
             return UIImage.init()
+        }
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        if let newImage = getBackgroundImage() {
+            return newImage
+        } else {
+            return nil
         }
     }
 }
