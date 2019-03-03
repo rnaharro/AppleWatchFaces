@@ -247,6 +247,110 @@
             "title" : "Swiss Watch"
         },
         {
+            "uniqueID" : "028E9093-11BC-4BEA-9C13-96B586FC7999",
+            "clockFaceMaterialName" : "#000000FF",
+            "title" : "Swiss Watch Inverse",
+            "faceBackgroundType" : "FaceBackgroundTypeFilled",
+            "clockFaceSettings" : {
+                "secondHandType" : "SecondHandTypeSwiss",
+                "shouldShowHandOutlines" : false,
+                "secondHandMaterialName" : "#FF0000FF",
+                "shouldShowRomanNumeralText" : false,
+                "ringSettings" : [
+                    {
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorSize" : "0.2",
+                        "ringPatternTotal" : "60",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "textType" : "NumberTextTypeDINPro",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringType" : "RingTypeSpacer",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.2"
+                    },
+                    {
+                        "ringWidth" : "0.07",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorSize" : "0.66",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "textType" : "NumberTextTypeHelvica",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringType" : "RingTypeShapeNode",
+                        "indicatorType" : "FaceIndicatorTypeMediumBox",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.2"
+                    },
+                    {
+                        "ringWidth" : "0.3",
+                        "ringStaticItemVerticalPosition" : "None",
+                        "ringStaticTimeFormat" : "None",
+                        "ringStaticItemHorizontalPosition" : "None",
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "12",
+                        "ringMaterialDesiredThemeColorIndex" : 0,
+                        "textType" : "NumberTextTypeHelvica",
+                        "ringPattern" : [
+                            1
+                        ],
+                        "ringType" : "RingTypeSpacer",
+                        "indicatorType" : "FaceIndicatorTypeBox",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticEffects" : "None",
+                        "textSize" : "0.2"
+                    },
+                    {
+                        "ringWidth" : "0.0",
+                        "ringStaticItemVerticalPosition" : "Bottom",
+                        "ringStaticTimeFormat" : "DADD",
+                        "ringStaticItemHorizontalPosition" : "Centered",
+                        "indicatorSize" : "0.15",
+                        "ringPatternTotal" : "0",
+                        "ringMaterialDesiredThemeColorIndex" : 2,
+                        "textType" : "NumberTextTypeSystem",
+                        "ringPattern" : [
+                            
+                        ],
+                        "ringType" : "RingTypeDigitalTime",
+                        "indicatorType" : "FaceIndicatorTypeNone",
+                        "textOutlineDesiredThemeColorIndex" : "0",
+                        "shouldShowTextOutline" : false,
+                        "ringStaticEffects" : "lightInnerShadow",
+                        "textSize" : "0.24"
+                    }
+                ],
+                "minuteHandMaterialName" : "#FFFFFFFF",
+                "secondHandMovement" : "SecondHandMovementStep",
+                "minuteHandMovement" : "MinuteHandMovementStep",
+                "hourHandType" : "HourHandTypeSwiss",
+                "minuteHandType" : "MinuteHandTypeSwiss",
+                "ringRenderShape" : "RingRenderShapeRoundedRect",
+                "ringMaterials" : [
+                    "#FFFFFFFF",
+                    "#DDDDDDFF",
+                    "#ffffffff"
+                ],
+                "hourHandMaterialName" : "#FFFFFFFF",
+                "handOutlineMaterialName" : "#ffffffff"
+            },
+            "clockCasingMaterialName" : "#FF0000FF"
+        },
+        {
             "clockCasingMaterialName" : "#FF0000FF",
             "clockFaceSettings" : {
                 "handOutlineMaterialName" : "#8e8e8eff",

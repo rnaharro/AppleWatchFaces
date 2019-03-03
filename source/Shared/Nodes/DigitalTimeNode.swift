@@ -48,6 +48,7 @@ enum DigitalTimeFormats: String {
 enum DigitalTimeEffects: String {
     case  innerShadow,
     darkInnerShadow,
+    lightInnerShadow,
     dropShadow,
     digital8,
     frame,
@@ -58,6 +59,7 @@ enum DigitalTimeEffects: String {
     static let userSelectableValues = [
         innerShadow,
         darkInnerShadow,
+        lightInnerShadow,
         dropShadow,
         digital8,
         frame,
@@ -245,6 +247,8 @@ class DigitalTimeNode: SKNode {
         let labelRect = timeText.calculateAccumulatedFrame()
         //re-use "dark color" for backgrounds
         let darkColor = SKColor.black.withAlphaComponent(0.2)
+        let lightColor = SKColor.white.withAlphaComponent(0.4)
+        
         //re-use an expanded frame
         let buffer:CGFloat = labelRect.height/2 //how much in pixels to expand the rectagle to draw the shadow past the text label
         let expandedRect = labelRect.insetBy(dx: -buffer, dy: -buffer)
@@ -323,13 +327,14 @@ class DigitalTimeNode: SKNode {
             }
          }
         
-        if (effect == .innerShadow || effect == .darkInnerShadow) {
+        if (effect == .innerShadow || effect == .darkInnerShadow || effect == .lightInnerShadow) {
             let shadowNode = SKNode.init()
             shadowNode.name = "shadowNode"
             
             let shadowHeight:CGFloat = labelRect.height/2.5
             
-            let shadowTexture = SKTexture.init(imageNamed: "dark-shadow.png")
+            var shadowTexture = SKTexture.init(imageNamed: "dark-shadow.png")
+            if effect == .lightInnerShadow { shadowTexture = SKTexture.init(imageNamed: "light-shadow.png") }
             
             let topShadowNode = SKSpriteNode.init(texture: shadowTexture, color: SKColor.clear, size: CGSize.init(width: expandedRect.width, height: shadowHeight*1.25))
             topShadowNode.position = CGPoint.init(x: 0, y: expandedRect.height/2 - shadowHeight/2)
@@ -364,6 +369,16 @@ class DigitalTimeNode: SKNode {
                 let frameNode = SKShapeNode.init(rect: expandedRect)
                 frameNode.fillColor = darkColor
                 frameNode.lineWidth = 0.0
+                frameNode.zPosition = -0.5
+                
+                self.addChild(frameNode)
+            }
+            
+            if (effect == .lightInnerShadow) {
+                let frameNode = SKShapeNode.init(rect: expandedRect)
+                frameNode.fillColor = lightColor
+                frameNode.lineWidth = 0.0
+                frameNode.zPosition = -0.5
                 
                 self.addChild(frameNode)
             }
@@ -452,6 +467,8 @@ class DigitalTimeNode: SKNode {
             description = "Dark Frame"
         case .darkInnerShadow:
             description = "Dark Inner Shadow"
+        case .lightInnerShadow:
+            description = "Light Inner Shadow"
         case .dropShadow:
             description = "Drop Shadow"
         case .digital8:
