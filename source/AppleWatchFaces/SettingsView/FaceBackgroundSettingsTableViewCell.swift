@@ -94,7 +94,7 @@ class FaceBackgroundSettingsTableViewCell: WatchSettingsSelectableTableViewCell,
             
             let highlightLineWidth = AppUISettings.settingLineWidthBeforeScale * 5.0
             let strokeColor = SKColor.init(hexString: AppUISettings.settingHighlightColor)
-            let selectedHandNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.userSelectableValues[indexPath.row], material: "#ddddddff", strokeColor: strokeColor, lineWidth: highlightLineWidth)
+            let selectedHandNode = FaceBackgroundNode.init(backgroundType: FaceBackgroundTypes.userSelectableValues[indexPath.row], material: "#ddddddff", material2: "", strokeColor: strokeColor, lineWidth: highlightLineWidth)
             
             selectedHandNode.name = "selectedNode"
             selectedHandNode.setScale(scaleMultiplier)

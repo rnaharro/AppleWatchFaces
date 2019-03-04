@@ -44,7 +44,7 @@ class WatchFaceNode: SKShapeNode {
         
         self.addChild(backgroundNode)
         
-        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: clockSetting.clockFaceMaterialName)
+        let backgroundShapeNode = FaceBackgroundNode.init(backgroundType: clockSetting.faceBackgroundType , material: clockSetting.clockFaceMaterialName, material2: clockSetting.clockCasingMaterialName)
         backgroundShapeNode.name = "backgroundShape"
         backgroundShapeNode.zPosition = CGFloat(PartsZPositions.backgroundShape.rawValue)
         

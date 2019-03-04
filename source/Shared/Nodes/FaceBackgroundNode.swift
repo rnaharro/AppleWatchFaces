@@ -11,12 +11,13 @@ import SceneKit
 import WatchKit
 
 enum FaceBackgroundTypes: String {
-    case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeNone
+    case FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle, FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient,
+        FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeNone
     
-    static let randomizableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
-        FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeNone]
-    static let userSelectableValues = [FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit, FaceBackgroundTypeCircle,
-        FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeNone]
+    static let userSelectableValues = [FaceBackgroundTypeCircle, FaceBackgroundTypeFilled, FaceBackgroundTypeDiagonalSplit,
+                                     FaceBackgroundTypeVerticalSplit, FaceBackgroundTypeHorizontalSplit, FaceBackgroundTypeVerticalGradient, FaceBackgroundTypeHorizontalGradient, FaceBackgroundTypeDiagonalGradient, FaceBackgroundTypeNone]
+    
+    static let randomizableValues = userSelectableValues
     
     static func random() -> FaceBackgroundTypes {
         let randomIndex = Int(arc4random_uniform(UInt32(randomizableValues.count)))
@@ -34,6 +35,11 @@ class FaceBackgroundNode: SKSpriteNode {
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit)  { typeDescription = "Split Diagonal" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalSplit)  { typeDescription = "Vertical Split" }
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalSplit)  { typeDescription = "Horizonatal Split" }
+        
+        if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeVerticalGradient)  { typeDescription = "Vertical Gradient" }
+        if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient)  { typeDescription = "Horizonal Gradient" }
+        if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient)  { typeDescription = "Diagonal Gradient" }
+        
         if (nodeType == FaceBackgroundTypes.FaceBackgroundTypeNone)  { typeDescription = "None" }
         
         return typeDescription
@@ -84,10 +90,14 @@ class FaceBackgroundNode: SKSpriteNode {
     }
     
     convenience init(backgroundType: FaceBackgroundTypes, material: String) {
-        self.init(backgroundType: backgroundType, material: material, strokeColor: SKColor.clear, lineWidth: 1.0)
+        self.init(backgroundType: backgroundType, material: material, material2: "", strokeColor: SKColor.clear, lineWidth: 1.0)
     }
     
-    init(backgroundType: FaceBackgroundTypes, material: String, strokeColor: SKColor, lineWidth: CGFloat ) {
+    convenience init(backgroundType: FaceBackgroundTypes, material: String, material2: String) {
+        self.init(backgroundType: backgroundType, material: material, material2: material2, strokeColor: SKColor.clear, lineWidth: 1.0)
+    }
+    
+    init(backgroundType: FaceBackgroundTypes, material: String, material2: String, strokeColor: SKColor, lineWidth: CGFloat ) {
         
         super.init(texture: nil, color: SKColor.clear, size: CGSize.init())
         
@@ -97,8 +107,30 @@ class FaceBackgroundNode: SKSpriteNode {
         let yBounds = FaceBackgroundNode.getScreenBoundsForImages().height / 2.0
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeFilled) {
+            
+            let effectsNode = SKEffectNode.init()
+            
+            if (lineWidth>0) {
+                let size = FaceBackgroundNode.getScreenBoundsForImages()
+                let width = size.width+lineWidth
+                let height = size.height+lineWidth
+                let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
+                let frameNode = SKShapeNode.init(rect:frameNodeRect)
+                
+                //draw it as a shape, no background!
+                frameNode.fillColor = SKColor.black
+                frameNode.strokeColor = strokeColor
+                frameNode.lineWidth = lineWidth
+                
+                effectsNode.addChild(frameNode)
+            }
+        
             let shape = FaceBackgroundNode.filledShapeNode(material: material)
-            self.addChild(shape)
+            effectsNode.addChild(shape)
+            
+            effectsNode.shouldRasterize = true //speed 1 layer
+            self.addChild(effectsNode)
+            
         }
         
         if (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalSplit) {
@@ -192,6 +224,58 @@ class FaceBackgroundNode: SKSpriteNode {
                 self.addChild(cropNode)
             }
             
+        }
+        
+        func isGradientNode(backgroundType: FaceBackgroundTypes)->Bool {
+             return (backgroundType == FaceBackgroundTypes.FaceBackgroundTypeVerticalGradient || backgroundType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient || backgroundType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient)
+        }
+        
+        if isGradientNode(backgroundType: backgroundType) {
+            
+            let size = FaceBackgroundNode.getScreenBoundsForImages()
+            let color1 = SKColor.init(hexString: material)
+            let color2 = SKColor.init(hexString: material2)
+            let colors = [ color1.cgColor, color2.cgColor ]
+            
+            let locations:[CGFloat] = [0.0,1.0]
+            let startPoint = CGPoint.init(x: 0, y: 0)
+            var endPoint = CGPoint.init(x: 0, y: size.height)
+            
+            if backgroundType == FaceBackgroundTypes.FaceBackgroundTypeHorizontalGradient {
+                endPoint = CGPoint.init(x: size.width, y: 0)
+            }
+            if backgroundType == FaceBackgroundTypes.FaceBackgroundTypeDiagonalGradient {
+                endPoint = CGPoint.init(x: size.width, y: size.height)
+            }
+            
+            if let gradientImage = UIGradientImage.init(size: size, colors: colors,
+                    locations: locations, startPoint: startPoint, endPoint: endPoint) {
+                
+                let tex = SKTexture.init(cgImage: gradientImage.cgImage!)
+                let newNode = SKSpriteNode.init(texture: tex)
+                
+                let effectsNode = SKEffectNode.init()
+                
+                if (lineWidth>0) {
+                    let width = size.width+lineWidth
+                    let height = size.height+lineWidth
+                    let frameNodeRect =  CGRect.init(x: -width/2, y: -height/2, width: width, height: height)
+                    let frameNode = SKShapeNode.init(rect:frameNodeRect)
+                    
+                    //draw it as a shape, no background!
+                    frameNode.fillColor = SKColor.black
+                    frameNode.strokeColor = strokeColor
+                    frameNode.lineWidth = lineWidth
+                    
+                    effectsNode.addChild(frameNode)
+                }
+                
+                effectsNode.addChild(newNode)
+                
+                effectsNode.shouldRasterize = true //speed 1 layer
+                self.addChild(effectsNode)
+            }
+           
         }
         
         
