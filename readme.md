@@ -16,6 +16,9 @@ To see what type of default faces it comes with, browse the [thumbnails folder](
 <img src="docs/faceThumbs/DB31731B-5D3F-4193-930D-822AE64CF622.jpg" width="24%"></img>
 <img src="docs/faceThumbs/A0B82702-2781-43C8-BC93-EBFA5277A2BC.jpg" width="24%"></img>
 <img src="docs/faceThumbs/5BEB5F08-B06B-4CBD-A587-963C27F3E4FC.jpg" width="24%"></img>
+<img src="docs/faceThumbs/067BC615-AF45-482D-AE6F-D58C3E347206.jpg" width="24%"></img>
+<img src="docs/faceThumbs/613635D1-63D0-4D4B-9B1E-8BFEE57F34C2.jpg" width="24%"></img>
+<img src="docs/faceThumbs/18A6F50D-E136-4F74-B009-C50CDA0BA344.jpg" width="24%"></img>
 
 ## Frequently Asked Questions
 
