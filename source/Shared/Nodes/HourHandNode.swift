@@ -212,12 +212,13 @@ class HourHandNode: SKSpriteNode {
         }
         
         if (hourHandType == .HourHandTypeCutout) {
+            let cutWidth = 9
             let bezierPath = UIBezierPath()
-            bezierPath.move(to: CGPoint(x: 7, y: 56))
-            bezierPath.addLine(to: CGPoint(x: -7, y: 56))
-            bezierPath.addLine(to: CGPoint(x: -7, y: 0))
-            bezierPath.addLine(to: CGPoint(x: 7, y: 0))
-            bezierPath.addLine(to: CGPoint(x: 7, y: 56))
+            bezierPath.move(to: CGPoint(x: cutWidth, y: 56))
+            bezierPath.addLine(to: CGPoint(x: -cutWidth, y: 56))
+            bezierPath.addLine(to: CGPoint(x: -cutWidth, y: 0))
+            bezierPath.addLine(to: CGPoint(x: cutWidth, y: 0))
+            bezierPath.addLine(to: CGPoint(x: cutWidth, y: 56))
             bezierPath.close()
             bezierPath.move(to: CGPoint(x: 100, y: -0))
             bezierPath.addCurve(to: CGPoint(x: -0, y: -100), controlPoint1: CGPoint(x: 100, y: -55.23), controlPoint2: CGPoint(x: 55.23, y: -100))
