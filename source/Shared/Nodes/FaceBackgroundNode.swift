@@ -235,7 +235,7 @@ class FaceBackgroundNode: SKSpriteNode {
             let size = FaceBackgroundNode.getScreenBoundsForImages()
             let color1 = SKColor.init(hexString: material)
             let color2 = SKColor.init(hexString: material2)
-            let colors = [ color1.cgColor, color2.cgColor ]
+            let colors = [ color2.cgColor, color1.cgColor ]
             
             let locations:[CGFloat] = [0.0,1.0]
             let startPoint = CGPoint.init(x: 0, y: 0)
