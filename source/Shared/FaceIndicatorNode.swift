@@ -108,8 +108,8 @@ class FaceIndicatorNode: SKSpriteNode {
             let w = CGFloat( size * Float(0.1) )
             let h = CGFloat( size * Float(0.6) )
             //let l = CGFloat( size * Float(0.1) )
-            let cham = CGFloat( size * Float(0.15) )
-            let shapeNode = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier), cornerRadius: cham * sizeMultiplier)
+            let cham = w / 2 //fix this to get it rounded w/out crashing on iOS11.0
+            let shapeNode = SKShapeNode.init(rect: CGRect.init(x: 0, y: 0, width: w * sizeMultiplier, height: h * sizeMultiplier), cornerRadius: cham)
             shapeNode.fillColor = fillColor
             shapeNode.strokeColor = fillColor
             shapeNode.lineWidth = 1.0
