@@ -7,7 +7,15 @@ The iOS app allows for the user to create **their own** watch faces by choosing 
 
 To see what type of default faces it comes with, browse the [thumbnails folder](https://github.com/orff/AppleWatchFaces/tree/master/docs/faceThumbs), here are some examples:
 
-<img src="docs/faceThumbs/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg" width="25%"></img> <img src="docs/faceThumbs/A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg" width="25%"></img> <img src="docs/faceThumbs/E3B2EAB9-5ABA-4D0D-A1DC-11D3673B36FD.jpg" width="25%"></img> <img src="docs/faceThumbs/DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg" width="25%"></img> <img src="docs/faceThumbs/08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg" width="25%"></img> <img src="docs/faceThumbs/4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80.jpg" width="25%"></img>
+<img src="docs/faceThumbs/4D503860-393E-4DEA-B0AC-CBFA02D33667.jpg" width="25%"></img>
+<img src="docs/faceThumbs/A74CDB68-4263-4E3B-B87E-EAB77D2C25CA.jpg" width="25%"></img>
+<img src="docs/faceThumbs/E3B2EAB9-5ABA-4D0D-A1DC-11D3673B36FD.jpg" width="25%"></img>
+<img src="docs/faceThumbs/DD6D0D82-3692-4161-9B36-5E7828CBC2EA.jpg" width="25%"></img>
+<img src="docs/faceThumbs/08F9E48F-55D8-4566-BF96-1C87273F13E7.jpg" width="25%"></img>
+<img src="docs/faceThumbs/4CE3C2CA-C77D-4A00-8B9D-3319DD01EE80.jpg" width="25%"></img>
+<img src="docs/faceThumbs/DB31731B-5D3F-4193-930D-822AE64CF622.jpg" width="25%"></img>
+<img src="docs/faceThumbs/A0B82702-2781-43C8-BC93-EBFA5277A2BC.jpg" width="25%"></img>
+<img src="docs/faceThumbs/5BEB5F08-B06B-4CBD-A587-963C27F3E4FC.jpg" width="25%"></img>
 
 ## Frequently Asked Questions
 
