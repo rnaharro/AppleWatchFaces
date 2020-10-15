@@ -71,7 +71,7 @@ class CustomWatchManager{
     // MARK: Methods
     private static func verifyIfHandsAlreadyExist(){
         for altHands in customWatch.getAlternative(){
-            var testAltHands = [altHands!.getSecondHand(),altHands!.getMinuteHand(),altHands!.getHourHand()]
+            let testAltHands = [altHands!.getSecondHand(),altHands!.getMinuteHand(),altHands!.getHourHand()]
             let testChronoHands = [altHands?.getChronograph()?.getSecondHand(),altHands?.getChronograph()?.getMinuteHand(),altHands?.getChronograph()?.getHourHand()]
             var chronoHandsAlreadyOnList = true
             var handsAlreadyOnTheList = false
